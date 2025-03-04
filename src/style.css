@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 @import url("https://fonts.googleapis.com/css2?family=Limelight&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-@import "material-colors/dist/colors.var.css";
-@import "normalize.css";
+@import url("../node_modules/material-colors/dist/colors.var.css");
+@import url("../node_modules/normalize.css/normalize.css");
 
 :root {
   --font-family: "Raleway", sans-serif;
