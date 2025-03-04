@@ -1,6 +1,5 @@
 import type { Properties } from "csstype";
-import type { CSSResultGroup } from "lit";
-import { css } from "lit";
+import { unsafeCSS } from "lit";
 import type { StyleInfo } from "lit-html/directives/style-map.js";
 import { styleMap as _styleMap } from "lit-html/directives/style-map.js";
 
@@ -15,15 +14,14 @@ export function styleMap(props: Properties) {
   return _styleMap(props as never);
 }
 
-export function rtl(styles: CSSResultGroup): CSSResultGroup {
-  return css`
-    :dir(rtl) &,
-    &:dir(rtl) {
-      ${styles};
-    }
-  `;
-}
+export const selectors = {
+  rtl: unsafeCSS(":dir(rtl) &, &:dir(rtl)"),
+};
 
 export function ensureDir(dir: string): "ltr" | "rtl" | "auto" {
   return dir === "rtl" || dir === "ltr" ? dir : "auto";
+}
+
+export function isActiveLink(href: string) {
+  return window.location.href.includes(href);
 }

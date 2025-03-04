@@ -7,8 +7,8 @@
   --font-family: "Raleway", sans-serif;
   --font-family-heading: "Limelight", cursive;
   --font-family-icon: "Material Symbols Sharp", serif;
-  --foreground: var(--md-teal-900);
-  --background: var(--md-teal-50);
+  --foreground: var(--md-teal-50);
+  --background: color-mix(in srgb, var(--md-teal-900) 40%, #000000);
   --link: var(--md-amber-600);
   --link-visited: var(--md-red-600);
 }
@@ -17,6 +17,14 @@ html {
   font-family: var(--font-family);
   background: var(--background);
   color: var(--foreground);
+}
+
+body {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
 }
 
 h1 {

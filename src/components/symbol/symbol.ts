@@ -2,7 +2,7 @@ import { LitElement, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
-import { styleMap, rtl } from "/utils/lit.ts";
+import { styleMap, selectors } from "/utils/lit.ts";
 
 @customElement("material-symbol")
 export class MaterialSymbol extends LitElement {
@@ -30,11 +30,11 @@ export class MaterialSymbol extends LitElement {
         "opsz" clamp(20, var(--icon-optical-size, 24), 48);
       --transition-duration: 250ms;
       transition: font-variation-settings var(--transition-duration);
-      ${rtl(css`
+      ${selectors.rtl} {
         &.flip-rtl {
           transform: scaleX(-1);
         }
-      `)};
+      }
     }
   `;
 
