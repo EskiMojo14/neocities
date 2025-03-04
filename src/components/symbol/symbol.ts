@@ -1,11 +1,11 @@
 import { LitElement, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { html } from "lit-html";
-import { styleMap, rtl } from "~/utils/lit";
+import { styleMap, rtl } from "../../utils/lit.ts";
 import { classMap } from "lit-html/directives/class-map.js";
 
 @customElement("material-symbol")
-class MaterialSymbol extends LitElement {
+export class MaterialSymbol extends LitElement {
   static styles = css`
     i {
       font-family: var(--font-family-icon);
@@ -74,9 +74,12 @@ class MaterialSymbol extends LitElement {
       </i>
     `;
   }
-}
 
-export default MaterialSymbol;
+  connectedCallback() {
+    super.connectedCallback();
+    console.log(this.childNodes);
+  }
+}
 
 declare global {
   interface HTMLElementTagNameMap {
