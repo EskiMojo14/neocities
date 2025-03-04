@@ -29,7 +29,8 @@
   },
   "dependencies": {
     "@types/node": "^22.13.9",
-    "lit-html": "^3.2.1"
+    "lit-html": "^3.2.1",
+    "valibot": "1.0.0-rc.3"
   },
   "engines": {
     "node": ">=18.0.0"

@@ -1,11 +1,14 @@
-import type { Args, Decorator, Preview } from "@storybook/web-components";
+import type { Decorator, Preview } from "@storybook/web-components";
 import "../src/style.scss";
+import { parse, picklist } from "valibot";
 
-const rtlDecorator: Decorator<Args> = (
+const dirSchema = picklist(["auto", "ltr", "rtl"]);
+
+const rtlDecorator: Decorator = (
   story,
   { canvasElement, args: { dir, ...args } }
 ) => {
-  canvasElement.dir = dir;
+  canvasElement.dir = parse(dirSchema, dir);
   return story({ args });
 };
 
@@ -22,7 +25,7 @@ const preview: Preview = {
   argTypes: {
     dir: {
       control: "inline-radio",
-      options: ["auto", "ltr", "rtl"],
+      options: dirSchema.options,
     },
   },
   args: {
