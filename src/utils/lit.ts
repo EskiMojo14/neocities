@@ -1,11 +1,11 @@
-import {
-  styleMap as _styleMap,
-  StyleInfo,
-} from "lit-html/directives/style-map.js";
 import type { Properties } from "csstype";
-import { css, CSSResultGroup } from "lit";
+import type { CSSResultGroup } from "lit";
+import { css } from "lit";
+import type { StyleInfo } from "lit-html/directives/style-map.js";
+import { styleMap as _styleMap } from "lit-html/directives/style-map.js";
 
 declare module "csstype" {
+  // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
   interface Properties {
     [variable: `--${string}`]: StyleInfo[string];
   }

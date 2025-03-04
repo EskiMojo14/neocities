@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from "@storybook/web-components";
+import type { StoryObj, Meta } from "@storybook/web-components";
 import "./symbol";
 
 const meta = {
