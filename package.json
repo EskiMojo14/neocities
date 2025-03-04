@@ -10,9 +10,6 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "imports": {
-    "#src/*": "./src/*"
-  },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
     "@greenwood/cli": "^0.31.1",
@@ -25,7 +22,6 @@
     "@storybook/web-components": "^8.6.3",
     "@storybook/web-components-vite": "^8.6.3",
     "csstype": "^3.1.3",
-    "lit": "^3.2.1",
     "material-colors": "^1.2.6",
     "normalize.css": "^8.0.1",
     "sass": "^1.85.1",
@@ -37,7 +33,8 @@
   "dependencies": {
     "@types/node": "^22.13.9",
     "lit-html": "^3.2.1",
-    "valibot": "1.0.0-rc.3"
+    "valibot": "1.0.0-rc.3",
+    "lit": "^3.2.1"
   },
   "engines": {
     "node": ">=18.0.0"

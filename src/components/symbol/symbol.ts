@@ -2,8 +2,7 @@ import { LitElement, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
-
-import { styleMap, rtl } from "#src/utils/lit.ts";
+import { styleMap, rtl } from "/utils/lit.ts";
 
 @customElement("material-symbol")
 export class MaterialSymbol extends LitElement {

@@ -26,4 +26,4 @@ dist-ssr
 *storybook.log
 
 .greenwood
-public/
+public
