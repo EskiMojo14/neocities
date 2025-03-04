@@ -70,7 +70,7 @@ export class MaterialSymbol extends LitElement {
           "--icon-optical-size": this.opticalSize ?? this.size,
         })}
       >
-        ${this.childNodes}
+        <slot></slot>
       </i>
     `;
   }
