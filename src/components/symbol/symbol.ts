@@ -74,11 +74,6 @@ export class MaterialSymbol extends LitElement {
       </i>
     `;
   }
-
-  connectedCallback() {
-    super.connectedCallback();
-    console.log(this.childNodes);
-  }
 }
 
 declare global {
