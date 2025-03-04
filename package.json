@@ -10,6 +10,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
+  "imports": {
+    "#src/*": "./src/*"
+  },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
     "@greenwood/cli": "^0.31.1",
@@ -28,7 +31,8 @@
     "sass": "^1.85.1",
     "storybook": "^8.6.3",
     "ts-lit-plugin": "^2.0.2",
-    "typescript": "~5.7.2"
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
   },
   "dependencies": {
     "@types/node": "^22.13.9",
