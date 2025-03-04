@@ -45,6 +45,9 @@ importers:
       lit:
         specifier: ^3.2.1
         version: 3.2.1
+      material-colors:
+        specifier: ^1.2.6
+        version: 1.2.6
       normalize.css:
         specifier: ^8.0.1
         version: 8.0.1
@@ -1022,6 +1025,9 @@ packages:
 
   map-or-similar@1.5.0:
     resolution: {integrity: sha512-0aF7ZmVon1igznGI4VS30yugpduQW3y3GkcgGJOp7d8x8QrizhigUxjI/m2UojsXXto+jLAH3KSz+xOJTiORjg==}
+
+  material-colors@1.2.6:
+    resolution: {integrity: sha512-6qE4B9deFBIa9YSpOc9O0Sgc43zTeVYbgDT5veRKSlB2+ZuHNoVVxA1L/ckMUayV9Ay9y7Z/SZCLcGteW9i7bg==}
 
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
@@ -2261,6 +2267,8 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.5.0
 
   map-or-similar@1.5.0: {}
+
+  material-colors@1.2.6: {}
 
   math-intrinsics@1.1.0: {}
 

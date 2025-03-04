@@ -8,7 +8,7 @@ import { classMap } from "lit-html/directives/class-map.js";
 class MaterialSymbol extends LitElement {
   static styles = css`
     i {
-      font-family: "Material Symbols Sharp";
+      font-family: var(--font-family-icon);
       font-weight: normal;
       font-style: normal;
       line-height: 1;

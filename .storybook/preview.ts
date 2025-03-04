@@ -1,5 +1,5 @@
 import type { Decorator, Preview } from "@storybook/web-components";
-import "../src/style.scss";
+import "../src/style.css";
 import { parse, picklist } from "valibot";
 
 const dirSchema = picklist(["auto", "ltr", "rtl"]);
