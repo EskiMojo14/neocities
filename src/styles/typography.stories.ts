@@ -1,7 +1,7 @@
 import type { Meta } from "@storybook/web-components";
 import { html } from "lit-html";
 import { repeat } from "lit-html/directives/repeat.js";
-import { variants } from "../styles/typography.ts";
+import { variants } from "./typography.ts";
 import styles from "./typography.module.css";
 
 const meta = {
