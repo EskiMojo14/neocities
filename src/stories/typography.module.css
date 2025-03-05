@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  .scale {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .scaleItem {
+      margin: 0;
+    }
+  }
+}

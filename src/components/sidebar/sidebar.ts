@@ -94,8 +94,8 @@ export class Sidebar extends LitElement {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: var(--subtitle1);
-      font-weight: var(--weight-light);
+      font-size: var(--subtitle1-size);
+      font-weight: var(--subtitle1-weight);
       color: var(--link);
       text-decoration: none;
       transition-property: color, font-weight, font-style;

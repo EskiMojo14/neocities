@@ -5,13 +5,15 @@ import { consolewriter } from "../../utils/lit.ts";
 
 @customElement("page-header")
 export class PageHeader extends LitElement {
-  static styles = css`
-    h1 {
-      font-size: var(--headline2);
-      font-weight: var(--weight-regular);
-      margin: 0;
-    }
-  `;
+  static styles = [
+    css`
+      h1 {
+        font-weight: var(--headline2-weight);
+        font-size: var(--headline2-size);
+        margin: 0;
+      }
+    `,
+  ];
   render() {
     const text = this.textContent ?? "";
     return html`
