@@ -1,3 +1,4 @@
+import { themes } from "@storybook/theming";
 import type { Decorator, Preview } from "@storybook/web-components";
 import { parse, picklist } from "valibot";
 import "../src/style.css";
@@ -15,6 +16,9 @@ const rtlDecorator: Decorator = (
 const preview: Preview = {
   parameters: {
     layout: "centered",
+    docs: {
+      theme: themes.dark,
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

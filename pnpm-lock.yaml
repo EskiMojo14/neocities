@@ -39,10 +39,16 @@ importers:
       '@storybook/blocks':
         specifier: ^8.6.3
         version: 8.6.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.3)
+      '@storybook/manager-api':
+        specifier: ^8.6.3
+        version: 8.6.3(storybook@8.6.3)
       '@storybook/preview-api':
         specifier: ^8.6.3
         version: 8.6.3(storybook@8.6.3)
       '@storybook/test':
+        specifier: ^8.6.3
+        version: 8.6.3(storybook@8.6.3)
+      '@storybook/theming':
         specifier: ^8.6.3
         version: 8.6.3(storybook@8.6.3)
       '@storybook/web-components':
