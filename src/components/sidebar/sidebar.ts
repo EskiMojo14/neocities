@@ -2,10 +2,10 @@ import { LitElement, css } from "lit";
 import { customElement } from "lit/decorators.js";
 import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
-import { map } from "lit-html/directives/map.js";
 import { ifDefined } from "lit-html/directives/if-defined.js";
-import { selectors, isActiveLink } from "/utils/lit.ts";
-import "/components/symbol/symbol.ts";
+import { map } from "lit-html/directives/map.js";
+import { selectors, isActiveLink } from "../../utils/lit.ts";
+import "../symbol/symbol.ts";
 
 interface SidebarItem {
   type?: "item";

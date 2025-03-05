@@ -31,9 +31,9 @@ export function isActiveLink(
 ): boolean {
   if (!href) return false;
   if (href === "/" || comparison === "equals") {
-    return location.pathname === href;
+    return window.location.pathname === href;
   }
-  return location.pathname.includes(href);
+  return window.location.pathname.includes(href);
 }
 
 export const asyncReplace = _asyncReplace as <T>(

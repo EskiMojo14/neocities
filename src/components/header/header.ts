@@ -1,8 +1,8 @@
 import { LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { html } from "lit-html";
-import { typewriter } from "/utils/index.ts";
-import { asyncReplace } from "/utils/lit.ts";
+import { typewriter } from "../../utils/index.ts";
+import { asyncReplace } from "../../utils/lit.ts";
 
 @customElement("page-header")
 export class PageHeader extends LitElement {

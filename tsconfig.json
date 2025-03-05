@@ -24,10 +24,7 @@
       {
         "name": "ts-lit-plugin"
       }
-    ],
-    "paths": {
-      "/*": ["./src/*"]
-    }
+    ]
   },
   "include": ["src", ".storybook/*", "vite.config.ts"]
 }
