@@ -5,7 +5,7 @@ import { classMap } from "lit-html/directives/class-map.js";
 import { selectors } from "../../utils/lit.ts";
 
 @customElement("material-symbol")
-export class MaterialSymbol extends LitElement {
+export default class MaterialSymbol extends LitElement {
   static styles = css`
     i {
       font-family: var(--font-family-icon);

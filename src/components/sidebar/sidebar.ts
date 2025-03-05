@@ -54,7 +54,7 @@ const sidebarItems: Array<SidebarItem | SidebarGroup> = [
 ];
 
 @customElement("sidebar-nav")
-export class Sidebar extends LitElement {
+export default class Sidebar extends LitElement {
   static styles = [
     typography.subtitle1,
     typography.subtitle2,

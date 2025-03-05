@@ -128,6 +128,7 @@ body {
   gap: 1rem;
   font-size: var(--body1-size);
   font-weight: var(--body1-weight);
+  text-transform: var(--body1-transform);
   .root {
     flex: 1;
     margin: 0 auto;

@@ -6,7 +6,7 @@ import { typography } from "../../styles/typography.ts";
 import { consolewriter } from "../../utils/lit.ts";
 
 @customElement("page-header")
-export class PageHeader extends LitElement {
+export default class PageHeader extends LitElement {
   static styles = [
     typography.headline2,
     typography.headline5,
