@@ -21,13 +21,30 @@ export async function* typewriter(
      * @default 0
      */
     delay = 0,
+
+    /** Suffix during animation */
+    typingSuffix = "",
+    /** Suffix when finished */
+    finishedSuffix = "",
+    /** If removing the suffix, how long to wait before removing it
+     * @default 300
+     */
+    finishingDelay = 300,
+    /** If true, keep the suffix after the animation is finished */
+    keepFinishingSuffix = false,
   } = {}
 ) {
   const finalInterval = Math.min(interval, maxDuration / text.length);
   let acc = "";
   await wait(delay);
   for (const char of text) {
-    yield (acc += char);
+    acc += char;
+    yield acc + typingSuffix;
     await wait(finalInterval);
+  }
+  yield acc + finishedSuffix;
+  if (!keepFinishingSuffix) {
+    await wait(finishingDelay);
+    yield acc;
   }
 }

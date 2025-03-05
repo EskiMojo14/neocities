@@ -73,8 +73,9 @@ export const asyncReplace = _asyncReplace as <T>(
   mapper?: (value: T, index: number) => unknown
 ) => DirectiveResult<typeof AsyncReplaceDirective>;
 
-export const consolewriter = (...args: Parameters<typeof typewriter>) =>
+export const consolewriter = (
+  ...[text, config]: Parameters<typeof typewriter>
+) =>
   asyncReplace(
-    typewriter(...args),
-    (value, idx) => value + (idx === args[0].length - 1 ? "▯" : "▮")
+    typewriter(text, { finishedSuffix: "▯", typingSuffix: "▮", ...config })
   );
