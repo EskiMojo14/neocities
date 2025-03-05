@@ -42,36 +42,47 @@
 
   --headline1-size: 6.0625rem;
   --headline1-weight: var(--weight-extralight);
+  --headline1-transform: none;
 
   --headline2-size: 3.8125rem;
   --headline2-weight: var(--weight-light);
+  --headline2-transform: none;
 
   --headline3-size: 3rem;
   --headline3-weight: var(--weight-light);
+  --headline3-transform: none;
 
   --headline4-size: 2.125rem;
   --headline4-weight: var(--weight-light);
+  --headline4-transform: none;
 
   --headline5-size: 1.5rem;
   --headline5-weight: var(--weight-regular);
+  --headline5-transform: none;
 
   --headline6-size: 1.25rem;
   --headline6-weight: var(--weight-regular);
+  --headline6-transform: none;
 
   --body1-size: 1rem;
   --body1-weight: var(--weight-regular);
+  --body1-transform: none;
 
   --body2-size: 0.875rem;
   --body2-weight: var(--weight-regular);
+  --body2-transform: none;
 
   --subtitle1-size: 1rem;
   --subtitle1-weight: var(--weight-regular);
+  --subtitle1-transform: none;
 
   --subtitle2-size: 0.875rem;
   --subtitle2-weight: var(--weight-regular);
+  --subtitle2-transform: none;
 
   --button-size: 0.875rem;
   --button-weight: var(--weight-medium);
+  --button-transform: uppercase;
 
   --overline-size: 0.625rem;
   --overline-weight: var(--weight-medium);
@@ -79,6 +90,7 @@
 
   --caption-size: 0.75rem;
   --caption-weight: var(--weight-regular);
+  --caption-transform: none;
 }
 
 :root {
@@ -134,61 +146,72 @@ h1,
 .headline1 {
   font-size: var(--headline1-size);
   font-weight: var(--headline1-weight);
+  text-transform: var(--headline1-transform);
 }
 
 h2,
 .headline2 {
   font-size: var(--headline2-size);
   font-weight: var(--headline2-weight);
+  text-transform: var(--headline2-transform);
 }
 
 h3,
 .headline3 {
   font-size: var(--headline3-size);
   font-weight: var(--headline3-weight);
+  text-transform: var(--headline3-transform);
 }
 
 h4,
 .headline4 {
   font-size: var(--headline4-size);
   font-weight: var(--headline4-weight);
+  text-transform: var(--headline4-transform);
 }
 
 h5,
 .headline5 {
   font-size: var(--headline5-size);
   font-weight: var(--headline5-weight);
+  text-transform: var(--headline5-transform);
 }
 
 h6,
 .headline6 {
   font-size: var(--headline6-size);
   font-weight: var(--headline6-weight);
+  text-transform: var(--headline6-transform);
 }
 
 .body1 {
   font-size: var(--body1-size);
   font-weight: var(--body1-weight);
+  text-transform: var(--body1-transform);
 }
 
 .body2 {
   font-size: var(--body2-size);
   font-weight: var(--body2-weight);
+  text-transform: var(--body2-transform);
 }
 
 .subtitle1 {
   font-size: var(--subtitle1-size);
   font-weight: var(--subtitle1-weight);
+  text-transform: var(--subtitle1-transform);
 }
 
 .subtitle2 {
   font-size: var(--subtitle2-size);
   font-weight: var(--subtitle2-weight);
+  text-transform: var(--subtitle2-transform);
 }
 
 .button {
   font-size: var(--button-size);
   font-weight: var(--button-weight);
+  text-transform: var(--button-transform);
 }
 
 .overline {
@@ -200,4 +223,5 @@ h6,
 .caption {
   font-size: var(--caption-size);
   font-weight: var(--caption-weight);
+  text-transform: var(--caption-transform);
 }

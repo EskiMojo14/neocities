@@ -4,6 +4,7 @@ import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import { map } from "lit-html/directives/map.js";
+import { typography } from "../../styles/typography.ts";
 import { selectors, isActiveLink } from "../../utils/lit.ts";
 import "../symbol/symbol.ts";
 
@@ -55,71 +56,72 @@ const sidebarItems: Array<SidebarItem | SidebarGroup> = [
 
 @customElement("sidebar-nav")
 export class Sidebar extends LitElement {
-  static styles = css`
-    nav {
-      --padding-h: 2rem;
-      --padding-v: 1rem;
-      padding: var(--padding-v) var(--padding-h);
-      padding-left: 0;
-      border-right: 1px solid var(--disabled);
-      ${selectors.rtl} {
-        padding-left: var(--padding-h);
-        padding-right: 0;
-        border-left: 1px solid var(--foreground);
-        border-right: none;
-      }
-    }
-    ul {
-      display: flex;
-      flex-direction: column;
-      list-style: none;
-      gap: 0.5rem;
-      ul {
-        padding-left: var(--padding-h);
+  static styles = [
+    typography.subtitle1,
+    css`
+      nav {
+        --padding-h: 2rem;
+        --padding-v: 1rem;
+        padding: var(--padding-v) var(--padding-h);
+        padding-left: 0;
+        border-right: 1px solid var(--disabled);
         ${selectors.rtl} {
-          padding-right: var(--padding-h);
-          padding-left: 0;
+          padding-left: var(--padding-h);
+          padding-right: 0;
+          border-left: 1px solid var(--foreground);
+          border-right: none;
         }
       }
-    }
-    li {
-      list-style: none;
-      &.group {
+      ul {
         display: flex;
         flex-direction: column;
+        list-style: none;
         gap: 0.5rem;
-      }
-    }
-    a {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: var(--subtitle1-size);
-      font-weight: var(--subtitle1-weight);
-      color: var(--link);
-      text-decoration: none;
-      transition-property: color, font-weight, font-style;
-      transition-duration: var(--font-transition-duration);
-      --icon-weight: 300;
-      &:visited {
-        color: var(--link-visited);
-      }
-      &:hover:not(.current) {
-        color: var(--link-hover);
-        font-weight: var(--weight-medium);
-        --icon-weight: 700;
-        &:visited {
-          color: var(--link-visited-hover);
+        ul {
+          padding-left: var(--padding-h);
+          ${selectors.rtl} {
+            padding-right: var(--padding-h);
+            padding-left: 0;
+          }
         }
       }
-      &.current {
-        font-weight: var(--weight-semibold);
-        font-style: italic;
-        color: var(--link-current);
-        --icon-fill: 1;
+      li {
+        list-style: none;
+        &.group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
       }
-    }
-  `;
+      a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--link);
+        text-decoration: none;
+        transition-property: color, font-weight, font-style;
+        transition-duration: var(--font-transition-duration);
+        --icon-weight: 300;
+        &:visited {
+          color: var(--link-visited);
+        }
+        &:hover:not(.current) {
+          color: var(--link-hover);
+          font-weight: var(--weight-medium);
+          --icon-weight: 700;
+          &:visited {
+            color: var(--link-visited-hover);
+          }
+        }
+        &.current {
+          font-weight: var(--weight-semibold);
+          font-style: italic;
+          color: var(--link-current);
+          --icon-fill: 1;
+        }
+      }
+    `,
+  ];
 
   render() {
     return html`
@@ -131,7 +133,10 @@ export class Sidebar extends LitElement {
                 <li class="group">
                   <a
                     href=${ifDefined(item.href)}
-                    class=${classMap({ current: isActiveLink(item.href) })}
+                    class=${classMap({
+                      current: isActiveLink(item.href),
+                      subtitle1: true,
+                    })}
                   >
                     <material-symbol>${item.icon}</material-symbol>
                     ${item.label}
@@ -145,6 +150,7 @@ export class Sidebar extends LitElement {
                             href=${subItem.href}
                             class=${classMap({
                               current: isActiveLink(subItem.href),
+                              subtitle2: true,
                             })}
                           >
                             <material-symbol>
@@ -163,7 +169,10 @@ export class Sidebar extends LitElement {
                 <li>
                   <a
                     href=${item.href}
-                    class=${classMap({ current: isActiveLink(item.href) })}
+                    class=${classMap({
+                      current: isActiveLink(item.href),
+                      subtitle1: true,
+                    })}
                   >
                     <material-symbol>${item.icon}</material-symbol>
                     ${item.label}
