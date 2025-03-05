@@ -104,7 +104,7 @@ export class Sidebar extends LitElement {
       &:visited {
         color: var(--link-visited);
       }
-      &:hover:not(.active) {
+      &:hover:not(.current) {
         color: var(--link-hover);
         font-weight: var(--weight-medium);
         --icon-weight: 700;
@@ -112,7 +112,7 @@ export class Sidebar extends LitElement {
           color: var(--link-visited-hover);
         }
       }
-      &.active {
+      &.current {
         font-weight: var(--weight-semibold);
         font-style: italic;
         color: var(--link-current);
@@ -131,7 +131,7 @@ export class Sidebar extends LitElement {
                 <li class="group">
                   <a
                     href=${ifDefined(item.href)}
-                    class=${classMap({ active: isActiveLink(item.href) })}
+                    class=${classMap({ current: isActiveLink(item.href) })}
                   >
                     <material-symbol>${item.icon}</material-symbol>
                     ${item.label}
@@ -144,7 +144,7 @@ export class Sidebar extends LitElement {
                           <a
                             href=${subItem.href}
                             class=${classMap({
-                              active: isActiveLink(subItem.href),
+                              current: isActiveLink(subItem.href),
                             })}
                           >
                             <material-symbol>
@@ -163,7 +163,7 @@ export class Sidebar extends LitElement {
                 <li>
                   <a
                     href=${item.href}
-                    class=${classMap({ active: isActiveLink(item.href) })}
+                    class=${classMap({ current: isActiveLink(item.href) })}
                   >
                     <material-symbol>${item.icon}</material-symbol>
                     ${item.label}
