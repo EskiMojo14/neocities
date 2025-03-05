@@ -1,9 +1,8 @@
 import { LitElement, css } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
 import { map } from "lit-html/directives/map.js";
-import { when } from "lit-html/directives/when.js";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import { selectors, isActiveLink } from "/utils/lit.ts";
 import "/components/symbol/symbol.ts";
@@ -54,56 +53,6 @@ const sidebarItems: Array<SidebarItem | SidebarGroup> = [
   },
 ];
 
-@customElement("sidebar-nav-label")
-export class SidebarLabel extends LitElement {
-  static styles = css`
-    a {
-      color: var(--link);
-      &:visited {
-        color: var(--link-visited);
-      }
-      &.active {
-        font-weight: bold;
-      }
-    }
-    div {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      & > ::slotted([slot="icon"]) {
-        --icon-weight: 300;
-      }
-      &:hover:not(.active) {
-        font-weight: bold;
-        & > ::slotted([slot="icon"]) {
-          --icon-weight: 700;
-        }
-      }
-      &.active {
-        & > ::slotted([slot="icon"]) {
-          --icon-fill: 1;
-        }
-      }
-    }
-  `;
-
-  @property({ type: String })
-  href?: string;
-
-  render() {
-    return html`
-      <div class=${classMap({ active: isActiveLink(this.href) })}>
-        <slot name="icon"></slot>
-        ${when(
-          this.href,
-          (href) => html`<a href=${href}><slot></slot></a>`,
-          () => html`<slot></slot>`
-        )}
-      </div>
-    `;
-  }
-}
-
 @customElement("sidebar-nav")
 export class Sidebar extends LitElement {
   static styles = css`
@@ -111,7 +60,7 @@ export class Sidebar extends LitElement {
       --padding: 1rem;
       padding: var(--padding);
       padding-left: 0;
-      border-right: 1px solid var(--foreground);
+      border-right: 1px solid var(--disabled);
       ${selectors.rtl} {
         padding-left: var(--padding);
         padding-right: 0;
@@ -134,11 +83,35 @@ export class Sidebar extends LitElement {
     }
     li {
       list-style: none;
+      &.group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+    a {
       display: flex;
       align-items: center;
-      &.group {
-        flex-direction: column;
-        align-items: flex-start;
+      gap: 0.5rem;
+      font-weight: 300;
+      color: var(--link);
+      text-decoration: none;
+      --icon-weight: 300;
+      &:visited {
+        color: var(--link-visited);
+      }
+      &:hover:not(.active) {
+        color: var(--link-hover);
+        font-weight: 500;
+        --icon-weight: 700;
+        &:visited {
+          color: var(--link-visited-hover);
+        }
+      }
+      &.active {
+        font-weight: 400;
+        color: var(--link-current);
+        --icon-fill: 1;
       }
     }
   `;
@@ -151,22 +124,30 @@ export class Sidebar extends LitElement {
             if (item.type === "group") {
               return html`
                 <li class="group">
-                  <sidebar-nav-label href=${ifDefined(item.href)}>
-                    <material-symbol slot="icon">${item.icon}</material-symbol>
+                  <a
+                    href=${ifDefined(item.href)}
+                    class=${classMap({ active: isActiveLink(item.href) })}
+                  >
+                    <material-symbol>${item.icon}</material-symbol>
                     ${item.label}
-                  </sidebar-nav-label>
+                  </a>
                   <ul>
                     ${map(
                       item.items,
                       (subItem) => html`
                         <li>
-                          <sidebar-nav-label href=${subItem.href}>
-                            <material-symbol slot="icon"
+                          <a
+                            href=${subItem.href}
+                            class=${classMap({
+                              active: isActiveLink(subItem.href),
+                            })}
+                          >
+                            <material-symbol
                               >${subItem.icon ??
                               item.childIcon}</material-symbol
                             >
                             ${subItem.label}
-                          </sidebar-nav-label>
+                          </a>
                         </li>
                       `
                     )}
@@ -176,10 +157,13 @@ export class Sidebar extends LitElement {
             } else {
               return html`
                 <li>
-                  <sidebar-nav-label href=${item.href}>
-                    <material-symbol slot="icon">${item.icon}</material-symbol>
+                  <a
+                    href=${item.href}
+                    class=${classMap({ active: isActiveLink(item.href) })}
+                  >
+                    <material-symbol>${item.icon}</material-symbol>
                     ${item.label}
-                  </sidebar-nav-label>
+                  </a>
                 </li>
               `;
             }
@@ -192,7 +176,6 @@ export class Sidebar extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "sidebar-nav-label": SidebarLabel;
     "sidebar-nav": Sidebar;
   }
 }

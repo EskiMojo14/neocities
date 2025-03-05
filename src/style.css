@@ -1,16 +1,72 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
-@import url("https://fonts.googleapis.com/css2?family=Limelight&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("../node_modules/material-colors/dist/colors.var.css");
 @import url("../node_modules/normalize.css/normalize.css");
 
 :root {
-  --font-family: "Raleway", sans-serif;
-  --font-family-heading: "Limelight", cursive;
+  --black-rgb: 33, 34, 44;
+  --black: rgb(var(--black-rgb));
+  --grey-rgb: 65, 69, 88;
+  --grey: rgb(var(--grey-rgb));
+  --white-rgb: 248, 248, 242;
+  --white: rgb(var(--white-rgb));
+  --cyan-rgb: 128, 255, 234;
+  --cyan: rgb(var(--cyan-rgb));
+  --green-rgb: 138, 255, 128;
+  --green: rgb(var(--green-rgb));
+  --orange-rgb: 255, 202, 128;
+  --orange: rgb(var(--orange-rgb));
+  --pink-rgb: 255, 128, 191;
+  --pink: rgb(var(--pink-rgb));
+  --purple-rgb: 149, 128, 255;
+  --purple: rgb(var(--purple-rgb));
+  --red-rgb: 255, 149, 128;
+  --red: rgb(var(--red-rgb));
+  --yellow-rgb: 255, 255, 128;
+  --yellow: rgb(var(--yellow-rgb));
+
+  --disabled-rgb: 108, 115, 147;
+  --disabled: rgb(var(--disabled-rgb));
+  --black-secondary-rgb: 65, 69, 88;
+  --black-secondary: rgb(var(--black-secondary-rgb));
+  --black-ternary-rgb: 167, 171, 190;
+  --black-ternary: rgb(var(--black-ternary-rgb));
+  --black-light-rgb: 33, 34, 44;
+  --black-light: rgb(var(--black-light-rgb));
+  --grey-secondary-rgb: 98, 103, 132;
+  --grey-secondary: rgb(var(--grey-secondary-rgb));
+  --grey-ternary-rgb: 182, 185, 201;
+  --grey-ternary: rgb(var(--grey-ternary-rgb));
+  --white-secondary-rgb: 255, 255, 255;
+  --white-secondary: rgb(var(--white-secondary-rgb));
+  --cyan-secondary-rgb: 204, 255, 246;
+  --cyan-secondary: rgb(var(--cyan-secondary-rgb));
+  --green-secondary-rgb: 208, 255, 204;
+  --green-secondary: rgb(var(--green-secondary-rgb));
+  --orange-secondary-rgb: 255, 234, 204;
+  --orange-secondary: rgb(var(--orange-secondary-rgb));
+  --pink-secondary-rgb: 255, 204, 230;
+  --pink-secondary: rgb(var(--pink-secondary-rgb));
+  --purple-secondary-rgb: 212, 204, 255;
+  --purple-secondary: rgb(var(--purple-secondary-rgb));
+  --red-secondary-rgb: 255, 212, 204;
+  --red-secondary: rgb(var(--red-secondary-rgb));
+  --yellow-secondary-rgb: 255, 255, 204;
+  --yellow-secondary: rgb(var(--yellow-secondary-rgb));
+}
+
+:root {
+  --font-family: "Roboto Mono", monospace;
   --font-family-icon: "Material Symbols Sharp", serif;
-  --foreground: var(--md-teal-50);
-  --background: color-mix(in srgb, var(--md-teal-900) 40%, #000000);
-  --link: var(--md-amber-600);
-  --link-visited: var(--md-red-600);
+  --foreground: var(--white);
+  --background: var(--black);
+  --link: var(--green);
+  --link-hover-opacity: 0.7;
+  --link-hover: rgba(var(--green-rgb), var(--link-hover-opacity));
+  --link-visited: var(--green-secondary);
+  --link-visited-hover: rgba(
+    var(--green-secondary-rgb),
+    var(--link-hover-opacity)
+  );
+  --link-current: var(--cyan);
 }
 
 html {
@@ -27,13 +83,16 @@ body {
   gap: 1rem;
 }
 
-h1 {
-  font-family: var(--font-family-heading);
-}
-
 a {
   color: var(--link);
+  text-decoration: none;
   &:visited {
     color: var(--link-visited);
+  }
+  &:hover {
+    color: var(--link-hover);
+    &:visited {
+      color: var(--link-visited-hover);
+    }
   }
 }
