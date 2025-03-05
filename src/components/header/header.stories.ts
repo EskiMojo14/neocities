@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
-import "./header";
+import "./header.ts";
 
 const meta = {
   title: "Header",

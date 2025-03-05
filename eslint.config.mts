@@ -44,6 +44,8 @@ export default tseslint.config(
         { allowNumber: true },
       ],
       "import-x/no-unresolved": "off",
+      "import-x/no-absolute-path": "error",
+      "import-x/extensions": ["error", "ignorePackages"],
       "import-x/order": [
         "error",
         {

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
-import "./sidebar";
+import "./sidebar.ts";
 
 const meta = {
   title: "Sidebar",
