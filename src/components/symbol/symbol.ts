@@ -43,6 +43,7 @@ export class MaterialSymbol extends LitElement {
   render() {
     return html`
       <i
+        aria-hidden="true"
         class=${classMap({
           "flip-rtl": this.flipRtl,
         })}
