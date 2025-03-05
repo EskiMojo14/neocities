@@ -33,7 +33,7 @@ const extendedColors = [
 ];
 
 const meta = {
-  title: "Theme/Color",
+  title: "Theme/Colors",
   render: () => html`
     <div class="${styles.container}">
       <div class="${styles.group}">
@@ -43,7 +43,10 @@ const meta = {
             baseColors,
             (color) => color,
             (color) => html`
-              <div class="${styles.color}" style="background: var(--${color})">
+              <div
+                class="body2 ${styles.color}"
+                style="background: var(--${color})"
+              >
                 <span>${color}</span>
               </div>
             `
@@ -57,7 +60,10 @@ const meta = {
             extendedColors,
             (color) => color,
             (color) => html`
-              <div class="${styles.color}" style="background: var(--${color})">
+              <div
+                class="body2 ${styles.color}"
+                style="background: var(--${color})"
+              >
                 <span>${color}</span>
               </div>
             `

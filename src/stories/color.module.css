@@ -9,19 +9,22 @@
   gap: 1rem;
   .grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem 1rem;
     .color {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100px;
-      font-size: var(--body2);
-      font-weight: var(--weight-bold);
+      flex-direction: column;
+      &::before {
+        content: "";
+        padding-top: 100%;
+        min-width: 100%;
+        flex-shrink: 0;
+      }
       span {
-        background: var(--background);
-        color: var(--foreground);
-        padding: 0.5rem;
+        width: 100%;
+        text-align: center;
+        margin-bottom: -1.5rem;
+        height: 1rem;
       }
     }
   }
