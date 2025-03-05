@@ -17,16 +17,27 @@ export class PageHeader extends LitElement {
     `,
   ];
 
-  render() {
+  headerText = "";
+  subtitleText = "";
+  connectedCallback() {
+    super.connectedCallback();
     let headerText = "";
     let subtitleText = "";
-    for (const node of this.childNodes) {
-      if (node instanceof HTMLElement && node.slot === "subtitle") {
-        subtitleText += node.textContent?.trim() ?? "";
-        continue;
+    if (this.hasChildNodes()) {
+      for (const node of this.childNodes) {
+        if (node instanceof HTMLElement && node.slot === "subtitle") {
+          subtitleText += node.textContent?.trim() ?? "";
+          continue;
+        }
+        headerText += node.textContent?.trim() ?? "";
       }
-      headerText += node.textContent?.trim() ?? "";
     }
+    this.headerText = headerText;
+    this.subtitleText = subtitleText;
+  }
+
+  render() {
+    const { headerText, subtitleText } = this;
     return html`
       <header>
         <hgroup>

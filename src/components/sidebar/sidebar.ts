@@ -64,12 +64,9 @@ export class Sidebar extends LitElement {
         --padding-v: 1rem;
         padding: var(--padding-v) var(--padding-h);
         padding-left: 0;
-        border-right: 1px solid var(--disabled);
         ${selectors.rtl} {
           padding-left: var(--padding-h);
           padding-right: 0;
-          border-left: 1px solid var(--foreground);
-          border-right: none;
         }
       }
       ul {
