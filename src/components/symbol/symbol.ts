@@ -39,16 +39,16 @@ export class MaterialSymbol extends LitElement {
   `;
 
   @property({ type: Number })
-  size = 24;
+  size?: number;
 
   @property({ type: Boolean })
-  fill = false;
+  fill?: boolean;
 
   @property({ type: Number })
-  weight = 400 as 100 | 200 | 300 | 400 | 500 | 600 | 700;
+  weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700;
 
   @property({ type: Number })
-  grade = 0;
+  grade?: 0;
 
   @property({ type: Number })
   opticalSize?: number;
@@ -63,8 +63,10 @@ export class MaterialSymbol extends LitElement {
           "flip-rtl": this.flipRtl,
         })}
         style=${styleMap({
-          "--icon-size": `${this.size}px`,
-          "--icon-fill": this.fill ? 1 : 0,
+          "--icon-size":
+            typeof this.size === "number" ? `${this.size}px` : undefined,
+          "--icon-fill":
+            typeof this.fill === "boolean" ? Number(this.fill) : undefined,
           "--icon-weight": this.weight,
           "--icon-grade": this.grade,
           "--icon-optical-size": this.opticalSize ?? this.size,
