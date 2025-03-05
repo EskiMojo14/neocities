@@ -2,7 +2,7 @@ import { LitElement, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
-import { styleMap, selectors } from "../../utils/lit.ts";
+import { selectors } from "../../utils/lit.ts";
 
 @customElement("material-symbol")
 export class MaterialSymbol extends LitElement {
@@ -38,21 +38,6 @@ export class MaterialSymbol extends LitElement {
     }
   `;
 
-  @property({ type: Number })
-  size?: number;
-
-  @property({ type: Boolean })
-  fill?: boolean;
-
-  @property({ type: Number })
-  weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700;
-
-  @property({ type: Number })
-  grade?: number;
-
-  @property({ type: Number })
-  opticalSize?: number;
-
   @property({ type: Boolean, attribute: "flip-rtl" })
   flipRtl = false;
 
@@ -61,15 +46,6 @@ export class MaterialSymbol extends LitElement {
       <i
         class=${classMap({
           "flip-rtl": this.flipRtl,
-        })}
-        style=${styleMap({
-          "--icon-size":
-            typeof this.size === "number" ? `${this.size}px` : undefined,
-          "--icon-fill":
-            typeof this.fill === "boolean" ? Number(this.fill) : undefined,
-          "--icon-weight": this.weight,
-          "--icon-grade": this.grade,
-          "--icon-optical-size": this.opticalSize ?? this.size,
         })}
       >
         <slot></slot>
