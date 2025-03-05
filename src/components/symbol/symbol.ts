@@ -26,7 +26,7 @@ export class MaterialSymbol extends LitElement {
       font-size: var(--icon-size, 24px);
       font-variation-settings: "FILL" var(--icon-fill, 0),
         "wght" var(--icon-weight, 400),
-        "GRAD" clamp(-25, var(--icon-grade, 0), 200),
+        "GRAD" clamp(-25, var(--icon-grade, -25), 200),
         "opsz" clamp(20, var(--icon-optical-size, 24), 48);
       --transition-duration: 250ms;
       transition: font-variation-settings var(--transition-duration);
@@ -48,7 +48,7 @@ export class MaterialSymbol extends LitElement {
   weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700;
 
   @property({ type: Number })
-  grade?: 0;
+  grade?: number;
 
   @property({ type: Number })
   opticalSize?: number;

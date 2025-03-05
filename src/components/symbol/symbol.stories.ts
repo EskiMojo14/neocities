@@ -47,7 +47,7 @@ const meta = {
     size: 24,
     fill: false,
     weight: 400,
-    grade: 0,
+    grade: -25,
     opticalSize: undefined,
     flipRtl: false,
   },
