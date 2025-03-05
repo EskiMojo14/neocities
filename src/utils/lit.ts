@@ -5,6 +5,7 @@ import type { AsyncReplaceDirective } from "lit-html/directives/async-replace.js
 import { asyncReplace as _asyncReplace } from "lit-html/directives/async-replace.js";
 import type { StyleInfo } from "lit-html/directives/style-map.js";
 import { styleMap as _styleMap } from "lit-html/directives/style-map.js";
+import { typewriter } from ".";
 
 declare module "csstype" {
   // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
@@ -40,3 +41,9 @@ export const asyncReplace = _asyncReplace as <T>(
   iterable: AsyncIterable<T>,
   mapper?: (value: T, index: number) => unknown
 ) => DirectiveResult<typeof AsyncReplaceDirective>;
+
+export const consolewriter = (...args: Parameters<typeof typewriter>) =>
+  asyncReplace(
+    typewriter(...args),
+    (value, idx) => value + (idx === args[0].length - 1 ? "▯" : "▮")
+  );
