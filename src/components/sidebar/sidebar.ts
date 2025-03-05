@@ -57,12 +57,13 @@ const sidebarItems: Array<SidebarItem | SidebarGroup> = [
 export class Sidebar extends LitElement {
   static styles = css`
     nav {
-      --padding: 1rem;
-      padding: var(--padding);
+      --padding-h: 2rem;
+      --padding-v: 1rem;
+      padding: var(--padding-v) var(--padding-h);
       padding-left: 0;
       border-right: 1px solid var(--disabled);
       ${selectors.rtl} {
-        padding-left: var(--padding);
+        padding-left: var(--padding-h);
         padding-right: 0;
         border-left: 1px solid var(--foreground);
         border-right: none;
@@ -74,9 +75,9 @@ export class Sidebar extends LitElement {
       list-style: none;
       gap: 0.5rem;
       ul {
-        padding-left: var(--padding);
+        padding-left: var(--padding-h);
         ${selectors.rtl} {
-          padding-right: var(--padding);
+          padding-right: var(--padding-h);
           padding-left: 0;
         }
       }
@@ -96,6 +97,7 @@ export class Sidebar extends LitElement {
       font-weight: 300;
       color: var(--link);
       text-decoration: none;
+      transition: color 250ms, font-weight 250ms, font-style 250ms;
       --icon-weight: 300;
       &:visited {
         color: var(--link-visited);
@@ -109,7 +111,8 @@ export class Sidebar extends LitElement {
         }
       }
       &.active {
-        font-weight: 400;
+        font-weight: 600;
+        font-style: italic;
         color: var(--link-current);
         --icon-fill: 1;
       }
