@@ -1,5 +1,8 @@
 import type { Properties } from "csstype";
 import { unsafeCSS } from "lit";
+import type { DirectiveResult } from "lit-html/directive.js";
+import type { AsyncReplaceDirective } from "lit-html/directives/async-replace.js";
+import { asyncReplace as _asyncReplace } from "lit-html/directives/async-replace.js";
 import type { StyleInfo } from "lit-html/directives/style-map.js";
 import { styleMap as _styleMap } from "lit-html/directives/style-map.js";
 
@@ -32,3 +35,8 @@ export function isActiveLink(
   }
   return location.pathname.includes(href);
 }
+
+export const asyncReplace = _asyncReplace as <T>(
+  iterable: AsyncIterable<T>,
+  mapper?: (value: T, index: number) => unknown
+) => DirectiveResult<typeof AsyncReplaceDirective>;
