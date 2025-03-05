@@ -10,7 +10,7 @@ export async function* typewriter(
   text: string,
   delay = 100,
   maxDuration = 1000
-): AsyncGenerator<string, void, unknown> {
+) {
   const finalDelay = Math.min(delay, maxDuration / text.length);
   let acc = "";
   for (const char of text) {
