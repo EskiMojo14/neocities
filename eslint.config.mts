@@ -4,6 +4,7 @@ import eslintPluginImportX from "eslint-plugin-import-x";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import vitest from "eslint-plugin-vitest";
+import { configs } from "eslint-plugin-lit";
 
 export default tseslint.config(
   {
@@ -31,6 +32,7 @@ export default tseslint.config(
   ...tseslint.configs.stylisticTypeChecked,
   eslintPluginImportX.flatConfigs.recommended,
   eslintPluginImportX.flatConfigs.typescript,
+  configs["flat/recommended"],
   {
     rules: {
       "@typescript-eslint/array-type": ["error", { default: "generic" }],
