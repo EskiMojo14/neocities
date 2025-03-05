@@ -28,8 +28,7 @@ export class MaterialSymbol extends LitElement {
         "wght" var(--icon-weight, 400),
         "GRAD" clamp(-25, var(--icon-grade, -25), 200),
         "opsz" clamp(20, var(--icon-optical-size, 24), 48);
-      --transition-duration: 250ms;
-      transition: font-variation-settings var(--transition-duration);
+      transition: font-variation-settings var(--font-transition-duration);
       ${selectors.rtl} {
         &.flip-rtl {
           transform: scaleX(-1);

@@ -98,7 +98,8 @@ export class Sidebar extends LitElement {
       font-weight: var(--weight-light);
       color: var(--link);
       text-decoration: none;
-      transition: color 250ms, font-weight 250ms, font-style 250ms;
+      transition-property: color, font-weight, font-style;
+      transition-duration: var(--font-transition-duration);
       --icon-weight: 300;
       &:visited {
         color: var(--link-visited);

@@ -80,6 +80,7 @@
 }
 
 :root {
+  --font-transition-duration: 250ms;
   --font-family: "Roboto Mono", monospace;
   --font-family-icon: "Material Symbols Sharp", serif;
   --foreground: var(--white);
