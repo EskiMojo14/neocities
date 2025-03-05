@@ -25,8 +25,9 @@ const meta = {
         "--icon-grade": grade,
         "--icon-optical-size": opticalSize ?? size,
       })}
-      >${children}</material-symbol
     >
+      ${children}
+    </material-symbol>
   `,
   argTypes: {
     weight: {

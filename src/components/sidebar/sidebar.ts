@@ -146,10 +146,9 @@ export class Sidebar extends LitElement {
                               active: isActiveLink(subItem.href),
                             })}
                           >
-                            <material-symbol
-                              >${subItem.icon ??
-                              item.childIcon}</material-symbol
-                            >
+                            <material-symbol>
+                              ${subItem.icon ?? item.childIcon}
+                            </material-symbol>
                             ${subItem.label}
                           </a>
                         </li>
