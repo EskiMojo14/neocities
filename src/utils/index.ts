@@ -8,13 +8,26 @@ export const wait = (ms: number) =>
 
 export async function* typewriter(
   text: string,
-  delay = 100,
-  maxDuration = 1000
+  {
+    /** Time between each character
+     * @default 100
+     */
+    interval = 100,
+    /** Maximum duration of the animation
+     * @default 1000
+     */
+    maxDuration = 1000,
+    /** Delay before starting the animation
+     * @default 0
+     */
+    delay = 0,
+  } = {}
 ) {
-  const finalDelay = Math.min(delay, maxDuration / text.length);
+  const finalInterval = Math.min(interval, maxDuration / text.length);
   let acc = "";
+  await wait(delay);
   for (const char of text) {
     yield (acc += char);
-    await wait(finalDelay);
+    await wait(finalInterval);
   }
 }
