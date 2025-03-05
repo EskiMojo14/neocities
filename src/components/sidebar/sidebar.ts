@@ -94,7 +94,8 @@ export class Sidebar extends LitElement {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-weight: 300;
+      font-size: var(--subtitle1);
+      font-weight: var(--weight-light);
       color: var(--link);
       text-decoration: none;
       transition: color 250ms, font-weight 250ms, font-style 250ms;
@@ -104,14 +105,14 @@ export class Sidebar extends LitElement {
       }
       &:hover:not(.active) {
         color: var(--link-hover);
-        font-weight: 500;
+        font-weight: var(--weight-medium);
         --icon-weight: 700;
         &:visited {
           color: var(--link-visited-hover);
         }
       }
       &.active {
-        font-weight: 600;
+        font-weight: var(--weight-semibold);
         font-style: italic;
         color: var(--link-current);
         --icon-fill: 1;

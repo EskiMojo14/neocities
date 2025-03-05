@@ -54,6 +54,32 @@
 }
 
 :root {
+  --headline1: 6.0625rem;
+  --headline2: 3.8125rem;
+  --headline3: 3rem;
+  --headline4: 2.125rem;
+  --headline5: 1.5rem;
+  --headline6: 1.25rem;
+  --body1: 1rem;
+  --body2: 0.875rem;
+  --subtitle1: 1rem;
+  --subtitle2: 0.875rem;
+  --button: 0.875rem;
+  --overline: 0.625rem;
+  --caption: 0.75rem;
+
+  --weight-thin: 100;
+  --weight-extralight: 150;
+  --weight-light: 250;
+  --weight-regular: 350;
+  --weight-medium: 450;
+  --weight-semibold: 550;
+  --weight-bold: 650;
+  --weight-extrabold: 750;
+  --weight-black: 850;
+}
+
+:root {
   --font-family: "Roboto Mono", monospace;
   --font-family-icon: "Material Symbols Sharp", serif;
   --foreground: var(--white);
@@ -81,6 +107,7 @@ body {
   display: flex;
   padding: 1rem;
   gap: 1rem;
+  font-size: var(--body1);
 }
 
 a {
@@ -95,4 +122,28 @@ a {
       color: var(--link-visited-hover);
     }
   }
+}
+
+h1 {
+  font-size: var(--headline1);
+}
+
+h2 {
+  font-size: var(--headline2);
+}
+
+h3 {
+  font-size: var(--headline3);
+}
+
+h4 {
+  font-size: var(--headline4);
+}
+
+h5 {
+  font-size: var(--headline5);
+}
+
+h6 {
+  font-size: var(--headline6);
 }
