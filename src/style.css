@@ -13,11 +13,10 @@
   --purple: rgb(149, 128, 255);
   --red: rgb(255, 149, 128);
   --yellow: rgb(255, 255, 128);
-
   --disabled: rgb(108, 115, 147);
+
   --black-secondary: rgb(65, 69, 88);
   --black-ternary: rgb(167, 171, 190);
-  --black-light: rgb(33, 34, 44);
   --grey-secondary: rgb(98, 103, 132);
   --grey-ternary: rgb(182, 185, 201);
   --white-secondary: rgb(255, 255, 255);
@@ -104,26 +103,48 @@ a {
   }
 }
 
-h1 {
+h1,
+.headline1 {
   font-size: var(--headline1);
 }
 
-h2 {
+h2,
+.headline2 {
   font-size: var(--headline2);
 }
 
-h3 {
+h3,
+.headline3 {
   font-size: var(--headline3);
 }
 
-h4 {
+h4,
+.headline4 {
   font-size: var(--headline4);
 }
 
-h5 {
+h5,
+.headline5 {
   font-size: var(--headline5);
 }
 
-h6 {
+h6,
+.headline6 {
   font-size: var(--headline6);
+}
+
+.body1 {
+  font-size: var(--body1);
+}
+
+.body2 {
+  font-size: var(--body2);
+}
+
+.subtitle1 {
+  font-size: var(--subtitle1);
+}
+
+.subtitle2 {
+  font-size: var(--subtitle2);
 }
