@@ -1,11 +1,10 @@
 import { LitElement, css } from "lit";
 import { customElement } from "lit/decorators.js";
 import { html } from "lit-html";
-import { classMap } from "lit-html/directives/class-map.js";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import { map } from "lit-html/directives/map.js";
 import { typography } from "../../styles/typography.ts";
-import { selectors, isActiveLink } from "../../utils/lit.ts";
+import { selectors, isActiveLink, clsx } from "../../utils/lit.ts";
 import "../symbol/symbol.ts";
 
 interface SidebarItem {
@@ -58,6 +57,7 @@ const sidebarItems: Array<SidebarItem | SidebarGroup> = [
 export class Sidebar extends LitElement {
   static styles = [
     typography.subtitle1,
+    typography.subtitle2,
     css`
       nav {
         --padding-h: 2rem;
@@ -133,9 +133,8 @@ export class Sidebar extends LitElement {
                 <li class="group">
                   <a
                     href=${ifDefined(item.href)}
-                    class=${classMap({
+                    class=${clsx("subtitle1", {
                       current: isActiveLink(item.href),
-                      subtitle1: true,
                     })}
                   >
                     <material-symbol>${item.icon}</material-symbol>
@@ -148,9 +147,8 @@ export class Sidebar extends LitElement {
                         <li>
                           <a
                             href=${subItem.href}
-                            class=${classMap({
+                            class=${clsx("subtitle2", {
                               current: isActiveLink(subItem.href),
-                              subtitle2: true,
                             })}
                           >
                             <material-symbol>
@@ -169,9 +167,8 @@ export class Sidebar extends LitElement {
                 <li>
                   <a
                     href=${item.href}
-                    class=${classMap({
+                    class=${clsx("subtitle1", {
                       current: isActiveLink(item.href),
-                      subtitle1: true,
                     })}
                   >
                     <material-symbol>${item.icon}</material-symbol>
