@@ -103,6 +103,9 @@ html {
 
 body {
   max-width: 1000px;
+  &.sb-show-main {
+    max-width: none;
+  }
   margin: 0 auto;
   display: flex;
   padding: 1rem;
