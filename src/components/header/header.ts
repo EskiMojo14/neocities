@@ -1,6 +1,7 @@
 import { css, LitElement } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 import { html } from "lit-html";
+import { when } from "lit-html/directives/when.js";
 import { typography } from "../../styles/typography.ts";
 import { consolewriter } from "../../utils/lit.ts";
 
@@ -8,6 +9,7 @@ import { consolewriter } from "../../utils/lit.ts";
 export class PageHeader extends LitElement {
   static styles = [
     typography.headline2,
+    typography.headline5,
     css`
       h1 {
         margin: 0;
@@ -15,16 +17,32 @@ export class PageHeader extends LitElement {
     `,
   ];
 
-  @property({ type: Number })
-  delay?: number;
-
   render() {
-    const text = this.textContent ?? "";
+    let headerText = "";
+    let subtitleText = "";
+    for (const node of this.childNodes) {
+      if (node instanceof HTMLElement && node.slot === "subtitle") {
+        subtitleText += node.textContent?.trim() ?? "";
+        continue;
+      }
+      headerText += node.textContent?.trim() ?? "";
+    }
     return html`
       <header>
-        <h1 class="headline2" aria-label=${this.ariaLabel ?? text}>
-          ${consolewriter(text, { delay: this.delay })}
-        </h1>
+        <hgroup>
+          <h1 class="headline2" aria-label=${this.ariaLabel ?? headerText}>
+            ${consolewriter(headerText)}
+          </h1>
+          ${when(
+            subtitleText,
+            () => html`<p
+              class="headline5"
+              aria-label=${this.ariaLabel ?? subtitleText}
+            >
+              ${consolewriter(subtitleText, { delay: 1000 })}
+            </p>`
+          )}
+        </hgroup>
       </header>
     `;
   }
