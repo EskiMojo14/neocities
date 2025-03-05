@@ -22,6 +22,13 @@ export function ensureDir(dir: string): "ltr" | "rtl" | "auto" {
   return dir === "rtl" || dir === "ltr" ? dir : "auto";
 }
 
-export function isActiveLink(href: string) {
-  return window.location.href.includes(href);
+export function isActiveLink(
+  href?: string,
+  comparison: "includes" | "equals" = "includes"
+): boolean {
+  if (!href) return false;
+  if (href === "/" || comparison === "equals") {
+    return location.pathname === href;
+  }
+  return location.pathname.includes(href);
 }
