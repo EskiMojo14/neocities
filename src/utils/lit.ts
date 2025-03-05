@@ -30,7 +30,7 @@ export function isActiveLink(
   href?: string,
   comparison: "includes" | "equals" = "includes"
 ): boolean {
-  if (!href) return false;
+  if (!href || typeof window === "undefined") return false;
   if (href === "/" || comparison === "equals") {
     return window.location.pathname === href;
   }
