@@ -38,6 +38,7 @@ export default class PageHeader extends LitElement {
 
   render() {
     const { headerText, subtitleText } = this;
+    const headerDuration = Math.min(1000, 100 * headerText.length) + 300;
     return html`
       <header>
         <hgroup>
@@ -50,7 +51,7 @@ export default class PageHeader extends LitElement {
               class="headline5"
               aria-label=${this.ariaLabel ?? subtitleText}
             >
-              ${consolewriter(subtitleText, { delay: 1000 })}
+              ${consolewriter(subtitleText, { delay: headerDuration })}
             </p>`
           )}
         </hgroup>
