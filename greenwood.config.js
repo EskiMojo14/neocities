@@ -3,6 +3,8 @@ import { greenwoodPluginTypeScript } from "@greenwood/plugin-typescript";
 
 export default {
   prerender: true,
+  activeContent: true,
+  isolation: true,
   plugins: [
     greenwoodPluginTypeScript({
       servePage: false,

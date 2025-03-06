@@ -58,14 +58,15 @@ export function ensureDir(dir: string): "ltr" | "rtl" | "auto" {
 }
 
 export function isActiveLink(
-  href?: string,
+  href: string | undefined,
+  currentRoute: string,
   comparison: "includes" | "equals" = "includes"
 ): boolean {
   if (!href || typeof window === "undefined") return false;
   if (href === "/" || comparison === "equals") {
-    return window.location.pathname === href;
+    return currentRoute === href;
   }
-  return window.location.pathname.includes(href);
+  return currentRoute.includes(href);
 }
 
 export const asyncReplace = _asyncReplace as <T>(

@@ -10,7 +10,7 @@
     <script type="module" src="../components/sidebar/sidebar.ts"></script>
   </head>
   <body>
-    <sidebar-nav></sidebar-nav>
+    <sidebar-nav current-route="${globalThis.page.route}"></sidebar-nav>
     <div class="root">
       <page-outlet></page-outlet>
     </div>

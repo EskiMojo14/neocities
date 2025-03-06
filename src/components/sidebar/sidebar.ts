@@ -1,5 +1,5 @@
 import { LitElement, css } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { html } from "lit-html";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import { map } from "lit-html/directives/map.js";
@@ -120,6 +120,9 @@ export default class Sidebar extends LitElement {
     `,
   ];
 
+  @property({ type: String, attribute: "current-route" })
+  currentRoute = "/";
+
   render() {
     return html`
       <nav>
@@ -131,7 +134,7 @@ export default class Sidebar extends LitElement {
                   <a
                     href=${ifDefined(item.href)}
                     class=${clsx("subtitle1", {
-                      current: isActiveLink(item.href),
+                      current: isActiveLink(item.href, this.currentRoute),
                     })}
                   >
                     <material-symbol>${item.icon}</material-symbol>
@@ -145,7 +148,10 @@ export default class Sidebar extends LitElement {
                           <a
                             href=${subItem.href}
                             class=${clsx("subtitle2", {
-                              current: isActiveLink(subItem.href),
+                              current: isActiveLink(
+                                subItem.href,
+                                this.currentRoute
+                              ),
                             })}
                           >
                             <material-symbol>
@@ -165,7 +171,7 @@ export default class Sidebar extends LitElement {
                   <a
                     href=${item.href}
                     class=${clsx("subtitle1", {
-                      current: isActiveLink(item.href),
+                      current: isActiveLink(item.href, this.currentRoute),
                     })}
                   >
                     <material-symbol>${item.icon}</material-symbol>
