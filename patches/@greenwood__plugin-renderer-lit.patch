@@ -1,0 +1,17 @@
+diff --git a/src/index.js b/src/index.js
+index 20e1b849d04173dbed6417d379edd4a17caa23ca..c69e9424c1884ab23157c0a9118dd4d505564bcf 100755
+--- a/src/index.js
++++ b/src/index.js
+@@ -7,9 +7,9 @@ class LitHydrationResource extends ResourceInterface {
+ 
+   async shouldIntercept(url) {
+     const { pathname } = url;
+-    const matchingRoute = this.compilation.graph.find((node) => node.route === pathname) || {};
+-
+-    return matchingRoute.isSSR && matchingRoute.hydration;
++    const matchingRoute = this.compilation.graph.find((node) => node.route === pathname);
++  
++    return matchingRoute && ((matchingRoute.isSSR && matchingRoute.hydration) || this.compilation.config.prerender);
+   }
+ 
+   async intercept(url, request, response) {
