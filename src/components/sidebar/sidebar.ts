@@ -4,6 +4,7 @@ import { html } from "lit-html";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import { map } from "lit-html/directives/map.js";
 import { typography } from "../../styles/typography.ts";
+import type { WithOptional } from "../../utils/index.ts";
 import { selectors, isActiveLink, clsx } from "../../utils/lit.ts";
 import "../symbol/symbol.ts";
 
@@ -11,17 +12,25 @@ interface SidebarItem {
   type?: "item";
   label: string;
   href: string;
-  icon?: string;
+  icon: string;
 }
 
-interface SidebarGroup {
+type GroupIconUnion =
+  | {
+      childIcon: string;
+      items: Array<WithOptional<SidebarItem, "icon">>;
+    }
+  | {
+      childIcon?: never;
+      items: Array<SidebarItem>;
+    };
+
+type SidebarGroup = GroupIconUnion & {
   type: "group";
   label: string;
-  items: Array<SidebarItem>;
   href?: string;
-  icon?: string;
-  childIcon?: string;
-}
+  icon: string;
+};
 
 const sidebarItems: Array<SidebarItem | SidebarGroup> = [
   {

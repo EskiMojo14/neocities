@@ -62,7 +62,7 @@ export function isActiveLink(
   currentRoute: string,
   comparison: "includes" | "equals" = "includes"
 ): boolean {
-  if (!href || typeof window === "undefined") return false;
+  if (!href) return false;
   if (href === "/" || comparison === "equals") {
     return currentRoute === href;
   }
