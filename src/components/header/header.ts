@@ -2,14 +2,13 @@ import { css, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { html } from "lit-html";
 import { when } from "lit-html/directives/when.js";
-import { typography } from "../../styles/typography.ts";
 import { consolewriter } from "../../utils/lit.ts";
+import typography from "../../styles/typography.css" with { type: "css" };
 
 @customElement("page-header")
 export default class PageHeader extends LitElement {
   static styles = [
-    typography.headline2,
-    typography.headline5,
+    typography,
     css`
       h1 {
         margin: 0;

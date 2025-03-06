@@ -3,10 +3,10 @@ import { customElement, property } from "lit/decorators.js";
 import { html } from "lit-html";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import { map } from "lit-html/directives/map.js";
-import { typography } from "../../styles/typography.ts";
 import type { WithOptional } from "../../utils/index.ts";
 import { isActiveLink, clsx } from "../../utils/lit.ts";
 import "../symbol/symbol.ts";
+import typography from "../../styles/typography.css" with { type: "css" };
 
 interface SidebarItem {
   type?: "item";
@@ -65,8 +65,7 @@ const sidebarItems: Array<SidebarItem | SidebarGroup> = [
 @customElement("sidebar-nav")
 export default class Sidebar extends LitElement {
   static styles = [
-    typography.subtitle1,
-    typography.subtitle2,
+    typography,
     css`
       nav {
         --padding-h: 2rem;

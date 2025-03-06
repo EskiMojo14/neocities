@@ -1,8 +1,23 @@
 import type { Meta } from "@storybook/web-components";
 import { html } from "lit-html";
 import { repeat } from "lit-html/directives/repeat.js";
-import { variants } from "./typography.ts";
 import styles from "./typography.module.css";
+
+const variants = [
+  "headline1",
+  "headline2",
+  "headline3",
+  "headline4",
+  "headline5",
+  "headline6",
+  "body1",
+  "body2",
+  "subtitle1",
+  "subtitle2",
+  "button",
+  "overline",
+  "caption",
+] as const;
 
 const meta = {
   title: "Theme/Typography",
