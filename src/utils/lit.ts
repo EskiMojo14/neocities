@@ -1,5 +1,4 @@
 import type { Properties } from "csstype";
-import { unsafeCSS } from "lit";
 import type { DirectiveResult } from "lit-html/directive.js";
 import type { AsyncReplaceDirective } from "lit-html/directives/async-replace.js";
 import { asyncReplace as _asyncReplace } from "lit-html/directives/async-replace.js";
@@ -48,10 +47,6 @@ export function clsx(...args: Array<ClassValue>) {
   flatten(args);
   return classMap(final);
 }
-
-export const selectors = {
-  rtl: unsafeCSS(":dir(rtl) &, &:dir(rtl)"),
-};
 
 export function ensureDir(dir: string): "ltr" | "rtl" | "auto" {
   return dir === "rtl" || dir === "ltr" ? dir : "auto";

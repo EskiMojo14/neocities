@@ -2,7 +2,6 @@ sidebar-nav {
   --sidebar-width: 256px;
   border-right: 1px solid var(--disabled);
   width: var(--sidebar-width);
-  :dir(rtl) &,
   &:dir(rtl) {
     border-right: none;
     border-left: 1px solid var(--disabled);
@@ -47,7 +46,6 @@ material-symbol {
       "GRAD" clamp(-25, var(--icon-grade, -25), 200),
       "opsz" clamp(20, var(--icon-optical-size, 24), 48);
     transition: font-variation-settings var(--font-transition-duration);
-    :dir(rtl) &,
     &:dir(rtl) {
       &.flip-rtl {
         transform: scaleX(-1);

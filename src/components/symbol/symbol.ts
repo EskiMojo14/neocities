@@ -2,7 +2,6 @@ import { LitElement, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map.js";
-import { selectors } from "../../utils/lit.ts";
 
 @customElement("material-symbol")
 export default class MaterialSymbol extends LitElement {
@@ -29,7 +28,7 @@ export default class MaterialSymbol extends LitElement {
         "GRAD" clamp(-25, var(--icon-grade, -25), 200),
         "opsz" clamp(20, var(--icon-optical-size, 24), 48);
       transition: font-variation-settings var(--font-transition-duration);
-      ${selectors.rtl} {
+      &:dir(rtl) {
         &.flip-rtl {
           transform: scaleX(-1);
         }

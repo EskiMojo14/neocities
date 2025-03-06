@@ -5,7 +5,7 @@ import { ifDefined } from "lit-html/directives/if-defined.js";
 import { map } from "lit-html/directives/map.js";
 import { typography } from "../../styles/typography.ts";
 import type { WithOptional } from "../../utils/index.ts";
-import { selectors, isActiveLink, clsx } from "../../utils/lit.ts";
+import { isActiveLink, clsx } from "../../utils/lit.ts";
 import "../symbol/symbol.ts";
 
 interface SidebarItem {
@@ -73,7 +73,7 @@ export default class Sidebar extends LitElement {
         --padding-v: 1rem;
         padding: var(--padding-v) var(--padding-h);
         padding-left: 0;
-        ${selectors.rtl} {
+        &:dir(rtl) {
           padding-left: var(--padding-h);
           padding-right: 0;
         }
@@ -85,7 +85,7 @@ export default class Sidebar extends LitElement {
         gap: 0.5rem;
         ul {
           padding-left: var(--padding-h);
-          ${selectors.rtl} {
+          &:dir(rtl) {
             padding-right: var(--padding-h);
             padding-left: 0;
           }
