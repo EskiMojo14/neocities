@@ -55,7 +55,7 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@10.5.2+sha256.79a98daa90248b50815e31460790f118c56fe099113370826caa0153be6daba5",
+  "packageManager": "pnpm@10.6.0+sha256.71ea235e611e2c8e6043ffca1c278f82089f71dfec4d1e9d01b47825e5e92f89",
   "pnpm": {
     "patchedDependencies": {
       "@greenwood/plugin-renderer-lit": "patches/@greenwood__plugin-renderer-lit.patch"
