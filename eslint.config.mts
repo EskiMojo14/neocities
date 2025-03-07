@@ -107,5 +107,5 @@ export default tseslint.config(
       ...vitest.configs.recommended.rules,
       "vitest/valid-title": ["error", { allowArguments: true }],
     },
-  }
+  },
 );

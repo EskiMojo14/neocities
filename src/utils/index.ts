@@ -1,6 +1,6 @@
 export const safeAssign: <T extends object>(
   target: T,
-  source: Partial<T>
+  source: Partial<T>,
 ) => T = Object.assign;
 
 export const wait = (ms: number) =>
@@ -32,7 +32,7 @@ export async function* typewriter(
     finishingDelay = 300,
     /** If true, keep the suffix after the animation is finished */
     keepFinishingSuffix = false,
-  } = {}
+  } = {},
 ) {
   const finalInterval = Math.min(interval, maxDuration / text.length);
   let acc = "";

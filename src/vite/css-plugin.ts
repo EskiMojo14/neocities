@@ -44,7 +44,7 @@ export function transformConstructableStylesheetsPlugin(): Plugin {
         const response = await standardCssResource.intercept(
           url,
           request,
-          new Response(contents)
+          new Response(contents),
         );
         const body = await response.text();
 

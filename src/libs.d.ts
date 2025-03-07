@@ -3,7 +3,10 @@ declare module "*.module.css" {
   export default classes;
 }
 
-declare module "*.css";
+declare module "*.css" {
+  const stylesheet: CSSStyleSheet;
+  export default stylesheet;
+}
 
 declare module "@greenwood/cli/src/lifecycles/config.js" {
   import type { UserConfig } from "vite";
@@ -30,7 +33,7 @@ declare module "@greenwood/cli/src/plugins/resource/plugin-standard-css.js" {
       intercept: (
         url: URL,
         request: Request,
-        response: Response
+        response: Response,
       ) => Promise<Response>;
     };
   };

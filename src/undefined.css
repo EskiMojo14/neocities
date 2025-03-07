@@ -41,7 +41,8 @@ material-symbol {
     text-rendering: optimizeLegibility;
 
     font-size: var(--icon-size, 24px);
-    font-variation-settings: "FILL" var(--icon-fill, 0),
+    font-variation-settings:
+      "FILL" var(--icon-fill, 0),
       "wght" var(--icon-weight, 400),
       "GRAD" clamp(-25, var(--icon-grade, -25), 200),
       "opsz" clamp(20, var(--icon-optical-size, 24), 48);

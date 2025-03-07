@@ -1,3 +1,67 @@
+:root {
+  --weight-thin: 100;
+  --weight-extralight: 150;
+  --weight-light: 250;
+  --weight-regular: 350;
+  --weight-medium: 450;
+  --weight-semibold: 550;
+  --weight-bold: 650;
+  --weight-extrabold: 750;
+  --weight-black: 850;
+
+  --headline1-size: 6.0625rem;
+  --headline1-weight: var(--weight-extralight);
+  --headline1-transform: lowercase;
+
+  --headline2-size: 3.8125rem;
+  --headline2-weight: var(--weight-light);
+  --headline2-transform: lowercase;
+
+  --headline3-size: 3rem;
+  --headline3-weight: var(--weight-light);
+  --headline3-transform: lowercase;
+
+  --headline4-size: 2.125rem;
+  --headline4-weight: var(--weight-light);
+  --headline4-transform: lowercase;
+
+  --headline5-size: 1.5rem;
+  --headline5-weight: var(--weight-regular);
+  --headline5-transform: lowercase;
+
+  --headline6-size: 1.25rem;
+  --headline6-weight: var(--weight-regular);
+  --headline6-transform: lowercase;
+
+  --body1-size: 1rem;
+  --body1-weight: var(--weight-regular);
+  --body1-transform: lowercase;
+
+  --body2-size: 0.875rem;
+  --body2-weight: var(--weight-regular);
+  --body2-transform: lowercase;
+
+  --subtitle1-size: 1rem;
+  --subtitle1-weight: var(--weight-regular);
+  --subtitle1-transform: lowercase;
+
+  --subtitle2-size: 0.875rem;
+  --subtitle2-weight: var(--weight-regular);
+  --subtitle2-transform: lowercase;
+
+  --button-size: 0.875rem;
+  --button-weight: var(--weight-medium);
+  --button-transform: lowercase;
+
+  --overline-size: 0.625rem;
+  --overline-weight: var(--weight-medium);
+  --overline-transform: lowercase;
+
+  --caption-size: 0.75rem;
+  --caption-weight: var(--weight-regular);
+  --caption-transform: lowercase;
+}
+
 h1,
 .headline1 {
   font-size: var(--headline1-size);

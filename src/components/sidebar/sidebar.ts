@@ -6,6 +6,7 @@ import { map } from "lit-html/directives/map.js";
 import type { WithOptional } from "../../utils/index.ts";
 import { isActiveLink, clsx } from "../../utils/lit.ts";
 import "../symbol/symbol.ts";
+import base from "../../styles/base.css" with { type: "css" };
 import typography from "../../styles/typography.css" with { type: "css" };
 
 interface SidebarItem {
@@ -65,6 +66,7 @@ const sidebarItems: Array<SidebarItem | SidebarGroup> = [
 @customElement("sidebar-nav")
 export default class Sidebar extends LitElement {
   static styles = [
+    base,
     typography,
     css`
       nav {
@@ -158,7 +160,7 @@ export default class Sidebar extends LitElement {
                             class=${clsx("subtitle2", {
                               current: isActiveLink(
                                 subItem.href,
-                                this.currentRoute
+                                this.currentRoute,
                               ),
                             })}
                           >
@@ -168,7 +170,7 @@ export default class Sidebar extends LitElement {
                             ${subItem.label}
                           </a>
                         </li>
-                      `
+                      `,
                     )}
                   </ul>
                 </li>

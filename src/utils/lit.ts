@@ -55,7 +55,7 @@ export function ensureDir(dir: string): "ltr" | "rtl" | "auto" {
 export function isActiveLink(
   href: string | undefined,
   currentRoute: string,
-  comparison: "includes" | "equals" = "includes"
+  comparison: "includes" | "equals" = "includes",
 ): boolean {
   if (!href) return false;
   if (href === "/" || comparison === "equals") {
@@ -66,12 +66,12 @@ export function isActiveLink(
 
 export const asyncReplace = _asyncReplace as <T>(
   iterable: AsyncIterable<T>,
-  mapper?: (value: T, index: number) => unknown
+  mapper?: (value: T, index: number) => unknown,
 ) => DirectiveResult<typeof AsyncReplaceDirective>;
 
 export const consolewriter = (
   ...[text, config]: Parameters<typeof typewriter>
 ) =>
   asyncReplace(
-    typewriter(text, { finishedSuffix: "▯", typingSuffix: "▮", ...config })
+    typewriter(text, { finishedSuffix: "▯", typingSuffix: "▮", ...config }),
   );

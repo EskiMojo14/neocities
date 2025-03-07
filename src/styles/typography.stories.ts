@@ -27,7 +27,7 @@ const meta = {
         ${repeat(
           variants,
           (item) => item,
-          (item) => html` <p class="${styles.scaleItem} ${item}">${item}</p> `
+          (item) => html` <p class="${styles.scaleItem} ${item}">${item}</p> `,
         )}
         </div>
       </div>

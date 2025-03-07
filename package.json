@@ -10,6 +10,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -40,6 +42,7 @@
     "jiti": "^2.4.2",
     "material-colors": "^1.2.6",
     "normalize.css": "^8.0.1",
+    "prettier": "^3.5.3",
     "sass": "^1.85.1",
     "storybook": "^8.6.3",
     "ts-lit-plugin": "^2.0.2",
@@ -60,5 +63,6 @@
     "patchedDependencies": {
       "@greenwood/plugin-renderer-lit": "patches/@greenwood__plugin-renderer-lit.patch"
     }
-  }
+  },
+  "prettier": {}
 }

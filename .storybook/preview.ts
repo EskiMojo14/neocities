@@ -7,7 +7,7 @@ const dirSchema = picklist(["auto", "ltr", "rtl"]);
 
 const rtlDecorator: Decorator = (
   story,
-  { canvasElement, args: { dir, ...args } }
+  { canvasElement, args: { dir, ...args } },
 ) => {
   canvasElement.dir = parse(dirSchema, dir);
   return story({ args });

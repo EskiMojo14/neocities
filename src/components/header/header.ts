@@ -3,11 +3,13 @@ import { customElement } from "lit/decorators.js";
 import { html } from "lit-html";
 import { when } from "lit-html/directives/when.js";
 import { consolewriter } from "../../utils/lit.ts";
+import base from "../../styles/base.css" with { type: "css" };
 import typography from "../../styles/typography.css" with { type: "css" };
 
 @customElement("page-header")
 export default class PageHeader extends LitElement {
   static styles = [
+    base,
     typography,
     css`
       h1 {
@@ -46,12 +48,13 @@ export default class PageHeader extends LitElement {
           </h1>
           ${when(
             subtitleText,
-            () => html`<p
-              class="headline5"
-              aria-label=${this.ariaLabel ?? subtitleText}
-            >
-              ${consolewriter(subtitleText, { delay: headerDuration })}
-            </p>`
+            () =>
+              html`<p
+                class="headline5"
+                aria-label=${this.ariaLabel ?? subtitleText}
+              >
+                ${consolewriter(subtitleText, { delay: headerDuration })}
+              </p>`,
           )}
         </hgroup>
       </header>

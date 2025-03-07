@@ -49,7 +49,7 @@ const meta = {
               >
                 <span>${color}</span>
               </div>
-            `
+            `,
           )}
         </div>
       </div>
@@ -66,7 +66,7 @@ const meta = {
               >
                 <span>${color}</span>
               </div>
-            `
+            `,
           )}
         </div>
       </div>
