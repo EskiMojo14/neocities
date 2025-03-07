@@ -17,6 +17,7 @@ import base from "../../styles/base.css" with { type: "css" };
 import typography from "../../styles/typography.css" with { type: "css" };
 
 interface SidebarItemCommon {
+  href: string;
   label: string;
   order: number;
   icon?: string;
@@ -24,7 +25,6 @@ interface SidebarItemCommon {
 
 interface SidebarItem extends SidebarItemCommon {
   type: "item";
-  href: string;
 }
 
 type GroupIconUnion =
@@ -43,7 +43,7 @@ type GroupIconUnion =
 type SidebarGroup = GroupIconUnion &
   SidebarItemCommon & {
     type: "group";
-    href?: string;
+    maxChildren?: number;
   };
 
 const itemSchema = v.object({
@@ -53,6 +53,7 @@ const itemSchema = v.object({
   href: v.string(),
   icon: v.optional(v.string()),
   childIcon: v.optional(v.string()),
+  maxChildren: v.optional(v.number()),
 }) satisfies v.GenericSchema<any, SidebarItem>;
 
 async function getSidebarItems() {
@@ -85,6 +86,7 @@ async function getSidebarItems() {
       icon: page.data.icon,
       childIcon: page.data.childIcon,
       order: page.data.order,
+      maxChildren: page.data.maxChildren,
     } satisfies Record<keyof v.InferInput<typeof itemSchema>, unknown>);
   }
   return base;
@@ -111,6 +113,19 @@ function renderSidebarGroup(
   currentRoute: string,
   level: number,
 ) {
+  let children = Object.values(group.children).sort(
+    (a, b) => a.order - b.order,
+  );
+  if (group.maxChildren && children.length > group.maxChildren) {
+    children = children.slice(0, group.maxChildren);
+    children.push({
+      type: "item",
+      label: "More",
+      href: group.href,
+      icon: "more_horiz",
+      order: 0,
+    });
+  }
   return html`<li
     class=${clsx("group", {
       parent: isActiveLink(group.href, currentRoute, "includes"),
@@ -127,7 +142,7 @@ function renderSidebarGroup(
     >
     <ul style=${styleMap({ "--level": level })}>
       ${repeat(
-        Object.values(group.children).sort((a, b) => a.order - b.order),
+        children,
         (item) => item.href,
         (item): TemplateResult<1> =>
           item.type === "item"
