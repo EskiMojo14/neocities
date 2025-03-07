@@ -14,7 +14,7 @@ const meta = {
     weight,
     grade,
     opticalSize,
-    flipRtl,
+    "flip-rtl": flipRtl,
   }) => html`
     <material-symbol
       aria-hidden="true"
@@ -63,7 +63,7 @@ const meta = {
     fill: {
       control: "boolean",
     },
-    flipRtl: {
+    "flip-rtl": {
       control: "boolean",
     },
   },
@@ -74,7 +74,7 @@ const meta = {
     weight: 400,
     grade: -25,
     opticalSize: undefined,
-    flipRtl: false,
+    "flip-rtl": false,
   },
 } satisfies Meta<{
   children: string;
@@ -83,7 +83,7 @@ const meta = {
   weight: number;
   grade: number;
   opticalSize?: number;
-  flipRtl: boolean;
+  "flip-rtl": boolean;
 }>;
 export default meta;
 
