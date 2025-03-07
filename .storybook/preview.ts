@@ -1,7 +1,7 @@
 import { themes } from "@storybook/theming";
 import type { Decorator, Preview } from "@storybook/web-components";
 import * as v from "valibot";
-import "../src/style.css";
+import "../src/global.css";
 
 const dirSchema = v.picklist(["auto", "ltr", "rtl"]);
 
