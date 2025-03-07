@@ -3,6 +3,15 @@ export const safeAssign: <T extends object>(
   source: Partial<T>,
 ) => T = Object.assign;
 
+export function assert(
+  condition: unknown,
+  message?: string,
+): asserts condition {
+  if (!condition) {
+    throw new Error(message);
+  }
+}
+
 export const wait = (ms: number) =>
   new Promise<void>((resolve) => setTimeout(resolve, ms));
 

@@ -1,15 +1,15 @@
 import { themes } from "@storybook/theming";
 import type { Decorator, Preview } from "@storybook/web-components";
-import { parse, picklist } from "valibot";
+import * as v from "valibot";
 import "../src/style.css";
 
-const dirSchema = picklist(["auto", "ltr", "rtl"]);
+const dirSchema = v.picklist(["auto", "ltr", "rtl"]);
 
 const rtlDecorator: Decorator = (
   story,
   { canvasElement, args: { dir, ...args } },
 ) => {
-  canvasElement.dir = parse(dirSchema, dir);
+  canvasElement.dir = v.parse(dirSchema, dir);
   return story({ args });
 };
 
