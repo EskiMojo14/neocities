@@ -17,6 +17,7 @@ const meta = {
     flipRtl,
   }) => html`
     <material-symbol
+      aria-hidden="true"
       ?flip-rtl=${flipRtl}
       style=${styleMap({
         "--icon-size": `${size}px`,

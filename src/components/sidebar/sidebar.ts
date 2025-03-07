@@ -102,7 +102,7 @@ function renderSidebarItem(item: SidebarItem, currentRoute: string) {
         current: isActiveLink(item.href, currentRoute, "equals"),
       })}
     >
-      <material-symbol>${item.icon}</material-symbol>
+      <material-symbol aria-hidden="true">${item.icon}</material-symbol>
       ${item.label}
     </a>
   </li>`;
@@ -137,7 +137,7 @@ function renderSidebarGroup(
         current: isActiveLink(group.href, currentRoute, "equals"),
       })}
     >
-      <material-symbol>${group.icon}</material-symbol>
+      <material-symbol aria-hidden="true">${group.icon}</material-symbol>
       ${group.label}</a
     >
     <ul style=${styleMap({ "--level": level })}>
