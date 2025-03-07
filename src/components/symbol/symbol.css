@@ -13,7 +13,6 @@ i {
   font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-
   font-size: var(--icon-size, 24px);
   font-variation-settings:
     "FILL" var(--icon-fill, 0),

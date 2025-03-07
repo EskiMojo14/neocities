@@ -1,3 +1,10 @@
 * {
   box-sizing: border-box;
 }
+
+material-symbol {
+  display: inline-block;
+  font-size: var(--icon-size, 24px);
+  height: 1em;
+  width: 1em;
+}

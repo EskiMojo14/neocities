@@ -55,7 +55,7 @@ export function ensureDir(dir: string): "ltr" | "rtl" | "auto" {
 export function isActiveLink(
   href: string | undefined,
   currentRoute: string,
-  comparison: "includes" | "equals" = "includes",
+  comparison: "includes" | "equals",
 ): boolean {
   if (!href) return false;
   if (href === "/" || comparison === "equals") {

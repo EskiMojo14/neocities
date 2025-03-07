@@ -10,7 +10,7 @@ import { repeat } from "lit-html/directives/repeat.js";
 import * as v from "valibot";
 import type { WithOptional } from "../../utils/index.ts";
 import { assert } from "../../utils/index.ts";
-import { isActiveLink, clsx } from "../../utils/lit.ts";
+import { isActiveLink, clsx, styleMap } from "../../utils/lit.ts";
 import "../symbol/symbol.ts";
 import sidebar from "./sidebar.css" with { type: "css" };
 import base from "../../styles/base.css" with { type: "css" };
@@ -97,7 +97,7 @@ function renderSidebarItem(item: SidebarItem, currentRoute: string) {
     <a
       href=${item.href}
       class=${clsx("subtitle1", {
-        current: isActiveLink(item.href, currentRoute),
+        current: isActiveLink(item.href, currentRoute, "equals"),
       })}
     >
       <material-symbol>${item.icon}</material-symbol>
@@ -106,18 +106,26 @@ function renderSidebarItem(item: SidebarItem, currentRoute: string) {
   </li>`;
 }
 
-function renderSidebarGroup(group: SidebarGroup, currentRoute: string) {
-  return html`<li class="group">
+function renderSidebarGroup(
+  group: SidebarGroup,
+  currentRoute: string,
+  level: number,
+) {
+  return html`<li
+    class=${clsx("group", {
+      parent: isActiveLink(group.href, currentRoute, "includes"),
+    })}
+  >
     <a
       href=${ifDefined(group.href)}
       class=${clsx("subtitle1", {
-        current: isActiveLink(group.href, currentRoute),
+        current: isActiveLink(group.href, currentRoute, "equals"),
       })}
     >
       <material-symbol>${group.icon}</material-symbol>
       ${group.label}</a
     >
-    <ul>
+    <ul style=${styleMap({ "--level": level })}>
       ${repeat(
         Object.values(group.children).sort((a, b) => a.order - b.order),
         (item) => item.href,
@@ -127,7 +135,7 @@ function renderSidebarGroup(group: SidebarGroup, currentRoute: string) {
                 { ...item, icon: item.icon ?? group.childIcon ?? "" },
                 currentRoute,
               )
-            : renderSidebarGroup(item, currentRoute),
+            : renderSidebarGroup(item, currentRoute, level + 1),
       )}
     </ul>
   </li>`;
@@ -150,7 +158,7 @@ export default class Sidebar extends LitElement {
             (item) =>
               item.type === "item"
                 ? renderSidebarItem(item, this.currentRoute)
-                : renderSidebarGroup(item, this.currentRoute),
+                : renderSidebarGroup(item, this.currentRoute, 1),
           )}
         </ul>
       </nav>

@@ -1,12 +1,8 @@
 nav {
-  --padding-h: 2rem;
+  --padding-h: 1rem;
+  --padding-per-level: 1rem;
   --padding-v: 1rem;
-  padding: var(--padding-v) var(--padding-h);
-  padding-left: 0;
-  &:dir(rtl) {
-    padding-left: var(--padding-h);
-    padding-right: 0;
-  }
+  padding: var(--padding-v) 0;
 }
 
 ul {
@@ -14,11 +10,16 @@ ul {
   flex-direction: column;
   list-style: none;
   gap: 0.5rem;
-  ul {
-    padding-left: var(--padding-h);
+  --padding-s: calc(
+    var(--padding-per-level) * var(--level, 0) + var(--padding-h)
+  );
+  padding: 0;
+  a {
+    padding-left: var(--padding-s);
+    padding-right: var(--padding-h);
     &:dir(rtl) {
-      padding-right: var(--padding-h);
-      padding-left: 0;
+      padding-left: var(--padding-h);
+      padding-right: var(--padding-s);
     }
   }
 }
@@ -35,6 +36,8 @@ li {
 a {
   display: flex;
   align-items: center;
+  height: 36px;
+
   gap: 0.5rem;
   color: var(--link);
   text-decoration: none;
@@ -56,6 +59,12 @@ a {
     font-weight: var(--weight-semibold);
     font-style: italic;
     color: var(--link-current);
+    --icon-fill: 1;
+    background: var(--grey);
+  }
+
+  .parent > & {
+    font-weight: var(--weight-medium);
     --icon-fill: 1;
   }
 }

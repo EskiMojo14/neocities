@@ -1,0 +1,9 @@
+sidebar-nav {
+  --sidebar-width: 256px;
+  border-right: 1px solid var(--disabled);
+  width: var(--sidebar-width);
+  &:dir(rtl) {
+    border-right: none;
+    border-left: 1px solid var(--disabled);
+  }
+}
