@@ -38,3 +38,18 @@ declare module "@greenwood/cli/src/plugins/resource/plugin-standard-css.js" {
     };
   };
 }
+
+declare module "@greenwood/cli/src/data/client.js" {
+  export interface PageData {
+    id: string;
+    title: string;
+    label: string;
+    route: string;
+    data: Record<string, unknown>;
+  }
+  export function getContent(): Promise<Array<PageData>>;
+  export function getContentByRoute(route: string): Promise<Array<PageData>>;
+  export function getContentByCollection(
+    collection: string,
+  ): Promise<Array<PageData>>;
+}
