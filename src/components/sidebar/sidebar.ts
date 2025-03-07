@@ -1,4 +1,4 @@
-import { LitElement, css } from "lit";
+import { LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { html } from "lit-html";
 import { ifDefined } from "lit-html/directives/if-defined.js";
@@ -6,6 +6,7 @@ import { map } from "lit-html/directives/map.js";
 import type { WithOptional } from "../../utils/index.ts";
 import { isActiveLink, clsx } from "../../utils/lit.ts";
 import "../symbol/symbol.ts";
+import sidebar from "./sidebar.css" with { type: "css" };
 import base from "../../styles/base.css" with { type: "css" };
 import typography from "../../styles/typography.css" with { type: "css" };
 
@@ -65,70 +66,7 @@ const sidebarItems: Array<SidebarItem | SidebarGroup> = [
 
 @customElement("sidebar-nav")
 export default class Sidebar extends LitElement {
-  static styles = [
-    base,
-    typography,
-    css`
-      nav {
-        --padding-h: 2rem;
-        --padding-v: 1rem;
-        padding: var(--padding-v) var(--padding-h);
-        padding-left: 0;
-        &:dir(rtl) {
-          padding-left: var(--padding-h);
-          padding-right: 0;
-        }
-      }
-      ul {
-        display: flex;
-        flex-direction: column;
-        list-style: none;
-        gap: 0.5rem;
-        ul {
-          padding-left: var(--padding-h);
-          &:dir(rtl) {
-            padding-right: var(--padding-h);
-            padding-left: 0;
-          }
-        }
-      }
-      li {
-        list-style: none;
-        &.group {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-      }
-      a {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--link);
-        text-decoration: none;
-        transition-property: color, font-weight, font-style;
-        transition-duration: var(--font-transition-duration);
-        --icon-weight: 300;
-        &:visited {
-          color: var(--link-visited);
-        }
-        &:hover:not(.current) {
-          color: var(--link-hover);
-          font-weight: var(--weight-medium);
-          --icon-weight: 700;
-          &:visited {
-            color: var(--link-visited-hover);
-          }
-        }
-        &.current {
-          font-weight: var(--weight-semibold);
-          font-style: italic;
-          color: var(--link-current);
-          --icon-fill: 1;
-        }
-      }
-    `,
-  ];
+  static styles = [base, typography, sidebar];
 
   @property({ type: String, attribute: "current-route" })
   currentRoute = "/";
