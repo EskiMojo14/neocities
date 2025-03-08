@@ -19,6 +19,7 @@
 
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
+    "erasableSyntaxOnly": true,
 
     "plugins": [
       {

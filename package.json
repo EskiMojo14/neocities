@@ -45,7 +45,7 @@
     "sass": "^1.85.1",
     "storybook": "^8.6.3",
     "ts-lit-plugin": "^2.0.2",
-    "typescript": "~5.7.2",
+    "typescript": "~5.8.2",
     "typescript-eslint": "^8.26.0",
     "vite": "^6.2.0"
   },
