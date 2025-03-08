@@ -1,15 +1,7 @@
 <html>
-  <head>
-    <script type="module" src="../../components/header/header.ts"></script>
-  </head>
   <body>
-    <page-header>
-      ${globalThis.page.title}
-      <p slot="subtitle">${globalThis.page.data.description}</p>
-    </page-header>
     <!-- markdown content will get output here -->
     <content-outlet></content-outlet>
-
     <a href="/blog/">
       <material-symbol aria-hidden="true">arrow_back</material-symbol>
       Back to all blog posts

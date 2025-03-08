@@ -7,11 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script type="module" src="../components/sidebar/sidebar.ts"></script>
+    <script type="module" src="../components/header/header.ts"></script>
     <title>${globalThis.page.title}</title>
   </head>
   <body>
     <sidebar-nav current-route="${globalThis.page.route}"></sidebar-nav>
     <div class="root">
+      <page-header>
+        ${globalThis.page.title}
+        <p slot="subtitle">${globalThis.page.data.description}</p>
+      </page-header>
       <page-outlet></page-outlet>
     </div>
   </body>
