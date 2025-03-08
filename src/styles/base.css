@@ -47,8 +47,7 @@ a {
   }
 }
 
+pre,
 code {
-  background: var(--grey-secondary);
-  padding: 0.1rem 0.2rem;
-  border-radius: 0.2rem;
+  text-transform: none;
 }

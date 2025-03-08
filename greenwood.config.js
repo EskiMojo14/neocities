@@ -14,4 +14,7 @@ export default {
     greenwoodPluginRendererLit({}),
     greenwoodPluginImportRaw(),
   ],
+  markdown: {
+    plugins: ["@mapbox/rehype-prism"],
+  },
 };
