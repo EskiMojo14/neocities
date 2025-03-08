@@ -39,26 +39,19 @@ a {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   gap: 0.5rem;
-  color: var(--link);
-  text-decoration: none;
   transition-property: color, font-weight, font-style;
   transition-duration: var(--font-transition-duration);
   --icon-weight: 300;
-  &:visited {
-    color: var(--link-visited);
-  }
-  &:hover:not(.current) {
-    color: var(--link-hover);
+  &:hover {
     font-weight: var(--weight-medium);
     --icon-weight: 700;
-    &:visited {
-      color: var(--link-visited-hover);
-    }
   }
-  &.current {
+  &.current,
+  &.current:hover {
     font-weight: var(--weight-semibold);
     font-style: italic;
     color: var(--link-current);
+    --icon-weight: 500;
     --icon-fill: 1;
     background: var(--grey);
   }
