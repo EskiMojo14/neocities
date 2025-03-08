@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+::selection {
+  text-shadow: none;
+  background-color: var(--selection);
+}
+
 material-symbol {
   font-family: var(--font-family-icon);
   font-weight: normal;
@@ -50,4 +55,14 @@ a {
 pre,
 code {
   text-transform: none;
+}
+
+pre {
+  background: var(--black);
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: var(--font-family);
+  background: var(--black);
 }

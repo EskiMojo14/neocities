@@ -13,8 +13,6 @@
   --font-transition-duration: 250ms;
   --font-family: "Roboto Mono", monospace;
   --font-family-icon: "Material Symbols Sharp", serif;
-  --foreground: var(--white);
-  --background: var(--black);
   --link: var(--green);
   --link-hover-opacity: 0.7;
   --link-hover: rgba(from var(--link) r g b / var(--link-hover-opacity));

@@ -1,6 +1,6 @@
 sidebar-nav {
   --sidebar-width: 256px;
-  border-right: 1px solid var(--disabled);
+  background: var(--black);
   width: var(--sidebar-width);
   &:dir(rtl) {
     border-right: none;
