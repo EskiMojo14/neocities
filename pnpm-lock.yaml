@@ -24,6 +24,9 @@ importers:
       '@greenwood/cli':
         specifier: ^0.31.1
         version: 0.31.1
+      '@greenwood/plugin-import-raw':
+        specifier: ^0.31.1
+        version: 0.31.1(@greenwood/cli@0.31.1)
       '@greenwood/plugin-renderer-lit':
         specifier: ^0.31.1
         version: 0.31.1(@greenwood/cli@0.31.1)(lit@3.2.1)
@@ -320,6 +323,11 @@ packages:
     resolution: {integrity: sha512-jJzk2OeONfMr1FQ+KRdQxXeZuHW4kLAQTudRl+ud0b73H3C0VR2ygO84EGkGlvIW/wy6yccb/ncKtxeehN+apA==}
     engines: {node: ^18.20.5 || ^20.10.0 || ^22.12.0}
     hasBin: true
+
+  '@greenwood/plugin-import-raw@0.31.1':
+    resolution: {integrity: sha512-ntNLrna1O7Mm1LGT1YGDzMZ3AW1fKx7B/LVpBAfZsnL0jqJlXbkvt6WEEhbq9DM+1LDZqKidsOzST2tHlTA0dw==}
+    peerDependencies:
+      '@greenwood/cli': ^0.31.0
 
   '@greenwood/plugin-renderer-lit@0.31.1':
     resolution: {integrity: sha512-g8hUn+J/dSR3fBOmxMppAVpzhf1cvMxLG/W8TiVhbPR9/YVghRnfu/wLCWCXMdFBX0wvu0z61UxbM1HCFZ/GfQ==}
@@ -3142,6 +3150,10 @@ snapshots:
       - bufferutil
       - supports-color
       - utf-8-validate
+
+  '@greenwood/plugin-import-raw@0.31.1(@greenwood/cli@0.31.1)':
+    dependencies:
+      '@greenwood/cli': 0.31.1
 
   '@greenwood/plugin-renderer-lit@0.31.1(@greenwood/cli@0.31.1)(lit@3.2.1)':
     dependencies:

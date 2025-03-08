@@ -1,3 +1,4 @@
+import { greenwoodPluginImportRaw } from "@greenwood/plugin-import-raw";
 import { greenwoodPluginRendererLit } from "@greenwood/plugin-renderer-lit";
 import { greenwoodPluginTypeScript } from "@greenwood/plugin-typescript";
 
@@ -11,5 +12,6 @@ export default {
       extendConfig: true,
     }),
     greenwoodPluginRendererLit({}),
+    greenwoodPluginImportRaw(),
   ],
 };

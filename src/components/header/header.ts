@@ -1,16 +1,16 @@
-import { css, LitElement } from "lit";
+import { css, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { html } from "lit-html";
 import { when } from "lit-html/directives/when.js";
+import base from "../../styles/base.css?type=raw";
+import typography from "../../styles/typography.css?type=raw";
 import { consolewriter } from "../../utils/lit.ts";
-import base from "../../styles/base.css" with { type: "css" };
-import typography from "../../styles/typography.css" with { type: "css" };
 
 @customElement("page-header")
 export default class PageHeader extends LitElement {
   static styles = [
-    base,
-    typography,
+    unsafeCSS(base),
+    unsafeCSS(typography),
     css`
       h1 {
         margin: 0;

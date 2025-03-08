@@ -2,19 +2,19 @@ import {
   getContentByCollection,
   getContentByRoute,
 } from "@greenwood/cli/src/data/client.js";
-import { LitElement } from "lit";
+import { LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { html, type TemplateResult } from "lit-html";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import { repeat } from "lit-html/directives/repeat.js";
 import * as v from "valibot";
+import base from "../../styles/base.css?type=raw";
+import typography from "../../styles/typography.css?type=raw";
 import type { WithOptional } from "../../utils/index.ts";
 import { assert, uniqueBy } from "../../utils/index.ts";
 import { isActiveLink, clsx, styleMap } from "../../utils/lit.ts";
 import "../symbol/symbol.ts";
-import sidebar from "./sidebar.css" with { type: "css" };
-import base from "../../styles/base.css" with { type: "css" };
-import typography from "../../styles/typography.css" with { type: "css" };
+import sidebar from "./sidebar.css?type=raw";
 
 interface SidebarItemCommon {
   href: string;
@@ -159,7 +159,7 @@ function renderSidebarGroup(
 
 @customElement("sidebar-nav")
 export default class Sidebar extends LitElement {
-  static styles = [base, typography, sidebar];
+  static styles = [unsafeCSS(base), unsafeCSS(typography), unsafeCSS(sidebar)];
 
   @property({ type: String, attribute: "current-route" })
   currentRoute = "/";

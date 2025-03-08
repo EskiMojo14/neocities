@@ -18,6 +18,7 @@
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "@greenwood/cli": "^0.31.1",
+    "@greenwood/plugin-import-raw": "^0.31.1",
     "@greenwood/plugin-renderer-lit": "^0.31.1",
     "@greenwood/plugin-typescript": "^0.31.1",
     "@storybook/addon-essentials": "^8.6.3",
