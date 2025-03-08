@@ -34,9 +34,8 @@ export default class PageHeader extends LitElement {
         continue;
       }
     }
-    console.log(header, subtitle);
-    this.headerText = header?.textContent ?? "";
-    this.subtitleText = subtitle?.textContent ?? "";
+    this.headerText = header?.textContent?.trim() ?? "";
+    this.subtitleText = subtitle?.textContent?.trim() ?? "";
   }
 
   render() {
