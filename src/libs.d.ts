@@ -3,9 +3,9 @@ declare module "*.module.css" {
   export default classes;
 }
 
-declare module "*.css?type=raw" {
-  const stylesheet: string;
-  export default stylesheet;
+declare module "*?type=raw" {
+  const source: string;
+  export default source;
 }
 
 declare module "*.css" {
