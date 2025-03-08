@@ -19,7 +19,8 @@ import sidebar from "./sidebar.css?type=raw";
 interface SidebarItemCommon {
   href: string;
   label: string;
-  order: number;
+  order?: number;
+  published?: string;
   icon?: string;
 }
 
@@ -48,7 +49,8 @@ type SidebarGroup = GroupIconUnion &
 
 const itemSchema = v.object({
   type: v.literal("item"),
-  order: v.optional(v.number(), 0),
+  order: v.optional(v.number()),
+  published: v.optional(v.string()),
   label: v.string(),
   href: v.string(),
   icon: v.optional(v.string()),
@@ -87,6 +89,7 @@ async function getSidebarItems() {
       icon: page.data.icon,
       childIcon: page.data.childIcon,
       order: page.data.order,
+      published: page.data.published,
       maxChildren: page.data.maxChildren,
     } satisfies Record<keyof v.InferInput<typeof itemSchema>, unknown>);
   }
@@ -109,14 +112,40 @@ function renderSidebarItem(item: SidebarItem, currentRoute: string) {
   </li>`;
 }
 
+const isNumber = (value: unknown) => typeof value === "number";
+
+function orderSort(a: { order?: number }, b: { order?: number }) {
+  if (isNumber(a.order) && isNumber(b.order)) {
+    return a.order - b.order;
+  }
+  if (a.order || b.order) {
+    return a.order ? -1 : 1;
+  }
+  return undefined;
+}
+
+function publishedSort(a: { published?: string }, b: { published?: string }) {
+  if (a.published && b.published) {
+    return a.published < b.published ? -1 : a.published > b.published ? 1 : 0;
+  }
+  if (a.published || b.published) {
+    return a.published ? -1 : 1;
+  }
+  return undefined;
+}
+
+const sortSidebarItems = (
+  a: SidebarItem | SidebarGroup,
+  b: SidebarItem | SidebarGroup,
+): number =>
+  orderSort(a, b) ?? publishedSort(a, b) ?? a.label.localeCompare(b.label);
+
 function renderSidebarGroup(
   group: SidebarGroup,
   currentRoute: string,
   level: number,
 ) {
-  let children = Object.values(group.children).sort(
-    (a, b) => a.order - b.order,
-  );
+  let children = Object.values(group.children).sort(sortSidebarItems);
   if (group.maxChildren && children.length > group.maxChildren) {
     children = children.slice(0, group.maxChildren);
     children.push({
@@ -169,7 +198,7 @@ export default class Sidebar extends LitElement {
       <nav>
         <ul>
           ${repeat(
-            Object.values(sidebarItems).sort((a, b) => a.order - b.order),
+            Object.values(sidebarItems).sort(sortSidebarItems),
             (item) => item.href,
             (item) =>
               item.type === "item"
