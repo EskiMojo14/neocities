@@ -55,9 +55,6 @@ a {
 pre,
 code {
   text-transform: none;
-}
-
-pre {
   background: var(--black);
 }
 
@@ -65,4 +62,15 @@ code[class*="language-"],
 pre[class*="language-"] {
   font-family: var(--font-family);
   background: var(--black);
+}
+
+package-install {
+  padding: 1em;
+  border-radius: 0.5em;
+  background: var(--black);
+  &:not(:defined) {
+    &::before {
+      content: "pnpm add ";
+    }
+  }
 }

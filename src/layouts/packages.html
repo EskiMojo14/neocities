@@ -1,6 +1,14 @@
 <html>
+  <head>
+    <script
+      type="module"
+      src="../components/package-install/package-install.ts"
+    ></script>
+  </head>
   <body>
-    <code>pnpm add ${globalThis.page.data.package}</code>
+    <package-install dev-dep="${globalThis.page.data.devDep}"
+      >${globalThis.page.data.package}</package-install
+    >
     <!-- markdown content will get output here -->
     <content-outlet></content-outlet>
     <a href="/packages/">
