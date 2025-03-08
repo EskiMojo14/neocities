@@ -2,6 +2,8 @@
 collection: nav
 order: 0
 icon: home
+title: Home
+description: Where the heart is
 ---
 
 <html>
@@ -11,8 +13,8 @@ icon: home
   </head>
   <body>
     <page-header>
-      Home
-      <p slot="subtitle">Where the heart is</p>
+      ${globalThis.page.title}
+      <p slot="subtitle">${globalThis.page.data.description}</p>
     </page-header>
   </body>
 </html>

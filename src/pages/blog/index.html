@@ -3,17 +3,18 @@ collection: nav
 order: 3
 icon: newsmode
 childIcon: article
+title: Blog
+description: might put thoughts here
 ---
 
 <html>
   <head>
-    <title>Blog</title>
     <script type="module" src="../../components/header/header.ts"></script>
   </head>
   <body>
     <page-header>
-      Blog
-      <p slot="subtitle">might put thoughts here</p>
+      ${globalThis.page.title}
+      <p slot="subtitle">${globalThis.page.data.description}</p>
     </page-header>
   </body>
 </html>

@@ -2,17 +2,18 @@
 collection: nav
 order: 1
 icon: info
+title: About
+description: straight FAQs
 ---
 
 <html>
   <head>
-    <title>About</title>
     <script type="module" src="../components/header/header.ts"></script>
   </head>
   <body>
     <page-header>
-      About
-      <p slot="subtitle">straight FAQs</p>
+      ${globalThis.page.title}
+      <p slot="subtitle">${globalThis.page.data.description}</p>
     </page-header>
   </body>
 </html>

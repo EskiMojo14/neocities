@@ -3,17 +3,18 @@ collection: nav
 order: 2
 icon: deployed_code_account
 childIcon: deployed_code
+title: Packages
+description: stuff wot i made
 ---
 
 <html>
   <head>
-    <title>Packages</title>
     <script type="module" src="../../components/header/header.ts"></script>
   </head>
   <body>
     <page-header>
-      Packages
-      <p slot="subtitle">stuff wot i made</p>
+      ${globalThis.page.title}
+      <p slot="subtitle">${globalThis.page.data.description}</p>
     </page-header>
   </body>
 </html>
