@@ -63,3 +63,13 @@ export type Compute<T> = { [K in keyof T]: T[K] } & unknown;
 export type WithOptional<T, K extends keyof T> = Compute<
   Omit<T, K> & Partial<Pick<T, K>>
 >;
+
+export function uniqueBy<T>(getKey: (item: T) => unknown) {
+  const seen = new Set<unknown>();
+  return (item: T) => {
+    const key = getKey(item);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  };
+}

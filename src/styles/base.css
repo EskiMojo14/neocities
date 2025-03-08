@@ -32,3 +32,23 @@ material-symbol {
     }
   }
 }
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  &:visited {
+    color: var(--link-visited);
+  }
+  &:hover {
+    color: var(--link-hover);
+    &:visited {
+      color: var(--link-visited-hover);
+    }
+  }
+}
+
+code {
+  background: var(--grey-secondary);
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.2rem;
+}

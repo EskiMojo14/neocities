@@ -22,19 +22,21 @@ export default class PageHeader extends LitElement {
   subtitleText = "";
   connectedCallback() {
     super.connectedCallback();
-    let headerText = "";
-    let subtitleText = "";
-    if (this.hasChildNodes()) {
-      for (const node of this.childNodes) {
-        if (node instanceof HTMLElement && node.slot === "subtitle") {
-          subtitleText += node.textContent?.trim() ?? "";
-          continue;
-        }
-        headerText += node.textContent?.trim() ?? "";
+
+    let header: ChildNode | null = null;
+    let subtitle: Element | null = null;
+    for (const node of this.childNodes) {
+      if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()) {
+        header = node;
+        continue;
+      } else if (node instanceof Element && node.slot === "subtitle") {
+        subtitle = node;
+        continue;
       }
     }
-    this.headerText = headerText;
-    this.subtitleText = subtitleText;
+    console.log(header, subtitle);
+    this.headerText = header?.textContent ?? "";
+    this.subtitleText = subtitle?.textContent ?? "";
   }
 
   render() {

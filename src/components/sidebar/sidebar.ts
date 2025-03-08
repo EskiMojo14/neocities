@@ -9,7 +9,7 @@ import { ifDefined } from "lit-html/directives/if-defined.js";
 import { repeat } from "lit-html/directives/repeat.js";
 import * as v from "valibot";
 import type { WithOptional } from "../../utils/index.ts";
-import { assert } from "../../utils/index.ts";
+import { assert, uniqueBy } from "../../utils/index.ts";
 import { isActiveLink, clsx, styleMap } from "../../utils/lit.ts";
 import "../symbol/symbol.ts";
 import sidebar from "./sidebar.css" with { type: "css" };
@@ -58,11 +58,12 @@ const itemSchema = v.object({
 
 async function getSidebarItems() {
   const base: Record<string, SidebarItem | SidebarGroup> = {};
-  const [content, blogPosts] = await Promise.all([
+  const content = await Promise.all([
     getContentByCollection("nav"),
     getContentByRoute("/blog/"),
+    getContentByRoute("/packages/"),
   ]);
-  for (const page of content.concat(blogPosts)) {
+  for (const page of content.flat().filter(uniqueBy((page) => page.route))) {
     const paths = page.route.split("/").filter(Boolean);
     let cursor = base;
     const last = paths.pop() ?? "";
