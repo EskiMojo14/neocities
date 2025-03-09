@@ -12,8 +12,13 @@ export default class PageHeader extends LitElement {
     unsafeCSS(base),
     unsafeCSS(typography),
     css`
-      h1 {
+      h1,
+      p {
         margin: 0;
+      }
+      p {
+        margin-top: 0.5em;
+        min-height: 1.15em;
       }
     `,
   ];
@@ -44,16 +49,13 @@ export default class PageHeader extends LitElement {
     return html`
       <header>
         <hgroup>
-          <h1 class="headline2" aria-label=${this.ariaLabel ?? headerText}>
+          <h1 class="headline2" aria-label=${headerText}>
             ${consolewriter(headerText)}
           </h1>
           ${when(
             subtitleText,
             () =>
-              html`<p
-                class="headline5"
-                aria-label=${this.ariaLabel ?? subtitleText}
-              >
+              html`<p class="headline5" aria-label=${subtitleText}>
                 ${consolewriter(subtitleText, { delay: headerDuration })}
               </p>`,
           )}

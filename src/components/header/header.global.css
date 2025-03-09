@@ -10,6 +10,9 @@ page-header {
       font-size: var(--headline5-size);
       font-weight: var(--headline5-weight);
       text-transform: var(--headline5-transform);
+      min-height: 1.15em;
+      margin: 0;
+      margin-top: 0.5em;
     }
   }
 }
