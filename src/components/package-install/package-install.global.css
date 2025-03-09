@@ -1,12 +1,16 @@
 package-install {
   display: block;
-  padding: 1em;
-  border-radius: 0.5em;
-  background: var(--black);
   margin: 1em 0;
   &:not(:defined) {
+    background: var(--black);
+    padding: 1em;
+    border-radius: 0.5em;
+    text-transform: none;
     &::before {
       content: "pnpm add ";
+    }
+    &[dev-dep="true"]::before {
+      content: "pnpm add -D ";
     }
   }
 }
