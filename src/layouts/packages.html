@@ -1,33 +1,14 @@
 <html>
   <head>
-    <script
-      type="module"
-      src="../components/package-install/package-install.ts"
-    ></script>
+    <script type="module" src="../components/pkg-info/pkg-info.ts"></script>
   </head>
   <body>
-    <div class="link-group">
-      <a
-        href="https://www.npmjs.com/package/${globalThis.page.data.package}"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <material-symbol aria-hidden="true">open_in_new</material-symbol>
-        NPM
-      </a>
-      |
-      <a
-        href="https://github.com/${globalThis.page.data.repo}"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <material-symbol aria-hidden="true">open_in_new</material-symbol>
-        GitHub
-      </a>
-    </div>
-    <package-install dev-dep="${globalThis.page.data.devDep}"
-      >${globalThis.page.data.package}</package-install
-    >
+    <pkg-info
+      pkg="${globalThis.page.data.package}"
+      dev-dep="${globalThis.page.data.devDep}"
+      docs="${globalThis.page.data.docs}"
+      repo="${globalThis.page.data.repo}"
+    ></pkg-info>
     <!-- markdown content will get output here -->
     <content-outlet></content-outlet>
     <a href="/packages/">

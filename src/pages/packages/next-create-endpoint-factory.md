@@ -6,4 +6,5 @@ description: For creating NextJS API routes easily
 icon: api
 package: next-create-endpoint-factory
 repo: actual-experience/create-endpoint-factory
+docs: https://actual-experience.github.io/create-endpoint-factory/
 ---

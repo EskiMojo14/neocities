@@ -1,4 +1,4 @@
-package-install {
+pkg-info {
   display: block;
   margin: 1em 0;
   &:not(:defined) {
@@ -7,10 +7,10 @@ package-install {
     border-radius: 0.5em;
     text-transform: none;
     &::before {
-      content: "pnpm add ";
+      content: "pnpm add " attr(pkg);
     }
     &[dev-dep="true"]::before {
-      content: "pnpm add -D ";
+      content: "pnpm add -D " attr(pkg);
     }
   }
 }

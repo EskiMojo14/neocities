@@ -9,7 +9,7 @@
       "collection": "nav",
       "order": 1,
       "icon": "info",
-      "description": "straight FAQs",
+      "description": "Straight FAQs",
       "tocHeading": 0,
       "tableOfContents": []
     },
@@ -40,7 +40,7 @@
       "order": 3,
       "icon": "newsmode",
       "childIcon": "article",
-      "description": "might put thoughts here",
+      "description": "Might put thoughts here",
       "tocHeading": 0,
       "tableOfContents": []
     },
@@ -155,6 +155,7 @@
       "icon": "history",
       "package": "history-adapter",
       "repo": "EskiMojo14/history-adapter",
+      "docs": "https://eskimojo14.github.io/history-adapter/",
       "tocHeading": 0,
       "tableOfContents": []
     },
@@ -164,7 +165,7 @@
       "/Users/admin/neocities/.greenwood/758806547.js",
       "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
       "/Users/admin/neocities/src/components/header/header.ts",
-      "/Users/admin/neocities/src/components/package-install/package-install.ts",
+      "/Users/admin/neocities/src/components/pkg-info/pkg-info.ts",
       "/Users/admin/neocities/src/global.css"
     ],
     "pageHref": "file:///Users/admin/neocities/src/pages/packages/history-adapter.md",
@@ -186,7 +187,7 @@
       "order": 2,
       "icon": "deployed_code_account",
       "childIcon": "deployed_code",
-      "description": "stuff wot i made",
+      "description": "Stuff wot I made",
       "tocHeading": 0,
       "tableOfContents": []
     },
@@ -218,6 +219,7 @@
       "package": "mix-n-matchers",
       "devDep": true,
       "repo": "EskiMojo14/mix-n-matchers",
+      "docs": "https://eskimojo14.github.io/mix-n-matchers/",
       "tocHeading": 0,
       "tableOfContents": []
     },
@@ -227,7 +229,7 @@
       "/Users/admin/neocities/.greenwood/758806547.js",
       "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
       "/Users/admin/neocities/src/components/header/header.ts",
-      "/Users/admin/neocities/src/components/package-install/package-install.ts",
+      "/Users/admin/neocities/src/components/pkg-info/pkg-info.ts",
       "/Users/admin/neocities/src/global.css"
     ],
     "pageHref": "file:///Users/admin/neocities/src/pages/packages/mix-n-matchers.md",
@@ -249,6 +251,7 @@
       "icon": "api",
       "package": "next-create-endpoint-factory",
       "repo": "actual-experience/create-endpoint-factory",
+      "docs": "https://actual-experience.github.io/create-endpoint-factory/",
       "tocHeading": 0,
       "tableOfContents": []
     },
@@ -258,7 +261,7 @@
       "/Users/admin/neocities/.greenwood/758806547.js",
       "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
       "/Users/admin/neocities/src/components/header/header.ts",
-      "/Users/admin/neocities/src/components/package-install/package-install.ts",
+      "/Users/admin/neocities/src/components/pkg-info/pkg-info.ts",
       "/Users/admin/neocities/src/global.css"
     ],
     "pageHref": "file:///Users/admin/neocities/src/pages/packages/next-create-endpoint-factory.md",
@@ -289,7 +292,7 @@
       "/Users/admin/neocities/.greenwood/758806547.js",
       "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
       "/Users/admin/neocities/src/components/header/header.ts",
-      "/Users/admin/neocities/src/components/package-install/package-install.ts",
+      "/Users/admin/neocities/src/components/pkg-info/pkg-info.ts",
       "/Users/admin/neocities/src/global.css"
     ],
     "pageHref": "file:///Users/admin/neocities/src/pages/packages/rad-event-listeners.md",
@@ -319,7 +322,7 @@
       "/Users/admin/neocities/.greenwood/758806547.js",
       "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
       "/Users/admin/neocities/src/components/header/header.ts",
-      "/Users/admin/neocities/src/components/package-install/package-install.ts",
+      "/Users/admin/neocities/src/components/pkg-info/pkg-info.ts",
       "/Users/admin/neocities/src/global.css"
     ],
     "pageHref": "file:///Users/admin/neocities/src/pages/packages/required-react-context.md",
@@ -349,7 +352,7 @@
       "/Users/admin/neocities/.greenwood/758806547.js",
       "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
       "/Users/admin/neocities/src/components/header/header.ts",
-      "/Users/admin/neocities/src/components/package-install/package-install.ts",
+      "/Users/admin/neocities/src/components/pkg-info/pkg-info.ts",
       "/Users/admin/neocities/src/global.css"
     ],
     "pageHref": "file:///Users/admin/neocities/src/pages/packages/uncheckedindexed.md",

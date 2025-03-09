@@ -22,6 +22,10 @@ export async function* typewriter(
      * @default 100
      */
     interval = 100,
+    /** Minimum time between each character
+     * @default 50
+     */
+    minInterval = 50,
     /** Maximum duration of the animation
      * @default 1000
      */
@@ -43,7 +47,11 @@ export async function* typewriter(
     keepFinishingSuffix = false,
   } = {},
 ) {
-  const finalInterval = Math.min(interval, maxDuration / text.length);
+  const lengthInteval = maxDuration / text.length;
+  const finalInterval = Math.max(
+    minInterval,
+    Math.min(interval, lengthInteval),
+  );
   let acc = "";
   await wait(delay);
   for (const char of text) {
@@ -72,4 +80,8 @@ export function uniqueBy<T>(getKey: (item: T) => unknown) {
     seen.add(key);
     return true;
   };
+}
+
+export function frontmatterIsSet(data: string) {
+  return !data.startsWith("${");
 }
