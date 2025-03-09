@@ -2,7 +2,7 @@
 layout: packages
 title: Unchecked Indexed
 label: Unchecked Indexed
-description: For libraries to match a user's noUncheckedIndexedAccess setting
+description: For matching a user's noUncheckedIndexedAccess setting
 package: uncheckedindexed
 ---
 
