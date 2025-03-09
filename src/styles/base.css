@@ -65,9 +65,11 @@ pre[class*="language-"] {
 }
 
 package-install {
+  display: block;
   padding: 1em;
   border-radius: 0.5em;
   background: var(--black);
+  margin: 1em 0;
   &:not(:defined) {
     &::before {
       content: "pnpm add ";
