@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Sono:wght@200..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 @import url("../node_modules/normalize.css/normalize.css");
 @import url("../node_modules/dracula-prism/dist/css/dracula-prism.css");
@@ -8,10 +8,12 @@
 @import "./styles/typography.css";
 @import "./components/header/header.global.css";
 @import "./components/sidebar/sidebar.global.css";
+@import "./components/package-install/package-install.global.css";
 
 :root {
   --font-transition-duration: 250ms;
   --font-family: "Roboto Mono", monospace;
+  --font-family-code: "Sono", monospace;
   --font-family-icon: "Material Symbols Sharp", serif;
   --link: var(--green);
   --link-hover-opacity: 0.7;
@@ -45,4 +47,10 @@ body {
     max-width: 1000px;
     padding: 1rem;
   }
+}
+
+.link-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }

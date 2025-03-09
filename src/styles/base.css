@@ -39,6 +39,9 @@ material-symbol {
 }
 
 a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: var(--link);
   text-decoration: none;
   &:visited {
@@ -52,27 +55,34 @@ a {
   }
 }
 
+code,
+kbd,
+samp {
+  font-family: var(--font-family-code);
+}
+
+code {
+  display: inline-block;
+}
+
 pre,
 code {
   text-transform: none;
   background: var(--black);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 code[class*="language-"],
 pre[class*="language-"] {
-  font-family: var(--font-family);
+  font-family: var(--font-family-code);
+  font-size: var(--body1-size);
+  font-weight: var(--body1-weight);
   background: var(--black);
 }
 
-package-install {
-  display: block;
-  padding: 1em;
-  border-radius: 0.5em;
-  background: var(--black);
-  margin: 1em 0;
-  &:not(:defined) {
-    &::before {
-      content: "pnpm add ";
-    }
-  }
+pre code {
+  padding: 0;
+  border-radius: 0;
+  background: none;
 }
