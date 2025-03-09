@@ -50,14 +50,14 @@
   --font-family-heading: "Monaspace Xenon", monospace;
   --font-family-code: "Monaspace Argon", monospace;
   --font-family-icon: "Material Symbols Sharp", serif;
-  --link: var(--green);
+  --link: var(--cyan);
   --link-hover-opacity: 0.7;
   --link-hover: rgba(from var(--link) r g b / var(--link-hover-opacity));
-  --link-visited: var(--green-secondary);
+  --link-visited: var(--cyan-secondary);
   --link-visited-hover: rgba(
     from var(--link-visited) r g b / var(--link-hover-opacity)
   );
-  --link-current: var(--cyan);
+  --link-current: var(--foreground);
 }
 
 html {
