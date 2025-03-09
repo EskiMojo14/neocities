@@ -24,6 +24,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
+      - uses: pnpm/action-setup@v4
       # If you have a different build process, replace this with your own build steps
       - name: Install deps and build
         run: |
