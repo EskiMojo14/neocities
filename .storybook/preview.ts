@@ -1,6 +1,7 @@
 import { themes } from "@storybook/theming";
 import type { Decorator, Preview } from "@storybook/web-components";
 import * as v from "valibot";
+import pages from "./mocks/graph.json";
 import "../src/global.css";
 
 const dirSchema = v.picklist(["auto", "ltr", "rtl"]);
@@ -24,6 +25,18 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    fetchMock: {
+      mocks: [
+        {
+          matcher: {
+            url: "http://localhost:1984/___graph.json",
+            response: {
+              body: pages,
+            },
+          },
+        },
+      ],
     },
   },
   argTypes: {

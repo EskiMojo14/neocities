@@ -27,21 +27,26 @@ declare module "@greenwood/cli/src/lifecycles/context.js" {
   }): Promise<GreenwoodContext>;
 }
 
-declare module "@greenwood/cli/src/plugins/resource/plugin-standard-css.js" {
-  import type { UserConfig } from "vite";
-
-  export const greenwoodPluginStandardCss: {
-    provider: (compilation: {
-      context: GreenwoodContext;
-      config: UserConfig;
-    }) => {
-      intercept: (
-        url: URL,
-        request: Request,
-        response: Response,
-      ) => Promise<Response>;
-    };
+interface GreenwoodPlugin {
+  provider: (compilation: {
+    context: GreenwoodContext;
+    // eslint-disable-next-line @typescript-eslint/consistent-type-imports
+    config: import("vite").UserConfig;
+  }) => {
+    intercept: (
+      url: URL | null,
+      request: Request | null,
+      response: Response,
+    ) => Promise<Response>;
   };
+}
+
+declare module "@greenwood/cli/src/plugins/resource/plugin-standard-css.js" {
+  export const greenwoodPluginStandardCss: GreenwoodPlugin;
+}
+
+declare module "@greenwood/plugin-import-raw" {
+  export function greenwoodPluginImportRaw(): Array<GreenwoodPlugin>;
 }
 
 declare module "@greenwood/cli/src/data/client.js" {

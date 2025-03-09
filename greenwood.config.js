@@ -11,7 +11,7 @@ export default {
       servePage: false,
       extendConfig: true,
     }),
-    greenwoodPluginRendererLit({}),
+    greenwoodPluginRendererLit(),
     greenwoodPluginImportRaw(),
   ],
   markdown: {

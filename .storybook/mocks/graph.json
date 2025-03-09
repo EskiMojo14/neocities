@@ -1,0 +1,384 @@
+[
+  {
+    "id": "about",
+    "label": "About",
+    "title": "About",
+    "route": "/about/",
+    "layout": null,
+    "data": {
+      "collection": "nav",
+      "order": 1,
+      "icon": "info",
+      "description": "straight FAQs",
+      "tocHeading": 0,
+      "tableOfContents": []
+    },
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "pageHref": "file:///Users/admin/neocities/src/pages/about.html",
+    "outputHref": "file:///Users/admin/neocities/public/about/index.html",
+    "isSSR": false,
+    "prerender": true,
+    "isolation": false,
+    "hydration": false,
+    "servePage": null
+  },
+  {
+    "id": "blog-index",
+    "label": "Blog",
+    "title": "Blog",
+    "route": "/blog/",
+    "layout": null,
+    "data": {
+      "collection": "nav",
+      "order": 3,
+      "icon": "newsmode",
+      "childIcon": "article",
+      "description": "might put thoughts here",
+      "tocHeading": 0,
+      "tableOfContents": []
+    },
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "pageHref": "file:///Users/admin/neocities/src/pages/blog/index.html",
+    "outputHref": "file:///Users/admin/neocities/public/blog/index.html",
+    "isSSR": false,
+    "prerender": true,
+    "isolation": false,
+    "hydration": false,
+    "servePage": null
+  },
+  {
+    "id": "blog-post-1",
+    "label": "Post 1",
+    "title": "My First Blog Post",
+    "route": "/blog/post-1/",
+    "layout": "blog",
+    "data": {
+      "description": "Starting off with a bang!",
+      "tocHeading": 0,
+      "tableOfContents": []
+    },
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "pageHref": "file:///Users/admin/neocities/src/pages/blog/post-1.md",
+    "outputHref": "file:///Users/admin/neocities/public/blog/post-1/index.html",
+    "isSSR": false,
+    "prerender": true,
+    "isolation": false,
+    "hydration": false,
+    "servePage": null
+  },
+  {
+    "id": "blog-post-2",
+    "label": "Post 2",
+    "title": "My Second Blog Post",
+    "route": "/blog/post-2/",
+    "layout": "blog",
+    "data": {
+      "description": "Another post",
+      "tocHeading": 0,
+      "tableOfContents": []
+    },
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "pageHref": "file:///Users/admin/neocities/src/pages/blog/post-2.md",
+    "outputHref": "file:///Users/admin/neocities/public/blog/post-2/index.html",
+    "isSSR": false,
+    "prerender": true,
+    "isolation": false,
+    "hydration": false,
+    "servePage": null
+  },
+  {
+    "id": "index",
+    "label": "Home",
+    "title": "Home",
+    "route": "/",
+    "layout": null,
+    "data": {
+      "collection": "nav",
+      "order": 0,
+      "icon": "home",
+      "description": "Where the heart is",
+      "tocHeading": 0,
+      "tableOfContents": []
+    },
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "pageHref": "file:///Users/admin/neocities/src/pages/index.html",
+    "outputHref": "file:///Users/admin/neocities/public/index.html",
+    "isSSR": false,
+    "prerender": true,
+    "isolation": false,
+    "hydration": false,
+    "servePage": null
+  },
+  {
+    "id": "packages-history-adapter",
+    "label": "History Adapter",
+    "title": "History Adapter",
+    "route": "/packages/history-adapter/",
+    "layout": "packages",
+    "data": {
+      "description": "For managing undoable state",
+      "icon": "history",
+      "package": "history-adapter",
+      "repo": "EskiMojo14/history-adapter",
+      "tocHeading": 0,
+      "tableOfContents": []
+    },
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/src/components/package-install/package-install.ts",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "pageHref": "file:///Users/admin/neocities/src/pages/packages/history-adapter.md",
+    "outputHref": "file:///Users/admin/neocities/public/packages/history-adapter/index.html",
+    "isSSR": false,
+    "prerender": true,
+    "isolation": false,
+    "hydration": false,
+    "servePage": null
+  },
+  {
+    "id": "packages-index",
+    "label": "Packages",
+    "title": "Packages",
+    "route": "/packages/",
+    "layout": null,
+    "data": {
+      "collection": "nav",
+      "order": 2,
+      "icon": "deployed_code_account",
+      "childIcon": "deployed_code",
+      "description": "stuff wot i made",
+      "tocHeading": 0,
+      "tableOfContents": []
+    },
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "pageHref": "file:///Users/admin/neocities/src/pages/packages/index.html",
+    "outputHref": "file:///Users/admin/neocities/public/packages/index.html",
+    "isSSR": false,
+    "prerender": true,
+    "isolation": false,
+    "hydration": false,
+    "servePage": null
+  },
+  {
+    "id": "packages-mix-n-matchers",
+    "label": "Mix N Matchers",
+    "title": "Mix 'n' Matchers",
+    "route": "/packages/mix-n-matchers/",
+    "layout": "packages",
+    "data": {
+      "description": "Some Jest compatible matchers",
+      "icon": "labs",
+      "package": "mix-n-matchers",
+      "devDep": true,
+      "repo": "EskiMojo14/mix-n-matchers",
+      "tocHeading": 0,
+      "tableOfContents": []
+    },
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/src/components/package-install/package-install.ts",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "pageHref": "file:///Users/admin/neocities/src/pages/packages/mix-n-matchers.md",
+    "outputHref": "file:///Users/admin/neocities/public/packages/mix-n-matchers/index.html",
+    "isSSR": false,
+    "prerender": true,
+    "isolation": false,
+    "hydration": false,
+    "servePage": null
+  },
+  {
+    "id": "packages-next-create-endpoint-factory",
+    "label": "Create Endpoint Factory",
+    "title": "Create Endpoint Factory",
+    "route": "/packages/next-create-endpoint-factory/",
+    "layout": "packages",
+    "data": {
+      "description": "For creating NextJS API routes easily",
+      "icon": "api",
+      "package": "next-create-endpoint-factory",
+      "repo": "actual-experience/create-endpoint-factory",
+      "tocHeading": 0,
+      "tableOfContents": []
+    },
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/src/components/package-install/package-install.ts",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "pageHref": "file:///Users/admin/neocities/src/pages/packages/next-create-endpoint-factory.md",
+    "outputHref": "file:///Users/admin/neocities/public/packages/next-create-endpoint-factory/index.html",
+    "isSSR": false,
+    "prerender": true,
+    "isolation": false,
+    "hydration": false,
+    "servePage": null
+  },
+  {
+    "id": "packages-rad-event-listeners",
+    "label": "Rad Event Listeners",
+    "title": "Rad Event Listeners",
+    "route": "/packages/rad-event-listeners/",
+    "layout": "packages",
+    "data": {
+      "description": "For adding multiple event listeners",
+      "icon": "hearing",
+      "package": "rad-event-listeners",
+      "repo": "EskiMojo14/rad-event-listeners",
+      "tocHeading": 0,
+      "tableOfContents": []
+    },
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/src/components/package-install/package-install.ts",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "pageHref": "file:///Users/admin/neocities/src/pages/packages/rad-event-listeners.md",
+    "outputHref": "file:///Users/admin/neocities/public/packages/rad-event-listeners/index.html",
+    "isSSR": false,
+    "prerender": true,
+    "isolation": false,
+    "hydration": false,
+    "servePage": null
+  },
+  {
+    "id": "packages-required-react-context",
+    "label": "Required React Context",
+    "title": "Required React Context",
+    "route": "/packages/required-react-context/",
+    "layout": "packages",
+    "data": {
+      "description": "For creating React context that needs to be provided",
+      "package": "required-react-context",
+      "repo": "EskiMojo14/required-react-context",
+      "tocHeading": 0,
+      "tableOfContents": []
+    },
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/src/components/package-install/package-install.ts",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "pageHref": "file:///Users/admin/neocities/src/pages/packages/required-react-context.md",
+    "outputHref": "file:///Users/admin/neocities/public/packages/required-react-context/index.html",
+    "isSSR": false,
+    "prerender": true,
+    "isolation": false,
+    "hydration": false,
+    "servePage": null
+  },
+  {
+    "id": "packages-uncheckedindexed",
+    "label": "Unchecked Indexed",
+    "title": "Unchecked Indexed",
+    "route": "/packages/uncheckedindexed/",
+    "layout": "packages",
+    "data": {
+      "description": "For matching a user's noUncheckedIndexedAccess setting",
+      "package": "uncheckedindexed",
+      "repo": "EskiMojo14/uncheckedindexed",
+      "tocHeading": 0,
+      "tableOfContents": []
+    },
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/src/components/package-install/package-install.ts",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "pageHref": "file:///Users/admin/neocities/src/pages/packages/uncheckedindexed.md",
+    "outputHref": "file:///Users/admin/neocities/public/packages/uncheckedindexed/index.html",
+    "isSSR": false,
+    "prerender": true,
+    "isolation": false,
+    "hydration": false,
+    "servePage": null
+  },
+  {
+    "id": "404",
+    "outputHref": "file:///Users/admin/neocities/public/404.html",
+    "route": "/404/",
+    "label": "Not Found",
+    "title": "Page Not Found",
+    "data": {},
+    "imports": [],
+    "resources": [
+      "/Users/admin/neocities/.greenwood/1899452879.js",
+      "/Users/admin/neocities/.greenwood/758806547.js",
+      "/Users/admin/neocities/src/components/sidebar/sidebar.ts",
+      "/Users/admin/neocities/src/components/header/header.ts",
+      "/Users/admin/neocities/.greenwood/1107222808.css",
+      "/Users/admin/neocities/src/global.css"
+    ],
+    "prerender": true,
+    "isolation": false,
+    "pageHref": "file:///Users/admin/neocities/src/pages/404.html",
+    "path": "404.html"
+  }
+]

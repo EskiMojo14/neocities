@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
-import { transformConstructableStylesheetsPlugin } from "./src/vite/css-plugin.ts";
+import { transformRawImports } from "./src/vite/raw-plugin.ts";
 
 export default defineConfig({
   // 5) add it the plugins option
-  plugins: [transformConstructableStylesheetsPlugin()],
+  plugins: [transformRawImports()],
 });

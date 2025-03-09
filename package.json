@@ -46,6 +46,7 @@
     "prettier": "^3.5.3",
     "sass": "^1.85.1",
     "storybook": "^8.6.3",
+    "storybook-addon-fetch-mock": "^2.0.1",
     "ts-lit-plugin": "^2.0.2",
     "typescript": "~5.8.2",
     "typescript-eslint": "^8.26.0",
