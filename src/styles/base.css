@@ -71,6 +71,14 @@ code {
   background: var(--black);
   padding: 0.5rem;
   border-radius: 0.5rem;
+  font-feature-settings:
+    "calt" 1,
+    "ss01" 1,
+    "ss02" 1,
+    "ss03" 1,
+    "ss04" 1,
+    "ss09" 1,
+    "liga" 1;
 }
 
 code[class*="language-"],

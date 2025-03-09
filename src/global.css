@@ -76,6 +76,9 @@ body {
   font-size: var(--body1-size);
   font-weight: var(--body1-weight);
   text-transform: var(--body1-transform);
+  font-feature-settings:
+    "calt" 1,
+    "liga" 1;
   .root {
     flex: 1;
     margin: 0 auto;
