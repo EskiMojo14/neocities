@@ -24,5 +24,9 @@ theme-toggle {
         --icon-weight: 500;
       }
     }
+    &:focus {
+      outline: none;
+      background: var(--focus-background);
+    }
   }
 }

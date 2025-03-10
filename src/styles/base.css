@@ -58,6 +58,12 @@ a {
       color: var(--link-visited-hover);
     }
   }
+  &:focus {
+    color: var(--link-focus);
+    --icon-weight: 700;
+    font-weight: var(--weight-semibold);
+    outline: none;
+  }
 }
 
 code,
