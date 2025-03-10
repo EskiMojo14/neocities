@@ -197,7 +197,10 @@ export default class Sidebar extends LitElement {
   render() {
     return html`
       <nav>
-        <theme-toggle></theme-toggle>
+        <div class="header-row">
+          <h1 class="headline6">eskimojo</h1>
+          <theme-toggle></theme-toggle>
+        </div>
         <ul>
           ${repeat(
             Object.values(sidebarItems).sort(sortSidebarItems),

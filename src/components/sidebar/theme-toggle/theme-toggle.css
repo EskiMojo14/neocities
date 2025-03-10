@@ -1,7 +1,4 @@
 theme-toggle {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 var(--padding-h);
   button {
     appearance: none;
     border: none;
