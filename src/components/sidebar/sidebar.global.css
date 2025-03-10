@@ -1,9 +1,5 @@
 sidebar-nav {
   --sidebar-width: 256px;
-  background: var(--black);
+  background: var(--sidebar-background);
   width: var(--sidebar-width);
-  &:dir(rtl) {
-    border-right: none;
-    border-left: 1px solid var(--disabled);
-  }
 }

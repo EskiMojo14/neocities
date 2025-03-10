@@ -1,15 +1,14 @@
-import { LitElement, unsafeCSS } from "lit";
+import { LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { html } from "lit-html";
 import { when } from "lit-html/directives/when.js";
-import dracula from "../../../node_modules/dracula-prism/dist/css/dracula-prism.css?type=raw";
-import base from "../../styles/base.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
-import pkgInfo from "./pkg-info.css?type=raw";
 
 @customElement("pkg-info")
 export default class PkgInfo extends LitElement {
-  static styles = [unsafeCSS(dracula), unsafeCSS(base), unsafeCSS(pkgInfo)];
+  createRenderRoot() {
+    return this;
+  }
 
   @property({ type: String, attribute: "dev-dep" })
   devDep = "";

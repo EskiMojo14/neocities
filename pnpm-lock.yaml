@@ -105,6 +105,9 @@ importers:
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
+      prism-theme-github:
+        specifier: ^1.0.2
+        version: 1.0.2
       sass:
         specifier: ^1.85.1
         version: 1.85.1
@@ -2547,6 +2550,9 @@ packages:
   pretty-format@27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
+
+  prism-theme-github@1.0.2:
+    resolution: {integrity: sha512-9AFFL0BOoMZISiLT7UcM3YP/AwKMKycIDHMcBl0fVtM3vaHgxa7u9PFoky2QjXncgGEWW4vHPzH2+WRyQJB5tQ==}
 
   prismjs@1.27.0:
     resolution: {integrity: sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==}
@@ -5892,6 +5898,8 @@ snapshots:
       ansi-regex: 5.0.1
       ansi-styles: 5.2.0
       react-is: 17.0.2
+
+  prism-theme-github@1.0.2: {}
 
   prismjs@1.27.0: {}
 

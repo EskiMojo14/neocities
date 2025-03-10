@@ -73,7 +73,7 @@ code {
 pre,
 code {
   text-transform: none;
-  background: var(--black);
+  background: var(--code-background);
   padding: 0.5rem;
   border-radius: 0.5rem;
   font-feature-settings:
@@ -91,7 +91,7 @@ pre[class*="language-"] {
   font-family: var(--font-family-code);
   font-size: var(--body1-size);
   font-weight: var(--body1-weight);
-  background: var(--black);
+  background: var(--code-background);
 }
 
 pre code {

@@ -48,7 +48,7 @@ a {
     color: var(--link-current);
     --icon-weight: 500;
     --icon-fill: 1;
-    background: var(--grey);
+    background: var(--link-current-background);
     font-variation-settings: "slnt" -11;
   }
 

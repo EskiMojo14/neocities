@@ -2,7 +2,7 @@ pkg-info {
   display: block;
   margin: 1em 0;
   &:not(:defined) {
-    background: var(--black);
+    background: var(--code-background);
     padding: 1em;
     border-radius: 0.5em;
     text-transform: none;
@@ -13,4 +13,10 @@ pkg-info {
       content: "pnpm add -D " attr(pkg);
     }
   }
+}
+
+.link-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
