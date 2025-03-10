@@ -2,7 +2,7 @@ import { themes } from "@storybook/theming";
 import type { Decorator, Preview } from "@storybook/web-components";
 import * as v from "valibot";
 import pages from "./mocks/graph.json";
-import "../src/global.css";
+import "../src/styles/global.css";
 
 const dirSchema = v.picklist(["auto", "ltr", "rtl"]);
 
