@@ -24,7 +24,8 @@ export default class ThemeToggle extends LitElement {
   render() {
     return html`
       <button
-        aria-label="Toggle theme"
+        aria-label="Use dark theme"
+        aria-pressed=${this.currentTheme === "dark"}
         @click=${() => {
           this.toggleTheme();
         }}
