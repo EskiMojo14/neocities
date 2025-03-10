@@ -44,11 +44,16 @@ a {
   gap: 0.5rem;
   color: var(--link);
   text-decoration: none;
+  transition-property: color, font-weight, font-variation-settings;
+  transition-duration: var(--font-transition-duration);
+  --icon-weight: 300;
   &:visited {
     color: var(--link-visited);
   }
   &:hover {
     color: var(--link-hover);
+    font-weight: var(--weight-semibold);
+    --icon-weight: 700;
     &:visited {
       color: var(--link-visited-hover);
     }

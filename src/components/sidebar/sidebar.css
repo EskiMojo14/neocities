@@ -39,17 +39,12 @@ a {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   gap: 0.5rem;
-  transition-property: color, font-weight, font-style, font-variation-settings;
-  transition-duration: var(--font-transition-duration);
-  --icon-weight: 300;
   &:hover {
-    font-weight: var(--weight-medium);
-    --icon-weight: 700;
     font-variation-settings: "slnt" -8;
   }
   &.current,
   &.current:hover {
-    font-weight: var(--weight-semibold);
+    font-weight: var(--weight-bold);
     color: var(--link-current);
     --icon-weight: 500;
     --icon-fill: 1;
