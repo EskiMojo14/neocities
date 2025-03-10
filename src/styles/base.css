@@ -26,7 +26,7 @@ material-symbol {
   font-variation-settings:
     "FILL" var(--icon-fill, 0),
     "wght" var(--icon-weight, 400),
-    "GRAD" clamp(-25, var(--icon-grade, -25), 200),
+    "GRAD" clamp(-25, var(--icon-grade, 0), 200),
     "opsz" clamp(20, var(--icon-optical-size, 24), 48);
   transition: font-variation-settings var(--font-transition-duration);
   height: 1em;

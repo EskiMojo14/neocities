@@ -1,4 +1,18 @@
-:root {
+[data-theme="light"] {
+  --weight-thin: 100;
+  --weight-extralight: 200;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+  --weight-black: 900;
+
+  --icon-grade: 0;
+}
+
+[data-theme="dark"] {
   --weight-thin: 100;
   --weight-extralight: 150;
   --weight-light: 250;
@@ -9,6 +23,10 @@
   --weight-extrabold: 750;
   --weight-black: 850;
 
+  --icon-grade: -25;
+}
+
+:root {
   --headline1-family: var(--font-family-heading);
   --headline1-size: 6.0625rem;
   --headline1-weight: var(--weight-extralight);
