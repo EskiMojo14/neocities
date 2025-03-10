@@ -24,7 +24,7 @@ theme-toggle {
         --icon-weight: 500;
       }
     }
-    &:focus {
+    &:focus-visible {
       outline: none;
       background: var(--focus-background);
     }

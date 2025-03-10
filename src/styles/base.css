@@ -58,7 +58,7 @@ a {
       color: var(--link-visited-hover);
     }
   }
-  &:focus {
+  &:focus-visible {
     color: var(--link-focus);
     --icon-weight: 700;
     font-weight: var(--weight-semibold);
