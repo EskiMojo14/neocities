@@ -99,3 +99,9 @@ pre code {
   border-radius: 0;
   background: none;
 }
+
+.link-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
