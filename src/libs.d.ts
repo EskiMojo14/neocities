@@ -14,39 +14,15 @@ declare module "*.css" {
 }
 
 declare module "@greenwood/cli/src/lifecycles/config.js" {
-  import type { UserConfig } from "vite";
-  export function readAndMergeConfig(): Promise<UserConfig>;
+  import type { Config } from "@greenwood/cli";
+  export function readAndMergeConfig(): Promise<Config>;
 }
-
-interface GreenwoodContext {}
 
 declare module "@greenwood/cli/src/lifecycles/context.js" {
-  import type { UserConfig } from "vite";
+  import type { Compilation, Config } from "@greenwood/cli";
   export function initContext(opts: {
-    config: UserConfig;
-  }): Promise<GreenwoodContext>;
-}
-
-interface GreenwoodPlugin {
-  provider: (compilation: {
-    context: GreenwoodContext;
-    // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-    config: import("vite").UserConfig;
-  }) => {
-    intercept: (
-      url: URL | null,
-      request: Request | null,
-      response: Response,
-    ) => Promise<Response>;
-  };
-}
-
-declare module "@greenwood/cli/src/plugins/resource/plugin-standard-css.js" {
-  export const greenwoodPluginStandardCss: GreenwoodPlugin;
-}
-
-declare module "@greenwood/plugin-import-raw" {
-  export function greenwoodPluginImportRaw(): Array<GreenwoodPlugin>;
+    config: Config;
+  }): Promise<Compilation["context"]>;
 }
 
 declare module "@greenwood/cli/src/data/client.js" {

@@ -8,7 +8,7 @@ import type { Plugin } from "vite";
 // 2) initialize Greenwood lifecycles
 const config = await readAndMergeConfig();
 const context = await initContext({ config });
-const compilation = { context, config };
+const compilation = { context, config, graph: [] };
 
 // 3) initialize the plugin
 const rawResource = greenwoodPluginImportRaw()[0].provider(compilation);
@@ -22,11 +22,14 @@ export function transformRawImports(): Plugin {
       if (id.endsWith("?type=raw")) {
         const filename = id.slice(0, -9);
         const contents = await fs.readFile(filename, "utf-8");
-        const response = await rawResource.intercept(
-          null,
-          null,
+
+        /* eslint-disable @typescript-eslint/no-non-null-assertion */
+        const response = await rawResource.intercept!(
+          null!,
+          null!,
           new Response(contents),
         );
+        /* eslint-enable @typescript-eslint/no-non-null-assertion */
         const body = await response.text();
 
         return body;
