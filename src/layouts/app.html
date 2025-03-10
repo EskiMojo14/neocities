@@ -9,7 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script type="module" src="../components/sidebar/sidebar.ts"></script>
     <script type="module" src="../components/header/header.ts"></script>
-    <title>${globalThis.page.title}</title>
+    <title>eskimojo - ${globalThis.page.title}</title>
+    <meta property="og:title" content="eskimojo - ${globalThis.page.title}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://eskimojo.neocities.org/" />
+    <meta
+      property="og:description"
+      content="eskimojo - ${globalThis.page.data.description}"
+    />
   </head>
   <body>
     <sidebar-nav current-route="${globalThis.page.route}"></sidebar-nav>
