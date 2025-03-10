@@ -15,6 +15,7 @@ import { assert, uniqueBy } from "../../utils/index.ts";
 import { isActiveLink, clsx, styleMap } from "../../utils/lit.ts";
 import "../symbol/symbol.ts";
 import sidebar from "./sidebar.css?type=raw";
+import "./theme-toggle/theme-toggle.ts";
 
 interface SidebarItemCommon {
   href: string;
@@ -196,6 +197,7 @@ export default class Sidebar extends LitElement {
   render() {
     return html`
       <nav>
+        <theme-toggle></theme-toggle>
         <ul>
           ${repeat(
             Object.values(sidebarItems).sort(sortSidebarItems),

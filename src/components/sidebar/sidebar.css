@@ -1,8 +1,9 @@
+@import "./theme-toggle/theme-toggle.css";
+
 nav {
   --padding-h: 1rem;
   --padding-per-level: 1rem;
-  --padding-v: 1rem;
-  padding: var(--padding-v) 0;
+  padding: 1rem 0;
 }
 
 ul {
@@ -10,6 +11,7 @@ ul {
   flex-direction: column;
   list-style: none;
   gap: 0.5rem;
+  margin: 0;
   --padding-s: calc(
     var(--padding-per-level) * var(--level, 0) + var(--padding-h)
   );
