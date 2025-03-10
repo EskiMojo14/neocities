@@ -11,25 +11,18 @@ theme-toggle {
     background: var(--background);
     border-radius: 999px;
     material-symbol {
+      --icon-weight: 300;
       transition-property: color, font-variation-settings;
+      &[data-selected] {
+        --icon-weight: 500;
+        --icon-fill: 1;
+        color: var(--link-current);
+      }
     }
-  }
-}
-
-[data-theme="light"] {
-  [data-theme-option="light"] {
-    --icon-fill: 1;
-  }
-  [data-theme-option="dark"] {
-    color: var(--comment);
-  }
-}
-
-[data-theme="dark"] {
-  [data-theme-option="dark"] {
-    --icon-fill: 1;
-  }
-  [data-theme-option="light"] {
-    color: var(--comment);
+    &:hover {
+      material-symbol:not([data-selected]) {
+        --icon-weight: 500;
+      }
+    }
   }
 }

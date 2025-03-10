@@ -25,14 +25,17 @@ export default class ThemeToggle extends LitElement {
     return html`
       <button
         aria-label="Toggle theme"
-        data-theme=${this.currentTheme}
         @click=${() => {
           this.toggleTheme();
         }}
       >
-        <material-symbol aria-hidden="true" data-theme-option="light"
+        <material-symbol
+          aria-hidden="true"
+          ?data-selected=${this.currentTheme === "light"}
           >light_mode</material-symbol
-        ><material-symbol aria-hidden="true" data-theme-option="dark"
+        ><material-symbol
+          aria-hidden="true"
+          ?data-selected=${this.currentTheme === "dark"}
           >dark_mode</material-symbol
         >
       </button>
