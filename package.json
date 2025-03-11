@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js develop",
-    "build": "node --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js build",
-    "serve": "node --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js serve",
+    "dev": "node --import @greenwood/cli/register --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js develop",
+    "build": "node --import @greenwood/cli/register --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js build",
+    "serve": "node --import @greenwood/cli/register --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js serve",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint",
@@ -60,7 +60,7 @@
     "valibot": "1.0.0-rc.3"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=21.10.0"
   },
   "packageManager": "pnpm@10.6.0+sha256.71ea235e611e2c8e6043ffca1c278f82089f71dfec4d1e9d01b47825e5e92f89",
   "pnpm": {
