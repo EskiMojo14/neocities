@@ -30,7 +30,7 @@ export default class PkgInfo extends LitElement {
     return html`
       <div class="link-group">
         ${when(
-          frontmatterIsSet(docs),
+          frontmatterIsSet(docs) && docs,
           () => html`
             <a href="${docs}" target="_blank" rel="noopener noreferrer">
               <material-symbol aria-hidden="true"

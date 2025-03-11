@@ -21,6 +21,8 @@
   --sidebar-background: var(--black);
 
   --code-background: var(--black);
+
+  --divider: var(--disabled);
 }
 
 [data-theme="light"] {
@@ -35,4 +37,6 @@
   --sidebar-background: var(--white-secondary);
 
   --code-background: var(--white-secondary);
+
+  --divider: var(--grey);
 }
