@@ -2,4 +2,8 @@ sidebar-nav {
   --sidebar-width: 256px;
   background: var(--sidebar-background);
   width: var(--sidebar-width);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
 }
