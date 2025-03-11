@@ -3,10 +3,13 @@
 nav {
   --padding-h: 1rem;
   --padding-per-level: 1rem;
-  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 ul {
+  flex: 1;
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -15,6 +18,8 @@ ul {
     var(--padding-per-level) * var(--level, 0) + var(--padding-h)
   );
   padding: 0;
+  margin: 0;
+  overflow-y: auto;
   a {
     padding-left: var(--padding-s);
     padding-right: var(--padding-h);
@@ -63,7 +68,8 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 var(--padding-h);
+  padding: 0.5rem var(--padding-h);
+  flex: 0 0;
   h1 {
     margin: 0;
   }
