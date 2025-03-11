@@ -14,6 +14,13 @@ const rtlDecorator: Decorator = (
   return story({ args });
 };
 
+const themeSchema = v.picklist(["light", "dark"]);
+
+const themeDecorator: Decorator = (story, { args: { theme, ...args } }) => {
+  document.documentElement.dataset.theme = v.parse(themeSchema, theme);
+  return story({ args });
+};
+
 const preview: Preview = {
   parameters: {
     layout: "centered",
@@ -44,11 +51,16 @@ const preview: Preview = {
       control: "inline-radio",
       options: dirSchema.options,
     },
+    theme: {
+      control: "inline-radio",
+      options: themeSchema.options,
+    },
   },
   args: {
     dir: "auto",
+    theme: "dark",
   },
-  decorators: [rtlDecorator],
+  decorators: [rtlDecorator, themeDecorator],
 };
 
 export default preview;
