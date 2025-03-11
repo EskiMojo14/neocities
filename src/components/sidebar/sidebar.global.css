@@ -1,7 +1,6 @@
 sidebar-nav {
-  --sidebar-width: 256px;
   background: var(--sidebar-background);
-  width: var(--sidebar-width);
+  width: 256px;
   position: sticky;
   top: 0;
   height: 100vh;
