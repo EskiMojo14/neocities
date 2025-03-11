@@ -4,7 +4,7 @@ pkg-info {
   &:not(:defined) {
     background: var(--code-background);
     padding: 1em;
-    border-radius: 0.5em;
+    border-radius: var(--shape-medium);
     text-transform: none;
     &::before {
       content: "pnpm add " attr(pkg);

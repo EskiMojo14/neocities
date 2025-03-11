@@ -9,7 +9,7 @@ theme-toggle {
     margin: 0;
     color: var(--foreground);
     background: var(--background);
-    border-radius: 999px;
+    border-radius: var(--shape-pill);
     material-symbol {
       --icon-weight: 300;
       transition-property: color, font-variation-settings;

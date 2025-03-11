@@ -5,6 +5,7 @@
 
 @import "./base.css";
 @import "./color.css";
+@import "./shape.css";
 @import "./typography.css";
 @import "../components/header/header.global.css";
 @import "../components/sidebar/sidebar.global.css";
