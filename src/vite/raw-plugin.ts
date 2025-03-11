@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 // 1) import the greenwood plugin and lifecycle helpers
+import type { Compilation } from "@greenwood/cli";
 import { readAndMergeConfig } from "@greenwood/cli/src/lifecycles/config.js";
 import { initContext } from "@greenwood/cli/src/lifecycles/context.js";
 import { greenwoodPluginImportRaw } from "@greenwood/plugin-import-raw";
@@ -7,8 +8,11 @@ import type { Plugin } from "vite";
 
 // 2) initialize Greenwood lifecycles
 const config = await readAndMergeConfig();
-const context = await initContext({ config });
-const compilation = { context, config, graph: [] };
+const compilation: Compilation = {
+  context: await initContext({ config }),
+  config,
+  graph: [],
+};
 
 // 3) initialize the plugin
 const rawResource = greenwoodPluginImportRaw()[0].provider(compilation);

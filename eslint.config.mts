@@ -8,13 +8,7 @@ import { configs } from "eslint-plugin-lit";
 
 export default tseslint.config(
   {
-    ignores: [
-      "eslint.config.mts",
-      "dist",
-      ".greenwood",
-      "greenwood.config.js",
-      "public",
-    ],
+    ignores: ["eslint.config.mts", "dist", ".greenwood", "public"],
   },
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
