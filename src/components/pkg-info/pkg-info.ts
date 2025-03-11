@@ -22,8 +22,11 @@ export default class PkgInfo extends LitElement {
   @property({ type: String })
   docs = "";
 
+  @property({ type: Boolean, attribute: "include-install" })
+  includeInstall = false;
+
   render() {
-    const { devDep, pkg, repo, docs } = this;
+    const { devDep, pkg, repo, docs, includeInstall } = this;
     return html`
       <div class="link-group">
         ${when(
@@ -56,12 +59,17 @@ export default class PkgInfo extends LitElement {
           GitHub
         </a>
       </div>
-      <pre
-        class="language-bash"
-      ><code class="language-bash"><span class="token function">pnpm</span> <span class="token function">add</span> ${when(
-        frontmatterIsSet(devDep),
-        () => html`<span class="token parameter variable">-D</span> `,
-      )}${pkg}</code></pre>
+      ${when(
+        includeInstall,
+        () => html`
+          <pre
+            class="language-bash"
+          ><code class="language-bash"><span class="token function">pnpm</span> <span class="token function">add</span> ${when(
+            frontmatterIsSet(devDep),
+            () => html`<span class="token parameter variable">-D</span> `,
+          )}${pkg}</code></pre>
+        `,
+      )}
     `;
   }
 }
