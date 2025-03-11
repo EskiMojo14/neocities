@@ -3,6 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import { html } from "lit-html";
 import { when } from "lit-html/directives/when.js";
 import { frontmatterIsSet } from "../../utils/index.ts";
+import "../link-group/link-group.ts";
 
 @customElement("pkg-info")
 export default class PkgInfo extends LitElement {
@@ -28,7 +29,7 @@ export default class PkgInfo extends LitElement {
   render() {
     const { devDep, pkg, repo, docs, includeInstall } = this;
     return html`
-      <div class="link-group">
+      <link-group>
         ${when(
           frontmatterIsSet(docs) && docs,
           () => html`
@@ -58,7 +59,7 @@ export default class PkgInfo extends LitElement {
           <material-symbol aria-hidden="true">code</material-symbol>
           GitHub
         </a>
-      </div>
+      </link-group>
       ${when(
         includeInstall,
         () => html`
