@@ -91,6 +91,7 @@ code {
 :not(pre) > code {
   padding: 0.25em 0.35em;
   border-radius: var(--shape-small);
+  display: inline-block;
 }
 
 code[class*="language-"],
