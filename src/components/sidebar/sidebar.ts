@@ -66,7 +66,10 @@ async function getSidebarItems() {
     getContentByRoute("/blog/"),
     getContentByRoute("/packages/"),
   ]);
-  for (const page of content.flat().filter(uniqueBy((page) => page.route))) {
+  for (const page of content
+    .flat()
+    .filter(uniqueBy((page) => page.route))
+    .sort((a, b) => a.route.localeCompare(b.route))) {
     const paths = page.route.split("/").filter(Boolean);
     let cursor = base;
     const last = paths.pop() ?? "";
