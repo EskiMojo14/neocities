@@ -1,13 +1,14 @@
-import { LitElement } from "lit";
+import { LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { html } from "lit-html";
+import base from "../../styles/base.css?type=raw";
+import typography from "../../styles/typography.css?type=raw";
 import "../pkg-info/pkg-info.ts";
+import pkgCard from "./pkg-card.css?type=raw";
 
 @customElement("pkg-card")
 export default class PkgCard extends LitElement {
-  createRenderRoot() {
-    return this;
-  }
+  static styles = [unsafeCSS(base), unsafeCSS(typography), unsafeCSS(pkgCard)];
 
   @property({ type: String })
   pkg = "";

@@ -10,7 +10,6 @@
 @import "../components/header/header.global.css";
 @import "../components/sidebar/sidebar.global.css";
 @import "../components/pkg-info/pkg-info.global.css";
-@import "../components/pkg-card/pkg-card.global.css";
 
 @font-face {
   font-family: "Monaspace Argon";
