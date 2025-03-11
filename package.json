@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node --import @greenwood/cli/register --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js develop",
-    "build": "node --import @greenwood/cli/register --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js build",
-    "serve": "node --import @greenwood/cli/register --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js serve",
+    "dev": "node --experimental-strip-types --import @greenwood/cli/register --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js develop",
+    "build": "node --experimental-strip-types --import @greenwood/cli/register --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js build",
+    "serve": "node --experimental-strip-types -import @greenwood/cli/register --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js serve",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint",
@@ -17,10 +17,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
-    "@greenwood/cli": "0.31.1",
-    "@greenwood/plugin-import-raw": "0.31.1",
-    "@greenwood/plugin-renderer-lit": "0.31.1",
-    "@greenwood/plugin-typescript": "0.31.1",
+    "@greenwood/cli": "0.32.0-alpha.5",
+    "@greenwood/plugin-import-raw": "0.32.0-alpha.5",
+    "@greenwood/plugin-renderer-lit": "0.32.0-alpha.5",
+    "@greenwood/plugin-typescript": "0.32.0-alpha.5",
     "@mapbox/rehype-prism": "^0.9.0",
     "@storybook/addon-essentials": "^8.6.3",
     "@storybook/blocks": "^8.6.3",
@@ -60,7 +60,7 @@
     "valibot": "1.0.0-rc.3"
   },
   "engines": {
-    "node": ">=21.10.0"
+    "node": ">=22.0.0"
   },
   "packageManager": "pnpm@10.6.0+sha256.71ea235e611e2c8e6043ffca1c278f82089f71dfec4d1e9d01b47825e5e92f89",
   "pnpm": {

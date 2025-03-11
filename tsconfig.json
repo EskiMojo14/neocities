@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "Preserve",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
 
@@ -20,6 +20,7 @@
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
     "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": false,
 
     "plugins": [
       {
@@ -27,5 +28,5 @@
       }
     ]
   },
-  "include": ["src", ".storybook/*", "vite.config.ts"]
+  "include": ["src", ".storybook/*", "vite.config.ts", "greenwood.config.ts"]
 }
