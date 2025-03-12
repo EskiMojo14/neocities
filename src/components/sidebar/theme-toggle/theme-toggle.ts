@@ -1,12 +1,13 @@
-import { LitElement } from "lit";
+import { LitElement, unsafeCSS } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { html } from "lit-html";
+import base from "../../../styles/base.css?type=raw";
+import "../../symbol/symbol.ts";
+import themeToggle from "./theme-toggle.css?type=raw";
 
 @customElement("theme-toggle")
 export default class ThemeToggle extends LitElement {
-  createRenderRoot() {
-    return this;
-  }
+  static styles = [unsafeCSS(base), unsafeCSS(themeToggle)];
 
   @state()
   currentTheme = "dark";

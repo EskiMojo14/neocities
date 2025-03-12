@@ -1,32 +1,30 @@
-theme-toggle {
-  button {
-    appearance: none;
-    border: none;
-    background: none;
-    padding: 0.25rem 0.5rem;
-    display: flex;
-    gap: 0.5rem;
-    margin: 0;
-    color: var(--foreground);
-    background: var(--background);
-    border-radius: var(--shape-pill);
-    material-symbol {
-      --icon-weight: 300;
-      transition-property: color, font-variation-settings;
-      &[data-selected] {
-        --icon-weight: 500;
-        --icon-fill: 1;
-        color: var(--link-current);
-      }
+button {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  color: var(--foreground);
+  background: var(--background);
+  border-radius: var(--shape-pill);
+  material-symbol {
+    --icon-weight: 300;
+    transition-property: color, font-variation-settings;
+    &[data-selected] {
+      --icon-weight: 500;
+      --icon-fill: 1;
+      color: var(--link-current);
     }
-    &:hover {
-      material-symbol:not([data-selected]) {
-        --icon-weight: 500;
-      }
+  }
+  &:hover {
+    material-symbol:not([data-selected]) {
+      --icon-weight: 500;
     }
-    &:focus-visible {
-      outline: none;
-      background: var(--focus-background);
-    }
+  }
+  &:focus-visible {
+    outline: none;
+    background: var(--focus-background);
   }
 }

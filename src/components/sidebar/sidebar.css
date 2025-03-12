@@ -1,5 +1,3 @@
-@import "./theme-toggle/theme-toggle.css";
-
 nav {
   --padding-h: 1rem;
   --padding-per-level: 1rem;
