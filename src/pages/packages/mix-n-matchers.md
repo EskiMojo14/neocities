@@ -1,6 +1,7 @@
 ---
 layout: packages
 title: Mix 'n' Matchers
+label: Mix 'n' Matchers
 description: Some Jest/Vitest compatible matchers
 icon: labs
 package: mix-n-matchers
