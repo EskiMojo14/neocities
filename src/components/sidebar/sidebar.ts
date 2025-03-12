@@ -7,6 +7,7 @@ import { customElement, property } from "lit/decorators.js";
 import { html, type TemplateResult } from "lit-html";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import { repeat } from "lit-html/directives/repeat.js";
+import { until } from "lit-html/directives/until.js";
 import * as v from "valibot";
 import base from "../../styles/base.css?type=raw";
 import typography from "../../styles/typography.css?type=raw";
@@ -99,8 +100,6 @@ async function getSidebarItems() {
   }
   return base;
 }
-
-const sidebarItems = await getSidebarItems();
 
 function renderSidebarItem(item: SidebarItem, currentRoute: string) {
   const isCurrent = isActiveLink(item.href, currentRoute, "equals");
@@ -201,6 +200,11 @@ export default class Sidebar extends LitElement {
   @property({ type: String, attribute: "current-route" })
   currentRoute = "/";
 
+  #_sidebarItems: Record<string, SidebarItem | SidebarGroup> | undefined;
+  async #getSidebarItems() {
+    return (this.#_sidebarItems ??= await getSidebarItems());
+  }
+
   render() {
     return html`
       <nav>
@@ -209,13 +213,18 @@ export default class Sidebar extends LitElement {
           <theme-toggle></theme-toggle>
         </div>
         <ul>
-          ${repeat(
-            Object.values(sidebarItems).sort(sortSidebarItems),
-            (item) => item.href,
-            (item) =>
-              item.type === "item"
-                ? renderSidebarItem(item, this.currentRoute)
-                : renderSidebarGroup(item, this.currentRoute, 1),
+          ${until(
+            this.#getSidebarItems().then((sidebarItems) =>
+              repeat(
+                Object.values(sidebarItems).sort(sortSidebarItems),
+                (item) => item.href,
+                (item) =>
+                  item.type === "item"
+                    ? renderSidebarItem(item, this.currentRoute)
+                    : renderSidebarGroup(item, this.currentRoute, 1),
+              ),
+            ),
+            html`<p class="headline6">Loading...</p>`,
           )}
         </ul>
       </nav>
