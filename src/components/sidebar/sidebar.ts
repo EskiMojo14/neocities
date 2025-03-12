@@ -14,6 +14,7 @@ import typography from "../../styles/typography.css?type=raw";
 import type { WithOptional } from "../../utils/index.ts";
 import { assert, uniqueBy } from "../../utils/index.ts";
 import { isActiveLink, clsx, styleMap } from "../../utils/lit.ts";
+import "../spinner/spinner.ts";
 import "../symbol/symbol.ts";
 import sidebar from "./sidebar.css?type=raw";
 import "./theme-toggle/theme-toggle.ts";
@@ -224,7 +225,7 @@ export default class Sidebar extends LitElement {
                     : renderSidebarGroup(item, this.currentRoute, 1),
               ),
             ),
-            html`<p class="headline6">Loading...</p>`,
+            html`<hourglass-spinner></hourglass-spinner>`,
           )}
         </ul>
       </nav>

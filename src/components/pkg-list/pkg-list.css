@@ -6,4 +6,7 @@
   pkg-card {
     height: 100%;
   }
+  hourglass-spinner {
+    margin: auto;
+  }
 }

@@ -9,6 +9,7 @@ import * as v from "valibot";
 import base from "../../styles/base.css?type=raw";
 import typography from "../../styles/typography.css?type=raw";
 import "../pkg-card/pkg-card.ts";
+import "../spinner/spinner.ts";
 import pkgList from "./pkg-list.css?type=raw";
 
 const pkgSchema = v.object({
@@ -68,7 +69,7 @@ export default class PkgList extends LitElement {
                 ></pkg-card>`,
             ),
           ),
-          html`<p class="headline6">Loading...</p>`,
+          html`<hourglass-spinner></hourglass-spinner>`,
         )}
       </div>
     `;

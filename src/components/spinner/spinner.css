@@ -1,0 +1,56 @@
+:host {
+  display: inline-block;
+  --icon-weight: 300;
+  --icon-size: 48px;
+  --top-opacity: 0;
+  --bottom-opacity: 1;
+  height: var(--icon-size, 24px);
+  width: var(--icon-size, 24px);
+  animation: spin 1.5s ease infinite;
+  position: relative;
+  material-symbol {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition-property: font-weight, font-variation-settings, opacity;
+    &:first-child {
+      opacity: var(--bottom-opacity);
+    }
+    &:last-child {
+      opacity: var(--top-opacity);
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    --top-opacity: 0;
+    --bottom-opacity: 1;
+  }
+  10% {
+    transform: rotate(0deg);
+    --top-opacity: 0;
+    --bottom-opacity: 1;
+  }
+  40% {
+    transform: rotate(180deg);
+    --top-opacity: 1;
+    --bottom-opacity: 0;
+  }
+  60% {
+    transform: rotate(180deg);
+    --top-opacity: 1;
+    --bottom-opacity: 0;
+  }
+  90% {
+    transform: rotate(360deg);
+    --top-opacity: 0;
+    --bottom-opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg);
+    --top-opacity: 0;
+    --bottom-opacity: 1;
+  }
+}

@@ -26,6 +26,9 @@ ul {
       padding-right: var(--padding-s);
     }
   }
+  hourglass-spinner {
+    margin: auto;
+  }
 }
 
 li {
