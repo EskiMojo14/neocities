@@ -17,17 +17,26 @@ export default class LinkGroup extends LitElement {
     };
   }
 
+  #getActiveElement(): Element | null {
+    let el = document.activeElement;
+    while (el?.shadowRoot) {
+      el = el.shadowRoot.activeElement;
+    }
+    return el;
+  }
+
   #handleKeyDown(event: KeyboardEvent) {
-    if (!this.contains(document.activeElement)) return;
+    const focused = this.#getActiveElement();
+    if (!this.contains(focused)) return;
     const keys = this.#getNextKeys();
     switch (event.key) {
       case keys.prev: {
-        const prev = document.activeElement?.previousElementSibling;
+        const prev = focused?.previousElementSibling;
         if (prev instanceof HTMLElement) prev.focus();
         break;
       }
       case keys.next: {
-        const next = document.activeElement?.nextElementSibling;
+        const next = focused?.nextElementSibling;
         if (next instanceof HTMLElement) next.focus();
         break;
       }
