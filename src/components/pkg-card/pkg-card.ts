@@ -28,14 +28,19 @@ export default class PkgCard extends LitElement {
   @property({ type: String })
   route = "";
 
+  @property({ type: String })
+  icon = "deployed_code";
+
   render() {
-    const { pkg, repo, docs, name, description, route } = this;
+    const { pkg, repo, docs, name, description, route, icon } = this;
     return html`
       <div class="pkg-card">
         <code class="overline">${pkg}</code>
-        <a class="headline5" href="${route}">${name}</a>
+        <a class="name" href="${route}">
+          <h3 class="headline5">${name}</h3>
+          <material-symbol aria-hidden="true">${icon}</material-symbol>
+        </a>
         <p class="subtitle2">${description}</p>
-        <div class="spacer"></div>
         <pkg-info pkg=${pkg} repo=${repo} docs=${docs}></pkg-info>
       </div>
     `;

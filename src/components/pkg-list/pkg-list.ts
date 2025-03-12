@@ -17,6 +17,7 @@ const pkgSchema = v.object({
   name: v.string(),
   description: v.string(),
   route: v.string(),
+  icon: v.optional(v.string()),
 });
 
 async function getPackages() {
@@ -31,6 +32,7 @@ async function getPackages() {
         description: page.data.description,
         name: page.title,
         route: page.route,
+        icon: page.data.icon,
       } satisfies Record<keyof v.InferInput<typeof pkgSchema>, unknown>),
     )
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -56,6 +58,7 @@ export default class PkgList extends LitElement {
               name=${pkg.name}
               description=${pkg.description}
               route=${pkg.route}
+              icon=${ifDefined(pkg.icon)}
             ></pkg-card>`,
         )}
       </div>
