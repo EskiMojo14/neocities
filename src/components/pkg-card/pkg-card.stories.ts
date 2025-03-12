@@ -9,8 +9,9 @@ const meta = {
     pkg: "history-adapter",
     repo: "EskiMojo14/history-adapter",
     docs: "https://eskimojo14.github.io/history-adapter/",
-    title: "History Adapter",
+    name: "History Adapter",
     description: "For managing undoable state",
+    route: "/packages/history-adapter",
   },
 } satisfies Meta<HTMLElementTagNameMap["pkg-card"]>;
 

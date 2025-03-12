@@ -20,18 +20,22 @@ export default class PkgCard extends LitElement {
   docs = "";
 
   @property({ type: String })
-  title = "";
+  name = "";
 
   @property({ type: String })
   description = "";
 
+  @property({ type: String })
+  route = "";
+
   render() {
-    const { pkg, repo, docs, title, description } = this;
+    const { pkg, repo, docs, name, description, route } = this;
     return html`
       <div class="pkg-card">
         <code class="overline">${pkg}</code>
-        <a class="headline5" href="/packages/${pkg}">${title}</a>
+        <a class="headline5" href="${route}">${name}</a>
         <p class="subtitle2">${description}</p>
+        <div class="spacer"></div>
         <pkg-info pkg=${pkg} repo=${repo} docs=${docs}></pkg-info>
       </div>
     `;

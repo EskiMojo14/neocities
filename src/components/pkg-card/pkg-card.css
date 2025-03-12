@@ -7,6 +7,7 @@
   border: 1px solid var(--divider);
   overflow: hidden;
   background: var(--page-background);
+  height: 100%;
   code {
     margin: -1rem;
     margin-bottom: 0;
@@ -17,5 +18,8 @@
   p,
   pkg-info {
     margin: 0;
+  }
+  pkg-info {
+    margin-top: auto;
   }
 }
