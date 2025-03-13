@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import path from 'path';
 // 1) import the greenwood plugin and lifecycle helpers
-import type { Compilation, Resource } from "@greenwood/cli";
+import type { Compilation } from "@greenwood/cli";
 import { readAndMergeConfig } from "@greenwood/cli/src/lifecycles/config.js";
 import { initContext } from "@greenwood/cli/src/lifecycles/context.js";
 import { greenwoodPluginImportRaw } from "@greenwood/plugin-import-raw";
@@ -16,7 +16,7 @@ const compilation: Compilation = {
 };
 
 // 3) initialize the plugin
-const rawResource: Resource = greenwoodPluginImportRaw()[0].provider(compilation);
+const rawResource = greenwoodPluginImportRaw()[0].provider(compilation);
 
 // 4) customize Vite
 export function transformRawImports(): Plugin {
@@ -25,8 +25,7 @@ export function transformRawImports(): Plugin {
   return {
     name: "transform-raw-imports",
     enforce: "pre",
-    // @ts-expect-error have to reconcile this vite config type-check
-    resolveId: (id: string, importer: string) => {
+    resolveId: (id, importer) => {
       if (
         id.endsWith(hint)
       ) {
@@ -38,8 +37,13 @@ export function transformRawImports(): Plugin {
       if (id.endsWith(hint)) {
         const filename = id.slice(0, id.indexOf(`.type${hint}`));
         const contents = await fs.readFile(filename, "utf-8");
-        // @ts-expect-error Greenwood should allow all resource lifecycle args to be optional
-        const response = await rawResource.intercept(new URL(`file://${filename}`), null, new Response(contents));
+
+        /* eslint-enable @typescript-eslint/no-non-null-assertion */
+        const response = await rawResource.intercept!(
+          null!,
+          null!,
+          new Response(contents),
+        );
         const body = await response.text();
 
         return body;
