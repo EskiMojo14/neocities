@@ -44,6 +44,7 @@ export function transformRawImports(): Plugin {
           null!,
           new Response(contents),
         );
+        /* eslint-enable @typescript-eslint/no-non-null-assertion */
         const body = await response.text();
 
         return body;
