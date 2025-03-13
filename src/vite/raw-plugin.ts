@@ -38,7 +38,7 @@ export function transformRawImports(): Plugin {
         const filename = id.slice(0, id.indexOf(`.type${hint}`));
         const contents = await fs.readFile(filename, "utf-8");
 
-        /* eslint-enable @typescript-eslint/no-non-null-assertion */
+        /* eslint-disable @typescript-eslint/no-non-null-assertion */
         const response = await rawResource.intercept!(
           null!,
           null!,
