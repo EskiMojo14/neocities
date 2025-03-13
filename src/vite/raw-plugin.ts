@@ -1,4 +1,5 @@
 import fs from "fs/promises";
+import path from 'path';
 // 1) import the greenwood plugin and lifecycle helpers
 import type { Compilation } from "@greenwood/cli";
 import { readAndMergeConfig } from "@greenwood/cli/src/lifecycles/config.js";
@@ -19,12 +20,22 @@ const rawResource = greenwoodPluginImportRaw()[0].provider(compilation);
 
 // 4) customize Vite
 export function transformRawImports(): Plugin {
+  const hint = "?type=raw";
+
   return {
     name: "transform-raw-imports",
     enforce: "pre",
+    resolveId: (id, importer) => {
+      if (
+        id.endsWith(hint)
+      ) {
+        // add .type so Raw imports are not precessed by Vite's default pipeline
+        return path.join(path.dirname(importer), `${id.slice(0, id.indexOf(hint))}.type${hint}`);
+      }
+    },
     load: async (id) => {
-      if (id.endsWith("?type=raw")) {
-        const filename = id.slice(0, -9);
+      if (id.endsWith(hint)) {
+        const filename = id.slice(0, id.indexOf(`.type${hint}`));
         const contents = await fs.readFile(filename, "utf-8");
 
         /* eslint-disable @typescript-eslint/no-non-null-assertion */
