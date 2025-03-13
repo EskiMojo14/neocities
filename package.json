@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node --import @greenwood/cli/register --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js develop",
-    "build": "node --import @greenwood/cli/register --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js build",
-    "serve": "node --import @greenwood/cli/register --loader ./node_modules/@greenwood/cli/src/loader.js ./node_modules/@greenwood/cli/src/index.js serve",
+    "dev": "node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js develop",
+    "build": "node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js build",
+    "serve": "node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js serve",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint",
@@ -62,7 +62,7 @@
   "engines": {
     "node": ">=23.0.0"
   },
-  "packageManager": "pnpm@10.6.0+sha256.71ea235e611e2c8e6043ffca1c278f82089f71dfec4d1e9d01b47825e5e92f89",
+  "packageManager": "pnpm@10.6.2+sha512.47870716bea1572b53df34ad8647b42962bc790ce2bf4562ba0f643237d7302a3d6a8ecef9e4bdfc01d23af1969aa90485d4cebb0b9638fa5ef1daef656f6c1b",
   "pnpm": {
     "patchedDependencies": {
       "@greenwood/plugin-renderer-lit": "patches/@greenwood__plugin-renderer-lit.patch"
