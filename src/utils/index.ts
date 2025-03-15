@@ -89,12 +89,15 @@ export function frontmatterIsSet(data: string) {
 /**
  * Get the active element, including elements in shadow roots.
  *
- * Parent can be used to stop the search at a specific element.
+ * Parent can be used to limit the search to direct children of the parent.
+ *
+ * If parent is provided and final element is not a child of parent, null is returned.
  */
 export function getActiveElement(parent?: HTMLElement) {
   let el = document.activeElement;
   while (el?.shadowRoot && el.parentElement !== parent) {
     el = el.shadowRoot.activeElement;
   }
+  if (parent && !parent.contains(el)) return null;
   return el;
 }
