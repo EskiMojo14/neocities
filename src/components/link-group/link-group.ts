@@ -19,7 +19,7 @@ export default class LinkGroup extends LitElement {
   }
 
   #handleKeyDown(event: KeyboardEvent) {
-    const focused = getActiveElement();
+    const focused = getActiveElement(this);
     if (!this.contains(focused)) return;
     const keys = this.#getNextKeys();
     switch (event.key) {
