@@ -107,12 +107,12 @@ function renderSidebarItem(item: SidebarItem, currentRoute: string) {
     <a
       href=${item.href}
       tabindex=${isCurrent ? -1 : 0}
-      class=${clsx("subtitle1", {
+      class=${clsx({
         current: isCurrent,
       })}
     >
       <material-symbol aria-hidden="true">${item.icon}</material-symbol>
-      ${item.label}
+      <span class="subtitle1">${item.label}</span>
     </a>
   </li>`;
 }
@@ -170,13 +170,14 @@ function renderSidebarGroup(
     <a
       href=${ifDefined(group.href)}
       tabindex=${isCurrent ? -1 : 0}
-      class=${clsx("subtitle1", {
+      class=${clsx({
         current: isCurrent,
       })}
     >
       <material-symbol aria-hidden="true">${group.icon}</material-symbol>
-      ${group.label}</a
+      <span class="subtitle1">${group.label}</span></a
     >
+
     <ul style=${styleMap({ "--level": level })}>
       ${repeat(
         children,

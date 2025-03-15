@@ -60,12 +60,16 @@ html {
 }
 
 body {
-  min-height: 100vh;
-  &.sb-show-main {
-    max-width: none;
+  max-width: none;
+  &:not(.sb-show-main) {
+    min-height: 100vh;
+    display: flex;
+    gap: 1rem;
+    @media (max-width: 1000px) {
+      flex-direction: column;
+      gap: 0;
+    }
   }
-  display: flex;
-  gap: 1rem;
   font-family: var(--body1-family);
   font-size: var(--body1-size);
   font-weight: var(--body1-weight);
@@ -78,5 +82,19 @@ body {
     margin: 0 auto;
     max-width: 1000px;
     padding: 1rem;
+    @media (max-width: 1000px) {
+      margin: 0;
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  code {
+    word-break: break-all;
   }
 }

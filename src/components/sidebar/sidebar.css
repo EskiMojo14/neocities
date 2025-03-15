@@ -31,6 +31,35 @@ ul {
   }
 }
 
+@media (max-width: 1000px) {
+  nav {
+    height: auto;
+  }
+  ul {
+    flex-direction: row;
+    max-width: 100%;
+    overflow-x: auto;
+    a {
+      padding: 0.5rem;
+      @media (max-width: 600px) {
+        span:not(.current):not(.parent span) {
+          /* visually hidden */
+          clip: rect(0 0 0 0);
+          clip-path: inset(50%);
+          height: 1px;
+          overflow: hidden;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+      }
+    }
+    ul {
+      display: none;
+    }
+  }
+}
+
 li {
   list-style: none;
   &.group {

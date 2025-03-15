@@ -3,6 +3,21 @@ sidebar-nav {
   width: 256px;
   position: sticky;
   top: 0;
+  left: 0;
   height: 100vh;
   overflow: hidden;
+  flex-shrink: 0;
+  &:dir(rtl) {
+    left: auto;
+    right: 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  sidebar-nav {
+    width: 100%;
+    height: auto;
+    left: 0;
+    right: 0;
+  }
 }
