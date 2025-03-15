@@ -2,7 +2,6 @@ import { LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { html } from "lit-html";
 import base from "../../styles/base.css?type=raw";
-import "../symbol/symbol.ts";
 import spinner from "./spinner.css?type=raw";
 
 @customElement("hourglass-spinner")

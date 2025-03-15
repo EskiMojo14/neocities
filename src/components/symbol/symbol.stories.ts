@@ -1,7 +1,6 @@
 import type { StoryObj, Meta } from "@storybook/web-components";
 import { html } from "lit-html";
 import { styleMap } from "../../utils/lit.ts";
-import "./symbol.ts";
 
 const meta = {
   title: "Material Symbol",
