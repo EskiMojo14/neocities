@@ -201,6 +201,29 @@ export default class Sidebar extends LitElement {
   @property({ type: String, attribute: "current-route" })
   currentRoute = "/";
 
+  scrollAc: AbortController | undefined;
+
+  #handleScroll() {
+    const scrolled = window.scrollY > 0;
+    if (scrolled) {
+      this.dataset.scrolled = "true";
+    } else {
+      delete this.dataset.scrolled;
+    }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("scroll", this.#handleScroll.bind(this), {
+      signal: (this.scrollAc = new AbortController()).signal,
+    });
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.scrollAc?.abort();
+  }
+
   #_sidebarItems: Record<string, SidebarItem | SidebarGroup> | undefined;
   async #getSidebarItems() {
     return (this.#_sidebarItems ??= await getSidebarItems());

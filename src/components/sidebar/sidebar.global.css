@@ -19,5 +19,10 @@ sidebar-nav {
     height: auto;
     left: 0;
     right: 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--font-transition-duration);
+    &[data-scrolled] {
+      border-color: var(--divider);
+    }
   }
 }
