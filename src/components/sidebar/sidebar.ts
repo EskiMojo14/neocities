@@ -3,7 +3,7 @@ import {
   getContentByRoute,
 } from "@greenwood/cli/src/data/client.js";
 import type { TemplateResult } from "lit";
-import { LitElement, html, unsafeCSS } from "lit";
+import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
@@ -13,7 +13,7 @@ import base from "../../styles/base.css?type=raw";
 import typography from "../../styles/typography.css?type=raw";
 import type { WithOptional } from "../../utils/index.ts";
 import { assert, uniqueBy } from "../../utils/index.ts";
-import { isActiveLink, clsx, styleMap } from "../../utils/lit.ts";
+import { clsx, isActiveLink, styleMap } from "../../utils/lit.ts";
 import "../spinner/spinner.ts";
 import sidebar from "./sidebar.css?type=raw";
 import "./theme-toggle/theme-toggle.ts";

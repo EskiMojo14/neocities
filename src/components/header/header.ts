@@ -1,4 +1,4 @@
-import { html, css, LitElement, unsafeCSS } from "lit";
+import { css, html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { when } from "lit/directives/when.js";
 import base from "../../styles/base.css?type=raw";

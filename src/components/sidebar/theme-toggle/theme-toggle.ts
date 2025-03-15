@@ -1,4 +1,4 @@
-import { LitElement, html, unsafeCSS } from "lit";
+import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import base from "../../../styles/base.css?type=raw";
 import themeToggle from "./theme-toggle.css?type=raw";

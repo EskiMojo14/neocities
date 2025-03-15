@@ -35,6 +35,10 @@ export default tseslint.config(
   configs["flat/recommended"],
   {
     rules: {
+      "sort-imports": [
+        "error",
+        { ignoreCase: true, ignoreDeclarationSort: true },
+      ],
       "@typescript-eslint/array-type": ["error", { default: "generic" }],
       "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-explicit-any": "warn",

@@ -1,4 +1,4 @@
-import type { StoryObj, Meta } from "@storybook/web-components";
+import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { styleMap } from "../../utils/lit.ts";
 
