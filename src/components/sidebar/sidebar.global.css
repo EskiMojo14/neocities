@@ -15,6 +15,7 @@ sidebar-nav {
 
 @media (max-width: 1000px) {
   sidebar-nav {
+    z-index: 100;
     width: 100%;
     height: auto;
     left: 0;
