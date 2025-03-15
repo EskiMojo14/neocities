@@ -1,7 +1,6 @@
-import { LitElement, unsafeCSS } from "lit";
+import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { html } from "lit-html";
-import { when } from "lit-html/directives/when.js";
+import { when } from "lit/directives/when.js";
 import base from "../../styles/base.css?type=raw";
 import dracula from "../../styles/themes/dracula.css?type=raw";
 import githubLight from "../../styles/themes/github-light.css?type=raw";

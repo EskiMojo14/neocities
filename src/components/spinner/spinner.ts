@@ -1,6 +1,5 @@
-import { LitElement, unsafeCSS } from "lit";
+import { LitElement, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
-import { html } from "lit-html";
 import base from "../../styles/base.css?type=raw";
 import spinner from "./spinner.css?type=raw";
 

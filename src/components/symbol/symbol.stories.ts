@@ -1,5 +1,5 @@
 import type { StoryObj, Meta } from "@storybook/web-components";
-import { html } from "lit-html";
+import { html } from "lit";
 import { styleMap } from "../../utils/lit.ts";
 
 const meta = {

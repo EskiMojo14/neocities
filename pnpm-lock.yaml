@@ -22,9 +22,6 @@ importers:
       lit:
         specifier: ^3.2.1
         version: 3.2.1
-      lit-html:
-        specifier: ^3.2.1
-        version: 3.2.1
       valibot:
         specifier: 1.0.0-rc.3
         version: 1.0.0-rc.3(typescript@5.8.2)

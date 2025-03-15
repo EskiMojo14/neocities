@@ -1,7 +1,6 @@
-import { css, LitElement, unsafeCSS } from "lit";
+import { html, css, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { html } from "lit-html";
-import { when } from "lit-html/directives/when.js";
+import { when } from "lit/directives/when.js";
 import base from "../../styles/base.css?type=raw";
 import typography from "../../styles/typography.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";

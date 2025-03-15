@@ -1,6 +1,6 @@
 import type { Meta } from "@storybook/web-components";
-import { html } from "lit-html";
-import { repeat } from "lit-html/directives/repeat.js";
+import { html } from "lit";
+import { repeat } from "lit/directives/repeat.js";
 import styles from "./color.module.css";
 
 const darkColors = [

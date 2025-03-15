@@ -1,6 +1,5 @@
-import { LitElement } from "lit";
+import { LitElement, html } from "lit";
 import { customElement } from "lit/decorators.js";
-import { html } from "lit-html";
 import { getActiveElement } from "../../utils/index.ts";
 
 @customElement("link-group")

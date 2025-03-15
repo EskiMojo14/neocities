@@ -1,11 +1,11 @@
 import type { Properties } from "csstype";
-import type { DirectiveResult } from "lit-html/directive.js";
-import type { AsyncReplaceDirective } from "lit-html/directives/async-replace.js";
-import { asyncReplace as _asyncReplace } from "lit-html/directives/async-replace.js";
-import type { ClassInfo } from "lit-html/directives/class-map.js";
-import { classMap } from "lit-html/directives/class-map.js";
-import type { StyleInfo } from "lit-html/directives/style-map.js";
-import { styleMap as _styleMap } from "lit-html/directives/style-map.js";
+import type { DirectiveResult } from "lit/directive.js";
+import type { AsyncReplaceDirective } from "lit/directives/async-replace.js";
+import { asyncReplace as _asyncReplace } from "lit/directives/async-replace.js";
+import type { ClassInfo } from "lit/directives/class-map.js";
+import { classMap } from "lit/directives/class-map.js";
+import type { StyleInfo } from "lit/directives/style-map.js";
+import { styleMap as _styleMap } from "lit/directives/style-map.js";
 import { safeAssign, typewriter } from "./index.ts";
 
 declare module "csstype" {

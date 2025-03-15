@@ -2,12 +2,12 @@ import {
   getContentByCollection,
   getContentByRoute,
 } from "@greenwood/cli/src/data/client.js";
-import { LitElement, unsafeCSS } from "lit";
+import type { TemplateResult } from "lit";
+import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { html, type TemplateResult } from "lit-html";
-import { ifDefined } from "lit-html/directives/if-defined.js";
-import { repeat } from "lit-html/directives/repeat.js";
-import { until } from "lit-html/directives/until.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { repeat } from "lit/directives/repeat.js";
+import { until } from "lit/directives/until.js";
 import * as v from "valibot";
 import base from "../../styles/base.css?type=raw";
 import typography from "../../styles/typography.css?type=raw";
