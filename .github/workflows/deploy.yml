@@ -19,15 +19,14 @@ jobs:
       # The checkout step copies your repo into the action runner. Important!
       - uses: actions/checkout@v4
       - name: Read .nvmrc
-        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
-        id: nvm
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> "$GITHUB_ENV"
       # Set up any tools and build steps here
       # This example uses a Node.js toolchain to build a site
       # If you don't need Node.js to build your site, you can omit this.
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
       - uses: pnpm/action-setup@v4
       # If you have a different build process, replace this with your own build steps
       - name: Install deps and build
