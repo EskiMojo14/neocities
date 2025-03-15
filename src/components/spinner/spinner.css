@@ -1,11 +1,11 @@
 :host {
   display: inline-block;
   --icon-weight: 300;
-  --icon-size: 48px;
+  --icon-size: 48;
   --top-opacity: 0;
   --bottom-opacity: 1;
-  height: var(--icon-size, 24px);
-  width: var(--icon-size, 24px);
+  height: calc(var(--icon-size, 24) * 1px);
+  width: calc(var(--icon-size, 24) * 1px);
   animation: spin 1.5s ease infinite;
   position: relative;
   material-symbol {

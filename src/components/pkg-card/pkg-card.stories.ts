@@ -12,6 +12,7 @@ const meta = {
     name: "History Adapter",
     description: "For managing undoable state",
     route: "/packages/history-adapter",
+    icon: "history",
   },
 } satisfies Meta<HTMLElementTagNameMap["pkg-card"]>;
 

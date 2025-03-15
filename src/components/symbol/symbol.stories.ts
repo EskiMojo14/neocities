@@ -19,11 +19,11 @@ const meta = {
       aria-hidden="true"
       ?flip-rtl=${flipRtl}
       style=${styleMap({
-        "--icon-size": `${size}px`,
+        "--icon-size": size,
         "--icon-fill": fill ? 1 : 0,
         "--icon-weight": weight,
         "--icon-grade": grade,
-        "--icon-optical-size": opticalSize ?? size,
+        "--icon-optical-size": opticalSize,
       })}
     >
       ${children}
@@ -71,8 +71,6 @@ const meta = {
     size: 24,
     fill: false,
     weight: 400,
-    grade: -25,
-    opticalSize: undefined,
     "flip-rtl": false,
   },
 } satisfies Meta<{
