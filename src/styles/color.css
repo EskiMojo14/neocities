@@ -23,6 +23,9 @@
   --code-background: var(--black);
 
   --divider: var(--disabled);
+
+  --scroll-track: var(--black);
+  --scroll-thumb: var(--purple);
 }
 
 [data-theme="light"] {
@@ -39,4 +42,7 @@
   --code-background: var(--white-secondary);
 
   --divider: var(--grey);
+
+  --scroll-track: var(--white-secondary);
+  --scroll-thumb: var(--purple);
 }
