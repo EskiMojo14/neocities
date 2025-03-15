@@ -6,7 +6,8 @@ const meta = {
   tags: ["autodocs"],
   component: "page-header",
   args: {
-    innerText: "Page header",
+    header: "header",
+    subtitle: "subtitle",
   },
 } satisfies Meta<HTMLElementTagNameMap["page-header"]>;
 
