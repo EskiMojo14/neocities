@@ -21,9 +21,10 @@
   <body>
     <sidebar-nav current-route="${globalThis.page.route}"></sidebar-nav>
     <div class="root">
-      <page-header>
-        ${globalThis.page.title}
-        <p slot="subtitle">${globalThis.page.data.description}</p>
+      <page-header
+        header="${globalThis.page.title}"
+        subtitle="${globalThis.page.data.description}"
+      >
       </page-header>
       <page-outlet></page-outlet>
     </div>

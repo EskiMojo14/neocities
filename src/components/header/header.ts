@@ -1,9 +1,10 @@
 import { css, LitElement, unsafeCSS } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { html } from "lit-html";
 import { when } from "lit-html/directives/when.js";
 import base from "../../styles/base.css?type=raw";
 import typography from "../../styles/typography.css?type=raw";
+import { frontmatterIsSet } from "../../utils/index.ts";
 import { consolewriter } from "../../utils/lit.ts";
 
 @customElement("page-header")
@@ -23,40 +24,26 @@ export default class PageHeader extends LitElement {
     `,
   ];
 
-  headerText = "";
-  subtitleText = "";
-  connectedCallback() {
-    super.connectedCallback();
+  @property({ type: String })
+  header = "";
 
-    let header: ChildNode | null = null;
-    let subtitle: Element | null = null;
-    for (const node of this.childNodes) {
-      if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()) {
-        header = node;
-        continue;
-      } else if (node instanceof Element && node.slot === "subtitle") {
-        subtitle = node;
-        continue;
-      }
-    }
-    this.headerText = header?.textContent?.trim() ?? "";
-    this.subtitleText = subtitle?.textContent?.trim() ?? "";
-  }
+  @property({ type: String })
+  subtitle = "";
 
   render() {
-    const { headerText, subtitleText } = this;
-    const headerDuration = Math.min(1000, 100 * headerText.length) + 300;
+    const { header, subtitle } = this;
+    const headerDuration = Math.min(1000, 100 * header.length) + 300;
     return html`
       <header>
         <hgroup>
-          <h1 class="headline2" aria-label=${headerText}>
-            ${consolewriter(headerText)}
+          <h1 class="headline2" aria-label=${header}>
+            ${consolewriter(header)}
           </h1>
           ${when(
-            subtitleText,
+            frontmatterIsSet(subtitle),
             () =>
-              html`<p class="headline5" aria-label=${subtitleText}>
-                ${consolewriter(subtitleText, { delay: headerDuration })}
+              html`<p class="headline5" aria-label=${subtitle}>
+                ${consolewriter(subtitle, { delay: headerDuration })}
               </p>`,
           )}
         </hgroup>
