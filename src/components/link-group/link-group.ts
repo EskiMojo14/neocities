@@ -1,6 +1,7 @@
 import { LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { html } from "lit-html";
+import { getActiveElement } from "../../utils/index.ts";
 
 @customElement("link-group")
 export default class LinkGroup extends LitElement {
@@ -17,16 +18,8 @@ export default class LinkGroup extends LitElement {
     };
   }
 
-  #getActiveElement(): Element | null {
-    let el = document.activeElement;
-    while (el?.shadowRoot) {
-      el = el.shadowRoot.activeElement;
-    }
-    return el;
-  }
-
   #handleKeyDown(event: KeyboardEvent) {
-    const focused = this.#getActiveElement();
+    const focused = getActiveElement();
     if (!this.contains(focused)) return;
     const keys = this.#getNextKeys();
     switch (event.key) {

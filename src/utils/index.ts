@@ -85,3 +85,14 @@ export function uniqueBy<T>(getKey: (item: T) => unknown) {
 export function frontmatterIsSet(data: string) {
   return !data.startsWith("${");
 }
+
+/**
+ * Get the active element, including elements in shadow roots.
+ */
+export function getActiveElement() {
+  let el = document.activeElement;
+  while (el?.shadowRoot) {
+    el = el.shadowRoot.activeElement;
+  }
+  return el;
+}
