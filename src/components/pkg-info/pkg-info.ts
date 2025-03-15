@@ -36,11 +36,15 @@ export default class PkgInfo extends LitElement {
   @state()
   theme = "dark";
 
+  #retrieveTheme() {
+    this.theme = document.documentElement.dataset.theme ?? "dark";
+  }
+
   #observer =
     typeof MutationObserver === "undefined"
       ? null
       : new MutationObserver(() => {
-          this.theme = document.documentElement.dataset.theme ?? "dark";
+          this.#retrieveTheme();
         });
 
   connectedCallback() {
@@ -50,6 +54,11 @@ export default class PkgInfo extends LitElement {
       attributeFilter: ["data-theme"],
     });
   }
+
+  firstUpdated() {
+    this.#retrieveTheme();
+  }
+
   disconnectedCallback() {
     super.disconnectedCallback();
     this.#observer?.disconnect();
