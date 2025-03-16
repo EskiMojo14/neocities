@@ -25,8 +25,9 @@
     />
   </head>
   <body>
+    <a class="skip-to-content headline5" href="#root">Skip to content</a>
     <sidebar-nav current-route="${globalThis.page.route}"></sidebar-nav>
-    <div class="root">
+    <div class="root" id="root">
       <page-header
         header="${globalThis.page.title}"
         subtitle="${globalThis.page.data.description}"

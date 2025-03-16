@@ -52,6 +52,8 @@
   --font-family-heading: "Monaspace Xenon", monospace;
   --font-family-code: "Monaspace Argon", monospace;
   --font-family-icon: "Material Symbols Sharp", serif;
+
+  --sidebar-width: 16rem;
 }
 
 html {
@@ -85,5 +87,20 @@ body {
     @media (max-width: 1000px) {
       margin: 0;
     }
+  }
+}
+
+.skip-to-content {
+  position: absolute;
+  width: var(--sidebar-width);
+  text-align: center;
+  top: -1000px;
+  left: -1000px;
+  z-index: 10000;
+  background: var(--page-background);
+  padding: 1rem;
+  &:focus {
+    top: 0;
+    left: 0;
   }
 }
