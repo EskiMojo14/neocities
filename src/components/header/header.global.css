@@ -1,12 +1,22 @@
 page-header {
   &:not(:defined) {
     opacity: 0;
-    font-family: var(--headline2-family);
-    font-size: var(--headline2-size);
-    font-weight: var(--headline2-weight);
-    text-transform: var(--headline2-transform);
+    display: flex;
+    flex-direction: column;
+    font-family: var(--headline5-family);
+    font-size: var(--headline5-size);
+    font-weight: var(--headline5-weight);
+    text-transform: var(--headline5-transform);
+    gap: 0.5em;
     &::before {
       content: attr(header);
+      font-family: var(--headline2-family);
+      font-size: var(--headline2-size);
+      font-weight: var(--headline2-weight);
+      text-transform: var(--headline2-transform);
+    }
+    &::after {
+      content: attr(subtitle);
     }
   }
 }
