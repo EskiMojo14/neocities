@@ -5,7 +5,6 @@ import type { ClassInfo } from "lit/directives/class-map.js";
 import { classMap } from "lit/directives/class-map.js";
 import type { StyleInfo } from "lit/directives/style-map.js";
 import { styleMap as _styleMap } from "lit/directives/style-map.js";
-import type { TypeIntervalConfig } from "./index.ts";
 import { getTypeInterval, safeAssign, wait } from "./index.ts";
 
 declare module "csstype" {
@@ -69,13 +68,8 @@ export const asyncReplace = _asyncReplace as <T>(
   mapper?: (value: T, index: number) => unknown,
 ) => ReturnType<typeof _asyncReplace>;
 
-interface ConsolewriterConfig extends TypeIntervalConfig {
-  delay?: number;
-  finishingDelay?: number;
-}
-
-export const consolewriter = (text: string, cfg?: ConsolewriterConfig) =>
-  asyncReplace(
+export function consolewriter(text: string, cfg?: consolewriter.Config) {
+  return asyncReplace(
     (async function* () {
       const { delay, finishingDelay, ...config } = {
         ...consolewriter.defaults,
@@ -94,17 +88,23 @@ export const consolewriter = (text: string, cfg?: ConsolewriterConfig) =>
       yield html`${acc}`;
     })(),
   );
+}
 
-consolewriter.defaults = {
-  ...getTypeInterval.defaults,
-  delay: 0,
-  finishingDelay: 300,
-} satisfies Required<ConsolewriterConfig>;
-
-consolewriter.getDuration = (text: string, cfg?: ConsolewriterConfig) => {
-  const { delay, finishingDelay, ...config } = {
-    ...consolewriter.defaults,
-    ...cfg,
+export namespace consolewriter {
+  export interface Config extends getTypeInterval.Config {
+    delay?: number;
+    finishingDelay?: number;
+  }
+  export const defaults: Required<Config> = {
+    ...getTypeInterval.defaults,
+    delay: 0,
+    finishingDelay: 300,
   };
-  return delay + getTypeInterval.getDuration(text, config) + finishingDelay;
-};
+  export function getDuration(text: string, cfg?: Config) {
+    const { delay, finishingDelay, ...config } = {
+      ...consolewriter.defaults,
+      ...cfg,
+    };
+    return delay + getTypeInterval.getDuration(text, config) + finishingDelay;
+  }
+}

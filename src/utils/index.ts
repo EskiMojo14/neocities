@@ -15,22 +15,7 @@ export function assert(
 export const wait = (ms: number) =>
   new Promise<void>((resolve) => setTimeout(resolve, ms));
 
-export interface TypeIntervalConfig {
-  /** Time between each character
-   * @default 100
-   */
-  interval?: number;
-  /** Minimum time between each character
-   * @default 50
-   */
-  minInterval?: number;
-  /** Maximum duration of the animation
-   * @default 1000
-   */
-  maxDuration?: number;
-}
-
-export function getTypeInterval(text: string, config?: TypeIntervalConfig) {
+export function getTypeInterval(text: string, config?: getTypeInterval.Config) {
   const {
     interval = 100,
     minInterval = 50,
@@ -39,16 +24,21 @@ export function getTypeInterval(text: string, config?: TypeIntervalConfig) {
   return Math.max(minInterval, Math.min(interval, maxDuration / text.length));
 }
 
-getTypeInterval.defaults = {
-  interval: 100,
-  minInterval: 50,
-  maxDuration: 1000,
-} satisfies Required<TypeIntervalConfig>;
-
-getTypeInterval.getDuration = (text: string, config?: TypeIntervalConfig) => {
-  const interval = getTypeInterval(text, config);
-  return interval * text.length;
-};
+export namespace getTypeInterval {
+  export interface Config {
+    interval?: number;
+    minInterval?: number;
+    maxDuration?: number;
+  }
+  export const defaults: Required<Config> = {
+    interval: 100,
+    minInterval: 50,
+    maxDuration: 1000,
+  };
+  export function getDuration(text: string, config?: Config) {
+    return getTypeInterval(text, config) * text.length;
+  }
+}
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export type Compute<T> = { [K in keyof T]: T[K] } & unknown;

@@ -19,7 +19,6 @@
 
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
-    "erasableSyntaxOnly": true,
     "verbatimModuleSyntax": false,
 
     "plugins": [
