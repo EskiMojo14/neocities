@@ -15,55 +15,30 @@ export function assert(
 export const wait = (ms: number) =>
   new Promise<void>((resolve) => setTimeout(resolve, ms));
 
-export async function* typewriter(
+export interface TypeIntervalConfig {
+  /** Time between each character
+   * @default 100
+   */
+  interval?: number;
+  /** Minimum time between each character
+   * @default 50
+   */
+  minInterval?: number;
+  /** Maximum duration of the animation
+   * @default 1000
+   */
+  maxDuration?: number;
+}
+
+export function getTypeInterval(
   text: string,
   {
-    /** Time between each character
-     * @default 100
-     */
     interval = 100,
-    /** Minimum time between each character
-     * @default 50
-     */
     minInterval = 50,
-    /** Maximum duration of the animation
-     * @default 1000
-     */
     maxDuration = 1000,
-    /** Delay before starting the animation
-     * @default 0
-     */
-    delay = 0,
-
-    /** Suffix during animation */
-    typingSuffix = "",
-    /** Suffix when finished */
-    finishedSuffix = "",
-    /** If removing the suffix, how long to wait before removing it
-     * @default 300
-     */
-    finishingDelay = 300,
-    /** If true, keep the suffix after the animation is finished */
-    keepFinishingSuffix = false,
-  } = {},
+  }: TypeIntervalConfig = {},
 ) {
-  const lengthInteval = maxDuration / text.length;
-  const finalInterval = Math.max(
-    minInterval,
-    Math.min(interval, lengthInteval),
-  );
-  let acc = "";
-  await wait(delay);
-  for (const char of text) {
-    acc += char;
-    yield acc + typingSuffix;
-    await wait(finalInterval);
-  }
-  yield acc + finishedSuffix;
-  if (!keepFinishingSuffix) {
-    await wait(finishingDelay);
-    yield acc;
-  }
+  return Math.max(minInterval, Math.min(interval, maxDuration / text.length));
 }
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents

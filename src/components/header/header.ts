@@ -3,7 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import { when } from "lit/directives/when.js";
 import base from "../../styles/base.css?type=raw";
 import typography from "../../styles/typography.css?type=raw";
-import { frontmatterIsSet } from "../../utils/index.ts";
+import { frontmatterIsSet, getTypeInterval } from "../../utils/index.ts";
 import { consolewriter } from "../../utils/lit.ts";
 import header from "./header.css?type=raw";
 
@@ -22,7 +22,8 @@ export default class PageHeader extends LitElement {
 
   render() {
     const { header, subtitle, published } = this;
-    const headerDuration = Math.min(1000, 100 * header.length) + 300;
+    const headerDuration = getTypeInterval(header) * header.length;
+    const subtitleDuration = getTypeInterval(subtitle) * subtitle.length;
     return html`
       <header>
         <hgroup>
@@ -31,18 +32,25 @@ export default class PageHeader extends LitElement {
             frontmatterIsSet(published),
             () =>
               html`<time datetime="${published.slice(1, -1)}" class="overline">
+                <span aria-hidden="true" class="text">
+                  ${consolewriter(published.slice(1, 11), {
+                    delay: subtitleDuration + headerDuration,
+                  })}</span
+                >
                 ${published.slice(1, 11)}
               </time>`,
           )}
           <h1 class="headline2">
-            <span aria-hidden="true">${consolewriter(header)}</span>
+            <span aria-hidden="true" class="text"
+              >${consolewriter(header)}</span
+            >
             ${header}
           </h1>
           ${when(
             frontmatterIsSet(subtitle),
             () =>
               html`<p class="headline5">
-                <span aria-hidden="true"
+                <span aria-hidden="true" class="text"
                   >${consolewriter(subtitle, { delay: headerDuration })}</span
                 >
                 ${subtitle}

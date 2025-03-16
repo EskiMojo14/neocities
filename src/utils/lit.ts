@@ -1,12 +1,12 @@
 import type { Properties } from "csstype";
-import type { DirectiveResult } from "lit/directive.js";
-import type { AsyncReplaceDirective } from "lit/directives/async-replace.js";
+import { html } from "lit";
 import { asyncReplace as _asyncReplace } from "lit/directives/async-replace.js";
 import type { ClassInfo } from "lit/directives/class-map.js";
 import { classMap } from "lit/directives/class-map.js";
 import type { StyleInfo } from "lit/directives/style-map.js";
 import { styleMap as _styleMap } from "lit/directives/style-map.js";
-import { safeAssign, typewriter } from "./index.ts";
+import type { TypeIntervalConfig } from "./index.ts";
+import { getTypeInterval, safeAssign, wait } from "./index.ts";
 
 declare module "csstype" {
   // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
@@ -67,11 +67,31 @@ export function isActiveLink(
 export const asyncReplace = _asyncReplace as <T>(
   iterable: AsyncIterable<T>,
   mapper?: (value: T, index: number) => unknown,
-) => DirectiveResult<typeof AsyncReplaceDirective>;
+) => ReturnType<typeof _asyncReplace>;
+
+interface ConsolewriterConfig extends TypeIntervalConfig {
+  delay?: number;
+  finishingDelay?: number;
+}
 
 export const consolewriter = (
-  ...[text, config]: Parameters<typeof typewriter>
+  text: string,
+  { delay = 0, finishingDelay = 300, ...config }: ConsolewriterConfig = {},
 ) =>
   asyncReplace(
-    typewriter(text, { finishedSuffix: "▯", typingSuffix: "▮", ...config }),
+    (async function* () {
+      const interval = getTypeInterval(text, config);
+      let acc = "";
+      await wait(delay);
+      for (const char of text) {
+        acc += char;
+        yield html`${acc}<span class="cursor" aria-hidden="true">x</span>`;
+        await wait(interval);
+      }
+      yield html`${acc}<span class="cursor finished" aria-hidden="true"
+          >x</span
+        >`;
+      await wait(finishingDelay);
+      yield html`${acc}`;
+    })(),
   );

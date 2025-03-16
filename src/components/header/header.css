@@ -1,5 +1,6 @@
 h1,
-p {
+p,
+time {
   margin: 0;
   color: transparent;
   position: relative;
@@ -14,9 +15,24 @@ time {
   margin-bottom: 0.5em;
 }
 
-span {
+.text {
   color: var(--foreground);
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.cursor {
+  background: var(--foreground);
+  border: 0.1em solid var(--foreground);
+  margin-left: 0.1em;
+  height: 1lh;
+  color: transparent;
+  &:dir(rtl) {
+    margin-right: 0.1em;
+    margin-left: 0;
+  }
+  &.finished {
+    background: none;
+  }
 }
