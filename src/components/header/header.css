@@ -4,8 +4,14 @@ p {
   color: transparent;
   position: relative;
 }
+
 p {
   margin-top: 0.5em;
+}
+
+time {
+  display: block;
+  margin-bottom: 0.5em;
 }
 
 span {

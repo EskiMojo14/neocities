@@ -17,12 +17,23 @@ export default class PageHeader extends LitElement {
   @property({ type: String })
   subtitle = "";
 
+  @property({ type: String })
+  published = "";
+
   render() {
-    const { header, subtitle } = this;
+    const { header, subtitle, published } = this;
     const headerDuration = Math.min(1000, 100 * header.length) + 300;
     return html`
       <header>
         <hgroup>
+          <span class="sr-only">Published:</span>
+          ${when(
+            frontmatterIsSet(published),
+            () =>
+              html`<time datetime="${published.slice(1, -1)}" class="overline">
+                ${published.slice(1, 11)}
+              </time>`,
+          )}
           <h1 class="headline2">
             <span aria-hidden="true">${consolewriter(header)}</span>
             ${header}
