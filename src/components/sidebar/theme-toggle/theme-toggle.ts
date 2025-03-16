@@ -29,13 +29,9 @@ export default class ThemeToggle extends LitElement {
           this.toggleTheme();
         }}
       >
-        <material-symbol
-          aria-hidden="true"
-          ?data-selected=${this.currentTheme === "light"}
+        <material-symbol aria-hidden="true" class="light"
           >light_mode</material-symbol
-        ><material-symbol
-          aria-hidden="true"
-          ?data-selected=${this.currentTheme === "dark"}
+        ><material-symbol aria-hidden="true" class="dark"
           >dark_mode</material-symbol
         >
       </button>

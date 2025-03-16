@@ -184,7 +184,8 @@ h6,
   text-transform: var(--subtitle2-transform);
 }
 
-.button {
+.button,
+button {
   font-family: var(--button-family);
   font-size: var(--button-size);
   font-weight: var(--button-weight);

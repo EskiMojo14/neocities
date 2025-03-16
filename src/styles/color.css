@@ -7,6 +7,11 @@
   --link-visited-hover: rgba(
     from var(--link-visited) r g b / var(--link-hover-opacity)
   );
+
+  --button-hover-background-opacity: 0.1;
+  --button-hover-background: rgba(
+    from var(--button) r g b / var(--button-hover-background-opacity)
+  );
 }
 
 [data-theme="dark"] {
@@ -17,6 +22,12 @@
   --link-focus: var(--green);
   --link-current: var(--foreground);
   --link-current-background: var(--selection);
+
+  --button: var(--pink);
+  --button-hover: var(--pink-secondary);
+  --button-focus: var(--background);
+  --button-selected: var(--foreground);
+  --button-selected-background: var(--selection);
 
   --sidebar-background: var(--black);
 
@@ -43,6 +54,12 @@
   --link-focus: var(--purple);
   --link-current: var(--foreground);
   --link-current-background: var(--selection);
+
+  --button: var(--pink5);
+  --button-hover: var(--pink7);
+  --button-focus: var(--background);
+  --button-selected: var(--foreground);
+  --button-selected-background: var(--selection);
 
   --sidebar-background: var(--white-secondary);
 

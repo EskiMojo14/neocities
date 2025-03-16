@@ -83,6 +83,17 @@ export default class PkgInfo extends LitElement {
     this.#observer?.disconnect();
   }
 
+  async #onCopy() {
+    try {
+      const text =
+        this.shadowRoot?.getElementById("install-command")?.textContent;
+      if (!text) return;
+      await navigator.clipboard.writeText(text);
+    } catch (e) {
+      console.error("Failed to copy to clipboard", e);
+    }
+  }
+
   render() {
     const { devDep, pkg, repo, docs, includeInstall, packageManager } = this;
     return html`
@@ -145,14 +156,26 @@ export default class PkgInfo extends LitElement {
                   `,
                 )}
               </fieldset>
-              <pre
-                class="language-bash"
-              ><code class="language-bash"><span class="token function">${packageManager}</span> <span class="token function">${installCommands[
-                packageManager
-              ]}</span> ${when(
-                frontmatterIsSet(devDep),
-                () => html`<span class="token parameter variable">-D</span> `,
-              )}${pkg}</code></pre>
+              <div class="command">
+                <pre
+                  class="language-bash"
+                  id="install-command"
+                ><code class="language-bash"><span class="token function">${packageManager}</span> <span class="token function">${installCommands[
+                  packageManager
+                ]}</span> ${when(
+                  frontmatterIsSet(devDep),
+                  () => html`<span class="token parameter variable">-D</span> `,
+                )}${pkg}</code></pre>
+                <button
+                  class="icon"
+                  title="Copy to clipboard"
+                  @click=${() => this.#onCopy()}
+                >
+                  <material-symbol aria-hidden="true"
+                    >content_copy</material-symbol
+                  >
+                </button>
+              </div>
             </div>
           `,
         )}

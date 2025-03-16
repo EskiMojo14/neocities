@@ -18,7 +18,8 @@
     appearance: none;
     margin: 0;
     padding: 0.5rem;
-    color: var(--link);
+    color: var(--button);
+    font-variation-settings: "slnt" 0;
     transition-property:
       color, font-weight, font-variation-settings, background;
     transition-duration: var(--font-transition-duration);
@@ -28,21 +29,34 @@
     }
 
     &:hover {
-      color: var(--link-hover);
+      color: var(--button-hover);
+      background: var(--button-hover-background);
       font-weight: var(--weight-semibold);
       font-variation-settings: "slnt" -8;
     }
 
     &:checked {
-      background: var(--link-current-background);
-      color: var(--link-current);
+      background: var(--button-selected-background);
+      color: var(--button-selected);
       font-weight: var(--weight-bold);
       font-variation-settings: "slnt" -11;
     }
 
     &:focus-visible {
       outline: none;
-      color: var(--link-focus);
+      color: var(--button-focus);
+      background: var(--focus-background);
     }
+  }
+}
+
+.command {
+  display: flex;
+  align-items: center;
+  pre {
+    flex: 1;
+  }
+  button {
+    margin: 0 0.5rem;
   }
 }

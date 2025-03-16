@@ -1,30 +1,23 @@
-button {
-  appearance: none;
-  border: none;
-  background: none;
-  padding: 0.25rem 0.5rem;
-  display: flex;
-  gap: 0.5rem;
-  margin: 0;
-  color: var(--foreground);
+:host {
   background: var(--background);
   border-radius: var(--shape-pill);
-  material-symbol {
-    --icon-weight: 300;
-    transition-property: color, font-variation-settings;
-    &[data-selected] {
-      --icon-weight: 500;
-      --icon-fill: 1;
-      color: var(--link-current);
-    }
+}
+
+button {
+  .light {
+    --icon-fill: 1;
   }
-  &:hover {
-    material-symbol:not([data-selected]) {
-      --icon-weight: 500;
+  &[aria-pressed="true"] {
+    &:not(:focus-visible) {
+      background: none;
+      color: var(--button);
+      &:hover {
+        color: var(--button-hover);
+        background: var(--button-hover-background);
+      }
     }
-  }
-  &:focus-visible {
-    outline: none;
-    background: var(--focus-background);
+    .light {
+      --icon-fill: 0;
+    }
   }
 }

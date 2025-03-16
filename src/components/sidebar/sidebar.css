@@ -75,6 +75,7 @@ a {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   gap: 0.5rem;
+  font-variation-settings: "slnt" 0;
   &:hover {
     font-variation-settings: "slnt" -8;
   }
