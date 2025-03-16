@@ -150,13 +150,11 @@ async function getSidebarItems() {
 }
 
 function renderSidebarItem(item: SidebarItem, currentRoute: string) {
-  const isCurrent = isActiveLink(item.href, currentRoute, "equals");
   return html`<li>
     <a
       href=${item.href}
-      tabindex=${isCurrent ? -1 : 0}
       class=${clsx({
-        current: isCurrent,
+        current: isActiveLink(item.href, currentRoute, "equals"),
       })}
     >
       <material-symbol aria-hidden="true" title=${item.label}
@@ -211,7 +209,6 @@ function renderSidebarGroup(
       order: 0,
     });
   }
-  const isCurrent = isActiveLink(group.href, currentRoute, "equals");
   return html`<li
     class=${clsx("group", {
       parent: isActiveLink(group.href, currentRoute, "includes"),
@@ -219,9 +216,8 @@ function renderSidebarGroup(
   >
     <a
       href=${ifDefined(group.href)}
-      tabindex=${isCurrent ? -1 : 0}
       class=${clsx({
-        current: isCurrent,
+        current: isActiveLink(group.href, currentRoute, "equals"),
       })}
     >
       <material-symbol aria-hidden="true" title=${group.label}

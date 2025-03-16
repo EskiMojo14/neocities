@@ -27,18 +27,18 @@ export default class PageHeader extends LitElement {
     return html`
       <header>
         <hgroup>
-          <span class="sr-only">Published:</span>
           ${when(
             frontmatterIsSet(published),
             () =>
-              html`<time datetime="${published.slice(1, -1)}" class="overline">
-                <span aria-hidden="true" class="text">
-                  ${consolewriter(published.slice(1, 11), {
-                    delay: subtitleDuration + headerDuration,
-                  })}</span
-                >
-                ${published.slice(1, 11)}
-              </time>`,
+              html`<span class="sr-only">Published:</span
+                ><time datetime="${published.slice(1, -1)}" class="overline">
+                  <span aria-hidden="true" class="text">
+                    ${consolewriter(published.slice(1, 11), {
+                      delay: subtitleDuration + headerDuration,
+                    })}</span
+                  >
+                  ${published.slice(1, 11)}
+                </time>`,
           )}
           <h1 class="headline2">
             <span aria-hidden="true" class="text"

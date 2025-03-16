@@ -1,3 +1,48 @@
-pre {
-  margin-bottom: 0;
+.install {
+  background: var(--code-background);
+  border-radius: var(--shape-medium);
+  margin-top: 1em;
+  overflow: hidden;
+  pre[class*="language-"] {
+    margin: 0;
+  }
+}
+
+.install-buttons {
+  display: flex;
+  border: none;
+  border-bottom: 1px solid var(--divider);
+  margin: 0;
+  padding: 0;
+  input {
+    appearance: none;
+    margin: 0;
+    padding: 0.5rem;
+    color: var(--link);
+    transition-property:
+      color, font-weight, font-variation-settings, background;
+    transition-duration: var(--font-transition-duration);
+
+    &::before {
+      content: attr(value);
+    }
+
+    &:hover {
+      color: var(--link-hover);
+      font-weight: var(--weight-semibold);
+      font-variation-settings: "slnt" -8;
+    }
+
+    &:checked {
+      background: var(--link-current-background);
+      color: var(--link-current);
+      font-weight: var(--weight-bold);
+      font-variation-settings: "slnt" -11;
+    }
+
+    &:focus-visible {
+      outline: none;
+      color: var(--link-focus);
+    }
+  }
 }

@@ -2,8 +2,8 @@ import { html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getActiveElement } from "../../utils/index.ts";
 
-@customElement("link-group")
-export default class LinkGroup extends LitElement {
+@customElement("focus-group")
+export default class FocusGroup extends LitElement {
   constructor() {
     super();
     this.addEventListener("keydown", this.#handleKeyDown.bind(this));
@@ -42,6 +42,6 @@ export default class LinkGroup extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "link-group": LinkGroup;
+    "focus-group": FocusGroup;
   }
 }

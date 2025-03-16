@@ -78,8 +78,7 @@ a {
   &:hover {
     font-variation-settings: "slnt" -8;
   }
-  &.current,
-  &.current:hover {
+  &.current {
     font-weight: var(--weight-bold);
     color: var(--link-current);
     --icon-weight: 500;
