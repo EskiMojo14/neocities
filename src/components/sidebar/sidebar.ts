@@ -93,7 +93,7 @@ type SidebarGroup = GroupIconUnion &
 const itemSchema = v.object({
   type: v.literal("item"),
   order: v.optional(v.number()),
-  published: v.optional(v.string()),
+  published: v.optional(v.pipe(v.string(), v.isoTimestamp())),
   label: v.string(),
   href: v.string(),
   icon: v.optional(v.string()),
@@ -128,16 +128,23 @@ async function getSidebarItems() {
       }
       cursor = current.children as never;
     }
-    cursor[last ? `/${last}/` : "/"] = v.parse(itemSchema, {
-      type: "item",
-      label: page.label,
-      href: page.route,
-      icon: page.data.icon,
-      childIcon: page.data.childIcon,
-      order: page.data.order,
-      published: page.data.published,
-      maxChildren: page.data.maxChildren,
-    } satisfies Record<keyof v.InferInput<typeof itemSchema>, unknown>);
+    try {
+      cursor[last ? `/${last}/` : "/"] = v.parse(itemSchema, {
+        type: "item",
+        label: page.label,
+        href: page.route,
+        icon: page.data.icon,
+        childIcon: page.data.childIcon,
+        order: page.data.order,
+        published: page.data.published,
+        maxChildren: page.data.maxChildren,
+      } satisfies Record<keyof v.InferInput<typeof itemSchema>, unknown>);
+    } catch (error) {
+      console.error(
+        `failed to parse sidebar item: ${page.route}`,
+        error instanceof v.ValiError && error.issues,
+      );
+    }
   }
   return base;
 }
@@ -172,7 +179,7 @@ function orderSort(a: { order?: number }, b: { order?: number }) {
 
 function publishedSort(a: { published?: string }, b: { published?: string }) {
   if (a.published && b.published) {
-    return a.published < b.published ? -1 : a.published > b.published ? 1 : 0;
+    return b.published.localeCompare(a.published);
   }
   if (a.published || b.published) {
     return a.published ? -1 : 1;
