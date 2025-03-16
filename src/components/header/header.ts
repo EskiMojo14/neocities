@@ -3,7 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import { when } from "lit/directives/when.js";
 import base from "../../styles/base.css?type=raw";
 import typography from "../../styles/typography.css?type=raw";
-import { frontmatterIsSet, getTypeInterval } from "../../utils/index.ts";
+import { frontmatterIsSet } from "../../utils/index.ts";
 import { consolewriter } from "../../utils/lit.ts";
 import header from "./header.css?type=raw";
 
@@ -22,8 +22,8 @@ export default class PageHeader extends LitElement {
 
   render() {
     const { header, subtitle, published } = this;
-    const headerDuration = getTypeInterval(header) * header.length;
-    const subtitleDuration = getTypeInterval(subtitle) * subtitle.length;
+    const headerDuration = consolewriter.getDuration(header);
+    const subtitleDuration = consolewriter.getDuration(subtitle);
     return html`
       <header>
         <hgroup>

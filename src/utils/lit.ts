@@ -74,24 +74,37 @@ interface ConsolewriterConfig extends TypeIntervalConfig {
   finishingDelay?: number;
 }
 
-export const consolewriter = (
-  text: string,
-  { delay = 0, finishingDelay = 300, ...config }: ConsolewriterConfig = {},
-) =>
+export const consolewriter = (text: string, cfg?: ConsolewriterConfig) =>
   asyncReplace(
     (async function* () {
+      const { delay, finishingDelay, ...config } = {
+        ...consolewriter.defaults,
+        ...cfg,
+      };
       const interval = getTypeInterval(text, config);
       let acc = "";
       await wait(delay);
       for (const char of text) {
         acc += char;
-        yield html`${acc}<span class="cursor" aria-hidden="true">x</span>`;
+        yield html`${acc}<span class="cursor">x</span>`;
         await wait(interval);
       }
-      yield html`${acc}<span class="cursor finished" aria-hidden="true"
-          >x</span
-        >`;
+      yield html`${acc}<span class="cursor finished">x</span>`;
       await wait(finishingDelay);
       yield html`${acc}`;
     })(),
   );
+
+consolewriter.defaults = {
+  ...getTypeInterval.defaults,
+  delay: 0,
+  finishingDelay: 300,
+} satisfies Required<ConsolewriterConfig>;
+
+consolewriter.getDuration = (text: string, cfg?: ConsolewriterConfig) => {
+  const { delay, finishingDelay, ...config } = {
+    ...consolewriter.defaults,
+    ...cfg,
+  };
+  return delay + getTypeInterval.getDuration(text, config) + finishingDelay;
+};

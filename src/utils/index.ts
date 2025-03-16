@@ -30,16 +30,25 @@ export interface TypeIntervalConfig {
   maxDuration?: number;
 }
 
-export function getTypeInterval(
-  text: string,
-  {
+export function getTypeInterval(text: string, config?: TypeIntervalConfig) {
+  const {
     interval = 100,
     minInterval = 50,
     maxDuration = 1000,
-  }: TypeIntervalConfig = {},
-) {
+  } = { ...getTypeInterval.defaults, ...config };
   return Math.max(minInterval, Math.min(interval, maxDuration / text.length));
 }
+
+getTypeInterval.defaults = {
+  interval: 100,
+  minInterval: 50,
+  maxDuration: 1000,
+} satisfies Required<TypeIntervalConfig>;
+
+getTypeInterval.getDuration = (text: string, config?: TypeIntervalConfig) => {
+  const interval = getTypeInterval(text, config);
+  return interval * text.length;
+};
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export type Compute<T> = { [K in keyof T]: T[K] } & unknown;
