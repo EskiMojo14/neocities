@@ -3,7 +3,7 @@ layout: packages
 title: Mix 'n' Matchers
 label: Mix 'n' Matchers
 description: Some Jest/Vitest compatible matchers
-icon: labs
+icon: festival
 package: mix-n-matchers
 devDep: true
 repo: EskiMojo14/mix-n-matchers
