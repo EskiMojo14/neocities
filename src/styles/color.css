@@ -26,6 +26,13 @@
 
   --scroll-track: var(--black);
   --scroll-thumb: var(--purple);
+
+  --logo1: var(--red);
+  --logo2: var(--yellow);
+  --logo3: var(--green);
+  --logo4: var(--cyan);
+  --logo5: var(--purple);
+  --logo6: var(--pink);
 }
 
 [data-theme="light"] {
@@ -45,4 +52,11 @@
 
   --scroll-track: var(--white-secondary);
   --scroll-thumb: var(--purple);
+
+  --logo1: var(--red);
+  --logo2: var(--yellow5);
+  --logo3: var(--green5);
+  --logo4: var(--blue);
+  --logo5: var(--purple);
+  --logo6: var(--pink5);
 }
