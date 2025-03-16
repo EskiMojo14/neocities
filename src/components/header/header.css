@@ -1,0 +1,16 @@
+h1,
+p {
+  margin: 0;
+  color: transparent;
+  position: relative;
+}
+p {
+  margin-top: 0.5em;
+}
+
+span {
+  color: var(--foreground);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
