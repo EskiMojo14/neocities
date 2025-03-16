@@ -159,7 +159,9 @@ function renderSidebarItem(item: SidebarItem, currentRoute: string) {
         current: isCurrent,
       })}
     >
-      <material-symbol aria-hidden="true">${item.icon}</material-symbol>
+      <material-symbol aria-hidden="true" title=${item.label}
+        >${item.icon}</material-symbol
+      >
       <span class="subtitle1">${item.label}</span>
     </a>
   </li>`;
@@ -222,7 +224,9 @@ function renderSidebarGroup(
         current: isCurrent,
       })}
     >
-      <material-symbol aria-hidden="true">${group.icon}</material-symbol>
+      <material-symbol aria-hidden="true" title=${group.label}
+        >${group.icon}</material-symbol
+      >
       <span class="subtitle1">${group.label}</span></a
     >
 
