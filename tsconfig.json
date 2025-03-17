@@ -32,7 +32,6 @@
     ".storybook/*",
     "vite.config.ts",
     "vitest.workspace.ts",
-    "greenwood.config.ts",
-    "test-setup.ts"
+    "greenwood.config.ts"
   ]
 }

@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should fail with shadow root 1`] = `
+[Error: [2mexpect([22m[31melement[39m[2m).toHaveFocus()[22m
+Expected element with focus:
+  [32m<input />[39m
+Received element with focus:
+  [31m<button>
+  Button
+</button>[39m]
+`;
+
+exports[`should fail with shadow root 2`] = `
+[Error: [2mexpect([22m[31melement[39m[2m).not.toHaveFocus()[22m
+Received element is focused:
+  [31m<button>
+  Button
+</button>[39m]
+`;
+
+exports[`should fail without shadow root 1`] = `
+[Error: [2mexpect([22m[31melement[39m[2m).toHaveFocus()[22m
+Expected element with focus:
+  [32m<input />[39m
+Received element with focus:
+  [31m<button>
+  Button
+</button>[39m]
+`;
+
+exports[`should fail without shadow root 2`] = `
+[Error: [2mexpect([22m[31melement[39m[2m).not.toHaveFocus()[22m
+Received element is focused:
+  [31m<button>
+  Button
+</button>[39m]
+`;

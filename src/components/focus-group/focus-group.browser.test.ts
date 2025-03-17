@@ -1,20 +1,17 @@
 import { page, userEvent } from "@vitest/browser/context";
-import { html, render } from "lit";
+import { html } from "lit";
 import { expect, it } from "vitest";
 import "./focus-group.ts";
 
 it("should move focus with arrow keys", async () => {
   const user = userEvent.setup();
-  render(
-    html`
-      <focus-group>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-      </focus-group>
-    `,
-    document.body,
-  );
+  page.render(html`
+    <focus-group>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+    </focus-group>
+  `);
   const buttons = {
     1: page.getByText("1"),
     2: page.getByText("2"),

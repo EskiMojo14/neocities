@@ -5,14 +5,14 @@ export default defineWorkspace([
     extends: "vite.config.ts",
     test: {
       include: ["**/*.node.test.ts"],
-      setupFiles: ["test-setup.ts"],
+      setupFiles: ["src/vite/setup.node.ts"],
     },
   },
   {
     extends: "vite.config.ts",
     test: {
       include: ["**/*.browser.test.ts"],
-      setupFiles: ["test-setup.ts"],
+      setupFiles: ["src/vite/setup.browser.ts"],
       browser: {
         enabled: true,
         provider: "playwright",
