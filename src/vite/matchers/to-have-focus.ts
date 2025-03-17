@@ -12,11 +12,10 @@ export const toHaveFocus: RawMatcherFn = function (element) {
     pass: root.activeElement === element,
     message: () => {
       return [
-        this.utils.matcherHint(
-          `${this.isNot ? ".not" : ""}.toHaveFocus`,
-          "element",
-          "",
-        ),
+        this.utils.matcherHint("toHaveFocus", "element", "", {
+          isNot: this.isNot,
+          promise: this.promise,
+        }),
         ...(this.isNot
           ? [
               "Received element is focused:",
