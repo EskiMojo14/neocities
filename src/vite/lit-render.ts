@@ -1,8 +1,7 @@
 import type { LocatorSelectors } from "@vitest/browser/context";
-import { page } from "@vitest/browser/context";
 import { debug, getElementLocatorSelectors } from "@vitest/browser/utils";
-import { render as litRender, type RenderOptions } from "lit";
-import { beforeEach } from "vitest";
+import type { RenderOptions } from "lit";
+import { render as litRender } from "lit";
 
 export interface ComponentRenderOptions extends RenderOptions {
   baseElement?: HTMLElement;
@@ -55,18 +54,4 @@ export function cleanup() {
     container.remove();
   }
   containers.clear();
-}
-
-page.extend({
-  render,
-});
-
-beforeEach(() => {
-  cleanup();
-});
-
-declare module "@vitest/browser/context" {
-  interface BrowserPage {
-    render: typeof render;
-  }
 }

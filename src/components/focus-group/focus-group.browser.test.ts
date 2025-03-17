@@ -5,7 +5,7 @@ import "./focus-group.ts";
 
 it("should move focus with arrow keys", async () => {
   const user = userEvent.setup();
-  page.render(html`
+  const { getByText } = page.render(html`
     <focus-group>
       <button>1</button>
       <button>2</button>
@@ -13,9 +13,9 @@ it("should move focus with arrow keys", async () => {
     </focus-group>
   `);
   const buttons = {
-    1: page.getByText("1"),
-    2: page.getByText("2"),
-    3: page.getByText("3"),
+    1: getByText("1"),
+    2: getByText("2"),
+    3: getByText("3"),
   };
   await user.click(buttons[1]);
   await expect.element(buttons[1]).toHaveFocus();
