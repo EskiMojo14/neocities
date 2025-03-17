@@ -27,5 +27,12 @@
       }
     ]
   },
-  "include": ["src", ".storybook/*", "vite.config.ts", "greenwood.config.ts"]
+  "include": [
+    "src",
+    ".storybook/*",
+    "vite.config.ts",
+    "vitest.workspace.ts",
+    "greenwood.config.ts",
+    "test-setup.ts"
+  ]
 }
