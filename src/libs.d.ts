@@ -26,16 +26,16 @@ declare module "@greenwood/cli/src/lifecycles/context.js" {
 }
 
 declare module "@greenwood/cli/src/data/client.js" {
-  export interface PageData {
+  export interface Page {
     id: string;
     title: string;
     label: string;
     route: string;
     data: Record<string, unknown>;
   }
-  export function getContent(): Promise<Array<PageData>>;
-  export function getContentByRoute(route: string): Promise<Array<PageData>>;
+  export function getContent(): Promise<Array<Page>>;
+  export function getContentByRoute(route: string): Promise<Array<Page>>;
   export function getContentByCollection(
     collection: string,
-  ): Promise<Array<PageData>>;
+  ): Promise<Array<Page>>;
 }

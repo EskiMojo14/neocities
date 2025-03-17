@@ -180,3 +180,10 @@ button {
     border: 1px solid var(--divider);
   }
 }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 0;
+  padding: 0;
+}
