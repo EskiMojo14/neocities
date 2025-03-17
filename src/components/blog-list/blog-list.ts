@@ -1,3 +1,4 @@
+import { getContentByRoute } from "@greenwood/cli/src/data/client.js";
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
@@ -9,6 +10,10 @@ import base from "../../styles/base.css?type=raw";
 import typography from "../../styles/typography.css?type=raw";
 import "../spinner/spinner.ts";
 import blogList from "./blog-list.css?type=raw";
+
+const blogChildIcon = (await getContentByRoute("/blog/")).sort((a, b) =>
+  a.route.localeCompare(b.route),
+)[0].data.childIcon;
 
 @customElement("blog-list")
 export default class BlogList extends LitElement {
@@ -37,7 +42,7 @@ export default class BlogList extends LitElement {
                       <p class="subtitle2">${post.description}</p>
                     </div>
                     <material-symbol aria-hidden="true"
-                      >${post.icon ?? "article"}</material-symbol
+                      >${post.icon ?? blogChildIcon}</material-symbol
                     >
                   </a>
                   ${when(index < blogPosts.length - 1, () => html`<hr />`)}`,

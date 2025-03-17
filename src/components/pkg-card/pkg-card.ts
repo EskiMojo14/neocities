@@ -1,9 +1,14 @@
+import { getContentByRoute } from "@greenwood/cli/src/data/client.js";
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import base from "../../styles/base.css?type=raw";
 import typography from "../../styles/typography.css?type=raw";
 import "../pkg-info/pkg-info.ts";
 import pkgCard from "./pkg-card.css?type=raw";
+
+const pkgChildIcon = (await getContentByRoute("/packages/")).sort((a, b) =>
+  a.route.localeCompare(b.route),
+)[0].data.childIcon;
 
 @customElement("pkg-card")
 export default class PkgCard extends LitElement {
@@ -28,7 +33,7 @@ export default class PkgCard extends LitElement {
   route = "";
 
   @property({ type: String })
-  icon = "deployed_code";
+  icon = pkgChildIcon;
 
   render() {
     const { pkg, repo, docs, name, description, route, icon } = this;
