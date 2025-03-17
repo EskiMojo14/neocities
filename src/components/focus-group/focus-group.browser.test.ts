@@ -21,14 +21,14 @@ it("should move focus with arrow keys", async () => {
     3: page.getByText("3"),
   };
   await user.click(buttons[1]);
-  await expect.element(buttons[1]).toHaveFocusDeep();
+  await expect.element(buttons[1]).toHaveFocus();
   await user.keyboard("[ArrowRight]");
-  await expect.element(buttons[2]).toHaveFocusDeep();
+  await expect.element(buttons[2]).toHaveFocus();
   await user.keyboard("[ArrowRight]");
-  await expect.element(buttons[3]).toHaveFocusDeep();
+  await expect.element(buttons[3]).toHaveFocus();
 
   await user.keyboard("[ArrowLeft]");
-  await expect.element(buttons[2]).toHaveFocusDeep();
+  await expect.element(buttons[2]).toHaveFocus();
   await user.keyboard("[ArrowLeft]");
-  await expect.element(buttons[1]).toHaveFocusDeep();
+  await expect.element(buttons[1]).toHaveFocus();
 });
