@@ -3,6 +3,9 @@ import "mix-n-matchers/vitest";
 import { beforeEach, expect } from "vitest";
 import { cleanup, render } from "./lit-render.ts";
 import { toHaveFocus } from "./matchers/to-have-focus.ts";
+import "../styles/global.css";
+
+document.documentElement.dataset.theme = "dark";
 
 page.extend({
   render,
