@@ -10,6 +10,7 @@ document.documentElement.dataset.theme = "dark";
 
 page.extend({
   render,
+  [Symbol.for("vitest:component-cleanup")]: cleanup,
 });
 
 beforeEach(() => {
