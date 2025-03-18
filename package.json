@@ -13,7 +13,7 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "test": "vitest --workspace=vitest.workspace.ts run",
-    "test:watch": "vitest--workspace=vitest.workspace.ts"
+    "test:watch": "vitest --workspace=vitest.workspace.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
