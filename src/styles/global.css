@@ -10,6 +10,7 @@
 @import "../components/header/header.global.css";
 @import "../components/sidebar/sidebar.global.css";
 @import "../components/pkg-info/pkg-info.global.css";
+@import "../components/footer/footer.global.css";
 
 @font-face {
   font-family: "Monaspace Argon";
@@ -66,10 +67,8 @@ body {
   &:not(.sb-show-main) {
     min-height: 100vh;
     display: flex;
-    gap: 1rem;
     @media (max-width: 1000px) {
       flex-direction: column;
-      gap: 0;
     }
   }
   font-family: var(--body1-family);
@@ -80,10 +79,29 @@ body {
     "calt" 1,
     "liga" 1;
   .root {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+  }
+  page-header {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+    padding-bottom: 0;
+    @media (max-width: 1000px) {
+      margin: 0;
+    }
+  }
+  main {
     flex: 1;
     margin: 0 auto;
+    width: 100%;
     max-width: 1000px;
     padding: 1rem;
+    padding-top: 0;
     @media (max-width: 1000px) {
       margin: 0;
     }

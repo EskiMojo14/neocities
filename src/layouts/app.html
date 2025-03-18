@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script type="module" src="../components/sidebar/sidebar.ts"></script>
     <script type="module" src="../components/header/header.ts"></script>
+    <script type="module" src="../components/footer/footer.ts"></script>
     <title>eskimojo - ${globalThis.page.title}</title>
     <link rel="icon" href="/assets/icon.ico" sizes="any" />
     <link rel="icon" href="/assets/icon.svg" type="image/svg+xml" />
@@ -34,7 +35,10 @@
         published="${globalThis.page.data.published}"
       >
       </page-header>
-      <page-outlet></page-outlet>
+      <main>
+        <page-outlet></page-outlet>
+      </main>
+      <page-footer></page-footer>
     </div>
   </body>
 </html>

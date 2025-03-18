@@ -30,6 +30,7 @@
   --button-selected-background: var(--selection);
 
   --sidebar-background: var(--black);
+  --footer-background: var(--black);
 
   --code-background: var(--black);
 
@@ -62,6 +63,7 @@
   --button-selected-background: var(--selection);
 
   --sidebar-background: var(--white-secondary);
+  --footer-background: var(--white-secondary);
 
   --code-background: var(--white-secondary);
 

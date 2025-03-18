@@ -1,6 +1,5 @@
 pkg-info {
   display: block;
-  margin: 1em 0;
   &:not(:defined) {
     background: var(--code-background);
     padding: 1em;
