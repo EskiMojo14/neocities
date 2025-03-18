@@ -57,3 +57,9 @@ it("should fail with shadow root", async () => {
     expect(button.element()).not.toHaveFocus(),
   ).toThrowErrorMatchingSnapshot();
 });
+
+it("should fail with invalid element", () => {
+  expect(() => {
+    expect(null).toHaveFocus();
+  }).toThrowErrorMatchingSnapshot();
+});

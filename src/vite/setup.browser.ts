@@ -2,6 +2,7 @@ import { page } from "@vitest/browser/context";
 import "mix-n-matchers/vitest";
 import { beforeEach, expect } from "vitest";
 import { cleanup, render } from "./lit-render.ts";
+import { toHaveData } from "./matchers/to-have-data.ts";
 import { toHaveFocus } from "./matchers/to-have-focus.ts";
 import "../styles/global.css";
 
@@ -24,4 +25,5 @@ declare module "@vitest/browser/context" {
 expect.extend({
   // replace jest-dom matcher with one that supports shadow roots
   toHaveFocus,
+  toHaveData,
 });

@@ -1,5 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`should fail with invalid element 1`] = `[Error: Expected element to be an Element]`;
+
 exports[`should fail with shadow root 1`] = `
 [Error: [2mexpect([22m[31melement[39m[2m).[22mtoHaveFocus[2m()[22m
 Expected element with focus:

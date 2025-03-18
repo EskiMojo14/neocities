@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should fail with invalid element 1`] = `[Error: Expected element to be an HTMLElement]`;
+
+exports[`should fail with value 1`] = `
+[Error: [2mexpect([22m[31melement[39m[2m).[22mtoHaveData[2m([22m[32mkey[39m[2m, [22m[32mvalue[39m[2m)[22m
+Expected element with data attribute "foo": [32m"baz"[39m
+Received element with data attribute "foo": [31m"bar"[39m]
+`;
+
+exports[`should fail with value 2`] = `
+[Error: [2mexpect([22m[31melement[39m[2m).[22mnot[2m.[22mtoHaveData[2m([22m[32mkey[39m[2m, [22m[32mvalue[39m[2m)[22m
+Expected element without data attribute "foo": [32m"bar"[39m
+Received element with data attribute "foo": [31m"bar"[39m]
+`;
+
+exports[`should fail without value 1`] = `
+[Error: [2mexpect([22m[31melement[39m[2m).[22mtoHaveData[2m([22m[32mkey[39m[2m)[22m
+Expected element with data attribute "baz"
+Received element without data attribute "baz"]
+`;
+
+exports[`should fail without value 2`] = `
+[Error: [2mexpect([22m[31melement[39m[2m).[22mnot[2m.[22mtoHaveData[2m([22m[32mkey[39m[2m)[22m
+Expected element without data attribute "foo"
+Received element with data attribute "foo"]
+`;
