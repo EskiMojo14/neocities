@@ -18,10 +18,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
-    "@greenwood/cli": "0.32.0-alpha.5",
-    "@greenwood/plugin-import-raw": "0.32.0-alpha.5",
-    "@greenwood/plugin-renderer-lit": "0.32.0-alpha.5",
-    "@greenwood/plugin-typescript": "0.32.0-alpha.5",
+    "@greenwood/cli": "0.32.0-alpha.6",
+    "@greenwood/plugin-import-raw": "0.32.0-alpha.6",
+    "@greenwood/plugin-renderer-lit": "0.32.0-alpha.6",
+    "@greenwood/plugin-typescript": "0.32.0-alpha.6",
     "@mapbox/rehype-prism": "^0.9.0",
     "@storybook/addon-essentials": "^8.6.4",
     "@storybook/blocks": "^8.6.4",
@@ -70,8 +70,7 @@
   "packageManager": "pnpm@10.6.4+sha512.da3d715bfd22a9a105e6e8088cfc7826699332ded60c423b14ec613a185f1602206702ff0fe4c438cb15c979081ce4cb02568e364b15174503a63c7a8e2a5f6c",
   "pnpm": {
     "patchedDependencies": {
-      "@greenwood/cli@0.32.0-alpha.5": "patches/@greenwood__cli@0.32.0-alpha.5.patch",
-      "@greenwood/plugin-renderer-lit@0.32.0-alpha.5": "patches/@greenwood__plugin-renderer-lit@0.32.0-alpha.5.patch"
+      "@greenwood/plugin-renderer-lit@0.32.0-alpha.6": "patches/@greenwood__plugin-renderer-lit@0.32.0-alpha.6.patch"
     }
   },
   "prettier": {}
