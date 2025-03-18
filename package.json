@@ -12,9 +12,8 @@
     "lint": "eslint",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:browser": "vitest --workspace=vitest.workspace.ts"
+    "test": "vitest --workspace=vitest.workspace.ts run",
+    "test:watch": "vitest--workspace=vitest.workspace.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
