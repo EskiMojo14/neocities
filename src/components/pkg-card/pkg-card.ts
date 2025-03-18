@@ -6,9 +6,11 @@ import typography from "../../styles/typography.css?type=raw";
 import "../pkg-info/pkg-info.ts";
 import pkgCard from "./pkg-card.css?type=raw";
 
-const pkgChildIcon = (await getContentByRoute("/packages/")).sort((a, b) =>
-  a.route.localeCompare(b.route),
-)[0].data.childIcon;
+const pkgChildIcon = String(
+  (await getContentByRoute("/packages/")).sort((a, b) =>
+    a.route.localeCompare(b.route),
+  )[0].data.childIcon,
+);
 
 @customElement("pkg-card")
 export default class PkgCard extends LitElement {
