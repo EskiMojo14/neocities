@@ -22,7 +22,7 @@ export default class PkgInfo extends LitElement {
   ];
 
   @property({ type: String, attribute: "dev-dep" })
-  devDep = "";
+  devDep = "${unset}";
 
   @property({ type: String })
   pkg = "";
@@ -31,7 +31,7 @@ export default class PkgInfo extends LitElement {
   repo = "";
 
   @property({ type: String })
-  docs = "";
+  docs = "${unset}";
 
   @property({ type: Boolean, attribute: "include-install" })
   includeInstall = false;
@@ -141,6 +141,7 @@ export default class PkgInfo extends LitElement {
                   );
                 }}
               >
+                <legend class="sr-only">Install with</legend>
                 ${repeat(
                   Object.keys(installCommands),
                   (key) => key,

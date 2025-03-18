@@ -15,10 +15,10 @@ export default class PageHeader extends LitElement {
   header = "";
 
   @property({ type: String })
-  subtitle = "";
+  subtitle = "${unset}";
 
   @property({ type: String })
-  published = "";
+  published = "${unset}";
 
   render() {
     const { header, subtitle, published } = this;

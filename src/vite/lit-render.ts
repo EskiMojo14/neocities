@@ -12,9 +12,9 @@ export interface RenderResult extends LocatorSelectors {
   container: HTMLElement;
   baseElement: HTMLElement;
   debug: typeof debug;
-  unmount(): void;
-  rerender(template: unknown): void;
-  asFragment(): DocumentFragment;
+  unmount: () => void;
+  rerender: (template: unknown) => void;
+  asFragment: () => DocumentFragment;
 }
 
 const containers = new Set<HTMLElement>();
