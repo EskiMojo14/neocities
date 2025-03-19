@@ -146,6 +146,9 @@ importers:
       vitest:
         specifier: ^3.0.8
         version: 3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(@vitest/browser@3.0.8)(jiti@2.4.2)(msw@2.7.3(@types/node@22.13.9)(typescript@5.8.2))(sass@1.85.1)(terser@5.39.0)
+      vitest-browser-lit:
+        specifier: ^0.1.0
+        version: 0.1.0(@vitest/browser@3.0.8)(lit@3.2.1)(vitest@3.0.8)
 
 packages:
 
@@ -3428,6 +3431,14 @@ packages:
         optional: true
       yaml:
         optional: true
+
+  vitest-browser-lit@0.1.0:
+    resolution: {integrity: sha512-jQVD2QESSVfdvf0Ou3BMK2RTk/DLNDaP77QRYqgAQq1cz95759tc1qveOf9rYmTxBMVa/wVc9xt77saHaqF8rw==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    peerDependencies:
+      '@vitest/browser': '>=2.1.0'
+      lit: '>3.0.0'
+      vitest: '>=2.1.0'
 
   vitest@3.0.8:
     resolution: {integrity: sha512-dfqAsNqRGUc8hB9OVR2P0w8PZPEckti2+5rdZip0WIz9WW0MnImJ8XiR61QhqLa92EQzKP2uPkzenKOAHyEIbA==}
@@ -7145,6 +7156,12 @@ snapshots:
       jiti: 2.4.2
       sass: 1.85.1
       terser: 5.39.0
+
+  vitest-browser-lit@0.1.0(@vitest/browser@3.0.8)(lit@3.2.1)(vitest@3.0.8):
+    dependencies:
+      '@vitest/browser': 3.0.8(@testing-library/dom@10.4.0)(@types/node@22.13.9)(playwright@1.51.0)(typescript@5.8.2)(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2)(sass@1.85.1)(terser@5.39.0))(vitest@3.0.8)
+      lit: 3.2.1
+      vitest: 3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(@vitest/browser@3.0.8)(jiti@2.4.2)(msw@2.7.3(@types/node@22.13.9)(typescript@5.8.2))(sass@1.85.1)(terser@5.39.0)
 
   vitest@3.0.8(@types/debug@4.1.12)(@types/node@22.13.9)(@vitest/browser@3.0.8)(jiti@2.4.2)(msw@2.7.3(@types/node@22.13.9)(typescript@5.8.2))(sass@1.85.1)(terser@5.39.0):
     dependencies:

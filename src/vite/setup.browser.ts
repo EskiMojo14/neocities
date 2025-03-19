@@ -1,27 +1,11 @@
-import { page } from "@vitest/browser/context";
 import "mix-n-matchers/vitest";
-import { beforeEach, expect } from "vitest";
-import { cleanup, render } from "./lit-render.ts";
+import { expect } from "vitest";
+import "vitest-browser-lit";
 import { toHaveData } from "./matchers/to-have-data.ts";
 import { toHaveFocus } from "./matchers/to-have-focus.ts";
 import "../styles/global.css";
 
 document.documentElement.dataset.theme = "dark";
-
-page.extend({
-  render,
-  [Symbol.for("vitest:component-cleanup")]: cleanup,
-});
-
-beforeEach(() => {
-  cleanup();
-});
-
-declare module "@vitest/browser/context" {
-  interface BrowserPage {
-    render: typeof render;
-  }
-}
 
 expect.extend({
   // replace jest-dom matcher with one that supports shadow roots
