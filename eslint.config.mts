@@ -48,6 +48,7 @@ export default tseslint.config(
         { allowNumber: true },
       ],
       "@typescript-eslint/no-namespace": "off", // covered by eraseableSyntaxOnly
+      "@typescript-eslint/unbound-method": "off",
       "import-x/no-unresolved": "off",
       "import-x/no-absolute-path": "error",
       "import-x/extensions": ["error", "ignorePackages"],

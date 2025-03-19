@@ -1,0 +1,13 @@
+toast-queue {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  &:dir(rtl) {
+    right: auto;
+    left: 0;
+  }
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+}

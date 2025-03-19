@@ -9,6 +9,7 @@ import githubLight from "../../styles/themes/github-light.css?type=raw";
 import typography from "../../styles/typography.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import "../focus-group/focus-group.ts";
+import { toast } from "../toaster/toaster.ts";
 import pkgInfo from "./pkg-info.css?type=raw";
 
 @customElement("pkg-info")
@@ -89,6 +90,7 @@ export default class PkgInfo extends LitElement {
         this.shadowRoot?.getElementById("install-command")?.textContent;
       if (!text) return;
       await navigator.clipboard.writeText(text);
+      toast.success("Copied to clipboard", true);
     } catch (e) {
       console.error("Failed to copy to clipboard", e);
     }

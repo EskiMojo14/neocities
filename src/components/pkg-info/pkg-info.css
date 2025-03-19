@@ -22,7 +22,7 @@
     font-variation-settings: "slnt" 0;
     transition-property:
       color, font-weight, font-variation-settings, background;
-    transition-duration: var(--font-transition-duration);
+    transition-duration: var(--default-duration);
 
     &::before {
       content: attr(value);

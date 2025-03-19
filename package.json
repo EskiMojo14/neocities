@@ -62,6 +62,7 @@
   "dependencies": {
     "dracula-prism": "^2.1.16",
     "lit": "^3.2.1",
+    "nanoid": "^5.1.5",
     "valibot": "^1.0.0"
   },
   "engines": {

@@ -21,7 +21,7 @@ sidebar-nav {
     left: 0;
     right: 0;
     border-bottom: 1px solid transparent;
-    transition: border-color var(--font-transition-duration);
+    transition: border-color var(--default-duration);
     &[data-scrolled] {
       border-color: var(--divider);
     }

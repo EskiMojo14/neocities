@@ -75,3 +75,16 @@ export function getActiveElement(parent?: HTMLElement) {
   if (parent && !parent.contains(el)) return null;
   return el;
 }
+
+export const objectKeys: <T extends object>(obj: T) => Array<keyof T> =
+  Object.keys;
+export const objectEntries: <T extends object>(
+  obj: T,
+) => Array<
+  {
+    [K in keyof T]: [K, T[K]];
+  }[keyof T]
+> = Object.entries;
+export const objectFromEntries: <K extends PropertyKey, V>(
+  entries: ReadonlyArray<readonly [K, V]>,
+) => Record<K, V> = Object.fromEntries;

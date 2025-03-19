@@ -17,6 +17,11 @@
 [data-theme="dark"] {
   --focus-background: var(--comment);
 
+  --success: var(--green);
+  --warning: var(--yellow);
+  --error: var(--red);
+  --info: var(--cyan);
+
   --link: var(--cyan);
   --link-visited: var(--cyan-secondary);
   --link-focus: var(--green);
@@ -45,10 +50,17 @@
   --logo4: var(--cyan);
   --logo5: var(--purple);
   --logo6: var(--pink);
+
+  --toast-text: var(--black);
 }
 
 [data-theme="light"] {
   --focus-background: var(--light-blue);
+
+  --success: var(--green5);
+  --warning: var(--yellow5);
+  --error: var(--red5);
+  --info: var(--blue);
 
   --link: var(--blue);
   --link-visited: var(--blue-secondary);
@@ -78,4 +90,6 @@
   --logo4: var(--blue);
   --logo5: var(--purple);
   --logo6: var(--pink5);
+
+  --toast-text: var(--white);
 }
