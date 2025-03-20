@@ -12,7 +12,7 @@ import blogList from "./blog-list.css?type=raw";
 const blogChildIcon = String(
   (await getContentByRoute("/blog/")).sort((a, b) =>
     a.route.localeCompare(b.route),
-  )[0].data.childIcon,
+  )[0]?.data.childIcon,
 );
 
 const blogPosts = await getBlogPosts();

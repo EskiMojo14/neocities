@@ -9,7 +9,7 @@ import pkgCard from "./pkg-card.css?type=raw";
 const pkgChildIcon = String(
   (await getContentByRoute("/packages/")).sort((a, b) =>
     a.route.localeCompare(b.route),
-  )[0].data.childIcon,
+  )[0]?.data.childIcon,
 );
 
 @customElement("pkg-card")
