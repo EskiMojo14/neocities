@@ -47,10 +47,6 @@ export function clsx(...args: Array<ClassValue>) {
   return classMap(final);
 }
 
-export function ensureDir(dir: string): "ltr" | "rtl" | "auto" {
-  return dir === "rtl" || dir === "ltr" ? dir : "auto";
-}
-
 export function isActiveLink(
   href: string | undefined,
   currentRoute: string,
