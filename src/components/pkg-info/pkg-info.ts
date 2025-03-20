@@ -46,22 +46,17 @@ export default class PkgInfo extends LitElement {
   @state()
   theme: Theme = themeSchema.fallback;
 
+  eventAc: AbortController | undefined;
+
   #retrieveTheme() {
     this.theme = v.parse(themeSchema, document.documentElement.dataset.theme);
   }
 
-  #observer =
-    typeof MutationObserver === "undefined"
-      ? null
-      : new MutationObserver(() => {
-          this.#retrieveTheme();
-        });
-
   connectedCallback() {
     super.connectedCallback();
-    this.#observer?.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
+    this.eventAc = new AbortController();
+    document.addEventListener("themechange", (e) => (this.theme = e.newTheme), {
+      signal: this.eventAc.signal,
     });
   }
 
@@ -88,7 +83,7 @@ export default class PkgInfo extends LitElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.#observer?.disconnect();
+    this.eventAc?.abort();
   }
 
   async #onCopy() {
