@@ -92,6 +92,7 @@ export default class PkgInfo extends LitElement {
       await navigator.clipboard.writeText(text);
       toast.success("Copied to clipboard", true);
     } catch (e) {
+      toast.error("Failed to copy to clipboard", true);
       console.error("Failed to copy to clipboard", e);
     }
   }
