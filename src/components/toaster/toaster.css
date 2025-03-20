@@ -7,11 +7,18 @@ li {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 16px;
-  padding: 16px;
+  --padding: 16px;
+  gap: var(--padding);
+  padding-bottom: var(--padding);
+  padding-right: var(--padding);
+  &:dir(rtl) {
+    padding-right: 0;
+    padding-left: var(--padding);
+  }
   @media (max-width: 1000px) {
-    padding: 8px;
-    gap: 8px;
+    --padding: 8px;
+    padding: var(--padding);
+    padding-top: 0;
     align-items: stretch;
     .toast {
       flex: 1;
@@ -54,10 +61,7 @@ li {
     }
   }
   &.exiting {
-    animation-name: toast-exit;
-    animation-duration: var(--default-duration);
-    animation-fill-mode: forwards;
-    animation-play-state: running;
+    animation-name: toast-exit var(--default-duration) forwards;
   }
   &.error {
     --toast-accent: var(--error);

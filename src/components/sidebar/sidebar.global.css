@@ -1,4 +1,5 @@
 sidebar-nav {
+  display: block;
   background: var(--sidebar-background);
   width: var(--sidebar-width);
   position: sticky;

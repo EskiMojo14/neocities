@@ -38,10 +38,10 @@ export default class PkgInfo extends LitElement {
   includeInstall = false;
 
   @state()
-  theme = "dark";
+  theme = "system";
 
   #retrieveTheme() {
-    this.theme = document.documentElement.dataset.theme ?? "dark";
+    this.theme = document.documentElement.dataset.theme ?? "system";
   }
 
   #observer =

@@ -4,20 +4,9 @@
 }
 
 button {
-  .light {
+  &[data-selected="system"] .system,
+  &[data-selected="light"] .light,
+  &[data-selected="dark"] .dark {
     --icon-fill: 1;
-  }
-  &[aria-pressed="true"] {
-    &:not(:focus-visible) {
-      background: none;
-      color: var(--button);
-      &:hover {
-        color: var(--button-hover);
-        background: var(--button-hover-background);
-      }
-    }
-    .light {
-      --icon-fill: 0;
-    }
   }
 }

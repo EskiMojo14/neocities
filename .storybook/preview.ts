@@ -1,7 +1,7 @@
 import { themes } from "@storybook/theming";
 import type { Decorator, Preview } from "@storybook/web-components";
 import * as v from "valibot";
-import pages from "./mocks/graph.json";
+import { themeSchema } from "../src/constants/prefs.ts";
 import "../src/styles/global.css";
 
 const dirSchema = v.picklist(["auto", "ltr", "rtl"]);
@@ -14,8 +14,6 @@ const rtlDecorator: Decorator = (
   return story({ args });
 };
 
-const themeSchema = v.picklist(["light", "dark"]);
-
 const themeDecorator: Decorator = (story, { args: { theme, ...args } }) => {
   document.documentElement.dataset.theme = v.parse(themeSchema, theme);
   return story({ args });
@@ -25,25 +23,15 @@ const preview: Preview = {
   parameters: {
     layout: "centered",
     docs: {
-      theme: themes.dark,
+      theme: window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? themes.dark
+        : themes.light,
     },
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
-    },
-    fetchMock: {
-      mocks: [
-        {
-          matcher: {
-            url: "http://localhost:1984/___graph.json",
-            response: {
-              body: pages,
-            },
-          },
-        },
-      ],
     },
   },
   argTypes: {
@@ -58,7 +46,7 @@ const preview: Preview = {
   },
   args: {
     dir: "auto",
-    theme: "dark",
+    theme: "system",
   },
   decorators: [rtlDecorator, themeDecorator],
 };

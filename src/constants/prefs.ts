@@ -11,6 +11,6 @@ export const installCommands: Record<PackageManager, string> = {
   bun: "add",
 };
 
-export const themeSchema = v.picklist(["light", "dark"]);
+export const themeSchema = v.picklist(["system", "light", "dark"]);
 
 export type Theme = v.InferOutput<typeof themeSchema>;

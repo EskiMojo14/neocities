@@ -1,4 +1,4 @@
-[data-theme="light"] {
+%light {
   --weight-thin: 100;
   --weight-extralight: 200;
   --weight-light: 300;
@@ -12,7 +12,17 @@
   --icon-grade: 0;
 }
 
-[data-theme="dark"] {
+@media (prefers-color-scheme: light) {
+  [data-theme="system"] {
+    @extend %light;
+  }
+}
+
+[data-theme="light"] {
+  @extend %light;
+}
+
+%dark {
   --weight-thin: 100;
   --weight-extralight: 150;
   --weight-light: 250;
@@ -24,6 +34,16 @@
   --weight-black: 850;
 
   --icon-grade: -25;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] {
+    @extend %dark;
+  }
+}
+
+[data-theme="dark"] {
+  @extend %dark;
 }
 
 :root {
