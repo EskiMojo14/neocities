@@ -25,18 +25,24 @@ li {
   gap: 8px;
   padding: 0 8px;
   height: 40px;
-  background: var(--foreground);
-  color: var(--toast-text);
-  --button: var(--toast-text);
-  --button-hover: rgba(from var(--button) r g b / 0.7);
-  --button-hover-background: rgba(from var(--button) r g b / 0.1);
-  --button-focus: rgba(from var(--button) r g b / 0.7);
+  background: var(--toast-surface);
+  color: var(--toast-accent);
+  --normal-border: 1px solid var(--divider);
+  --accent-border: 8px solid var(--toast-accent);
+  border: var(--normal-border);
+  border-left: var(--accent-border);
   border-radius: var(--shape-medium);
   transition-property: background;
   transition-duration: var(--default-duration);
   animation: toast-enter var(--default-duration) forwards;
+  --icon-fill: 1;
+  &:dir(rtl) {
+    border-left: var(--normal-border);
+    border-right: var(--accent-border);
+  }
   .content {
     flex: 1;
+    color: var(--foreground);
   }
   &.has-timeout {
     animation:
@@ -54,16 +60,16 @@ li {
     animation-play-state: running;
   }
   &.error {
-    background: var(--error);
+    --toast-accent: var(--error);
   }
   &.warning {
-    background: var(--warning);
+    --toast-accent: var(--warning);
   }
   &.success {
-    background: var(--success);
+    --toast-accent: var(--success);
   }
   &.info {
-    background: var(--info);
+    --toast-accent: var(--info);
   }
   &:focus {
     outline: none;

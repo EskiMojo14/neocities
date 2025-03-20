@@ -51,7 +51,7 @@
   --logo5: var(--purple);
   --logo6: var(--pink);
 
-  --toast-text: var(--black);
+  --toast-surface: var(--black);
 }
 
 [data-theme="light"] {
@@ -91,5 +91,5 @@
   --logo5: var(--purple);
   --logo6: var(--pink5);
 
-  --toast-text: var(--white);
+  --toast-surface: var(--white);
 }
