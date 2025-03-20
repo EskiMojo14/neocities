@@ -6,6 +6,7 @@ import { toHaveData } from "./matchers/to-have-data.ts";
 import { toHaveFocus } from "./matchers/to-have-focus.ts";
 import "../styles/global.css";
 
+localStorage.clear();
 document.documentElement.dataset.theme = themeSchema.fallback;
 document.documentElement.dataset.pm = pkgManagerSchema.fallback;
 
