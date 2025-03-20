@@ -1,6 +1,9 @@
 import * as v from "valibot";
 
-export const pkgManagerSchema = v.picklist(["npm", "pnpm", "yarn", "bun"]);
+export const pkgManagerSchema = v.fallback(
+  v.picklist(["npm", "pnpm", "yarn", "bun"]),
+  "pnpm",
+);
 
 export type PackageManager = v.InferOutput<typeof pkgManagerSchema>;
 
@@ -11,6 +14,9 @@ export const installCommands: Record<PackageManager, string> = {
   bun: "add",
 };
 
-export const themeSchema = v.picklist(["system", "light", "dark"]);
+export const themeSchema = v.fallback(
+  v.picklist(["system", "light", "dark"]),
+  "system",
+);
 
 export type Theme = v.InferOutput<typeof themeSchema>;

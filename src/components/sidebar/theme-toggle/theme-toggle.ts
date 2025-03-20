@@ -1,6 +1,6 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, state } from "lit/decorators.js";
-import { parse } from "valibot";
+import * as v from "valibot";
 import type { Theme } from "../../../constants/prefs.ts";
 import { themeSchema } from "../../../constants/prefs.ts";
 import base from "../../../styles/base.css?type=raw";
@@ -12,12 +12,12 @@ export default class ThemeToggle extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(themeToggle)];
 
   @state()
-  currentTheme: Theme = "system";
+  currentTheme: Theme = themeSchema.fallback;
   connectedCallback() {
     super.connectedCallback();
-    this.currentTheme = parse(
+    this.currentTheme = v.parse(
       themeSchema,
-      document.documentElement.dataset.theme ?? "system",
+      document.documentElement.dataset.theme,
     );
   }
 
