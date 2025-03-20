@@ -2,6 +2,7 @@ import { themes } from "@storybook/theming";
 import type { Decorator, Preview } from "@storybook/web-components";
 import * as v from "valibot";
 import { dirSchema, themeSchema } from "../src/constants/prefs.ts";
+import pages from "./mocks/graph.json";
 import "../src/styles/global.css";
 
 const rtlDecorator: Decorator = (
@@ -30,6 +31,18 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    fetchMock: {
+      mocks: [
+        {
+          matcher: {
+            url: "http://localhost:1984/___graph.json",
+            response: {
+              body: pages,
+            },
+          },
+        },
+      ],
     },
   },
   argTypes: {
