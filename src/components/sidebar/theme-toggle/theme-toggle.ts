@@ -1,11 +1,18 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, state } from "lit/decorators.js";
+import { repeat } from "lit/directives/repeat.js";
 import * as v from "valibot";
 import type { Theme } from "../../../constants/prefs.ts";
 import { themeSchema } from "../../../constants/prefs.ts";
 import base from "../../../styles/base.css?type=raw";
 import { assert } from "../../../utils/index.ts";
 import themeToggle from "./theme-toggle.css?type=raw";
+
+const themeIcons: Record<Theme, string> = {
+  system: "routine",
+  light: "light_mode",
+  dark: "dark_mode",
+};
 
 @customElement("theme-toggle")
 export default class ThemeToggle extends LitElement {
@@ -29,29 +36,30 @@ export default class ThemeToggle extends LitElement {
     return theme;
   }
 
-  toggleTheme() {
-    const theme = this.nextTheme;
+  setTheme(theme: Theme) {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("theme", theme);
     this.currentTheme = theme;
   }
+
   render() {
     return html`
       <button
         aria-label="Use ${this.nextTheme} theme"
         data-selected=${this.currentTheme}
         @click=${() => {
-          this.toggleTheme();
+          this.setTheme(this.nextTheme);
         }}
       >
-        <material-symbol aria-hidden="true" class="system"
-          >routine</material-symbol
-        >
-        <material-symbol aria-hidden="true" class="light"
-          >light_mode</material-symbol
-        ><material-symbol aria-hidden="true" class="dark"
-          >dark_mode</material-symbol
-        >
+        ${repeat(
+          themeSchema.options,
+          (theme) => theme,
+          (theme) => html`
+            <material-symbol aria-hidden="true" class="${theme}"
+              >${themeIcons[theme]}</material-symbol
+            >
+          `,
+        )}
       </button>
     `;
   }
