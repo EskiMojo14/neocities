@@ -46,7 +46,7 @@ const preview: Preview = {
   },
   args: {
     dir: "auto",
-    theme: "system",
+    theme: themeSchema.fallback,
   },
   decorators: [rtlDecorator, themeDecorator],
 };

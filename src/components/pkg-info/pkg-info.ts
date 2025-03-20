@@ -2,7 +2,13 @@ import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
-import { installCommands, type PackageManager } from "../../constants/prefs.ts";
+import * as v from "valibot";
+import type { PackageManager, Theme } from "../../constants/prefs.ts";
+import {
+  installCommands,
+  pkgManagerSchema,
+  themeSchema,
+} from "../../constants/prefs.ts";
 import base from "../../styles/base.css?type=raw";
 import dracula from "../../styles/themes/dracula.css?type=raw";
 import githubLight from "../../styles/themes/github-light.css?type=raw";
@@ -38,10 +44,10 @@ export default class PkgInfo extends LitElement {
   includeInstall = false;
 
   @state()
-  theme = "system";
+  theme: Theme = themeSchema.fallback;
 
   #retrieveTheme() {
-    this.theme = document.documentElement.dataset.theme ?? "system";
+    this.theme = v.parse(themeSchema, document.documentElement.dataset.theme);
   }
 
   #observer =
@@ -60,12 +66,13 @@ export default class PkgInfo extends LitElement {
   }
 
   @state()
-  packageManager: PackageManager = "pnpm";
+  packageManager: PackageManager = pkgManagerSchema.fallback;
 
   #retrievePackageManager() {
-    this.packageManager =
-      (document.documentElement.dataset.pm as PackageManager | undefined) ??
-      "pnpm";
+    this.packageManager = v.parse(
+      pkgManagerSchema,
+      document.documentElement.dataset.pm,
+    );
   }
 
   #setPackageManager(newValue: PackageManager) {
