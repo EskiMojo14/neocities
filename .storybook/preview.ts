@@ -1,10 +1,8 @@
 import { themes } from "@storybook/theming";
 import type { Decorator, Preview } from "@storybook/web-components";
 import * as v from "valibot";
-import { themeSchema } from "../src/constants/prefs.ts";
+import { dirSchema, themeSchema } from "../src/constants/prefs.ts";
 import "../src/styles/global.css";
-
-const dirSchema = v.picklist(["auto", "ltr", "rtl"]);
 
 const rtlDecorator: Decorator = (
   story,
@@ -45,7 +43,7 @@ const preview: Preview = {
     },
   },
   args: {
-    dir: "auto",
+    dir: dirSchema.fallback,
     theme: themeSchema.fallback,
   },
   decorators: [rtlDecorator, themeDecorator],

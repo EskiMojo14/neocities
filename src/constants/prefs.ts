@@ -20,3 +20,7 @@ export const themeSchema = v.fallback(
 );
 
 export type Theme = v.InferOutput<typeof themeSchema>;
+
+export const dirSchema = v.fallback(v.picklist(["auto", "ltr", "rtl"]), "auto");
+
+export type Dir = v.InferOutput<typeof dirSchema>;
