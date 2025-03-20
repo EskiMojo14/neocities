@@ -4,7 +4,7 @@
  * @author Katorly
  */
 /* General */
-[data-theme="light"] {
+%lightTheme {
   --white: var(--neutral1);
   --white-secondary: #eff1f3;
   --grey: #6e7781;
@@ -246,4 +246,14 @@
   .token.entity {
     cursor: help;
   }
+}
+
+@media (prefers-color-scheme: light) {
+  [data-theme="system"] {
+    @extend %lightTheme;
+  }
+}
+
+[data-theme="light"] {
+  @extend %lightTheme;
 }

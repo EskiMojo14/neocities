@@ -14,7 +14,7 @@
   );
 }
 
-[data-theme="dark"] {
+%dark {
   --focus-background: var(--comment);
 
   --success: var(--green);
@@ -54,7 +54,17 @@
   --toast-surface: var(--black);
 }
 
-[data-theme="light"] {
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] {
+    @extend %dark;
+  }
+}
+
+[data-theme="dark"] {
+  @extend %dark;
+}
+
+%light {
   --focus-background: var(--light-blue);
 
   --success: var(--green5);
@@ -92,4 +102,14 @@
   --logo6: var(--pink5);
 
   --toast-surface: var(--white);
+}
+
+@media (prefers-color-scheme: light) {
+  [data-theme="system"] {
+    @extend %light;
+  }
+}
+
+[data-theme="light"] {
+  @extend %light;
 }

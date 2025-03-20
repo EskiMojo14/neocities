@@ -17,6 +17,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "noUncheckedIndexedAccess": true,
+    "allowJs": true,
 
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
@@ -33,6 +34,7 @@
     ".storybook/*",
     "vite.config.ts",
     "vitest.workspace.ts",
-    "greenwood.config.ts"
+    "greenwood.config.ts",
+    "postcss.config.js"
   ]
 }

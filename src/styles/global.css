@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
-@import url("../../node_modules/normalize.css/normalize.css");
+@import "../../node_modules/normalize.css/normalize.css";
 @import "./themes/dracula.css";
 @import "./themes/github-light.css";
 
@@ -55,7 +55,7 @@
   --font-family-code: "Monaspace Argon", monospace;
   --font-family-icon: "Material Symbols Sharp", serif;
 
-  --sidebar-width: 16rem;
+  --sidebar-width: 18rem;
 }
 
 html {

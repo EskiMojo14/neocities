@@ -5,7 +5,7 @@ import { toHaveData } from "./matchers/to-have-data.ts";
 import { toHaveFocus } from "./matchers/to-have-focus.ts";
 import "../styles/global.css";
 
-document.documentElement.dataset.theme = "dark";
+document.documentElement.dataset.theme = "system";
 
 expect.extend({
   // replace jest-dom matcher with one that supports shadow roots

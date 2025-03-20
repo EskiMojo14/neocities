@@ -20,7 +20,7 @@ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascr
 
 /* Scrollbars */
 
-[data-theme="dark"] {
+%darkTheme {
   --black: #21222c;
   --black-secondary: #414558;
   --black-ternary: #a7abbe;
@@ -505,4 +505,14 @@ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascr
   .highlight-line-remove {
     background-color: var(--red-30);
   }
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] {
+    @extend %darkTheme;
+  }
+}
+
+[data-theme="dark"] {
+  @extend %darkTheme;
 }

@@ -57,8 +57,8 @@ export default class Toaster extends LitElement {
       timeout,
     };
     // update immediately
-    this.requestUpdate();
     clearTimeout(this.#debouncedUpdateId);
+    this.requestUpdate();
     return () => {
       this.markExiting(id);
     };
@@ -116,6 +116,7 @@ export default class Toaster extends LitElement {
                     aria-labelledby="toast-${toast.id}-message"
                     tabindex="0"
                     ${ref((toastNode) => {
+                      if (!toastNode) return;
                       toast.node = toastNode;
                     })}
                     class=${clsx("toast", toast.type, {
