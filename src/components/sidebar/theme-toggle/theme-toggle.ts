@@ -14,6 +14,12 @@ const themeIcons: Record<Theme, string> = {
   dark: "dark_mode",
 };
 
+export class ThemeChangeEvent extends Event {
+  constructor(public newTheme: Theme) {
+    super("themechange", { bubbles: true, composed: true });
+  }
+}
+
 @customElement("theme-toggle")
 export default class ThemeToggle extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(themeToggle)];
@@ -40,6 +46,7 @@ export default class ThemeToggle extends LitElement {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("theme", theme);
     this.currentTheme = theme;
+    this.dispatchEvent(new ThemeChangeEvent(theme));
   }
 
   render() {
@@ -66,6 +73,9 @@ export default class ThemeToggle extends LitElement {
 }
 
 declare global {
+  interface GlobalEventHandlersEventMap {
+    themechange: ThemeChangeEvent;
+  }
   interface HTMLElementTagNameMap {
     "theme-toggle": ThemeToggle;
   }
