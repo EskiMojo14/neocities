@@ -39,7 +39,7 @@ ul {
     a {
       padding: 0.5rem;
       @media (max-width: 600px) {
-        span:not(.current span):not(.parent span) {
+        span:not(.current span, .parent span) {
           /* visually hidden */
           clip: rect(0 0 0 0);
           clip-path: inset(50%);
