@@ -14,7 +14,7 @@ export default class Footer extends LitElement {
         <ul>
           <li>
             <a
-              href="https://github.com/eskimojo/neocities"
+              href="https://github.com/EskiMojo14/neocities"
               target="_blank"
               rel="noopener noreferrer"
               >GitHub</a
