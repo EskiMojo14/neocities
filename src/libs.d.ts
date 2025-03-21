@@ -53,3 +53,8 @@ declare module "postcss-extend-rule" {
   }
   export default function postcssExtendRule(config?: Config): Plugin;
 }
+
+declare module "postcss-import" {
+  import type { Plugin } from "postcss";
+  export default function postcssImport(): Plugin;
+}
