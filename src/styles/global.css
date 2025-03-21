@@ -1,67 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 @import "../../node_modules/normalize.css/normalize.css";
+
 @import "./themes/dracula.css";
 @import "./themes/github-light.css";
 
-@import "./base.css";
-@import "./color.css";
-@import "./shape.css";
-@import "./typography.css";
+@import "./tokens/color.css";
+@import "./tokens/shape.css";
+@import "./tokens/typography.css";
+@import "./tokens/z-index.css";
+
+@import "./utility/baseline.css";
+@import "./utility/typography.css";
+
 @import "../components/header/header.global.css";
 @import "../components/sidebar/sidebar.global.css";
 @import "../components/pkg-info/pkg-info.global.css";
 @import "../components/footer/footer.global.css";
 @import "../components/toaster/toaster.global.css";
 
-@font-face {
-  font-family: "Monaspace Argon";
-  src: url("/assets/fonts/MonaspaceArgonVarVF.woff2") format("woff2");
-  font-weight: 100 800;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Monaspace Krypton";
-  src: url("/assets/fonts/MonaspaceKryptonVarVF.woff2") format("woff2");
-  font-weight: 100 800;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Monaspace Neon";
-  src: url("/assets/fonts/MonaspaceNeonVarVF.woff2") format("woff2");
-  font-weight: 100 800;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Monaspace Radon";
-  src: url("/assets/fonts/MonaspaceRadonVarVF.woff2") format("woff2");
-  font-weight: 100 800;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Monaspace Xenon";
-  src: url("/assets/fonts/MonaspaceXenonVarVF.woff2") format("woff2");
-  font-weight: 100 800;
-  font-display: swap;
-}
-
 :root {
   --default-duration: 250ms;
-  --font-family: "Monaspace Neon", monospace;
-  --font-family-heading: "Monaspace Xenon", monospace;
-  --font-family-code: "Monaspace Argon", monospace;
-  --font-family-icon: "Material Symbols Sharp", serif;
-
   --sidebar-width: 18rem;
-
-  --z-index-code-highlight: 0;
-  --z-index-code: 1;
-  --z-index-sidebar: 2;
-  --z-index-toast: 3;
-  --z-index-skip-to-content: 4;
 }
 
 html {
@@ -70,6 +29,10 @@ html {
 }
 
 body {
+  @extend .body1;
+  font-feature-settings:
+    "calt" 1,
+    "liga" 1;
   max-width: none;
   &:not(.sb-show-main) {
     min-height: 100vh;
@@ -78,13 +41,6 @@ body {
       flex-direction: column;
     }
   }
-  font-family: var(--body1-family);
-  font-size: var(--body1-size);
-  font-weight: var(--body1-weight);
-  text-transform: var(--body1-transform);
-  font-feature-settings:
-    "calt" 1,
-    "liga" 1;
   .root {
     display: flex;
     flex-direction: column;

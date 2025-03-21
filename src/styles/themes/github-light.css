@@ -120,6 +120,7 @@
 
   --foreground: #24292f;
   --selection: #fff8c5;
+  --selection-shadow: #eed888;
 
   --background: var(--white);
   --comment: var(--grey);
@@ -179,8 +180,8 @@
     right: 0;
     padding: inherit 0;
     margin-top: 1em;
-    background: #fff8c5;
-    box-shadow: inset 5px 0 0 #eed888;
+    background: var(--selection);
+    box-shadow: inset 5px 0 0 var(--selection-shadow);
     z-index: var(--z-index-code-highlight);
     pointer-events: none;
     line-height: inherit;

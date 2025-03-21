@@ -16,6 +16,12 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 1rem;
     gap: 2rem 1rem;
+    .row {
+      grid-column: span 3;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
     .color {
       display: flex;
       flex-direction: column;

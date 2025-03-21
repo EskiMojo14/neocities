@@ -1,8 +1,8 @@
 import { getContentByRoute } from "@greenwood/cli/src/data/client.js";
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import base from "../../styles/base.css?type=raw";
-import typography from "../../styles/typography.css?type=raw";
+import base from "../../styles/utility/baseline.css?type=raw";
+import typography from "../../styles/utility/typography.css?type=raw";
 import "../pkg-info/pkg-info.ts";
 import pkgCard from "./pkg-card.css?type=raw";
 

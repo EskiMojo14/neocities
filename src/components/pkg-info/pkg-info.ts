@@ -9,10 +9,10 @@ import {
   pkgManagerSchema,
   themeSchema,
 } from "../../constants/prefs.ts";
-import base from "../../styles/base.css?type=raw";
+import base from "../../styles/utility/baseline.css?type=raw";
 import dracula from "../../styles/themes/dracula.css?type=raw";
 import githubLight from "../../styles/themes/github-light.css?type=raw";
-import typography from "../../styles/typography.css?type=raw";
+import typography from "../../styles/utility/typography.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import "../focus-group/focus-group.ts";
 import { toast } from "../toaster/toaster.ts";

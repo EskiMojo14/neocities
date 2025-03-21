@@ -1,6 +1,6 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
-import base from "../../styles/base.css?type=raw";
+import base from "../../styles/utility/baseline.css?type=raw";
 import footer from "./footer.css?type=raw";
 
 @customElement("page-footer")

@@ -1,8 +1,8 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { when } from "lit/directives/when.js";
-import base from "../../styles/base.css?type=raw";
-import typography from "../../styles/typography.css?type=raw";
+import base from "../../styles/utility/baseline.css?type=raw";
+import typography from "../../styles/utility/typography.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import { consolewriter } from "../../utils/lit.ts";
 import header from "./header.css?type=raw";

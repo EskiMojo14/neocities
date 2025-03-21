@@ -4,8 +4,8 @@ import { customElement } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import { getBlogPosts } from "../../data/index.ts";
-import base from "../../styles/base.css?type=raw";
-import typography from "../../styles/typography.css?type=raw";
+import base from "../../styles/utility/baseline.css?type=raw";
+import typography from "../../styles/utility/typography.css?type=raw";
 import "../spinner/spinner.ts";
 import blogList from "./blog-list.css?type=raw";
 

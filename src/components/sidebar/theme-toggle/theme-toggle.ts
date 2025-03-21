@@ -4,7 +4,7 @@ import { repeat } from "lit/directives/repeat.js";
 import * as v from "valibot";
 import type { Theme } from "../../../constants/prefs.ts";
 import { themeSchema } from "../../../constants/prefs.ts";
-import base from "../../../styles/base.css?type=raw";
+import base from "../../../styles/utility/baseline.css?type=raw";
 import { assert } from "../../../utils/index.ts";
 import themeToggle from "./theme-toggle.css?type=raw";
 
