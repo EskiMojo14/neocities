@@ -8,6 +8,7 @@ sidebar-nav {
   height: 100vh;
   overflow: hidden;
   flex-shrink: 0;
+  z-index: var(--z-index-sidebar);
   &:dir(rtl) {
     left: auto;
     right: 0;
@@ -16,7 +17,6 @@ sidebar-nav {
 
 @media (max-width: 1000px) {
   sidebar-nav {
-    z-index: 100;
     width: 100%;
     height: auto;
     left: 0;

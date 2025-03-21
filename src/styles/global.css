@@ -56,6 +56,12 @@
   --font-family-icon: "Material Symbols Sharp", serif;
 
   --sidebar-width: 18rem;
+
+  --z-index-code-highlight: 0;
+  --z-index-code: 1;
+  --z-index-sidebar: 2;
+  --z-index-toast: 3;
+  --z-index-skip-to-content: 4;
 }
 
 html {
@@ -115,7 +121,7 @@ body {
   text-align: center;
   top: -1000px;
   left: -1000px;
-  z-index: 10000;
+  z-index: var(--z-index-skip-to-content);
   background: var(--page-background);
   padding: 1rem;
   &:focus {

@@ -2,7 +2,7 @@ toast-queue {
   position: fixed;
   bottom: 0;
   right: 0;
-  z-index: 1000;
+  z-index: var(--z-index-toast);
   &:dir(rtl) {
     right: auto;
     left: 0;
