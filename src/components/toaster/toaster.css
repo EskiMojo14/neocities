@@ -61,7 +61,7 @@ li {
     }
   }
   &.exiting {
-    animation-name: toast-exit var(--default-duration) forwards;
+    animation: toast-exit var(--default-duration) forwards;
   }
   &.error {
     --toast-accent: var(--error);
