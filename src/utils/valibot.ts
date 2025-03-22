@@ -8,8 +8,8 @@ export const formDataShape = <
   >,
 >(
   shape: T,
-) => {
-  return v.pipe(
+) =>
+  v.pipe(
     v.instance(FormData),
     v.transform(
       (formData): Partial<Record<string, FormDataEntryValue>> =>
@@ -17,6 +17,5 @@ export const formDataShape = <
     ),
     v.object(shape),
   );
-};
 
 export const coerceNumber = v.pipe(v.string(), v.transform(Number), v.number());

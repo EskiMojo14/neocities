@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import * as v from "valibot";
-import { objectKeys } from "../../utils/index.ts";
+import { assert, objectKeys } from "../../utils/index.ts";
 import * as vUtils from "../../utils/valibot.ts";
 import { toast, typeIcons } from "./toaster.ts";
 
@@ -20,8 +20,8 @@ const meta = {
     <form
       @submit=${(e: SubmitEvent) => {
         e.preventDefault();
-        const formData = new FormData(e.target as HTMLFormElement);
-        const parsed = v.parse(formSchema, formData);
+        assert(e.target instanceof HTMLFormElement);
+        const parsed = v.parse(formSchema, new FormData(e.target));
         toast(parsed.type, parsed.message, parsed.timeout);
       }}
     >
