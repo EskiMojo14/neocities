@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  '@greenwood/plugin-renderer-lit@0.32.0-alpha.6':
-    hash: e3c996fabfa26ac1389873e8f23c3e0a9afbd55569b4c3480f6db55c2c0468b7
-    path: patches/@greenwood__plugin-renderer-lit@0.32.0-alpha.6.patch
-
 importers:
 
   .:
@@ -30,20 +25,20 @@ importers:
         specifier: ^9.21.0
         version: 9.21.0
       '@greenwood/cli':
-        specifier: 0.32.0-alpha.6
-        version: 0.32.0-alpha.6
+        specifier: 0.32.0-alpha.7
+        version: 0.32.0-alpha.7
       '@greenwood/plugin-import-raw':
-        specifier: 0.32.0-alpha.6
-        version: 0.32.0-alpha.6(@greenwood/cli@0.32.0-alpha.6)
+        specifier: 0.32.0-alpha.7
+        version: 0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)
       '@greenwood/plugin-postcss':
-        specifier: 0.32.0-alpha.6
-        version: 0.32.0-alpha.6(@greenwood/cli@0.32.0-alpha.6)
+        specifier: 0.32.0-alpha.7
+        version: 0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)
       '@greenwood/plugin-renderer-lit':
-        specifier: 0.32.0-alpha.6
-        version: 0.32.0-alpha.6(patch_hash=e3c996fabfa26ac1389873e8f23c3e0a9afbd55569b4c3480f6db55c2c0468b7)(@greenwood/cli@0.32.0-alpha.6)(lit@3.2.1)
+        specifier: 0.32.0-alpha.7
+        version: 0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)(lit@3.2.1)
       '@greenwood/plugin-typescript':
-        specifier: 0.32.0-alpha.6
-        version: 0.32.0-alpha.6(@greenwood/cli@0.32.0-alpha.6)
+        specifier: 0.32.0-alpha.7
+        version: 0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)
       '@mapbox/rehype-prism':
         specifier: ^0.9.0
         version: 0.9.0
@@ -524,29 +519,29 @@ packages:
     resolution: {integrity: sha512-JubJ5B2pJ4k4yGxaNLdbjrnk9d/iDz6/q8wOilpIowd6PJPgaxCuHBnBszq7Ce2TyMrywm5r4PnKm6V3iiZF+g==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@greenwood/cli@0.32.0-alpha.6':
-    resolution: {integrity: sha512-ml+ytoFH/S2ynhLzl6DZscwHSrySpXnIW1f11RoYzgHYCARDR0dKHZfrqp7uXDy34DgzeqMpQ38RVchtixQbXg==}
+  '@greenwood/cli@0.32.0-alpha.7':
+    resolution: {integrity: sha512-JVlArqEId2ccB/QO29k0KpX+EguDvx4G+rPh9XWrRcuUg6arEoClkjHykzSdKqlp7tsb+u4pfA4lNKHX6KSYHw==}
     engines: {node: ^18.20.5 || ^20.18.3 || >=22.12.0}
     hasBin: true
 
-  '@greenwood/plugin-import-raw@0.32.0-alpha.6':
-    resolution: {integrity: sha512-kE/SMQPwwqXzBmHnjf1Qw/n34HzCAtSe9Ky8mpduWWc7snOh9lxA5SSeD+ptqNC9hT2VtMti7LAh/B+Pj2kMPw==}
+  '@greenwood/plugin-import-raw@0.32.0-alpha.7':
+    resolution: {integrity: sha512-yv5tkftGN1GA0y1cJ2aUnFzp7nyTqiR1JiyhV8j9LDdIfuJJjWJmpBo60AQGn3r6wh4uKuOwh4SUv5LGfGJKLA==}
     peerDependencies:
       '@greenwood/cli': ^0.31.0
 
-  '@greenwood/plugin-postcss@0.32.0-alpha.6':
-    resolution: {integrity: sha512-B8Taiga/v5kBUvo9DQawNgHtlMjoPluZn6Qs3uRKiWHk6uX7oIVvkI6UP2Buigfs8TOi+0fz+wXRfb3/Vu8NdA==}
+  '@greenwood/plugin-postcss@0.32.0-alpha.7':
+    resolution: {integrity: sha512-H41NitnnXOr0T3hd8rG+RSDh+etyFgjuhmlaWM/inIFZ+a8wqrh3/PA5K8lkn2XPR8SZdw80NCI8eVJPmMWhNg==}
     peerDependencies:
       '@greenwood/cli': ^0.31.0
 
-  '@greenwood/plugin-renderer-lit@0.32.0-alpha.6':
-    resolution: {integrity: sha512-OtyBymQwV23omcGRYzYdPYovAT7IlwchqO2ai0+NNg3yXSeCX5IZkPRgpUi8a1MpBt9KAGGVoV0daAHnm0ht2w==}
+  '@greenwood/plugin-renderer-lit@0.32.0-alpha.7':
+    resolution: {integrity: sha512-xI62L36NQN8EmAQL7EMMNKaaToPAxFiln4CQLB0HOa6iVNjziLBgd8GJbAXP1QOty0nmnukYBERp3ZL0dxrCHg==}
     peerDependencies:
       '@greenwood/cli': ^0.31.0
       lit: ^3.1.0
 
-  '@greenwood/plugin-typescript@0.32.0-alpha.6':
-    resolution: {integrity: sha512-70vWu2RRnYoUVeX/ZOI1te3CM7/QaBLMIqzAHkKmdZ4DMvmiZs7vOxPIpqKPDSJMpKcQO1gvM+tlkByHTrIKRA==}
+  '@greenwood/plugin-typescript@0.32.0-alpha.7':
+    resolution: {integrity: sha512-NsWLgBD/Oi4PBigiVCX7yC4cBIlpCVuV4w/sFeVtKB8xDKT0UvWKW32W6ru3alklMAuaKoZA01RQmB/L2Ei3Xw==}
     peerDependencies:
       '@greenwood/cli': ^0.31.0
 
@@ -4299,7 +4294,7 @@ snapshots:
       '@eslint/core': 0.12.0
       levn: 0.4.1
 
-  '@greenwood/cli@0.32.0-alpha.6':
+  '@greenwood/cli@0.32.0-alpha.7':
     dependencies:
       '@rollup/plugin-commonjs': 28.0.2(rollup@4.34.9)
       '@rollup/plugin-node-resolve': 15.3.1(rollup@4.34.9)
@@ -4329,27 +4324,27 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@greenwood/plugin-import-raw@0.32.0-alpha.6(@greenwood/cli@0.32.0-alpha.6)':
+  '@greenwood/plugin-import-raw@0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)':
     dependencies:
-      '@greenwood/cli': 0.32.0-alpha.6
+      '@greenwood/cli': 0.32.0-alpha.7
 
-  '@greenwood/plugin-postcss@0.32.0-alpha.6(@greenwood/cli@0.32.0-alpha.6)':
+  '@greenwood/plugin-postcss@0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)':
     dependencies:
-      '@greenwood/cli': 0.32.0-alpha.6
+      '@greenwood/cli': 0.32.0-alpha.7
       postcss: 8.5.3
       postcss-import: 16.1.0(postcss@8.5.3)
       postcss-preset-env: 7.8.3(postcss@8.5.3)
 
-  '@greenwood/plugin-renderer-lit@0.32.0-alpha.6(patch_hash=e3c996fabfa26ac1389873e8f23c3e0a9afbd55569b4c3480f6db55c2c0468b7)(@greenwood/cli@0.32.0-alpha.6)(lit@3.2.1)':
+  '@greenwood/plugin-renderer-lit@0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)(lit@3.2.1)':
     dependencies:
-      '@greenwood/cli': 0.32.0-alpha.6
+      '@greenwood/cli': 0.32.0-alpha.7
       '@lit-labs/ssr': 3.3.1
       '@lit-labs/ssr-client': 1.1.7
       lit: 3.2.1
 
-  '@greenwood/plugin-typescript@0.32.0-alpha.6(@greenwood/cli@0.32.0-alpha.6)':
+  '@greenwood/plugin-typescript@0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)':
     dependencies:
-      '@greenwood/cli': 0.32.0-alpha.6
+      '@greenwood/cli': 0.32.0-alpha.7
       typescript: 5.8.2
 
   '@hapi/bourne@3.0.0': {}
