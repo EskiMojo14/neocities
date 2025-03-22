@@ -5,6 +5,7 @@ import base from "../../styles/utility/baseline.css?type=raw";
 import typography from "../../styles/utility/typography.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import { consolewriter } from "../../utils/lit.ts";
+import "../console-writer/console-writer.ts";
 import header from "./header.css?type=raw";
 
 @customElement("page-header")
@@ -30,31 +31,31 @@ export default class PageHeader extends LitElement {
           ${when(
             frontmatterIsSet(published),
             () =>
-              html`<span class="sr-only">Published:</span
-                ><time datetime="${published.slice(1, -1)}" class="overline">
-                  <span aria-hidden="true" class="text">
-                    ${consolewriter(published.slice(1, 11), {
-                      delay: subtitleDuration + headerDuration,
-                    })}</span
-                  >
-                  ${published.slice(1, 11)}
-                </time>`,
+              html`<time datetime="${published.slice(1, -1)}">
+                <span class="sr-only">Published:</span
+                ><console-writer
+                  text="${published.slice(1, 11)}"
+                  delay=${subtitleDuration + headerDuration}
+                  class="overline"
+                ></console-writer>
+              </time>`,
           )}
-          <h1 class="headline2">
-            <span aria-hidden="true" class="text"
-              >${consolewriter(header)}</span
-            >
-            ${header}
-          </h1>
+          <console-writer
+            role="heading"
+            aria-level="1"
+            class="headline2"
+            text="${header}"
+          ></console-writer>
           ${when(
             frontmatterIsSet(subtitle),
-            () =>
-              html`<p class="headline5">
-                <span aria-hidden="true" class="text"
-                  >${consolewriter(subtitle, { delay: headerDuration })}</span
-                >
-                ${subtitle}
-              </p>`,
+            () => html`
+              <console-writer
+                role="paragraph"
+                text="${subtitle}"
+                delay=${headerDuration}
+                class="headline5"
+              ></console-writer>
+            `,
           )}
         </hgroup>
       </header>

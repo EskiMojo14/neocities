@@ -1,0 +1,37 @@
+:host {
+  position: relative;
+  display: block;
+}
+
+span {
+  display: block;
+}
+
+.console {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.text {
+  position: sticky;
+  color: transparent;
+  top: 0;
+  left: 0;
+}
+
+.cursor {
+  display: inline;
+  background: var(--foreground);
+  border: 0.1em solid var(--foreground);
+  margin-left: 0.1em;
+  height: 1lh;
+  color: transparent;
+  &:dir(rtl) {
+    margin-right: 0.1em;
+    margin-left: 0;
+  }
+  &.finished {
+    background: none;
+  }
+}
