@@ -6,6 +6,7 @@ const meta = {
   tags: ["autodocs"],
   component: "page-header",
   args: {
+    published: `"${new Date().toISOString()}"`,
     header: "header",
     subtitle: "subtitle",
   },

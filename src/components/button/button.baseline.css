@@ -1,0 +1,44 @@
+button {
+  @extend .button;
+
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  color: var(--button);
+  transition-property: color, background, font-weight, font-variation-settings;
+  transition-duration: var(--default-duration);
+  border-radius: var(--shape-pill);
+  --icon-weight: 300;
+  &:hover {
+    color: var(--button-hover);
+    background: var(--button-hover-background);
+    font-weight: var(--weight-semibold);
+    font-variation-settings: "slnt" -8;
+    --icon-weight: 500;
+  }
+  &[aria-pressed="true"] {
+    --icon-fill: 1;
+    color: var(--button-selected);
+    background: var(--button-selected-background);
+    font-weight: var(--weight-bold);
+    font-variation-settings: "slnt" -11;
+  }
+  &:focus-visible {
+    outline: none;
+    color: var(--button-focus);
+    background: var(--focus-background);
+    --icon-weight: 500;
+  }
+  &.icon {
+    padding: 0.5rem;
+    border-radius: 50%;
+  }
+  &.outlined {
+    border: 1px solid var(--divider);
+  }
+}

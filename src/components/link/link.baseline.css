@@ -1,0 +1,27 @@
+a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--link);
+  text-decoration: none;
+  transition-property: color, font-weight, font-variation-settings;
+  transition-duration: var(--default-duration);
+  --icon-weight: 300;
+  &:visited {
+    color: var(--link-visited);
+  }
+  &:hover {
+    color: var(--link-hover);
+    font-weight: var(--weight-semibold);
+    --icon-weight: 700;
+    &:visited {
+      color: var(--link-visited-hover);
+    }
+  }
+  &:focus-visible {
+    color: var(--link-focus);
+    --icon-weight: 700;
+    font-weight: var(--weight-semibold);
+    outline: none;
+  }
+}
