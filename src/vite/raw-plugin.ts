@@ -5,6 +5,7 @@ import type { Compilation } from "@greenwood/cli";
 import { readAndMergeConfig } from "@greenwood/cli/src/lifecycles/config.js";
 import { initContext } from "@greenwood/cli/src/lifecycles/context.js";
 import { greenwoodPluginImportRaw } from "@greenwood/plugin-import-raw";
+import { greenwoodPluginPostCss } from "@greenwood/plugin-postcss";
 import type { Plugin } from "vite";
 
 // 2) initialize Greenwood lifecycles
@@ -18,6 +19,8 @@ const compilation: Compilation = {
 // 3) initialize the plugin
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const rawResource = greenwoodPluginImportRaw()[0]!.provider(compilation);
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const postCssResource = greenwoodPluginPostCss()[0]!.provider(compilation);
 
 // 4) customize Vite
 export function transformRawImports(): Plugin {
@@ -40,12 +43,18 @@ export function transformRawImports(): Plugin {
         const filename = id.slice(0, id.indexOf(`.type${hint}`));
         const contents = await fs.readFile(filename, "utf-8");
 
-        /* eslint-disable @typescript-eslint/no-non-null-assertion */
-        const response = await rawResource.intercept!(
-          null!,
-          null!,
-          new Response(contents),
-        );
+        let response = new Response(contents);
+
+        if (filename.endsWith(".css")) {
+          /* eslint-disable @typescript-eslint/no-non-null-assertion */
+          response = await postCssResource.preIntercept!(
+            new URL(filename, compilation.context.projectDirectory),
+            null!,
+            response,
+          );
+        }
+
+        response = await rawResource.intercept!(null!, null!, response);
         /* eslint-enable @typescript-eslint/no-non-null-assertion */
         const body = await response.text();
 
