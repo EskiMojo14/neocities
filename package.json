@@ -53,7 +53,6 @@
     "postcss-load-config": "^6.0.1",
     "prettier": "^3.5.3",
     "prism-theme-github": "^1.0.2",
-    "sass": "^1.85.1",
     "storybook": "^8.6.7",
     "storybook-addon-fetch-mock": "^2.0.1",
     "ts-lit-plugin": "^2.0.2",
