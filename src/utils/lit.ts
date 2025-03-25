@@ -86,21 +86,26 @@ export function consolewriter(text: string, cfg?: consolewriter.Config) {
   );
 }
 
+consolewriter.defaults = {
+  ...getTypeInterval.defaults,
+  delay: 0,
+  finishingDelay: 300,
+} satisfies Required<consolewriter.Config>;
+
+consolewriter.getDuration = function getDuration(
+  text: string,
+  cfg?: consolewriter.Config,
+) {
+  const { delay, finishingDelay, ...config } = {
+    ...consolewriter.defaults,
+    ...cfg,
+  };
+  return delay + getTypeInterval.getDuration(text, config) + finishingDelay;
+};
+
 export namespace consolewriter {
   export interface Config extends getTypeInterval.Config {
     delay?: number;
     finishingDelay?: number;
-  }
-  export const defaults: Required<Config> = {
-    ...getTypeInterval.defaults,
-    delay: 0,
-    finishingDelay: 300,
-  };
-  export function getDuration(text: string, cfg?: Config) {
-    const { delay, finishingDelay, ...config } = {
-      ...consolewriter.defaults,
-      ...cfg,
-    };
-    return delay + getTypeInterval.getDuration(text, config) + finishingDelay;
   }
 }

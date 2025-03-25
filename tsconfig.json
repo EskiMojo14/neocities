@@ -23,6 +23,8 @@
     "useDefineForClassFields": false,
     "verbatimModuleSyntax": false,
 
+    "erasableSyntaxOnly": true,
+
     "plugins": [
       {
         "name": "ts-lit-plugin"
