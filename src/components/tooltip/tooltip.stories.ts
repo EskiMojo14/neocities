@@ -6,12 +6,13 @@ const meta = {
   title: "Tooltip",
   tags: ["autodocs"],
   component: "tool-tip",
-  render: ({ offset }) => html`
+  render: ({ offset, text }) => html`
     <button>button</button>
-    <tool-tip offset=${offset}>tooltip</tool-tip>
+    <tool-tip offset=${offset} text=${text}></tool-tip>
   `,
   args: {
     offset: 4,
+    text: "tooltip",
   },
 } satisfies Meta<HTMLElementTagNameMap["tool-tip"]>;
 
