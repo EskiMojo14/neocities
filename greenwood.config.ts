@@ -2,6 +2,7 @@ import type { Config } from "@greenwood/cli";
 import { greenwoodPluginImportRaw } from "@greenwood/plugin-import-raw";
 import { greenwoodPluginPostCss } from "@greenwood/plugin-postcss";
 import { greenwoodPluginRendererLit } from "@greenwood/plugin-renderer-lit";
+import { tagsPlugin } from "./src/greenwood/tags.ts";
 
 export default {
   prerender: true,
@@ -11,6 +12,7 @@ export default {
     greenwoodPluginRendererLit(),
     greenwoodPluginPostCss(),
     greenwoodPluginImportRaw(),
+    tagsPlugin(),
   ],
   markdown: {
     plugins: ["@mapbox/rehype-prism"],

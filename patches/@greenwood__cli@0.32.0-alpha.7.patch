@@ -1,0 +1,16 @@
+diff --git a/src/lifecycles/graph.js b/src/lifecycles/graph.js
+index 82018af5ffca22010d3ecc5063af053f1ebf8c0c..dbddde09fc070af6e942f1cd65528148429aa87d 100644
+--- a/src/lifecycles/graph.js
++++ b/src/lifecycles/graph.js
+@@ -363,7 +363,10 @@ const generateGraph = async (compilation) => {
+       if (sourcePlugins.length > 0) {
+         console.debug("building from external sources...");
+         for (const plugin of sourcePlugins) {
+-          const instance = plugin.provider(compilation);
++          const instance = plugin.provider({
++            ...compilation,
++            graph,
++          });
+           const data = await instance();
+ 
+           for (const node of data) {

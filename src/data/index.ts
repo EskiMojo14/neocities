@@ -1,3 +1,4 @@
+import type { Page } from "@greenwood/cli";
 import { getContentByRoute } from "@greenwood/cli/src/data/client.js";
 import * as v from "valibot";
 
@@ -15,12 +16,16 @@ const pkgSchema = v.object({
   docs: v.optional(v.string()),
 });
 
+// exclude index page and tags
+const contentRoutesFor = (path: string) => (page: Page) =>
+  page.route !== path && !page.route.startsWith(path + "tags/");
+
 export type Package = v.InferOutput<typeof pkgSchema>;
 
 export async function getPackages() {
   const content = await getContentByRoute("/packages/");
   return content
-    .filter((page) => page.route !== "/packages/")
+    .filter(contentRoutesFor("/packages/"))
     .map((page) =>
       v.parse(pkgSchema, {
         pkg: page.data.package,
@@ -45,7 +50,7 @@ export type BlogPost = v.InferOutput<typeof blogSchema>;
 export async function getBlogPosts() {
   const content = await getContentByRoute("/blog/");
   return content
-    .filter((page) => page.route !== "/blog/")
+    .filter(contentRoutesFor("/blog/"))
     .map((page) =>
       v.parse(blogSchema, {
         title: page.title,

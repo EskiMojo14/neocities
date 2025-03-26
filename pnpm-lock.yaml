@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@greenwood/cli@0.32.0-alpha.7':
+    hash: fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860
+    path: patches/@greenwood__cli@0.32.0-alpha.7.patch
+
 importers:
 
   .:
@@ -26,19 +31,19 @@ importers:
         version: 9.21.0
       '@greenwood/cli':
         specifier: 0.32.0-alpha.7
-        version: 0.32.0-alpha.7
+        version: 0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860)
       '@greenwood/plugin-import-raw':
         specifier: 0.32.0-alpha.7
-        version: 0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)
+        version: 0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860))
       '@greenwood/plugin-postcss':
         specifier: 0.32.0-alpha.7
-        version: 0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)
+        version: 0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860))
       '@greenwood/plugin-renderer-lit':
         specifier: 0.32.0-alpha.7
-        version: 0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)(lit@3.2.1)
+        version: 0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860))(lit@3.2.1)
       '@greenwood/plugin-typescript':
         specifier: 0.32.0-alpha.7
-        version: 0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)
+        version: 0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860))
       '@mapbox/rehype-prism':
         specifier: ^0.9.0
         version: 0.9.0
@@ -4291,7 +4296,7 @@ snapshots:
       '@eslint/core': 0.12.0
       levn: 0.4.1
 
-  '@greenwood/cli@0.32.0-alpha.7':
+  '@greenwood/cli@0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860)':
     dependencies:
       '@rollup/plugin-commonjs': 28.0.2(rollup@4.34.9)
       '@rollup/plugin-node-resolve': 15.3.1(rollup@4.34.9)
@@ -4321,27 +4326,27 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@greenwood/plugin-import-raw@0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)':
+  '@greenwood/plugin-import-raw@0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860))':
     dependencies:
-      '@greenwood/cli': 0.32.0-alpha.7
+      '@greenwood/cli': 0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860)
 
-  '@greenwood/plugin-postcss@0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)':
+  '@greenwood/plugin-postcss@0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860))':
     dependencies:
-      '@greenwood/cli': 0.32.0-alpha.7
+      '@greenwood/cli': 0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860)
       postcss: 8.5.3
       postcss-import: 16.1.0(postcss@8.5.3)
       postcss-preset-env: 7.8.3(postcss@8.5.3)
 
-  '@greenwood/plugin-renderer-lit@0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)(lit@3.2.1)':
+  '@greenwood/plugin-renderer-lit@0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860))(lit@3.2.1)':
     dependencies:
-      '@greenwood/cli': 0.32.0-alpha.7
+      '@greenwood/cli': 0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860)
       '@lit-labs/ssr': 3.3.1
       '@lit-labs/ssr-client': 1.1.7
       lit: 3.2.1
 
-  '@greenwood/plugin-typescript@0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7)':
+  '@greenwood/plugin-typescript@0.32.0-alpha.7(@greenwood/cli@0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860))':
     dependencies:
-      '@greenwood/cli': 0.32.0-alpha.7
+      '@greenwood/cli': 0.32.0-alpha.7(patch_hash=fd31a3e0b3aba7068d22ceecfda2f651e3fa4382b6b2f3e5f856d7d2533ba860)
       typescript: 5.8.2
 
   '@hapi/bourne@3.0.0': {}

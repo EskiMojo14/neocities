@@ -136,3 +136,7 @@ export function addManyToSet<T>(set: Set<T>, values: Iterable<T>) {
   }
   return set;
 }
+
+export function capitalize<S extends string>(str: S): Capitalize<S> {
+  return (str.charAt(0).toUpperCase() + str.slice(1)) as Capitalize<S>;
+}
