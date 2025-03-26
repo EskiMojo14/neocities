@@ -1,11 +1,12 @@
 import { getContentByRoute } from "@greenwood/cli/src/data/client.js";
 import { html, LitElement, unsafeCSS } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import { getBlogPosts } from "../../data/index.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import typography from "../../styles/utility/typography.css?type=raw";
+import { frontmatterIsSet } from "../../utils/index.ts";
 import "../spinner/spinner.ts";
 import blogList from "./blog-list.css?type=raw";
 
@@ -21,11 +22,17 @@ const blogPosts = await getBlogPosts();
 export default class BlogList extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(typography), unsafeCSS(blogList)];
 
+  @property({ type: String })
+  tag = "${unset}";
+
   render() {
+    const posts = frontmatterIsSet(this.tag)
+      ? blogPosts.filter((post) => post.tags.includes(this.tag))
+      : blogPosts;
     return html`
       <div class="blog-list">
         ${repeat(
-          blogPosts,
+          posts,
           (post) => post.route,
           (post, index) =>
             html`<a class="blog-post" href="${post.route}">
