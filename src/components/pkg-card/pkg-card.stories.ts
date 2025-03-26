@@ -13,6 +13,7 @@ const meta = {
     description: "For managing undoable state",
     route: "/packages/history-adapter",
     icon: "history",
+    tags: ["redux", "state management"],
   },
 } satisfies Meta<HTMLElementTagNameMap["pkg-card"]>;
 

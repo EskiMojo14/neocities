@@ -19,3 +19,6 @@ export const formDataShape = <
   );
 
 export const coerceNumber = v.pipe(v.string(), v.transform(Number), v.number());
+
+export const json = <T extends GenericSchema>(schema: T) =>
+  v.pipe(v.string(), v.transform(JSON.parse), schema);

@@ -1,8 +1,10 @@
 <html>
   <head>
     <script type="module" src="../components/pkg-info/pkg-info.ts"></script>
+    <script type="module" src="../components/tags/tags.ts"></script>
   </head>
   <body>
+    <tags-list path="packages" tags="${globalThis.page.data.tags}"></tags-list>
     <pkg-info
       pkg="${globalThis.page.data.package}"
       dev-dep="${globalThis.page.data.devDep}"

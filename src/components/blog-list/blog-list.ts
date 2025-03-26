@@ -8,6 +8,7 @@ import base from "../../styles/utility/baseline.css?type=raw";
 import typography from "../../styles/utility/typography.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import "../spinner/spinner.ts";
+import "../tags/tags.ts";
 import blogList from "./blog-list.css?type=raw";
 
 const blogChildIcon = String(
@@ -47,22 +48,7 @@ export default class BlogList extends LitElement {
                   >${post.icon ?? blogChildIcon}</material-symbol
                 >
               </a>
-              ${when(
-                post.tags.length,
-                () =>
-                  html`<p class="caption">
-                    Tags:
-                    ${repeat(
-                      post.tags,
-                      (tag) => tag,
-                      (tag, idx) =>
-                        html`<a href="/blog/tags/${tag}/">${tag}</a>${idx <
-                          post.tags.length - 1
-                            ? ", "
-                            : ""}`,
-                    )}
-                  </p>`,
-              )}
+              <tags-list path="blog" .tags=${post.tags}></tags-list>
               ${when(index < blogPosts.length - 1, () => html`<hr />`)}`,
         )}
       </div>
