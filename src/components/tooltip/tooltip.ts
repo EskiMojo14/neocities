@@ -13,7 +13,6 @@ import typography from "../../styles/utility/typography.css?type=raw";
 import { safeAssign } from "../../utils/index.ts";
 import "../console-writer/console-writer.ts";
 import tooltip from "./tooltip.css?type=raw";
-
 @customElement("tool-tip")
 export default class Tooltip extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(typography), unsafeCSS(tooltip)];
@@ -53,18 +52,34 @@ export default class Tooltip extends LitElement {
     this.#target = value;
   }
 
-  @property({ type: Number, reflect: true })
+  @property({ type: Number })
   delay = 1000;
+
+  static current: Tooltip | null = null;
+  static tooltipOpened(tooltip: Tooltip) {
+    this.current?.hide();
+    this.current = tooltip;
+  }
+  static tooltipClosed(tooltip: Tooltip) {
+    if (this.current === tooltip) this.current = null;
+  }
 
   #showTimeoutId: ReturnType<typeof setTimeout> | undefined;
 
   requestShow = () => {
+    if (Tooltip.current) {
+      this.show();
+      return;
+    }
     clearTimeout(this.#showTimeoutId);
     this.#showTimeoutId = setTimeout(this.show, this.delay);
   };
 
   show = () => {
-    if (!this.target) return;
+    clearTimeout(this.#hideTimeoutId);
+    if (this.dataset.visible || !this.target) return;
+
+    Tooltip.tooltipOpened(this);
     this.target.after(this);
     this.dataset.visible = "true";
     void computePosition(this.target, this, {
@@ -82,6 +97,10 @@ export default class Tooltip extends LitElement {
 
   #hideTimeoutId: ReturnType<typeof setTimeout> | undefined;
   requestHide = () => {
+    if (Tooltip.current !== this) {
+      this.hide();
+      return;
+    }
     clearTimeout(this.#hideTimeoutId);
     this.#hideTimeoutId = setTimeout(this.hide, this.delay);
   };
@@ -93,6 +112,7 @@ export default class Tooltip extends LitElement {
 
   finishHide = () => {
     if (this.dataset.visible) return;
+    Tooltip.tooltipClosed(this);
     this.remove();
   };
 
@@ -104,7 +124,6 @@ export default class Tooltip extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
 
-    this.hide();
     this.target ??= this.previousElementSibling;
     this.id ||= `${this.target?.id ?? nanoid(10)}-tooltip`;
 
