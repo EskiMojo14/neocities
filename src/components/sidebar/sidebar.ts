@@ -108,10 +108,12 @@ async function getSidebarItems() {
     getContentByRoute("/blog/"),
     getContentByRoute("/packages/"),
   ]);
-  const uniqueByRoot = uniqueBy((page: Page) => page.route);
+  const uniqueByRoute = uniqueBy((page: Page) => page.route);
   for (const page of content
     .flat()
-    .filter((page) => uniqueByRoot(page) && page.route.split("/")[2] !== "tags")
+    .filter(
+      (page) => uniqueByRoute(page) && page.route.split("/")[2] !== "tags",
+    )
     .sort((a, b) => a.route.localeCompare(b.route))) {
     const paths = page.route.split("/").filter(Boolean);
     let cursor = base;
