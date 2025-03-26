@@ -9,13 +9,14 @@ import {
   pkgManagerSchema,
   themeSchema,
 } from "../../constants/prefs.ts";
-import base from "../../styles/utility/baseline.css?type=raw";
 import dracula from "../../styles/themes/dracula.css?type=raw";
 import githubLight from "../../styles/themes/github-light.css?type=raw";
+import base from "../../styles/utility/baseline.css?type=raw";
 import typography from "../../styles/utility/typography.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import "../focus-group/focus-group.ts";
 import { toast } from "../toaster/toaster.ts";
+import Tooltip from "../tooltip/tooltip.ts";
 import pkgInfo from "./pkg-info.css?type=raw";
 
 @customElement("pkg-info")
@@ -79,6 +80,11 @@ export default class PkgInfo extends LitElement {
   firstUpdated() {
     this.#retrieveTheme();
     this.#retrievePackageManager();
+    Tooltip.for(
+      this.shadowRoot,
+      "copy-install-to-clipboard",
+      "Copy to clipboard",
+    );
   }
 
   disconnectedCallback() {
@@ -174,7 +180,7 @@ export default class PkgInfo extends LitElement {
                 )}${pkg}</code></pre>
                 <button
                   class="icon"
-                  title="Copy to clipboard"
+                  id="copy-install-to-clipboard"
                   @click=${() => this.#onCopy()}
                 >
                   <material-symbol aria-hidden="true"

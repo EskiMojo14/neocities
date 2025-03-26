@@ -6,6 +6,7 @@ import type { Theme } from "../../../constants/prefs.ts";
 import { themeSchema } from "../../../constants/prefs.ts";
 import base from "../../../styles/utility/baseline.css?type=raw";
 import { assert } from "../../../utils/index.ts";
+import Tooltip from "../../tooltip/tooltip.ts";
 import themeToggle from "./theme-toggle.css?type=raw";
 
 const themeIcons: Record<Theme, string> = {
@@ -15,8 +16,10 @@ const themeIcons: Record<Theme, string> = {
 };
 
 export class ThemeChangeEvent extends Event {
-  constructor(public newTheme: Theme) {
+  newTheme: Theme;
+  constructor(newTheme: Theme) {
     super("themechange", { bubbles: true, composed: true });
+    this.newTheme = newTheme;
   }
 }
 
@@ -49,11 +52,15 @@ export default class ThemeToggle extends LitElement {
     this.dispatchEvent(new ThemeChangeEvent(theme));
   }
 
+  firstUpdated() {
+    Tooltip.for(this.shadowRoot, "theme-toggle", "Toggle theme");
+  }
+
   render() {
     return html`
       <button
-        aria-label="Use ${this.nextTheme} theme"
         data-selected=${this.currentTheme}
+        id="theme-toggle"
         @click=${() => {
           this.setTheme(this.nextTheme);
         }}

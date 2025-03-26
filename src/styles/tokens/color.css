@@ -52,6 +52,9 @@
   --logo6: var(--pink);
 
   --toast-surface: var(--black);
+
+  --tooltip-background: var(--black);
+  --tooltip-foreground: var(--white);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -102,6 +105,9 @@
   --logo6: var(--pink5);
 
   --toast-surface: var(--white);
+
+  --tooltip-background: var(--white);
+  --tooltip-foreground: var(--black);
 }
 
 @media (prefers-color-scheme: light) {

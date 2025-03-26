@@ -1,0 +1,38 @@
+tool-tip {
+  display: inline-flex;
+  position: fixed;
+  white-space: nowrap;
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: var(--z-index-tooltip);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--shape-small);
+  background: var(--tooltip-background);
+  color: var(--tooltip-foreground);
+  border: 1px solid var(--divider);
+  pointer-events: none;
+  transition:
+    opacity var(--default-duration),
+    transform var(--default-duration);
+  /* for first render */
+  animation: tooltip-enter var(--default-duration);
+  opacity: 0;
+  transform: scale(0.95);
+  transform-origin: center center;
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes tooltip-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

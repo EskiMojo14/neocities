@@ -2,6 +2,7 @@
 @import "../../components/focus-group/focus-group.baseline.css";
 @import "../../components/link/link.baseline.css";
 @import "../../components/symbol/symbol.baseline.css";
+@import "../../components/tooltip/tooltip.baseline.css";
 
 * {
   box-sizing: border-box;

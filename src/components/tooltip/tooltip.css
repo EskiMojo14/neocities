@@ -1,0 +1,17 @@
+div {
+  position: relative;
+  display: block;
+}
+
+span {
+  position: sticky;
+  color: transparent;
+  top: 0;
+  left: 0;
+}
+
+console-writer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

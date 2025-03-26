@@ -13,6 +13,9 @@ importers:
 
   .:
     dependencies:
+      '@floating-ui/dom':
+        specifier: ^1.6.13
+        version: 1.6.13
       dracula-prism:
         specifier: ^2.1.16
         version: 2.1.16
@@ -22,6 +25,9 @@ importers:
       nanoid:
         specifier: ^5.1.5
         version: 5.1.5
+      rad-event-listeners:
+        specifier: ^1.0.1
+        version: 1.0.1
       valibot:
         specifier: ^1.0.0
         version: 1.0.0(typescript@5.8.2)
@@ -520,6 +526,15 @@ packages:
   '@eslint/plugin-kit@0.2.7':
     resolution: {integrity: sha512-JubJ5B2pJ4k4yGxaNLdbjrnk9d/iDz6/q8wOilpIowd6PJPgaxCuHBnBszq7Ce2TyMrywm5r4PnKm6V3iiZF+g==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@floating-ui/core@1.6.9':
+    resolution: {integrity: sha512-uMXCuQ3BItDUbAMhIXw7UPXRfAlOAvZzdK9BWpE60MCn+Svt3aLn9jsPTi/WNGlRUu2uI0v5S7JiIUsbsvh3fw==}
+
+  '@floating-ui/dom@1.6.13':
+    resolution: {integrity: sha512-umqzocjDgNRGTuO7Q8CU32dkHkECqI8ZdMZ5Swb6QAM0t5rnlrN3lGo1hdpscRd3WS8T6DKYK4ephgIH9iRh3w==}
+
+  '@floating-ui/utils@0.2.9':
+    resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
   '@greenwood/cli@0.32.0-alpha.7':
     resolution: {integrity: sha512-JVlArqEId2ccB/QO29k0KpX+EguDvx4G+rPh9XWrRcuUg6arEoClkjHykzSdKqlp7tsb+u4pfA4lNKHX6KSYHw==}
@@ -3219,6 +3234,9 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
+  rad-event-listeners@1.0.1:
+    resolution: {integrity: sha512-6qDGvwDHLCfBgtgexiUqpry9tz24na2RCHuoFBgDyRNw6E7tALbmUsR40mACoW8eiafS7avNWWAcrnneEQx2zw==}
+
   randomatic@3.1.1:
     resolution: {integrity: sha512-TuDE5KxZ0J461RVjrJZCJc+J+zCkTb1MbH9AQUq68sMhOMcy9jLcb3BrZKgp9q9Ncltdg4QVqWrH02W2EFFVYw==}
     engines: {node: '>= 0.10.0'}
@@ -4295,6 +4313,17 @@ snapshots:
     dependencies:
       '@eslint/core': 0.12.0
       levn: 0.4.1
+
+  '@floating-ui/core@1.6.9':
+    dependencies:
+      '@floating-ui/utils': 0.2.9
+
+  '@floating-ui/dom@1.6.13':
+    dependencies:
+      '@floating-ui/core': 1.6.9
+      '@floating-ui/utils': 0.2.9
+
+  '@floating-ui/utils@0.2.9': {}
 
   '@greenwood/cli@0.32.0-alpha.7(patch_hash=146b703e3aa48bb1ecbe9f16f98007fb0f63ce2fc475ba7a334814d8ad817991)':
     dependencies:
@@ -7254,6 +7283,8 @@ snapshots:
   querystringify@2.2.0: {}
 
   queue-microtask@1.2.3: {}
+
+  rad-event-listeners@1.0.1: {}
 
   randomatic@3.1.1:
     dependencies:

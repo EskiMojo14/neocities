@@ -64,9 +64,11 @@
     "vitest-browser-lit": "^0.1.0"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.6.13",
     "dracula-prism": "^2.1.16",
     "lit": "^3.2.1",
     "nanoid": "^5.1.5",
+    "rad-event-listeners": "^1.0.1",
     "valibot": "^1.0.0"
   },
   "engines": {
