@@ -43,6 +43,7 @@ export async function getPackages() {
 const blogSchema = v.object({
   ...baseSchema.entries,
   published: v.pipe(v.string(), v.isoTimestamp()),
+  tags: v.fallback(v.array(v.string()), []),
 });
 
 export type BlogPost = v.InferOutput<typeof blogSchema>;
@@ -58,6 +59,7 @@ export async function getBlogPosts() {
         route: page.route,
         published: page.data.published,
         icon: page.data.icon,
+        tags: page.data.tags,
       } satisfies Record<keyof BlogPost, unknown>),
     )
     .sort((a, b) => b.published.localeCompare(a.published));
