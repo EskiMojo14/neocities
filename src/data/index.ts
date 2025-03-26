@@ -7,6 +7,7 @@ const baseSchema = v.object({
   description: v.string(),
   route: v.string(),
   icon: v.optional(v.string()),
+  tags: v.fallback(v.array(v.string()), []),
 });
 
 const pkgSchema = v.object({
@@ -35,6 +36,7 @@ export async function getPackages() {
         title: page.title,
         route: page.route,
         icon: page.data.icon,
+        tags: page.data.tags,
       } satisfies Record<keyof Package, unknown>),
     )
     .sort((a, b) => a.title.localeCompare(b.title));
@@ -43,7 +45,6 @@ export async function getPackages() {
 const blogSchema = v.object({
   ...baseSchema.entries,
   published: v.pipe(v.string(), v.isoTimestamp()),
-  tags: v.fallback(v.array(v.string()), []),
 });
 
 export type BlogPost = v.InferOutput<typeof blogSchema>;

@@ -6,6 +6,9 @@ icon: history
 package: history-adapter
 repo: EskiMojo14/history-adapter
 docs: https://eskimojo14.github.io/history-adapter/
+tags:
+  - redux
+  - state management
 ---
 
 A "history adapter" for managing undoable (and redoable) state changes with [immer](https://immerjs.github.io/immer/), which pairs well with state management solutions like [Redux](https://redux.js.org/) and [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction).

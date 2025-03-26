@@ -6,6 +6,8 @@ icon: labs
 package: vitest-browser-lit
 devDep: true
 repo: EskiMojo14/vitest-browser-lit
+tags:
+  - testing
 ---
 
 A library for rendering lit components in Vitest Browser mode. Provides the usual methods like `render`, `rerender`, and `unmount`.

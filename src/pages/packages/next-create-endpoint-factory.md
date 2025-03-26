@@ -7,6 +7,8 @@ icon: api
 package: next-create-endpoint-factory
 repo: actual-experience/create-endpoint-factory
 docs: https://actual-experience.github.io/create-endpoint-factory/
+tags:
+  - nextjs
 ---
 
 A utility for creating API route handlers for NextJS apps using the pages router.
