@@ -5,7 +5,7 @@
   padding-top: 1rem;
 }
 
-.blog-post {
+a {
   display: flex;
   align-items: center;
   gap: 0.5rem;

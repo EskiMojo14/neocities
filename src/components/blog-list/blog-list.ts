@@ -36,19 +36,21 @@ export default class BlogList extends LitElement {
           posts,
           (post) => post.route,
           (post, index) =>
-            html`<a class="blog-post" href="${post.route}">
-                <div class="info">
-                  <time datetime="${post.published}" class="overline">
-                    ${post.published.slice(0, 10)}
-                  </time>
-                  <h3 class="headline6">${post.title}</h3>
-                  <p class="subtitle2">${post.description}</p>
-                </div>
-                <material-symbol aria-hidden="true"
-                  >${post.icon ?? blogChildIcon}</material-symbol
-                >
-              </a>
-              <tags-list path="blog" .tags=${post.tags}></tags-list>
+            html`<div>
+                <a href="${post.route}">
+                  <div class="info">
+                    <time datetime="${post.published}" class="overline">
+                      ${post.published.slice(0, 10)}
+                    </time>
+                    <h3 class="headline6">${post.title}</h3>
+                    <p class="subtitle2">${post.description}</p>
+                  </div>
+                  <material-symbol aria-hidden="true"
+                    >${post.icon ?? blogChildIcon}</material-symbol
+                  >
+                </a>
+                <tags-list path="blog" .tags=${post.tags}></tags-list>
+              </div>
               ${when(index < blogPosts.length - 1, () => html`<hr />`)}`,
         )}
       </div>
