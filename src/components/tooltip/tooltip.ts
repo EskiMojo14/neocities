@@ -14,13 +14,6 @@ import { safeAssign } from "../../utils/index.ts";
 import "../console-writer/console-writer.ts";
 import tooltip from "./tooltip.css?type=raw";
 
-const enterEvents = ["pointerenter", "focus"] satisfies Array<
-  keyof HTMLElementEventMap
->;
-const exitEvents = ["pointerleave", "blur"] satisfies Array<
-  keyof HTMLElementEventMap
->;
-
 @customElement("tool-tip")
 export default class Tooltip extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(typography), unsafeCSS(tooltip)];
@@ -44,25 +37,23 @@ export default class Tooltip extends LitElement {
     if (this.#targetAc) this.#targetAc.abort();
     const ac = (this.#targetAc = new AbortController());
     if (value) {
-      enterEvents.forEach((ev) => {
-        value.addEventListener(
-          ev,
-          ev === "focus" ? this.show : this.requestShow,
-          {
-            signal: ac.signal,
-          },
-        );
-      });
-      exitEvents.forEach((ev) => {
-        value.addEventListener(ev, this.hide, {
+      radEventListeners(
+        value as HTMLElement,
+        {
+          pointerenter: this.requestShow,
+          focus: this.show,
+          pointerleave: this.requestHide,
+          blur: this.hide,
+        },
+        {
           signal: ac.signal,
-        });
-      });
+        },
+      );
     }
     this.#target = value;
   }
 
-  @property({ type: Number })
+  @property({ type: Number, reflect: true })
   delay = 1000;
 
   #showTimeoutId: ReturnType<typeof setTimeout> | undefined;
@@ -87,6 +78,12 @@ export default class Tooltip extends LitElement {
       this.style.left = `${x}px`;
       this.style.top = `${y}px`;
     });
+  };
+
+  #hideTimeoutId: ReturnType<typeof setTimeout> | undefined;
+  requestHide = () => {
+    clearTimeout(this.#hideTimeoutId);
+    this.#hideTimeoutId = setTimeout(this.hide, this.delay);
   };
 
   hide = () => {
@@ -151,26 +148,27 @@ export default class Tooltip extends LitElement {
   ) {
     const ac = new AbortController();
     function createTooltip(delayed = true) {
-      const tooltip = document.createElement("tool-tip");
-      safeAssign(tooltip, { text, target }, opts);
-      if (delayed) {
-        tooltip.requestShow();
-      } else {
-        tooltip.show();
-      }
-      ac.abort();
+      return function () {
+        const tooltip = document.createElement("tool-tip");
+        safeAssign(tooltip, { text, target }, opts);
+        if (delayed) {
+          tooltip.requestShow();
+        } else {
+          tooltip.show();
+        }
+        ac.abort();
+      };
     }
-    enterEvents.forEach((ev) => {
-      target.addEventListener(
-        ev,
-        () => {
-          createTooltip(ev !== "focus");
-        },
-        {
-          signal: ac.signal,
-        },
-      );
-    });
+    radEventListeners(
+      target as HTMLElement,
+      {
+        pointerenter: createTooltip(),
+        focus: createTooltip(false),
+      },
+      {
+        signal: ac.signal,
+      },
+    );
   }
 
   static for(
