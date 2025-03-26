@@ -1,11 +1,7 @@
 import type { ExternalSourcePage, SourcePlugin } from "@greenwood/cli";
 import * as v from "valibot";
-import {
-  addManyToSet,
-  capitalize,
-  getOrInsertComputed,
-  type WithOptional,
-} from "../utils/index.ts";
+import type { WithOptional } from "../utils/index.ts";
+import { addManyToSet, getOrInsertComputed } from "../utils/index.ts";
 
 const html = String.raw;
 
@@ -13,30 +9,44 @@ const tagData = v.object({
   tags: v.array(v.string()),
 });
 
-const pathCreators: Record<
+const paths: Record<
   string,
-  (tag: string) => WithOptional<ExternalSourcePage, "route" | "title" | "label">
+  {
+    create: (
+      tag: string,
+    ) => WithOptional<ExternalSourcePage, "route" | "title" | "label">;
+    itemPlural: string;
+  }
 > = {
-  packages(tag) {
-    return {
-      imports: ["../components/pkg-list/pkg-list.ts"],
-      body: html`
-        <script type="module" src="../components/pkg-list/pkg-list.ts"></script>
-        <pkg-list tag="${tag}"></pkg-list>
-      `,
-    };
+  packages: {
+    create(tag) {
+      return {
+        imports: ["../components/pkg-list/pkg-list.ts"],
+        body: html`
+          <script
+            type="module"
+            src="../components/pkg-list/pkg-list.ts"
+          ></script>
+          <pkg-list tag="${tag}"></pkg-list>
+        `,
+      };
+    },
+    itemPlural: "Packages",
   },
-  blog(tag) {
-    return {
-      imports: ["../components/blog-list/blog-list.ts"],
-      body: html`
-        <script
-          type="module"
-          src="../components/blog-list/blog-list.ts"
-        ></script>
-        <blog-list tag="${tag}"></blog-list>
-      `,
-    };
+  blog: {
+    create(tag) {
+      return {
+        imports: ["../components/blog-list/blog-list.ts"],
+        body: html`
+          <script
+            type="module"
+            src="../components/blog-list/blog-list.ts"
+          ></script>
+          <blog-list tag="${tag}"></blog-list>
+        `,
+      };
+    },
+    itemPlural: "Blog Posts",
   },
 };
 
@@ -62,14 +72,21 @@ export const tagsPlugin = (): SourcePlugin => {
       return () => {
         const pages = Array.from(tagsByPath.entries()).flatMap(
           ([path, tags]) => {
-            const creator = pathCreators[path];
-            if (!creator) return [];
-            return Array.from(tags).map((tag) => ({
-              route: `/${path}/tags/${tag.toLowerCase().replace(/\s/g, "-")}/`,
-              title: `${capitalize(path)} - ${tag}`,
-              label: tag,
-              ...creator(tag),
-            }));
+            const pathData = paths[path];
+            if (!pathData) return [];
+            return Array.from(tags).map((tag) => {
+              const created = pathData.create(tag);
+              return {
+                route: `/${path}/tags/${tag.toLowerCase().replace(/\s/g, "-")}/`,
+                title: `${pathData.itemPlural} - ${tag}`,
+                label: tag,
+                ...created,
+                data: {
+                  description: `All ${pathData.itemPlural.toLowerCase()} tagged with &quot;${tag}&quot;`,
+                  ...created.data,
+                },
+              };
+            });
           },
         );
         return Promise.resolve(pages);
