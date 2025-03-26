@@ -28,7 +28,7 @@ export default class BlogList extends LitElement {
           blogPosts,
           (post) => post.route,
           (post, index) =>
-            html`<a href="${post.route}">
+            html`<a class="blog-post" href="${post.route}">
                 <div class="info">
                   <time datetime="${post.published}" class="overline">
                     ${post.published.slice(0, 10)}
@@ -40,6 +40,22 @@ export default class BlogList extends LitElement {
                   >${post.icon ?? blogChildIcon}</material-symbol
                 >
               </a>
+              ${when(
+                post.tags.length,
+                () =>
+                  html`<p class="caption">
+                    Tags:
+                    ${repeat(
+                      post.tags,
+                      (tag) => tag,
+                      (tag, idx) =>
+                        html`<a href="/blog/tags/${tag}/">${tag}</a>${idx <
+                          post.tags.length - 1
+                            ? ", "
+                            : ""}`,
+                    )}
+                  </p>`,
+              )}
               ${when(index < blogPosts.length - 1, () => html`<hr />`)}`,
         )}
       </div>
