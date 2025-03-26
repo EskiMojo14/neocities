@@ -20,5 +20,22 @@ export const formDataShape = <
 
 export const coerceNumber = v.pipe(v.string(), v.transform(Number), v.number());
 
-export const json = <T extends GenericSchema>(schema: T) =>
-  v.pipe(v.string(), v.transform(JSON.parse), schema);
+export const json = <T extends GenericSchema>(
+  schema: T,
+  reviver?: Parameters<typeof JSON.parse>[1],
+) =>
+  v.pipe(
+    v.string(),
+    v.rawTransform(({ dataset, NEVER, addIssue }): unknown => {
+      try {
+        return JSON.parse(dataset.value, reviver);
+      } catch (e) {
+        addIssue({
+          input: dataset.value,
+          message: e instanceof Error ? e.message : "Failed to parse JSON",
+        });
+        return NEVER;
+      }
+    }),
+    schema,
+  );
