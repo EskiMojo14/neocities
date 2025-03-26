@@ -1,6 +1,6 @@
 export const safeAssign: <T extends object>(
   target: T,
-  source: Partial<T>,
+  ...sources: ReadonlyArray<Partial<NoInfer<T>>>
 ) => T = Object.assign;
 
 export function assert(

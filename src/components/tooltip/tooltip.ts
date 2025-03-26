@@ -10,6 +10,7 @@ import { nanoid } from "nanoid/non-secure";
 import { radEventListeners } from "rad-event-listeners";
 import base from "../../styles/utility/baseline.css?type=raw";
 import typography from "../../styles/utility/typography.css?type=raw";
+import { safeAssign } from "../../utils/index.ts";
 import "../console-writer/console-writer.ts";
 import tooltip from "./tooltip.css?type=raw";
 
@@ -44,9 +45,13 @@ export default class Tooltip extends LitElement {
     const ac = (this.#targetAc = new AbortController());
     if (value) {
       enterEvents.forEach((ev) => {
-        value.addEventListener(ev, this.show, {
-          signal: ac.signal,
-        });
+        value.addEventListener(
+          ev,
+          ev === "focus" ? this.show : this.requestShow,
+          {
+            signal: ac.signal,
+          },
+        );
       });
       exitEvents.forEach((ev) => {
         value.addEventListener(ev, this.hide, {
@@ -56,6 +61,16 @@ export default class Tooltip extends LitElement {
     }
     this.#target = value;
   }
+
+  @property({ type: Number })
+  delay = 1000;
+
+  #showTimeoutId: ReturnType<typeof setTimeout> | undefined;
+
+  requestShow = () => {
+    clearTimeout(this.#showTimeoutId);
+    this.#showTimeoutId = setTimeout(this.show, this.delay);
+  };
 
   show = () => {
     if (!this.target) return;
@@ -75,6 +90,7 @@ export default class Tooltip extends LitElement {
   };
 
   hide = () => {
+    clearTimeout(this.#showTimeoutId);
     delete this.dataset.visible;
   };
 
@@ -131,20 +147,29 @@ export default class Tooltip extends LitElement {
   static lazy(
     target: Element,
     text: string,
-    callback?: (tooltip: Tooltip) => void,
+    opts: Partial<Pick<Tooltip, "offset" | "delay">> = {},
   ) {
-    function createTooltip() {
+    const ac = new AbortController();
+    function createTooltip(delayed = true) {
       const tooltip = document.createElement("tool-tip");
-      tooltip.text = text;
-      callback?.(tooltip);
-      target.after(tooltip);
-      tooltip.show();
-      enterEvents.forEach((ev) => {
-        target.removeEventListener(ev, createTooltip);
-      });
+      safeAssign(tooltip, { text, target }, opts);
+      if (delayed) {
+        tooltip.requestShow();
+      } else {
+        tooltip.show();
+      }
+      ac.abort();
     }
     enterEvents.forEach((ev) => {
-      target.addEventListener(ev, createTooltip);
+      target.addEventListener(
+        ev,
+        () => {
+          createTooltip(ev !== "focus");
+        },
+        {
+          signal: ac.signal,
+        },
+      );
     });
   }
 
@@ -152,11 +177,10 @@ export default class Tooltip extends LitElement {
     root: Document | ShadowRoot | DocumentFragment | null,
     id: string,
     text: string,
-    callback?: (tooltip: Tooltip) => void,
   ) {
     const target = root?.getElementById(id);
     if (!target) return;
-    Tooltip.lazy(target, text, callback);
+    Tooltip.lazy(target, text);
   }
 }
 

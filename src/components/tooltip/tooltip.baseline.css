@@ -11,7 +11,6 @@ tool-tip {
   background: var(--tooltip-background);
   color: var(--tooltip-foreground);
   border: 1px solid var(--divider);
-  pointer-events: none;
   transition:
     opacity var(--default-duration),
     transform var(--default-duration);
