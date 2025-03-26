@@ -8,6 +8,8 @@ package: mix-n-matchers
 devDep: true
 repo: EskiMojo14/mix-n-matchers
 docs: https://eskimojo14.github.io/mix-n-matchers/
+tags:
+  - testing
 ---
 
 Adds some useful matchers to Jest or Vitest.

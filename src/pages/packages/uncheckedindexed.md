@@ -5,6 +5,8 @@ label: Unchecked Indexed
 description: For matching a user's noUncheckedIndexedAccess setting
 package: uncheckedindexed
 repo: EskiMojo14/uncheckedindexed
+tags:
+  - typescript
 ---
 
 ### `UncheckedIndexedAccess<T>`
