@@ -1,7 +1,7 @@
 import type { ExternalSourcePage, SourcePlugin } from "@greenwood/cli";
 import * as v from "valibot";
 import type { WithOptional } from "../utils/index.ts";
-import { addManyToSet, getOrInsertComputed } from "../utils/index.ts";
+import { addManyToSet, getOrInsertComputed, slugify } from "../utils/index.ts";
 
 const html = String.raw;
 
@@ -77,7 +77,7 @@ export const tagsPlugin = (): SourcePlugin => {
             return Array.from(tags).map((tag) => {
               const created = pathData.create(tag);
               return {
-                route: `/${path}/tags/${tag.toLowerCase().replace(/\s/g, "-")}/`,
+                route: `/${path}/tags/${slugify(tag)}/`,
                 title: `${pathData.itemPlural} - ${tag}`,
                 label: tag,
                 ...created,
