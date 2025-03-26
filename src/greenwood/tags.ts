@@ -6,6 +6,8 @@ import {
   getOrInsertComputed,
 } from "../utils/index.ts";
 
+const html = String.raw;
+
 const tagData = v.object({
   tags: v.array(v.string()),
 });
@@ -35,7 +37,14 @@ export const tagsPlugin = (): SourcePlugin => {
             (tag): ExternalSourcePage => ({
               route: `/${path}/tags/${tag}/`,
               title: `${capitalize(path)} - ${tag}`,
-              body: tag,
+              imports: ["../components/blog-list/blog-list.ts"],
+              body: html`
+                <script
+                  type="module"
+                  src="../components/blog-list/blog-list.ts"
+                ></script>
+                <blog-list tag="${tag}"></blog-list>
+              `,
               label: tag,
             }),
           ),
