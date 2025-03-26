@@ -1,5 +1,9 @@
 <html>
+  <head>
+    <script type="module" src="../components/tags/tags.ts"></script>
+  </head>
   <body>
+    <tags-list path="blog" tags="${globalThis.page.data.tags}"></tags-list>
     <!-- markdown content will get output here -->
     <content-outlet></content-outlet>
     <a href="/blog/">
