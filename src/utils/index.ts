@@ -136,3 +136,7 @@ export function addManyToSet<T>(set: Set<T>, values: Iterable<T>) {
   }
   return set;
 }
+
+export function slugify(text: string) {
+  return text.toLowerCase().replace(/\s/g, "-");
+}

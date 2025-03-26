@@ -4,6 +4,7 @@ import { repeat } from "lit/directives/repeat.js";
 import * as v from "valibot";
 import base from "../../styles/utility/baseline.css?type=raw";
 import typography from "../../styles/utility/typography.css?type=raw";
+import { slugify } from "../../utils/index.ts";
 import * as vUtils from "../../utils/valibot.ts";
 
 const tagsSchema = v.array(v.string());
@@ -30,8 +31,8 @@ export default class Tags extends LitElement {
           (tag, idx) => `${tag}-${idx === 0 ? "first" : "other"}`,
           (tag, idx) =>
             idx > 0
-              ? html`, <a href="/${this.path}/tags/${tag}/">${tag}</a>`
-              : html`<a href="/${this.path}/tags/${tag}/">${tag}</a>`,
+              ? html`, <a href="/${this.path}/tags/${slugify(tag)}/">${tag}</a>`
+              : html`<a href="/${this.path}/tags/${slugify(tag)}/">${tag}</a>`,
         )}
       </p>
     `;
