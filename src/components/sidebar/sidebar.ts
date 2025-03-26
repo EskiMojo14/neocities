@@ -1,3 +1,4 @@
+import type { Page } from "@greenwood/cli";
 import {
   getContentByCollection,
   getContentByRoute,
@@ -107,9 +108,10 @@ async function getSidebarItems() {
     getContentByRoute("/blog/"),
     getContentByRoute("/packages/"),
   ]);
+  const uniqueByRoot = uniqueBy((page: Page) => page.route);
   for (const page of content
     .flat()
-    .filter(uniqueBy((page) => page.route))
+    .filter((page) => uniqueByRoot(page) && page.route.split("/")[2] !== "tags")
     .sort((a, b) => a.route.localeCompare(b.route))) {
     const paths = page.route.split("/").filter(Boolean);
     let cursor = base;
