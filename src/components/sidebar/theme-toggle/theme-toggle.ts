@@ -97,15 +97,14 @@ export default class ThemeToggle extends LitElement {
               >`,
               {
                 className: "icon",
+                ariaLabel: `Use ${theme} theme`,
+                ref(el) {
+                  if (el) Tooltip.lazy(el);
+                },
+                // input
                 name: "theme",
                 value: theme,
                 checked: theme === this.currentTheme,
-                labelAttributes: {
-                  ariaLabel: `Use ${theme} theme`,
-                },
-                ref(el) {
-                  if (el) Tooltip.lazy(el, `Use ${theme} theme`);
-                },
               },
             ),
         )}

@@ -66,8 +66,9 @@ export const Icon: Story = {
           value: "1",
           className: "icon",
           checked: true,
+          ariaLabel: "home",
           ref(el) {
-            if (el) Tooltip.lazy(el, "home");
+            if (el) Tooltip.lazy(el);
           },
         },
       )}
@@ -78,8 +79,9 @@ export const Icon: Story = {
           name: "toggle",
           value: "2",
           className: "icon",
+          ariaLabel: "house",
           ref(el) {
-            if (el) Tooltip.lazy(el, "house");
+            if (el) Tooltip.lazy(el);
           },
         },
       )}

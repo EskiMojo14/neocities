@@ -127,6 +127,8 @@ export default class Tooltip extends LitElement {
 
     this.target ??= this.previousElementSibling;
     this.id ||= `${this.target?.id ?? nanoid(10)}-tooltip`;
+    this.text ||= this.target?.ariaLabel ?? "";
+    this.target?.removeAttribute("aria-label");
 
     this.role = "tooltip";
 
@@ -164,12 +166,12 @@ export default class Tooltip extends LitElement {
     `;
   }
 
-  static lazy(target: Element, text: string, opts: Partial<Tooltip> = {}) {
+  static lazy(target: Element, opts: Partial<Tooltip> = {}) {
     const ac = new AbortController();
     function createTooltip(delayed = true) {
       return function () {
         const tooltip = document.createElement("tool-tip");
-        safeAssign(tooltip, { text, target }, opts);
+        safeAssign(tooltip, { target }, opts);
         if (delayed) {
           tooltip.requestShow();
         } else {
@@ -193,12 +195,11 @@ export default class Tooltip extends LitElement {
   static for(
     root: Document | ShadowRoot | DocumentFragment | null,
     id: string,
-    text: string,
     opts?: Partial<Tooltip>,
   ) {
     const target = root?.getElementById(id);
     if (!target) return;
-    Tooltip.lazy(target, text, opts);
+    Tooltip.lazy(target, opts);
   }
 }
 

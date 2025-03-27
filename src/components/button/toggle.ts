@@ -23,11 +23,16 @@ export function toggleButton(
     labelAttributes,
     className,
     ref: refCallback,
+    ariaLabel = null,
     ...opts
   }: ToggleButton,
 ) {
   return html`
-    <toggle-button class=${ifDefined(className)} ${ref(refCallback)}>
+    <toggle-button
+      .ariaLabel=${ariaLabel}
+      class=${ifDefined(className)}
+      ${ref(refCallback)}
+    >
       <input
         type=${type}
         ${ref(

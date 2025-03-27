@@ -13,8 +13,8 @@ import dracula from "../../styles/themes/dracula.css?type=raw";
 import githubLight from "../../styles/themes/github-light.css?type=raw";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
-import "../focus-group/focus-group.ts";
 import { toggleButton } from "../button/toggle.ts";
+import "../focus-group/focus-group.ts";
 import { toast } from "../toaster/toaster.ts";
 import Tooltip from "../tooltip/tooltip.ts";
 import pkgInfo from "./pkg-info.css?type=raw";
@@ -157,12 +157,11 @@ export default class PkgInfo extends LitElement {
                   (key) => key,
                   (key) =>
                     toggleButton(key, {
+                      ariaLabel: `Install with ${key}`,
+                      // input
                       name: "package-manager",
                       value: key,
                       checked: this.packageManager === key,
-                      labelAttributes: {
-                        ariaLabel: `Install with ${key}`,
-                      },
                     }),
                 )}
               </fieldset>

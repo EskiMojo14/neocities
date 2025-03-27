@@ -1,6 +1,7 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { ref } from "lit/directives/ref.js";
 import { repeat } from "lit/directives/repeat.js";
 import "../focus-group/focus-group.ts";
@@ -18,7 +19,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<HTMLButtonElement & { tooltip?: string }>;
+type Story = StoryObj<HTMLButtonElement>;
 
 export const Default: Story = {};
 
@@ -29,12 +30,13 @@ export const Outlined: Story = {
 };
 
 export const Icon: Story = {
-  render: ({ onclick, textContent, tooltip }) => html`
+  render: ({ onclick, textContent, ariaLabel }) => html`
     <button
       class="icon"
       @click=${onclick}
+      aria-label=${ifDefined(ariaLabel)}
       ${ref((el) => {
-        if (el) Tooltip.lazy(el, tooltip ?? "");
+        if (el) Tooltip.lazy(el);
       })}
     >
       <material-symbol aria-hidden="true">${textContent}</material-symbol>
@@ -42,7 +44,7 @@ export const Icon: Story = {
   `,
   args: {
     textContent: "home",
-    tooltip: "home",
+    ariaLabel: "home",
   },
 };
 

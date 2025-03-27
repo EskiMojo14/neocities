@@ -12,14 +12,14 @@ const meta = {
     <div style=${styleMap({ display: "flex", gap: "1rem" })}>
       <button
         ${ref((button) => {
-          if (button) Tooltip.lazy(button, "lazy tooltip");
+          if (button) Tooltip.lazy(button, { text: "lazy tooltip 1" });
         })}
       >
         hover me
       </button>
       <button
         ${ref((button) => {
-          if (button) Tooltip.lazy(button, "for tooltip");
+          if (button) Tooltip.lazy(button, { text: "lazy tooltip 2" });
         })}
       >
         then me
