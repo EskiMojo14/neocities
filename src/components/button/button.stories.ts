@@ -1,8 +1,10 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
+import { ref } from "lit/directives/ref.js";
 import { repeat } from "lit/directives/repeat.js";
 import "../focus-group/focus-group.ts";
+import Tooltip from "../tooltip/tooltip.ts";
 
 const meta = {
   title: "Button",
@@ -16,7 +18,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<HTMLButtonElement>;
+type Story = StoryObj<HTMLButtonElement & { tooltip?: string }>;
 
 export const Default: Story = {};
 
@@ -27,9 +29,20 @@ export const Outlined: Story = {
 };
 
 export const Icon: Story = {
+  render: ({ onclick, textContent, tooltip }) => html`
+    <button
+      class="icon"
+      @click=${onclick}
+      ${ref((el) => {
+        if (el) Tooltip.lazy(el, tooltip ?? "");
+      })}
+    >
+      <material-symbol aria-hidden="true">${textContent}</material-symbol>
+    </button>
+  `,
   args: {
-    className: "icon",
-    innerHTML: "<material-symbol>home</material-symbol>",
+    textContent: "home",
+    tooltip: "home",
   },
 };
 
