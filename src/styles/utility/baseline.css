@@ -1,7 +1,7 @@
 @import "../../components/button/button.baseline.css";
 @import "../../components/focus-group/focus-group.baseline.css";
 @import "../../components/link/link.baseline.css";
-@import "../../components/radio-button/radio-button.baseline.css";
+@import "../../components/button/toggle/toggle.baseline.css";
 @import "../../components/symbol/symbol.baseline.css";
 @import "../../components/tooltip/tooltip.baseline.css";
 @import "./typography.css";
@@ -110,4 +110,8 @@ hr {
   border-top: 1px solid var(--divider);
   margin: 0;
   padding: 0;
+}
+
+.outlined {
+  border: 1px solid var(--divider);
 }

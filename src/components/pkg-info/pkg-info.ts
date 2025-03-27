@@ -14,7 +14,7 @@ import githubLight from "../../styles/themes/github-light.css?type=raw";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import "../focus-group/focus-group.ts";
-import { radioButton } from "../radio-button/radio-button.ts";
+import { toggleButton } from "../button/toggle/toggle.ts";
 import { toast } from "../toaster/toaster.ts";
 import Tooltip from "../tooltip/tooltip.ts";
 import pkgInfo from "./pkg-info.css?type=raw";
@@ -144,7 +144,7 @@ export default class PkgInfo extends LitElement {
           () => html`
             <div class="install">
               <fieldset
-                class="radio-button-group install-buttons"
+                class="button-group install-buttons"
                 @change=${(ev: Event) => {
                   this.#setPackageManager(
                     (ev.target as HTMLInputElement).value as PackageManager,
@@ -156,7 +156,7 @@ export default class PkgInfo extends LitElement {
                   Object.keys(installCommands),
                   (key) => key,
                   (key) =>
-                    radioButton(key, {
+                    toggleButton(key, {
                       name: "package-manager",
                       value: key,
                       checked: this.packageManager === key,

@@ -1,6 +1,6 @@
-@import "../../styles/utility/typography.css";
+@import "../../../styles/utility/typography.css";
 
-radio-button {
+toggle-button {
   @extend .button;
   input {
     appearance: none;
@@ -46,14 +46,4 @@ radio-button {
       padding: 0.5rem;
     }
   }
-}
-
-.radio-button-group {
-  display: flex;
-  appearance: none;
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: var(--shape-pill);
-  overflow: hidden;
 }

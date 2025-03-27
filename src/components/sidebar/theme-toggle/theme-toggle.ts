@@ -5,7 +5,7 @@ import * as v from "valibot";
 import type { Theme } from "../../../constants/prefs.ts";
 import { themeSchema } from "../../../constants/prefs.ts";
 import base from "../../../styles/utility/baseline.css?type=raw";
-import { radioButton } from "../../radio-button/radio-button.ts";
+import { toggleButton } from "../../button/toggle/toggle.ts";
 import Tooltip from "../../tooltip/tooltip.ts";
 import themeToggle from "./theme-toggle.css?type=raw";
 
@@ -91,7 +91,7 @@ export default class ThemeToggle extends LitElement {
   render() {
     return html`
       <fieldset
-        class="radio-button-group"
+        class="button-group"
         @change=${(ev: Event) => {
           this.setTheme((ev.target as HTMLInputElement).value as Theme);
         }}
@@ -101,7 +101,7 @@ export default class ThemeToggle extends LitElement {
           themeSchema.options,
           (theme) => theme,
           (theme) =>
-            radioButton(
+            toggleButton(
               html`<material-symbol aria-hidden="true"
                 >${themeIcons[theme]}</material-symbol
               >`,

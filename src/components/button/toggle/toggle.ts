@@ -2,19 +2,21 @@ import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 import type { RefOrCallback } from "lit/directives/ref.js";
 import { ref } from "lit/directives/ref.js";
-import { safeAssign } from "../../utils/index.ts";
+import { safeAssign } from "../../../utils/index.ts";
 
-interface RadioButton extends Partial<HTMLInputElement> {
+export interface ToggleButton extends Partial<HTMLInputElement> {
   labelAttributes?: Partial<HTMLLabelElement>;
   ref?: RefOrCallback;
+  type?: "radio" | "checkbox";
 }
 
 // can't use shadow DOM since radio buttons need to be in the same form
 // can't use light DOM since lit SSR doesn't support it
 // thus, factory
-export function radioButton(
+export function toggleButton(
   content: unknown,
   {
+    type = "radio",
     name,
     value,
     id = `${name}-${value}`,
@@ -22,12 +24,12 @@ export function radioButton(
     className,
     ref: refCallback,
     ...opts
-  }: RadioButton,
+  }: ToggleButton,
 ) {
   return html`
-    <radio-button class=${ifDefined(className)} ${ref(refCallback)}>
+    <toggle-button class=${ifDefined(className)} ${ref(refCallback)}>
       <input
-        type="radio"
+        type=${type}
         ${ref(
           (input) =>
             input &&
@@ -48,6 +50,6 @@ export function radioButton(
         )}
         >${content}</label
       >
-    </radio-button>
+    </toggle-button>
   `;
 }

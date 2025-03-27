@@ -40,7 +40,30 @@ button {
     padding: 0.5rem;
     border-radius: 50%;
   }
+}
+
+.button-group {
+  display: flex;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  border: none;
+  border-radius: var(--shape-pill);
+  overflow: hidden;
+  button {
+    border-radius: 0;
+  }
   &.outlined {
-    border: 1px solid var(--divider);
+    button,
+    toggle-button {
+      &:not(:first-child) {
+        border-left: 1px solid var(--divider);
+        &:dir(rtl) {
+          border-left: none;
+          border-right: 1px solid var(--divider);
+        }
+      }
+    }
   }
 }
