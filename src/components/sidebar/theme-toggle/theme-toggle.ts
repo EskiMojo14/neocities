@@ -50,6 +50,9 @@ export default class ThemeToggle extends LitElement {
     localStorage.setItem("theme", theme);
     this.currentTheme = theme;
     this.dispatchEvent(new ThemeChangeEvent(theme));
+    document
+      .getElementById("svg-favicon")
+      ?.setAttribute("href", `/assets/icon-${theme}.svg`);
   }
 
   firstUpdated() {
