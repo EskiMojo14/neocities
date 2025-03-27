@@ -155,7 +155,11 @@ export default class Tooltip extends LitElement {
       <div class="caption">
         <!-- to help layout -->
         <span aria-hidden="true">${this.text}</span>
-        <console-writer class="caption" text=${this.text}></console-writer>
+        <console-writer
+          class="caption"
+          interval="50"
+          text=${this.text}
+        ></console-writer>
       </div>
     `;
   }
