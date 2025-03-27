@@ -164,11 +164,7 @@ export default class Tooltip extends LitElement {
     `;
   }
 
-  static lazy(
-    target: Element,
-    text: string,
-    opts: Partial<Pick<Tooltip, "offset" | "delay">> = {},
-  ) {
+  static lazy(target: Element, text: string, opts: Partial<Tooltip> = {}) {
     const ac = new AbortController();
     function createTooltip(delayed = true) {
       return function () {
@@ -198,10 +194,11 @@ export default class Tooltip extends LitElement {
     root: Document | ShadowRoot | DocumentFragment | null,
     id: string,
     text: string,
+    opts?: Partial<Tooltip>,
   ) {
     const target = root?.getElementById(id);
     if (!target) return;
-    Tooltip.lazy(target, text);
+    Tooltip.lazy(target, text, opts);
   }
 }
 
