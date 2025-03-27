@@ -9,45 +9,8 @@
 }
 
 .install-buttons {
-  display: flex;
-  border: none;
+  border-radius: 0;
   border-bottom: 1px solid var(--divider);
-  margin: 0;
-  padding: 0;
-  input {
-    appearance: none;
-    margin: 0;
-    padding: 0.5rem;
-    color: var(--button);
-    font-variation-settings: "slnt" 0;
-    transition-property:
-      color, font-weight, font-variation-settings, background;
-    transition-duration: var(--default-duration);
-
-    &::before {
-      content: attr(value);
-    }
-
-    &:hover {
-      color: var(--button-hover);
-      background: var(--button-hover-background);
-      font-weight: var(--weight-semibold);
-      font-variation-settings: "slnt" -8;
-    }
-
-    &:checked {
-      background: var(--button-selected-background);
-      color: var(--button-selected);
-      font-weight: var(--weight-bold);
-      font-variation-settings: "slnt" -11;
-    }
-
-    &:focus-visible {
-      outline: none;
-      color: var(--button-focus);
-      background: var(--focus-background);
-    }
-  }
 }
 
 .command {

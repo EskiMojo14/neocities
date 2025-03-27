@@ -5,6 +5,7 @@ import * as v from "valibot";
 import type { Theme } from "../../../constants/prefs.ts";
 import { themeSchema } from "../../../constants/prefs.ts";
 import base from "../../../styles/utility/baseline.css?type=raw";
+import { radioButton } from "../../radio-button/radio-button.ts";
 import Tooltip from "../../tooltip/tooltip.ts";
 import themeToggle from "./theme-toggle.css?type=raw";
 
@@ -90,37 +91,30 @@ export default class ThemeToggle extends LitElement {
   render() {
     return html`
       <fieldset
+        class="radio-button-group"
         @change=${(ev: Event) => {
           this.setTheme((ev.target as HTMLInputElement).value as Theme);
         }}
       >
+        <legend class="sr-only">Theme</legend>
         ${repeat(
           themeSchema.options,
           (theme) => theme,
-          (theme) => html`
-            <input
-              type="radio"
-              name="theme"
-              value="${theme}"
-              ?checked=${theme === this.currentTheme}
-              class="sr-only"
-              id="theme-${theme}"
-              @focus=${() =>
-                this.shadowRoot
-                  ?.getElementById(`theme-${theme}-label`)
-                  // trigger tooltip
-                  ?.dispatchEvent(new Event("focus"))}
-            />
-            <label
-              id="theme-${theme}-label"
-              for="theme-${theme}"
-              aria-label="Use ${theme} theme"
-            >
-              <material-symbol aria-hidden="true" class="${theme}"
+          (theme) =>
+            radioButton(
+              html`<material-symbol aria-hidden="true"
                 >${themeIcons[theme]}</material-symbol
-              >
-            </label>
-          `,
+              >`,
+              {
+                className: "icon",
+                name: "theme",
+                value: theme,
+                checked: theme === this.currentTheme,
+                labelAttributes: {
+                  ariaLabel: `Use ${theme} theme`,
+                },
+              },
+            ),
         )}
       </fieldset>
     `;

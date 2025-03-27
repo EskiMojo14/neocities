@@ -12,15 +12,14 @@
 @import "./utility/baseline.css";
 @import "./utility/typography.css";
 
-@import "../components/header/header.global.css";
-@import "../components/sidebar/sidebar.global.css";
-@import "../components/pkg-info/pkg-info.global.css";
 @import "../components/footer/footer.global.css";
+@import "../components/header/header.global.css";
+@import "../components/pkg-info/pkg-info.global.css";
+@import "../components/sidebar/sidebar.global.css";
 @import "../components/toaster/toaster.global.css";
 
 :root {
   --default-duration: 250ms;
-  --sidebar-width: 18rem;
 }
 
 html {

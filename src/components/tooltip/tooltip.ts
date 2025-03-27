@@ -78,6 +78,7 @@ export default class Tooltip extends LitElement {
   show = () => {
     clearTimeout(this.#hideTimeoutId);
     if (this.dataset.visible || !this.target) return;
+    this.target.setAttribute("aria-describedby", this.id);
 
     Tooltip.tooltipOpened(this);
     this.target.after(this);
@@ -113,6 +114,7 @@ export default class Tooltip extends LitElement {
   finishHide = () => {
     if (this.dataset.visible) return;
     Tooltip.tooltipClosed(this);
+    this.target?.removeAttribute("aria-describedby");
     this.remove();
   };
 
@@ -128,7 +130,6 @@ export default class Tooltip extends LitElement {
     this.id ||= `${this.target?.id ?? nanoid(10)}-tooltip`;
 
     this.role = "tooltip";
-    this.target?.setAttribute("aria-describedby", this.id);
 
     const ac = (this.#documentAc = new AbortController());
     radEventListeners(

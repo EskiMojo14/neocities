@@ -1,3 +1,7 @@
+:root {
+  --sidebar-width: 19rem;
+}
+
 sidebar-nav {
   display: block;
   background: var(--sidebar-background);

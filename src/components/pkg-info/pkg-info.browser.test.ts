@@ -49,12 +49,12 @@ it("should allow switching between package managers", async () => {
   localStorage.removeItem("packageManager");
   const user = userEvent.setup();
 
-  const { getByRole } = page.render(html`
+  const { getByLabelText } = page.render(html`
     <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
   `);
 
   for (const pkgManager of pkgManagerSchema.options) {
-    const button = getByRole("radio", { name: `Install with ${pkgManager}` });
+    const button = getByLabelText(`Install with ${pkgManager}`);
 
     await user.click(button);
     await expect

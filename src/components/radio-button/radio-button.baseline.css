@@ -1,0 +1,58 @@
+radio-button {
+  @extend .button;
+  position: relative;
+  input {
+    appearance: none;
+    &:checked + label {
+      color: var(--button-selected);
+      background: var(--button-selected-background);
+      font-weight: var(--weight-bold);
+      font-variation-settings: "slnt" -11;
+      --icon-weight: 500;
+      --icon-fill: 1;
+    }
+    &:focus-visible + label {
+      outline: none;
+      color: var(--button-focus);
+      background: var(--focus-background);
+    }
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--button);
+    transition-property:
+      color, background, font-weight, font-variation-settings;
+    transition-duration: var(--default-duration);
+    border-radius: inherit;
+    padding: 0.25rem 0.5rem;
+    min-height: 2rem;
+    --icon-weight: 300;
+    &:hover {
+      color: var(--button-hover);
+      background: var(--button-hover-background);
+      font-weight: var(--weight-semibold);
+      font-variation-settings: "slnt" -8;
+      --icon-weight: 500;
+    }
+  }
+
+  &.icon {
+    border-radius: 50%;
+    label {
+      padding: 0.5rem;
+    }
+  }
+}
+
+.radio-button-group {
+  display: flex;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--shape-pill);
+  overflow: hidden;
+}
