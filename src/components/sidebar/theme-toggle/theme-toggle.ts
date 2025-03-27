@@ -23,12 +23,46 @@ export class ThemeChangeEvent extends Event {
   }
 }
 
+const themeColors = {
+  dark: "#21222c", // var(--black);
+  light: "#eff1f3", // var(--white-secondary);
+};
+
 @customElement("theme-toggle")
 export default class ThemeToggle extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(themeToggle)];
 
   @state()
-  currentTheme: Theme = themeSchema.fallback;
+  _currentTheme: Theme = themeSchema.fallback;
+  get currentTheme() {
+    return this._currentTheme;
+  }
+  set currentTheme(theme: Theme) {
+    this._currentTheme = theme;
+
+    document
+      .getElementById("svg-favicon")
+      ?.setAttribute("href", `/assets/icon-${theme}.svg`);
+    const [meta1, ...rest] = document.querySelectorAll<HTMLMetaElement>(
+      "meta[name=theme-color]",
+    );
+    rest.forEach((meta) => {
+      meta.remove();
+    });
+    if (theme === "system") {
+      meta1?.setAttribute("media", "(prefers-color-scheme: light)");
+      meta1?.setAttribute("content", themeColors.light);
+      const meta2 = document.createElement("meta");
+      meta1?.after(meta2);
+      meta2.setAttribute("name", "theme-color");
+      meta2.setAttribute("media", "(prefers-color-scheme: dark)");
+      meta2.setAttribute("content", themeColors.dark);
+    } else {
+      meta1?.removeAttribute("media");
+      meta1?.setAttribute("content", themeColors[theme]);
+    }
+  }
+
   connectedCallback() {
     super.connectedCallback();
     this.currentTheme = v.parse(
@@ -50,9 +84,6 @@ export default class ThemeToggle extends LitElement {
     localStorage.setItem("theme", theme);
     this.currentTheme = theme;
     this.dispatchEvent(new ThemeChangeEvent(theme));
-    document
-      .getElementById("svg-favicon")
-      ?.setAttribute("href", `/assets/icon-${theme}.svg`);
   }
 
   firstUpdated() {
