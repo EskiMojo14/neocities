@@ -66,7 +66,7 @@ export const Icon: Story = {
           value: "1",
           className: "icon",
           checked: true,
-          ref: (el) => {
+          ref(el) {
             if (el) Tooltip.lazy(el, "home");
           },
         },
@@ -78,7 +78,7 @@ export const Icon: Story = {
           name: "toggle",
           value: "2",
           className: "icon",
-          ref: (el) => {
+          ref(el) {
             if (el) Tooltip.lazy(el, "house");
           },
         },

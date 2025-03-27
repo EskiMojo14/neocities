@@ -78,16 +78,6 @@ export default class ThemeToggle extends LitElement {
     this.dispatchEvent(new ThemeChangeEvent(theme));
   }
 
-  firstUpdated() {
-    for (const theme of themeSchema.options) {
-      Tooltip.for(
-        this.shadowRoot,
-        `theme-${theme}-label`,
-        `Use ${theme} theme`,
-      );
-    }
-  }
-
   render() {
     return html`
       <fieldset
@@ -112,6 +102,9 @@ export default class ThemeToggle extends LitElement {
                 checked: theme === this.currentTheme,
                 labelAttributes: {
                   ariaLabel: `Use ${theme} theme`,
+                },
+                ref(el) {
+                  if (el) Tooltip.lazy(el, `Use ${theme} theme`);
                 },
               },
             ),
