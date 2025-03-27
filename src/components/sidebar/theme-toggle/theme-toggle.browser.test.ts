@@ -8,20 +8,14 @@ afterAll(() => {
   localStorage.clear();
 });
 
-it("should toggle theme", async () => {
+it("should select the correct theme", async () => {
   const user = userEvent.setup();
-  const { getByRole } = page.render(html`<theme-toggle></theme-toggle>`);
-  const button = getByRole("button");
 
-  let first = true;
+  const { getByLabelText } = page.render(html`<theme-toggle></theme-toggle>`);
+
   for (const theme of themeSchema.options) {
-    await expect.element(button).toHaveAttribute("data-selected", theme);
-    await expect
-      .poll(() => localStorage.getItem("theme"))
-      .toBe(first ? null : theme);
-    await expect.element(document.documentElement).toHaveData("theme", theme);
-
-    await user.click(button);
-    first = false;
+    const label = getByLabelText(`Use ${theme} theme`);
+    await user.click(label);
+    expect(document.documentElement.dataset.theme).toBe(theme);
   }
 });

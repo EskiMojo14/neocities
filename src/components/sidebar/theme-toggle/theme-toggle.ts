@@ -5,7 +5,6 @@ import * as v from "valibot";
 import type { Theme } from "../../../constants/prefs.ts";
 import { themeSchema } from "../../../constants/prefs.ts";
 import base from "../../../styles/utility/baseline.css?type=raw";
-import { assert } from "../../../utils/index.ts";
 import Tooltip from "../../tooltip/tooltip.ts";
 import themeToggle from "./theme-toggle.css?type=raw";
 
@@ -71,14 +70,6 @@ export default class ThemeToggle extends LitElement {
     );
   }
 
-  get nextTheme() {
-    const currentIdx = themeSchema.options.indexOf(this.currentTheme);
-    const nextIdx = (currentIdx + 1) % themeSchema.options.length;
-    const theme = themeSchema.options[nextIdx];
-    assert(theme);
-    return theme;
-  }
-
   setTheme(theme: Theme) {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("theme", theme);
@@ -87,28 +78,51 @@ export default class ThemeToggle extends LitElement {
   }
 
   firstUpdated() {
-    Tooltip.for(this.shadowRoot, "theme-toggle", "Toggle theme");
+    for (const theme of themeSchema.options) {
+      Tooltip.for(
+        this.shadowRoot,
+        `theme-${theme}-label`,
+        `Use ${theme} theme`,
+      );
+    }
   }
 
   render() {
     return html`
-      <button
-        data-selected=${this.currentTheme}
-        id="theme-toggle"
-        @click=${() => {
-          this.setTheme(this.nextTheme);
+      <fieldset
+        @change=${(ev: Event) => {
+          this.setTheme((ev.target as HTMLInputElement).value as Theme);
         }}
       >
         ${repeat(
           themeSchema.options,
           (theme) => theme,
           (theme) => html`
-            <material-symbol aria-hidden="true" class="${theme}"
-              >${themeIcons[theme]}</material-symbol
+            <input
+              type="radio"
+              name="theme"
+              value="${theme}"
+              ?checked=${theme === this.currentTheme}
+              class="sr-only"
+              id="theme-${theme}"
+              @focus=${() =>
+                this.shadowRoot
+                  ?.getElementById(`theme-${theme}-label`)
+                  // trigger tooltip
+                  ?.dispatchEvent(new Event("focus"))}
+            />
+            <label
+              id="theme-${theme}-label"
+              for="theme-${theme}"
+              aria-label="Use ${theme} theme"
             >
+              <material-symbol aria-hidden="true" class="${theme}"
+                >${themeIcons[theme]}</material-symbol
+              >
+            </label>
           `,
         )}
-      </button>
+      </fieldset>
     `;
   }
 }
