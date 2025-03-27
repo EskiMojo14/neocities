@@ -1,10 +1,12 @@
 import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
+import type { RefOrCallback } from "lit/directives/ref.js";
 import { ref } from "lit/directives/ref.js";
 import { safeAssign } from "../../utils/index.ts";
 
 interface RadioButton extends Partial<HTMLInputElement> {
   labelAttributes?: Partial<HTMLLabelElement>;
+  ref?: RefOrCallback;
 }
 
 // can't use shadow DOM since radio buttons need to be in the same form
@@ -18,11 +20,12 @@ export function radioButton(
     id = `${name}-${value}`,
     labelAttributes,
     className,
+    ref: refCallback,
     ...opts
   }: RadioButton,
 ) {
   return html`
-    <radio-button class=${ifDefined(className)}>
+    <radio-button class=${ifDefined(className)} ${ref(refCallback)}>
       <input
         type="radio"
         ${ref(

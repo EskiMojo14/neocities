@@ -3,6 +3,8 @@ import { html } from "lit";
 import { asyncReplace as _asyncReplace } from "lit/directives/async-replace.js";
 import type { ClassInfo } from "lit/directives/class-map.js";
 import { classMap } from "lit/directives/class-map.js";
+import type { RefOrCallback } from "lit/directives/ref.js";
+import { ref as _ref } from "lit/directives/ref.js";
 import type { StyleInfo } from "lit/directives/style-map.js";
 import { styleMap as _styleMap } from "lit/directives/style-map.js";
 import { getTypeInterval, safeAssign, wait } from "./index.ts";
@@ -63,6 +65,10 @@ export const asyncReplace = _asyncReplace as <T>(
   iterable: AsyncIterable<T>,
   mapper?: (value: T, index: number) => unknown,
 ) => ReturnType<typeof _asyncReplace>;
+
+export const ref = _ref as <T>(
+  ref?: RefOrCallback<T>,
+) => ReturnType<typeof _ref>;
 
 export function consolewriter(text: string, cfg?: consolewriter.Config) {
   return asyncReplace(
