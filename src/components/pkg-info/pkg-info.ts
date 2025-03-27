@@ -14,7 +14,7 @@ import githubLight from "../../styles/themes/github-light.css?type=raw";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import "../focus-group/focus-group.ts";
-import { toggleButton } from "../button/toggle/toggle.ts";
+import { toggleButton } from "../button/toggle.ts";
 import { toast } from "../toaster/toaster.ts";
 import Tooltip from "../tooltip/tooltip.ts";
 import pkgInfo from "./pkg-info.css?type=raw";

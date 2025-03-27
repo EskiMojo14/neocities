@@ -20,6 +20,15 @@ span {
   left: 0;
 }
 
+@media (scripting: none) {
+  .text {
+    color: inherit;
+  }
+  .console {
+    display: none;
+  }
+}
+
 .cursor {
   display: inline;
   background: var(--foreground);

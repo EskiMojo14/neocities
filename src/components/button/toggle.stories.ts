@@ -1,7 +1,7 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import Tooltip from "../../tooltip/tooltip.ts";
+import Tooltip from "../tooltip/tooltip.ts";
 import type { ToggleButton } from "./toggle.ts";
 import { toggleButton } from "./toggle.ts";
 

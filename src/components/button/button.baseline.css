@@ -1,5 +1,3 @@
-@import "../../styles/utility/typography.css";
-
 button {
   @extend .button;
 

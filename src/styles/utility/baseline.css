@@ -1,10 +1,10 @@
+@import "./typography.css";
 @import "../../components/button/button.baseline.css";
 @import "../../components/focus-group/focus-group.baseline.css";
 @import "../../components/link/link.baseline.css";
-@import "../../components/button/toggle/toggle.baseline.css";
+@import "../../components/button/toggle.baseline.css";
 @import "../../components/symbol/symbol.baseline.css";
 @import "../../components/tooltip/tooltip.baseline.css";
-@import "./typography.css";
 
 * {
   box-sizing: border-box;
@@ -17,6 +17,7 @@
   background-color: var(--selection);
 }
 
+pre,
 code,
 kbd,
 samp {

@@ -1,15 +1,3 @@
 pkg-info {
   display: block;
-  &:not(:defined) {
-    background: var(--code-background);
-    padding: 1em;
-    border-radius: var(--shape-medium);
-    text-transform: none;
-    &::before {
-      content: "pnpm add " attr(pkg);
-    }
-    &[dev-dep="true"]::before {
-      content: "pnpm add -D " attr(pkg);
-    }
-  }
 }

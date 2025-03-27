@@ -2,7 +2,7 @@ import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 import type { RefOrCallback } from "lit/directives/ref.js";
 import { ref } from "lit/directives/ref.js";
-import { safeAssign } from "../../../utils/index.ts";
+import { safeAssign } from "../../utils/index.ts";
 
 export interface ToggleButton extends Partial<HTMLInputElement> {
   labelAttributes?: Partial<HTMLLabelElement>;
