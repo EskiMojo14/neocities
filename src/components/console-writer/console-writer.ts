@@ -1,7 +1,6 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import base from "../../styles/utility/baseline.css?type=raw";
-import typography from "../../styles/utility/typography.css?type=raw";
 import { consolewriter as cwriter } from "../../utils/lit.ts";
 import consolewriter from "./console-writer.css?type=raw";
 
@@ -10,11 +9,7 @@ export default class ConsoleWriter
   extends LitElement
   implements Required<cwriter.Config>
 {
-  static styles = [
-    unsafeCSS(base),
-    unsafeCSS(typography),
-    unsafeCSS(consolewriter),
-  ];
+  static styles = [unsafeCSS(base), unsafeCSS(consolewriter)];
 
   @property({ type: String })
   text = "";

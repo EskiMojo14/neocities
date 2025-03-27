@@ -4,6 +4,7 @@
 @import "../../components/radio-button/radio-button.baseline.css";
 @import "../../components/symbol/symbol.baseline.css";
 @import "../../components/tooltip/tooltip.baseline.css";
+@import "./typography.css";
 
 * {
   box-sizing: border-box;

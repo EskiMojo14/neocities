@@ -5,7 +5,6 @@ import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import { getBlogPosts } from "../../data/index.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
-import typography from "../../styles/utility/typography.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import "../spinner/spinner.ts";
 import "../tags/tags.ts";
@@ -21,7 +20,7 @@ const blogPosts = await getBlogPosts();
 
 @customElement("blog-list")
 export default class BlogList extends LitElement {
-  static styles = [unsafeCSS(base), unsafeCSS(typography), unsafeCSS(blogList)];
+  static styles = [unsafeCSS(base), unsafeCSS(blogList)];
 
   @property({ type: String })
   tag = "${unset}";

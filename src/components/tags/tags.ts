@@ -3,7 +3,6 @@ import { customElement, property } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import * as v from "valibot";
 import base from "../../styles/utility/baseline.css?type=raw";
-import typography from "../../styles/utility/typography.css?type=raw";
 import { slugify } from "../../utils/index.ts";
 import * as vUtils from "../../utils/valibot.ts";
 
@@ -12,7 +11,7 @@ const maybeJsonSchema = v.union([tagsSchema, vUtils.json(tagsSchema)]);
 
 @customElement("tags-list")
 export default class Tags extends LitElement {
-  static styles = [unsafeCSS(base), unsafeCSS(typography)];
+  static styles = [unsafeCSS(base)];
 
   @property({ type: String })
   path = "";

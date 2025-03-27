@@ -12,7 +12,6 @@ import {
 import dracula from "../../styles/themes/dracula.css?type=raw";
 import githubLight from "../../styles/themes/github-light.css?type=raw";
 import base from "../../styles/utility/baseline.css?type=raw";
-import typography from "../../styles/utility/typography.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import "../focus-group/focus-group.ts";
 import { radioButton } from "../radio-button/radio-button.ts";
@@ -24,7 +23,6 @@ import pkgInfo from "./pkg-info.css?type=raw";
 export default class PkgInfo extends LitElement {
   static styles = [
     unsafeCSS(base),
-    unsafeCSS(typography),
     unsafeCSS(githubLight),
     unsafeCSS(dracula),
     unsafeCSS(pkgInfo),

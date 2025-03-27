@@ -10,7 +10,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import * as v from "valibot";
 import base from "../../styles/utility/baseline.css?type=raw";
-import typography from "../../styles/utility/typography.css?type=raw";
 import type { WithOptional } from "../../utils/index.ts";
 import { assert, uniqueBy } from "../../utils/index.ts";
 import { clsx, isActiveLink, styleMap } from "../../utils/lit.ts";
@@ -249,7 +248,7 @@ function renderSidebarGroup(
 
 @customElement("sidebar-nav")
 export default class Sidebar extends LitElement {
-  static styles = [unsafeCSS(base), unsafeCSS(typography), unsafeCSS(sidebar)];
+  static styles = [unsafeCSS(base), unsafeCSS(sidebar)];
 
   @property({ type: String, attribute: "current-route" })
   currentRoute = "/";

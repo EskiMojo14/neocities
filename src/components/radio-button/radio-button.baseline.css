@@ -1,6 +1,7 @@
+@import "../../styles/utility/typography.css";
+
 radio-button {
   @extend .button;
-  position: relative;
   input {
     appearance: none;
     &:checked + label {

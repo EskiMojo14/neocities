@@ -9,13 +9,12 @@ import { customElement, property } from "lit/decorators.js";
 import { nanoid } from "nanoid/non-secure";
 import { radEventListeners } from "rad-event-listeners";
 import base from "../../styles/utility/baseline.css?type=raw";
-import typography from "../../styles/utility/typography.css?type=raw";
 import { safeAssign } from "../../utils/index.ts";
 import "../console-writer/console-writer.ts";
 import tooltip from "./tooltip.css?type=raw";
 @customElement("tool-tip")
 export default class Tooltip extends LitElement {
-  static styles = [unsafeCSS(base), unsafeCSS(typography), unsafeCSS(tooltip)];
+  static styles = [unsafeCSS(base), unsafeCSS(tooltip)];
 
   @property({ type: Number })
   offset = 4;

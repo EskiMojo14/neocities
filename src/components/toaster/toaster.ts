@@ -4,7 +4,6 @@ import { ref } from "lit/directives/ref.js";
 import { repeat } from "lit/directives/repeat.js";
 import { nanoid } from "nanoid/non-secure";
 import base from "../../styles/utility/baseline.css?type=raw";
-import typography from "../../styles/utility/typography.css?type=raw";
 import { assert, objectFromEntries, objectKeys } from "../../utils/index.ts";
 import { clsx, styleMap } from "../../utils/lit.ts";
 import toaster from "./toaster.css?type=raw";
@@ -32,7 +31,7 @@ interface ToastState {
 
 @customElement("toast-queue")
 export default class Toaster extends LitElement {
-  static styles = [unsafeCSS(base), unsafeCSS(typography), unsafeCSS(toaster)];
+  static styles = [unsafeCSS(base), unsafeCSS(toaster)];
 
   #debouncedUpdateId: ReturnType<typeof setTimeout> | undefined;
   #debounceUpdate() {

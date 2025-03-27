@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import { getPackages } from "../../data/index.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
-import typography from "../../styles/utility/typography.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import "../pkg-card/pkg-card.ts";
 import "../spinner/spinner.ts";
@@ -14,7 +13,7 @@ const packages = await getPackages();
 
 @customElement("pkg-list")
 export default class PkgList extends LitElement {
-  static styles = [unsafeCSS(base), unsafeCSS(typography), unsafeCSS(pkgList)];
+  static styles = [unsafeCSS(base), unsafeCSS(pkgList)];
 
   @property({ type: String })
   tag = "${unset}";
