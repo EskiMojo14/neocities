@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/web-components";
 import "./pkg-card.ts";
 
 const meta = {
-  title: "Package Card",
+  title: "Components/Package Card",
   tags: ["autodocs"],
   component: "pkg-card",
   args: {

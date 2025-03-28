@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta = {
-  title: "Link",
+  title: "Components/Link",
   tags: ["autodocs"],
   component: "a",
   args: {

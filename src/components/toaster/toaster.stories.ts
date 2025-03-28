@@ -12,7 +12,7 @@ const formSchema = vUtils.formDataShape({
 });
 
 const meta = {
-  title: "Toast",
+  title: "Components/Toast",
   tags: ["autodocs"],
   component: "toast-queue",
   render: () => html`

@@ -8,7 +8,7 @@ import "../focus-group/focus-group.ts";
 import Tooltip from "../tooltip/tooltip.ts";
 
 const meta = {
-  title: "Button",
+  title: "Components/Button",
   tags: ["autodocs"],
   component: "button",
   args: {

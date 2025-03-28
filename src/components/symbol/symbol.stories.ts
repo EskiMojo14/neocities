@@ -3,7 +3,7 @@ import { html } from "lit";
 import { styleMap } from "../../utils/lit.ts";
 
 const meta = {
-  title: "Material Symbol",
+  title: "Components/Material Symbol",
   tags: ["autodocs"],
   component: "material-symbol",
   render: ({

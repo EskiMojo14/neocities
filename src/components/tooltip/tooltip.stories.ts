@@ -5,7 +5,7 @@ import { styleMap } from "../../utils/lit.ts";
 import Tooltip from "./tooltip.ts";
 
 const meta = {
-  title: "Tooltip",
+  title: "Components/Tooltip",
   tags: ["autodocs"],
   component: "tool-tip",
   render: () => html`

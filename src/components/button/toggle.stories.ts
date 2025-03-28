@@ -6,7 +6,7 @@ import type { ToggleButton } from "./toggle.ts";
 import { toggleButton } from "./toggle.ts";
 
 const meta = {
-  title: "Button/Toggle",
+  title: "Components/Button/Toggle",
   tags: ["autodocs"],
   component: "toggle-button",
   argTypes: {

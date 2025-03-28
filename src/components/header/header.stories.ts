@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/web-components";
 import "./header.ts";
 
 const meta = {
-  title: "Header",
+  title: "Components/Header",
   tags: ["autodocs"],
   component: "page-header",
   args: {

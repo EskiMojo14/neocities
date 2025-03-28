@@ -5,7 +5,7 @@ import "./sidebar.ts";
 import type { ThemeChangeEvent } from "./theme-toggle/theme-toggle.ts";
 
 const meta = {
-  title: "Sidebar",
+  title: "Components/Sidebar",
   tags: ["autodocs"],
   component: "sidebar-nav",
   render() {
