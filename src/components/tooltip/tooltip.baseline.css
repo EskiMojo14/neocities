@@ -19,7 +19,7 @@ tool-tip {
   opacity: 0;
   transform: scale(0.95);
   transform-origin: center center;
-  &[data-visible="true"] {
+  &[data-visible] {
     opacity: 1;
     transform: scale(1);
   }
