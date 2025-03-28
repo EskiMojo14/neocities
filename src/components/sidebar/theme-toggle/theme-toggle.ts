@@ -5,6 +5,7 @@ import * as v from "valibot";
 import type { Theme } from "../../../constants/prefs.ts";
 import { themeSchema } from "../../../constants/prefs.ts";
 import base from "../../../styles/utility/baseline.css?type=raw";
+import { capitalize } from "../../../utils/index.ts";
 import { toggleButton } from "../../button/toggle.ts";
 import Tooltip from "../../tooltip/tooltip.ts";
 import themeToggle from "./theme-toggle.css?type=raw";
@@ -97,7 +98,7 @@ export default class ThemeToggle extends LitElement {
               >`,
               {
                 className: "icon",
-                ariaLabel: `Use ${theme} theme`,
+                ariaLabel: `${capitalize(theme)} theme`,
                 ref(el) {
                   if (el) Tooltip.lazy(el);
                 },

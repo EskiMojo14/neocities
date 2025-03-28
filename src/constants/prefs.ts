@@ -24,3 +24,7 @@ export type Theme = v.InferOutput<typeof themeSchema>;
 export const dirSchema = v.fallback(v.picklist(["auto", "ltr", "rtl"]), "auto");
 
 export type Dir = v.InferOutput<typeof dirSchema>;
+
+export const caseSchema = v.fallback(v.picklist(["lower", "normal"]), "lower");
+
+export type Case = v.InferOutput<typeof caseSchema>;

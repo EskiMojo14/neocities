@@ -1,0 +1,4 @@
+:host {
+  background: var(--background);
+  border-radius: var(--shape-pill);
+}

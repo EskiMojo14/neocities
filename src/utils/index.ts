@@ -143,3 +143,7 @@ export function addManyToSet<T>(set: Set<T>, values: Iterable<T>) {
 export function slugify(text: string) {
   return text.toLowerCase().replace(/\s/g, "-");
 }
+
+export function capitalize<T extends string>(text: T) {
+  return (text.charAt(0).toUpperCase() + text.slice(1)) as Capitalize<T>;
+}

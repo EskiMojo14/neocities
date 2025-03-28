@@ -14,6 +14,7 @@ import type { WithOptional } from "../../utils/index.ts";
 import { assert, uniqueBy } from "../../utils/index.ts";
 import { clsx, isActiveLink, styleMap } from "../../utils/lit.ts";
 import "../spinner/spinner.ts";
+import "./case-toggle/case-toggle.ts";
 import sidebar from "./sidebar.css?type=raw";
 import "./theme-toggle/theme-toggle.ts";
 
@@ -281,7 +282,10 @@ export default class Sidebar extends LitElement {
       <nav>
         <div class="header-row">
           <h1 class="headline6">${logo}eskimojo</h1>
-          <theme-toggle></theme-toggle>
+          <div class="prefs">
+            <theme-toggle></theme-toggle>
+            <case-toggle></case-toggle>
+          </div>
         </div>
         <ul>
           ${repeat(

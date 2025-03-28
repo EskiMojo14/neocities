@@ -1,4 +1,4 @@
-.normal-case {
+[data-case="normal"] {
   --headline1-transform: none;
   --headline2-transform: none;
   --headline3-transform: none;
@@ -11,6 +11,7 @@
   --subtitle2-transform: none;
   --button-transform: none;
   --overline-transform: none;
+  --caption-transform: none;
 }
 
 .headline1 {

@@ -1,5 +1,9 @@
 import * as v from "valibot";
-import { pkgManagerSchema, themeSchema } from "../constants/prefs.ts";
+import {
+  caseSchema,
+  pkgManagerSchema,
+  themeSchema,
+} from "../constants/prefs.ts";
 import { assert } from "../utils/index.ts";
 
 try {
@@ -12,6 +16,10 @@ try {
   document.documentElement.dataset.pm = v.parse(
     pkgManagerSchema,
     localStorage.getItem("packageManager"),
+  );
+  document.documentElement.dataset.case = v.parse(
+    caseSchema,
+    localStorage.getItem("case"),
   );
 } catch {
   // ignore
