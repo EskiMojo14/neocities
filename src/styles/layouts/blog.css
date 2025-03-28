@@ -10,9 +10,15 @@ hgroup {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  @media (min-width: 600px) {
-    iframe {
-      max-width: 300px;
+  --embed-min-width: 250px;
+  iframe {
+    border-radius: 12px;
+    @media (min-width: 600px) {
+      flex: 1;
+      min-width: var(--embed-min-width);
     }
+  }
+  &.four {
+    --embed-min-width: 350px;
   }
 }
