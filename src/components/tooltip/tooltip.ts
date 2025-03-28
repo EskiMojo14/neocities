@@ -128,7 +128,6 @@ export default class Tooltip extends LitElement {
     this.target ??= this.previousElementSibling;
     this.id ||= `${this.target?.id ?? nanoid(10)}-tooltip`;
     this.text ||= this.target?.ariaLabel ?? "";
-    this.target?.removeAttribute("aria-label");
 
     this.role = "tooltip";
 
@@ -170,6 +169,7 @@ export default class Tooltip extends LitElement {
     const ac = new AbortController();
     function createTooltip(delayed = true) {
       return function () {
+        if (Tooltip.current?.target === target) return;
         const tooltip = document.createElement("tool-tip");
         safeAssign(tooltip, { target }, opts);
         if (delayed) {
