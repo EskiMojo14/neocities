@@ -38,7 +38,7 @@ export default class BlogList extends LitElement {
             html`<div>
                 <a href="${post.route}">
                   <div class="info">
-                    <time datetime="${post.published}" class="overline">
+                    <time datetime="${post.published}">
                       ${post.published.slice(0, 10)}
                     </time>
                     <h3 class="headline6">${post.title}</h3>
@@ -50,7 +50,10 @@ export default class BlogList extends LitElement {
                 </a>
                 <tags-list path="blog" .tags=${post.tags}></tags-list>
               </div>
-              ${when(index < blogPosts.length - 1, () => html`<hr />`)}`,
+              ${when(
+                index < blogPosts.length - 1,
+                () => html`<hr class="inset" />`,
+              )}`,
         )}
       </div>
     `;

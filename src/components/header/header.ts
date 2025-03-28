@@ -35,7 +35,6 @@ export default class PageHeader extends LitElement {
                 ><console-writer
                   text="${published.slice(1, 11)}"
                   delay=${subtitleDuration + headerDuration}
-                  class="overline"
                 ></console-writer>
               </time>`,
           )}

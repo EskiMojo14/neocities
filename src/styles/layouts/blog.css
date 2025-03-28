@@ -1,0 +1,18 @@
+hgroup {
+  margin-top: 2rem;
+  time {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+}
+
+.embeds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  @media (min-width: 600px) {
+    iframe {
+      max-width: 300px;
+    }
+  }
+}
