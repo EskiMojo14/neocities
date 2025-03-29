@@ -36,6 +36,7 @@
 
   --sidebar-background: var(--black);
   --footer-background: var(--black);
+  --carousel-background: var(--black);
 
   --code-background: var(--black);
 
@@ -89,6 +90,7 @@
 
   --sidebar-background: var(--white-secondary);
   --footer-background: var(--white-secondary);
+  --carousel-background: var(--white-secondary);
 
   --code-background: var(--white-secondary);
 
