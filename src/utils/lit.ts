@@ -7,7 +7,7 @@ import type { RefOrCallback } from "lit/directives/ref.js";
 import { ref as _ref } from "lit/directives/ref.js";
 import type { StyleInfo } from "lit/directives/style-map.js";
 import { styleMap as _styleMap } from "lit/directives/style-map.js";
-import { getTypeInterval, safeAssign, wait } from "./index.ts";
+import { getTypeInterval, safeAssign, shallowEqual, wait } from "./index.ts";
 
 declare module "csstype" {
   // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
@@ -114,4 +114,40 @@ export namespace consolewriter {
     delay?: number;
     finishingDelay?: number;
   }
+}
+
+interface CachePropertyDescriptor<T extends object, R>
+  extends TypedPropertyDescriptor<R> {
+  get?(this: T): R;
+}
+
+/**
+ * Caches the result of a getter based on the values returned by a function.
+ * Each value is compared by reference.
+ */
+export function cache<T extends object>(
+  getDeps: (target: T) => Array<unknown>,
+) {
+  return function decorate<R>(
+    _target: T,
+    _propertyKey: string,
+    descriptor: CachePropertyDescriptor<T, R>,
+  ) {
+    if (!descriptor.get) {
+      throw new Error("cache can only be used on getters");
+    }
+
+    const originalGet = descriptor.get;
+
+    let lastDeps: Array<unknown> | undefined;
+    let lastResult: R | undefined;
+
+    descriptor.get = function (this: T) {
+      const args = getDeps(this);
+      if (shallowEqual(args, lastDeps)) return lastResult as R;
+      lastDeps = args;
+      lastResult = originalGet.call(this);
+      return lastResult;
+    };
+  };
 }

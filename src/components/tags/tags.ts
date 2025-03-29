@@ -4,10 +4,10 @@ import { repeat } from "lit/directives/repeat.js";
 import * as v from "valibot";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { slugify } from "../../utils/index.ts";
+import { cache } from "../../utils/lit.ts";
 import * as vUtils from "../../utils/valibot.ts";
 
-const tagsSchema = v.array(v.string());
-const maybeJsonSchema = v.union([tagsSchema, vUtils.json(tagsSchema)]);
+const tagsSchema = vUtils.maybeJson(v.array(v.string()));
 
 @customElement("tags-list")
 export default class Tags extends LitElement {
@@ -19,14 +19,19 @@ export default class Tags extends LitElement {
   @property({ type: String })
   tags: Array<string> | string = [];
 
+  @cache(({ tags }) => [tags])
+  get parsedTags() {
+    return v.safeParse(tagsSchema, this.tags);
+  }
+
   render() {
-    const parsed = v.safeParse(maybeJsonSchema, this.tags);
-    if (!parsed.success || !parsed.output.length) return nothing;
+    const { parsedTags } = this;
+    if (!parsedTags.success || !parsedTags.output.length) return nothing;
     return html`
       <p class="caption">
         Tags:
         ${repeat(
-          parsed.output,
+          parsedTags.output,
           (tag, idx) => `${tag}-${idx === 0 ? "first" : "other"}`,
           (tag, idx) =>
             idx > 0

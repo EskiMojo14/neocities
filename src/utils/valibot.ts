@@ -39,3 +39,6 @@ export const json = <T extends GenericSchema>(
     }),
     schema,
   );
+
+export const maybeJson = <T extends GenericSchema>(schema: T) =>
+  v.union([schema, json(schema)]);
