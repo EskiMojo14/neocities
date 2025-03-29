@@ -1,8 +1,8 @@
 ---
 layout: blog
-title: Gigs - Jan-Mar
-label: Gigs - Jan-Mar
-description: Concerts I attended in January-March 2025
+title: Gigs - Q1 2025
+label: Gigs - Q1 2025
+description: Concerts I attended January - March 2025
 published: 2025-03-31
 icon: local_activity
 tags:
@@ -21,7 +21,7 @@ tags:
   - the hoosiers
 ---
 
-In recent years, I've made a habit of attending gigs for artists I enjoy. Financially this provides me a way to support them (as I'm a filthy Spotify user, so very few royalties end up their way), and I'll often pick up merch at the same time. I honestly haven't done the maths on how many band t-shirts I currently own, but it's a large proportion of my wardrobe. Sometimes I even manage to have a small chat to the artist at the end of the gig!
+In recent years, I've made a habit of attending gigs for artists I enjoy. This provides me a way to financially support them (as I'm a filthy Spotify user, so unfortunately very few royalties end up their way), and I'll often pick up merch at the same time. I honestly haven't done the maths on how many band t-shirts I currently own, but it's a large proportion of my wardrobe. Sometimes I even manage to have a small chat to the artist at the end of the gig!
 
 I thought it could be interesting to share my experiences at each, and if nothing else you can get a good idea of music I listen to - maybe you'll find something you like!
 
@@ -76,10 +76,25 @@ Due to the size of the gig, there sadly wasn't a chance to catch either musician
 </hgroup>
 
 <div class="embeds">
-<iframe  src="https://open.spotify.com/embed/artist/3nuc29fYGlQbIrwh4yrNWd?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/3nuc29fYGlQbIrwh4yrNWd?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
-Some text here
+I liked this concert a lot! Lake Street Dive are a band I listen to every once in a while, but I suspected they'd be very good live; and I wasn't disappointed. My only complaint is the lack of horn section (horns can be quite prevalent in their songs), but they absolutely held their own regardless. Rachael Price is a very skilled vocalist, and I was very impressed by the versatility of their bassist, Bridget Kearney.
+
+The opening act was somebody I was unfamiliar with, Alisa Amador, but I enjoyed her performance.
+
+<div class="embeds">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/1YwCwHqQN5Q7g5e00Hbg4t?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+There was a good mix of originals and covers, and they had an acoustic set in the middle for a nice change of pace. Akie Bermiss led a version of Shania Twain's "You're Still the One", which was really nice. Their cover of Hall & Oates' "Rich Girl" was solid, as was their classic "Hypotheticals". I also really enjoyed a track from their newest album, "Dance With a Stranger", in no small part due to its bassline.
+
+<div class="embeds four">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5aGlygs4voalgMxBCCSg4l?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/0RKKLIOnAPImtlLlYEjbYF?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/5lE2EFXt4muvLFMGQg4hZN?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe  src="https://open.spotify.com/embed/track/43thKZxOf40xZaJlzaZX9T?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
 
 <hr class="middle" />
 
@@ -92,7 +107,7 @@ Some text here
 </hgroup>
 
 <div class="embeds">
-<iframe  src="https://open.spotify.com/embed/artist/03ZdbEBsbFHG3uJC6gYiOY?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/03ZdbEBsbFHG3uJC6gYiOY?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 Some text here
@@ -208,4 +223,19 @@ Some text here
 <iframe  src="https://open.spotify.com/embed/artist/4LlDtNr8qFwhrT8eL2wzH4?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
-Some text here
+Possibly the most rowdy gig I've been to this quarter, but so much fun! The band played all their classics, and included plenty of shenanigans - their drummer Alan Sharland led a track with a very autotuned mic, and Irwin Sparkes went for a couple walks amongst the audience mid-song. I also enjoyed the work of their bassist, and keyboard player (who also pulled out a cornet when required!).
+
+Unfortunately I missed most of the opening act, Ruby Duff, but what I did catch was enjoyable - if not quite my vibe :)
+
+<div class="embeds">
+<iframe src="https://open.spotify.com/embed/artist/7arrmC5cRDHLESNxZmUax1?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+Inevitably the night was ended with their most popular track, "Goodbye Mr A", but some personal highlights were "Up to No Good", "Giddy Up", and a more upbeat version of "So High" (apparently due for their upcoming album, of which we were also treated to a preview of a track).
+
+<div class="embeds four">
+<iframe src="https://open.spotify.com/embed/track/4spfRBAAdrMKR35lZWrgYF?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/0y0vmIxH8KenitKNu4Ikb5?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/450pZp19pj0nG9j8cFapgO?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/4SbSHelfNpo4RAsmjJlRzE?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
