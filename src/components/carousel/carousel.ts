@@ -13,7 +13,7 @@ import carousel from "./carousel.css?type=raw";
 interface CarouselItem {
   src: string;
   alt?: string;
-  aspectRatio?: string;
+  aspectRatio?: [width: number, height: number];
 }
 
 const itemSchema = vUtils.maybeJson(
@@ -26,7 +26,7 @@ const itemSchema = vUtils.maybeJson(
       v.object({
         src: v.string(),
         alt: v.optional(v.string()),
-        aspectRatio: v.optional(v.string()),
+        aspectRatio: v.optional(v.tuple([v.number(), v.number()])),
       }),
     ]) satisfies v.GenericSchema<string | CarouselItem, CarouselItem>,
   ),
@@ -84,8 +84,8 @@ export default class Carousel extends LitElement {
           else this.intersectionObserver?.disconnect();
         })}
         style=${styleMap({
-          "--carousel-aspect-ratio":
-            this.parsedItems[this.currentIdx]?.aspectRatio,
+          "--carousel-w": this.parsedItems[this.currentIdx]?.aspectRatio?.[0],
+          "--carousel-h": this.parsedItems[this.currentIdx]?.aspectRatio?.[1],
         })}
       >
         ${repeat(

@@ -12,19 +12,20 @@ const meta = {
       .items=${items}
       style=${styleMap({
         "--carousel-fit": fit,
-        "--carousel-aspect-ratio": aspectRatio,
-        "--carousel-size": `${size}px`,
+        "--carousel-w": aspectRatio[0],
+        "--carousel-h": aspectRatio[1],
+        "--carousel-base-size": `${size}px`,
       })}
     ></img-carousel>`,
   args: {
     items: [
-      { src: "https://picsum.photos/500", aspectRatio: "1 / 1" },
-      { src: "https://picsum.photos/1000/500", aspectRatio: "2 / 1" },
-      { src: "https://picsum.photos/500/1000", aspectRatio: "1 / 2" },
+      { src: "https://picsum.photos/500", aspectRatio: [1, 1] },
+      { src: "https://picsum.photos/1000/500", aspectRatio: [2, 1] },
+      { src: "https://picsum.photos/500/1000", aspectRatio: [1, 2] },
     ],
     size: 300,
     fit: "contain",
-    aspectRatio: "1 / 1",
+    aspectRatio: [1, 1],
   },
   argTypes: {
     fit: {
@@ -34,12 +35,19 @@ const meta = {
     aspectRatio: {
       control: "inline-radio",
       options: ["1 / 1", "16 / 9", "4 / 3", "3 / 4", "9 / 16"],
+      mapping: {
+        "1 / 1": [1, 1],
+        "16 / 9": [16, 9],
+        "4 / 3": [4, 3],
+        "3 / 4": [3, 4],
+        "9 / 16": [9, 16],
+      },
     },
   },
 } satisfies Meta<
   HTMLElementTagNameMap["img-carousel"] & {
     fit: string;
-    aspectRatio: string;
+    aspectRatio: [number, number];
     size: number;
   }
 >;

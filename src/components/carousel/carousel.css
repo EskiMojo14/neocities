@@ -14,8 +14,11 @@
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  height: var(--carousel-size, 300px);
-  aspect-ratio: var(--carousel-aspect-ratio, 1 / 1);
+  height: min(
+    var(--carousel-base-size, 300px),
+    calc(100vw / var(--carousel-w, 1) * var(--carousel-h, 1))
+  );
+  aspect-ratio: var(--carousel-w, 1) / var(--carousel-h, 1);
   transition: aspect-ratio var(--default-duration);
   -ms-overflow-style: none;
   scrollbar-width: none;

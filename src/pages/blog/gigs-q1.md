@@ -225,7 +225,7 @@ Some text here
 <iframe  src="https://open.spotify.com/embed/artist/4LlDtNr8qFwhrT8eL2wzH4?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
-<img-carousel style="--carousel-aspect-ratio: 16 / 9; --carousel-fit: cover;" items="[
+<img-carousel style="--carousel-w: 16; --carousel-h: 9; --carousel-fit: cover;" items="[
 &quot;/assets/blog/gigs-q1/hoosiers1.jpg&quot;,
 &quot;/assets/blog/gigs-q1/hoosiers2.jpg&quot;,
 &quot;/assets/blog/gigs-q1/hoosiers3.jpg&quot;
