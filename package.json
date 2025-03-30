@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js develop",
-    "prebuild": "rm -rf ./public/",
+    "prebuild": "rm -rf ./public/ && pnpm run generate-thumbs",
     "build": "node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js build",
     "serve": "node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js serve",
     "storybook": "storybook dev -p 6006",
