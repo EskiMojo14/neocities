@@ -33,6 +33,7 @@
   },
   "include": [
     "src",
+    "scripts",
     ".storybook/*",
     "vite.config.ts",
     "vitest.workspace.ts",

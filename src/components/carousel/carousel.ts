@@ -100,7 +100,10 @@ export default class Carousel extends LitElement {
                 this.intersectionObserver?.observe(img);
               })}
             >
-              <img src=${item.src} alt=${ifDefined(item.alt)} />
+              <img
+                src=${item.src.replace("assets/", "assets/thumbs/")}
+                alt=${ifDefined(item.alt)}
+              />
             </div>`,
         )}
       </div>
