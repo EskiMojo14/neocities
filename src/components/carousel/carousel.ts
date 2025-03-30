@@ -10,25 +10,23 @@ import * as vUtils from "../../utils/valibot.ts";
 import { toggleButton } from "../button/toggle.ts";
 import carousel from "./carousel.css?type=raw";
 
-interface CarouselItem {
-  src: string;
-  alt?: string;
-  aspectRatio?: [width: number, height: number];
-}
+const carouselItemSchema = v.object({
+  src: v.string(),
+  alt: v.optional(v.string()),
+  aspectRatio: v.optional(v.tuple([v.number(), v.number()])),
+});
 
-const itemSchema = vUtils.maybeJson(
+type CarouselItem = v.InferOutput<typeof carouselItemSchema>;
+
+const itemsSchema = vUtils.maybeJson(
   v.array(
     v.union([
       v.pipe(
-        v.string(),
+        carouselItemSchema.entries.src,
         v.transform((src): CarouselItem => ({ src })),
       ),
-      v.object({
-        src: v.string(),
-        alt: v.optional(v.string()),
-        aspectRatio: v.optional(v.tuple([v.number(), v.number()])),
-      }),
-    ]) satisfies v.GenericSchema<string | CarouselItem, CarouselItem>,
+      carouselItemSchema,
+    ]),
   ),
 );
 
@@ -37,12 +35,12 @@ export default class Carousel extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(carousel)];
 
   @property({ type: Array })
-  items: Array<string | CarouselItem> | string = [];
+  items: v.InferInput<typeof itemsSchema> = [];
 
   @cache(({ items }) => [items])
   get parsedItems() {
     try {
-      return v.parse(itemSchema, this.items);
+      return v.parse(itemsSchema, this.items);
     } catch (e) {
       console.error(e instanceof v.ValiError ? e.issues : e);
       return [];
