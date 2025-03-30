@@ -5,6 +5,8 @@ label: Gigs - Q1 2025
 description: Concerts I attended January - March 2025
 published: 2025-03-31
 icon: local_activity
+imports:
+  - /components/carousel/carousel.ts type="module"
 tags:
   - gigs
   - music
@@ -222,6 +224,12 @@ Some text here
 <div class="embeds">
 <iframe  src="https://open.spotify.com/embed/artist/4LlDtNr8qFwhrT8eL2wzH4?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
+
+<img-carousel style="--carousel-aspect-ratio: 16 / 9; --carousel-fit: cover;" items="[
+&quot;/assets/blog/gigs-q1/hoosiers1.jpg&quot;,
+&quot;/assets/blog/gigs-q1/hoosiers2.jpg&quot;,
+&quot;/assets/blog/gigs-q1/hoosiers3.jpg&quot;
+]"></img-carousel>
 
 Possibly the most rowdy gig I've been to this quarter, but so much fun! The band played all their classics, and included plenty of shenanigans - their drummer Alan Sharland led a track with a very autotuned mic, and Irwin Sparkes went for a couple walks amongst the audience mid-song. I also enjoyed the work of their bassist, and keyboard player (who also pulled out a cornet when required!).
 

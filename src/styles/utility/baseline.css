@@ -133,3 +133,8 @@ hr {
 .outlined {
   border: 1px solid var(--divider);
 }
+
+p:has(img-carousel) {
+  display: flex;
+  justify-content: center;
+}

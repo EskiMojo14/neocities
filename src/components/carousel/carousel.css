@@ -1,5 +1,5 @@
 :host {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   background: var(--carousel-background);
   border-radius: var(--shape-medium);
