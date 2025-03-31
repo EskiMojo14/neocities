@@ -8,19 +8,37 @@ const createPref =
     {
       dataKey,
       storageKey = dataKey,
+      storage = localStorage,
       ...config
     }: {
       meta: Record<Opts[number], Meta>;
       dataKey: string;
       storageKey?: string;
+      storage?: Storage;
     },
-  ) => ({
-    schema: v.fallback(v.picklist(options), fallback),
-    fallback,
-    dataKey,
-    storageKey,
-    ...config,
-  });
+  ) => {
+    type T = v.InferOutput<typeof schema>;
+    const schema = v.fallback(v.picklist(options), fallback);
+    return {
+      schema,
+      fallback,
+      dataKey,
+      get data() {
+        return v.parse(schema, document.documentElement.dataset[dataKey]);
+      },
+      set data(value: T) {
+        document.documentElement.dataset[dataKey] = value;
+      },
+      storageKey,
+      get storage() {
+        return v.parse(schema, storage.getItem(storageKey));
+      },
+      set storage(value: T) {
+        storage.setItem(storageKey, value);
+      },
+      ...config,
+    };
+  };
 
 export const pkgManagerPref = createPref<{ install: string }>()(
   ["npm", "pnpm", "yarn", "bun"],

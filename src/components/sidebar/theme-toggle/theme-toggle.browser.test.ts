@@ -17,6 +17,6 @@ it("should select the correct theme", async () => {
   for (const theme of themePref.schema.options) {
     const label = getByLabelText(`${capitalize(theme)} theme`);
     await user.click(label);
-    expect(document.documentElement.dataset[themePref.dataKey]).toBe(theme);
+    expect(themePref.data).toBe(theme);
   }
 });

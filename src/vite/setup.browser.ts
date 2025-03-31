@@ -8,7 +8,7 @@ import "../styles/global.css";
 
 localStorage.clear();
 for (const pref of [pkgManagerPref, themePref, casePref]) {
-  document.documentElement.dataset[pref.dataKey] = pref.fallback;
+  pref.data = pref.fallback;
 }
 
 expect.extend({

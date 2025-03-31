@@ -2,7 +2,6 @@ import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
-import * as v from "valibot";
 import type { PackageManager, Theme } from "../../constants/prefs.ts";
 import { pkgManagerPref, themePref } from "../../constants/prefs.ts";
 import dracula from "../../styles/themes/dracula.css?type=raw";
@@ -45,10 +44,7 @@ export default class PkgInfo extends LitElement {
   eventAc: AbortController | undefined;
 
   #retrieveTheme() {
-    this.theme = v.parse(
-      themePref.schema,
-      document.documentElement.dataset[themePref.dataKey],
-    );
+    this.theme = themePref.data;
   }
 
   connectedCallback() {
@@ -60,19 +56,14 @@ export default class PkgInfo extends LitElement {
   }
 
   @state()
-  packageManager: PackageManager = pkgManagerPref.fallback;
+  pkgManager: PackageManager = pkgManagerPref.fallback;
 
   #retrievePackageManager() {
-    this.packageManager = v.parse(
-      pkgManagerPref.schema,
-      document.documentElement.dataset[pkgManagerPref.dataKey],
-    );
+    this.pkgManager = pkgManagerPref.data;
   }
 
   #setPackageManager(newValue: PackageManager) {
-    this.packageManager = newValue;
-    document.documentElement.dataset[pkgManagerPref.dataKey] = newValue;
-    localStorage.setItem(pkgManagerPref.storageKey, newValue);
+    this.pkgManager = pkgManagerPref.data = pkgManagerPref.storage = newValue;
   }
 
   firstUpdated() {
@@ -104,7 +95,7 @@ export default class PkgInfo extends LitElement {
   }
 
   render() {
-    const { devDep, pkg, repo, docs, includeInstall, packageManager } = this;
+    const { devDep, pkg, repo, docs, includeInstall, pkgManager } = this;
     return html`
       <div data-theme=${this.theme}>
         <focus-group>
@@ -160,7 +151,7 @@ export default class PkgInfo extends LitElement {
                       // input
                       name: "package-manager",
                       value: key,
-                      checked: this.packageManager === key,
+                      checked: pkgManager === key,
                     }),
                 )}
               </fieldset>
@@ -168,8 +159,8 @@ export default class PkgInfo extends LitElement {
                 <pre
                   class="language-bash"
                   id="install-command"
-                ><code class="language-bash"><span class="token function">${packageManager}</span> <span class="token function">${pkgManagerPref
-                  .meta[packageManager].install}</span> ${when(
+                ><code class="language-bash"><span class="token function">${pkgManager}</span> <span class="token function">${pkgManagerPref
+                  .meta[pkgManager].install}</span> ${when(
                   frontmatterIsSet(devDep),
                   () => html`<span class="token parameter variable">-D</span> `,
                 )}${pkg}</code></pre>

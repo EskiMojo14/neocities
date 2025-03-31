@@ -1,7 +1,6 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
-import * as v from "valibot";
 import type { Case } from "../../../constants/prefs.ts";
 import { casePref } from "../../../constants/prefs.ts";
 import base from "../../../styles/utility/baseline.css?type=raw";
@@ -19,16 +18,11 @@ export default class CaseToggle extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.currentCase = v.parse(
-      casePref.schema,
-      document.documentElement.dataset[casePref.dataKey],
-    );
+    this.currentCase = casePref.data;
   }
 
   setCase(newCase: Case) {
-    document.documentElement.dataset[casePref.dataKey] = newCase;
-    localStorage.setItem(casePref.storageKey, newCase);
-    this.currentCase = newCase;
+    this.currentCase = casePref.data = casePref.storage = newCase;
   }
 
   render() {

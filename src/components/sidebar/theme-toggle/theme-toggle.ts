@@ -1,7 +1,6 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
-import * as v from "valibot";
 import type { Theme } from "../../../constants/prefs.ts";
 import { themePref } from "../../../constants/prefs.ts";
 import base from "../../../styles/utility/baseline.css?type=raw";
@@ -60,16 +59,11 @@ export default class ThemeToggle extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.currentTheme = v.parse(
-      themePref.schema,
-      document.documentElement.dataset[themePref.dataKey],
-    );
+    this.currentTheme = themePref.data;
   }
 
   setTheme(theme: Theme) {
-    document.documentElement.dataset[themePref.dataKey] = theme;
-    localStorage.setItem(themePref.storageKey, theme);
-    this.currentTheme = theme;
+    this.currentTheme = themePref.data = themePref.storage = theme;
     this.dispatchEvent(new ThemeChangeEvent(theme));
   }
 

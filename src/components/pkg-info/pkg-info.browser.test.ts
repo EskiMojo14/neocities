@@ -57,9 +57,7 @@ it("should allow switching between package managers", async () => {
     const button = getByLabelText(`Install with ${pkgManager}`);
 
     await user.click(button);
-    await expect
-      .poll(() => localStorage.getItem(pkgManagerPref.storageKey))
-      .toBe(pkgManager);
+    await expect.poll(() => pkgManagerPref.storage).toBe(pkgManager);
     await expect
       .poll(() =>
         document

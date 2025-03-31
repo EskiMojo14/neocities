@@ -16,10 +16,7 @@ const rtlDecorator: Decorator = (
 };
 
 const themeDecorator: Decorator = (story, { args: { theme, ...args } }) => {
-  document.documentElement.dataset[themePref.dataKey] = v.parse(
-    themePref.schema,
-    theme,
-  );
+  themePref.data = v.parse(themePref.schema, theme);
   return story({ args });
 };
 
