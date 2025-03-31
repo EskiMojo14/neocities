@@ -54,10 +54,6 @@ export const themePref = createPref<{ icon: string }>()(
 
 export type Theme = v.InferOutput<typeof themePref.schema>;
 
-export const dirSchema = v.fallback(v.picklist(["auto", "ltr", "rtl"]), "auto");
-
-export type Dir = v.InferOutput<typeof dirSchema>;
-
 export const casePref = createPref<{ icon: string }>()(
   ["lower", "normal"],
   "lower",
