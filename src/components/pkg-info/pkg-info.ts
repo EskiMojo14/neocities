@@ -4,11 +4,7 @@ import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import * as v from "valibot";
 import type { PackageManager, Theme } from "../../constants/prefs.ts";
-import {
-  installCommands,
-  pkgManagerPref,
-  themePref,
-} from "../../constants/prefs.ts";
+import { pkgManagerPref, themePref } from "../../constants/prefs.ts";
 import dracula from "../../styles/themes/dracula.css?type=raw";
 import githubLight from "../../styles/themes/github-light.css?type=raw";
 import base from "../../styles/utility/baseline.css?type=raw";
@@ -156,7 +152,7 @@ export default class PkgInfo extends LitElement {
               >
                 <legend class="sr-only">Install with</legend>
                 ${repeat(
-                  Object.keys(installCommands),
+                  pkgManagerPref.schema.options,
                   (key) => key,
                   (key) =>
                     toggleButton(key, {
@@ -172,9 +168,8 @@ export default class PkgInfo extends LitElement {
                 <pre
                   class="language-bash"
                   id="install-command"
-                ><code class="language-bash"><span class="token function">${packageManager}</span> <span class="token function">${installCommands[
-                  packageManager
-                ]}</span> ${when(
+                ><code class="language-bash"><span class="token function">${packageManager}</span> <span class="token function">${pkgManagerPref
+                  .meta[packageManager].install}</span> ${when(
                   frontmatterIsSet(devDep),
                   () => html`<span class="token parameter variable">-D</span> `,
                 )}${pkg}</code></pre>

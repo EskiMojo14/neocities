@@ -88,7 +88,7 @@ export default class ThemeToggle extends LitElement {
           (theme) =>
             toggleButton(
               html`<material-symbol aria-hidden="true"
-                >${themePref.icons[theme]}</material-symbol
+                >${themePref.meta[theme].icon}</material-symbol
               >`,
               {
                 className: "icon",

@@ -46,7 +46,7 @@ export default class CaseToggle extends LitElement {
           (opt) =>
             toggleButton(
               html`<material-symbol aria-hidden="true"
-                >${casePref.icons[opt]}</material-symbol
+                >${casePref.meta[opt].icon}</material-symbol
               >`,
               {
                 className: "icon",

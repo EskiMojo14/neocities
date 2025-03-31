@@ -3,19 +3,21 @@ import type { Compute } from "../utils/index.ts";
 
 function createPref<
   Schema extends v.SchemaWithFallback<v.GenericSchema<string>, string>,
+  Meta extends Record<v.InferOutput<Schema>, unknown>,
   Config extends {
-    icons?: Record<v.InferOutput<Schema>, string>;
     dataKey: string;
     storageKey?: string;
   },
 >(
   schema: Schema,
+  meta: Meta,
   config: Config,
 ): Compute<
   Config & {
     storageKey: string;
     schema: Schema;
     fallback: v.InferFallback<Schema>;
+    meta: Meta;
   }
 > {
   return {
@@ -23,32 +25,35 @@ function createPref<
     storageKey: config.storageKey ?? config.dataKey,
     schema,
     fallback: v.getFallback(schema),
+    meta,
   };
 }
 
 export const pkgManagerPref = createPref(
   v.fallback(v.picklist(["npm", "pnpm", "yarn", "bun"]), "pnpm"),
-  { dataKey: "pm", storageKey: "packageManager" },
+  {
+    npm: { install: "install" },
+    pnpm: { install: "add" },
+    yarn: { install: "add" },
+    bun: { install: "add" },
+  },
+  {
+    dataKey: "pm",
+    storageKey: "packageManager",
+  },
 );
 
 export type PackageManager = v.InferOutput<typeof pkgManagerPref.schema>;
 
-export const installCommands: Record<PackageManager, string> = {
-  npm: "install",
-  pnpm: "add",
-  yarn: "add",
-  bun: "add",
-};
-
 export const themePref = createPref(
   v.fallback(v.picklist(["system", "light", "dark"]), "system"),
   {
+    system: { icon: "routine" },
+    light: { icon: "light_mode" },
+    dark: { icon: "dark_mode" },
+  },
+  {
     dataKey: "theme",
-    icons: {
-      system: "routine",
-      light: "light_mode",
-      dark: "dark_mode",
-    },
   },
 );
 
@@ -61,11 +66,11 @@ export type Dir = v.InferOutput<typeof dirSchema>;
 export const casePref = createPref(
   v.fallback(v.picklist(["lower", "normal"]), "lower"),
   {
+    lower: { icon: "lowercase" },
+    normal: { icon: "match_case" },
+  },
+  {
     dataKey: "case",
-    icons: {
-      lower: "lowercase",
-      normal: "match_case",
-    },
   },
 );
 

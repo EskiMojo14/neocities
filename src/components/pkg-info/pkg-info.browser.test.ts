@@ -1,7 +1,7 @@
 import { page, userEvent } from "@vitest/browser/context";
 import { html } from "lit";
 import { expect, it } from "vitest";
-import { installCommands, pkgManagerPref } from "../../constants/prefs.ts";
+import { pkgManagerPref } from "../../constants/prefs.ts";
 import "./pkg-info.ts";
 
 it("should only show docs link when set", async () => {
@@ -66,6 +66,8 @@ it("should allow switching between package managers", async () => {
           .querySelector("pkg-info")
           ?.shadowRoot?.getElementById("install-command"),
       )
-      .toHaveTextContent(`${pkgManager} ${installCommands[pkgManager]} foo`);
+      .toHaveTextContent(
+        `${pkgManager} ${pkgManagerPref.meta[pkgManager].install} foo`,
+      );
   }
 });
