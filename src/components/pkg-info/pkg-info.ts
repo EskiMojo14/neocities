@@ -6,8 +6,8 @@ import * as v from "valibot";
 import type { PackageManager, Theme } from "../../constants/prefs.ts";
 import {
   installCommands,
-  pkgManagerSchema,
-  themeSchema,
+  pkgManagerPref,
+  themePref,
 } from "../../constants/prefs.ts";
 import dracula from "../../styles/themes/dracula.css?type=raw";
 import githubLight from "../../styles/themes/github-light.css?type=raw";
@@ -44,12 +44,15 @@ export default class PkgInfo extends LitElement {
   includeInstall = false;
 
   @state()
-  theme: Theme = themeSchema.fallback;
+  theme: Theme = themePref.fallback;
 
   eventAc: AbortController | undefined;
 
   #retrieveTheme() {
-    this.theme = v.parse(themeSchema, document.documentElement.dataset.theme);
+    this.theme = v.parse(
+      themePref.schema,
+      document.documentElement.dataset[themePref.dataKey],
+    );
   }
 
   connectedCallback() {
@@ -61,19 +64,19 @@ export default class PkgInfo extends LitElement {
   }
 
   @state()
-  packageManager: PackageManager = pkgManagerSchema.fallback;
+  packageManager: PackageManager = pkgManagerPref.fallback;
 
   #retrievePackageManager() {
     this.packageManager = v.parse(
-      pkgManagerSchema,
-      document.documentElement.dataset.pm,
+      pkgManagerPref.schema,
+      document.documentElement.dataset[pkgManagerPref.dataKey],
     );
   }
 
   #setPackageManager(newValue: PackageManager) {
     this.packageManager = newValue;
-    document.documentElement.dataset.pm = newValue;
-    localStorage.setItem("packageManager", newValue);
+    document.documentElement.dataset[pkgManagerPref.dataKey] = newValue;
+    localStorage.setItem(pkgManagerPref.storageKey, newValue);
   }
 
   firstUpdated() {

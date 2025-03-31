@@ -3,18 +3,12 @@ import { customElement, state } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import * as v from "valibot";
 import type { Theme } from "../../../constants/prefs.ts";
-import { themeSchema } from "../../../constants/prefs.ts";
+import { themePref } from "../../../constants/prefs.ts";
 import base from "../../../styles/utility/baseline.css?type=raw";
 import { capitalize } from "../../../utils/index.ts";
 import { toggleButton } from "../../button/toggle.ts";
 import Tooltip from "../../tooltip/tooltip.ts";
 import themeToggle from "./theme-toggle.css?type=raw";
-
-const themeIcons: Record<Theme, string> = {
-  system: "routine",
-  light: "light_mode",
-  dark: "dark_mode",
-};
 
 export class ThemeChangeEvent extends Event {
   newTheme: Theme;
@@ -34,7 +28,7 @@ export default class ThemeToggle extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(themeToggle)];
 
   @state()
-  _currentTheme: Theme = themeSchema.fallback;
+  _currentTheme: Theme = themePref.fallback;
   get currentTheme() {
     return this._currentTheme;
   }
@@ -67,14 +61,14 @@ export default class ThemeToggle extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.currentTheme = v.parse(
-      themeSchema,
-      document.documentElement.dataset.theme,
+      themePref.schema,
+      document.documentElement.dataset[themePref.dataKey],
     );
   }
 
   setTheme(theme: Theme) {
-    document.documentElement.dataset.theme = theme;
-    localStorage.setItem("theme", theme);
+    document.documentElement.dataset[themePref.dataKey] = theme;
+    localStorage.setItem(themePref.storageKey, theme);
     this.currentTheme = theme;
     this.dispatchEvent(new ThemeChangeEvent(theme));
   }
@@ -89,12 +83,12 @@ export default class ThemeToggle extends LitElement {
       >
         <legend class="sr-only">Theme</legend>
         ${repeat(
-          themeSchema.options,
+          themePref.schema.options,
           (theme) => theme,
           (theme) =>
             toggleButton(
               html`<material-symbol aria-hidden="true"
-                >${themeIcons[theme]}</material-symbol
+                >${themePref.icons[theme]}</material-symbol
               >`,
               {
                 className: "icon",

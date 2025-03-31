@@ -1,7 +1,7 @@
 import { page, userEvent } from "@vitest/browser/context";
 import { html } from "lit";
 import { expect, it } from "vitest";
-import { installCommands, pkgManagerSchema } from "../../constants/prefs.ts";
+import { installCommands, pkgManagerPref } from "../../constants/prefs.ts";
 import "./pkg-info.ts";
 
 it("should only show docs link when set", async () => {
@@ -46,19 +46,19 @@ it("should show devDep flag when set", async () => {
 });
 
 it("should allow switching between package managers", async () => {
-  localStorage.removeItem("packageManager");
+  localStorage.removeItem(pkgManagerPref.storageKey);
   const user = userEvent.setup();
 
   const { getByLabelText } = page.render(html`
     <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
   `);
 
-  for (const pkgManager of pkgManagerSchema.options) {
+  for (const pkgManager of pkgManagerPref.schema.options) {
     const button = getByLabelText(`Install with ${pkgManager}`);
 
     await user.click(button);
     await expect
-      .poll(() => localStorage.getItem("packageManager"))
+      .poll(() => localStorage.getItem(pkgManagerPref.storageKey))
       .toBe(pkgManager);
     await expect
       .poll(() =>

@@ -1,7 +1,7 @@
 import { themes } from "@storybook/theming";
 import type { Decorator, Preview } from "@storybook/web-components";
 import * as v from "valibot";
-import { dirSchema, themeSchema } from "../src/constants/prefs.ts";
+import { dirSchema, themePref } from "../src/constants/prefs.ts";
 import pages from "./mocks/graph.json";
 import "../src/styles/global.css";
 
@@ -14,7 +14,10 @@ const rtlDecorator: Decorator = (
 };
 
 const themeDecorator: Decorator = (story, { args: { theme, ...args } }) => {
-  document.documentElement.dataset.theme = v.parse(themeSchema, theme);
+  document.documentElement.dataset[themePref.dataKey] = v.parse(
+    themePref.schema,
+    theme,
+  );
   return story({ args });
 };
 
@@ -52,12 +55,12 @@ const preview: Preview = {
     },
     theme: {
       control: "inline-radio",
-      options: themeSchema.options,
+      options: themePref.schema.options,
     },
   },
   args: {
     dir: dirSchema.fallback,
-    theme: themeSchema.fallback,
+    theme: themePref.fallback,
   },
   decorators: [rtlDecorator, themeDecorator],
 };
