@@ -77,7 +77,7 @@ export default class ThemeToggle extends LitElement {
       >
         <legend class="sr-only">Theme</legend>
         ${repeat(
-          themePref.schema.options,
+          themePref.options,
           (theme) => theme,
           (theme) =>
             toggleButton(

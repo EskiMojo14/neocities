@@ -14,7 +14,7 @@ it("should select the correct case", async () => {
 
   const { getByLabelText } = page.render(html`<case-toggle></case-toggle>`);
 
-  for (const theme of casePref.schema.options) {
+  for (const theme of casePref.options) {
     const label = getByLabelText(`${capitalize(theme)} case`);
     await user.click(label);
     expect(casePref.data).toBe(theme);

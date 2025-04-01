@@ -54,7 +54,7 @@ const preview: Preview = {
     },
     theme: {
       control: "inline-radio",
-      options: themePref.schema.options,
+      options: themePref.options,
     },
   },
   args: {

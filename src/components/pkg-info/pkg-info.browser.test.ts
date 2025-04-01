@@ -53,7 +53,7 @@ it("should allow switching between package managers", async () => {
     <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
   `);
 
-  for (const pkgManager of pkgManagerPref.schema.options) {
+  for (const pkgManager of pkgManagerPref.options) {
     const button = getByLabelText(`Install with ${pkgManager}`);
 
     await user.click(button);
@@ -65,7 +65,7 @@ it("should allow switching between package managers", async () => {
           ?.shadowRoot?.getElementById("install-command"),
       )
       .toHaveTextContent(
-        `${pkgManager} ${pkgManagerPref.meta[pkgManager].install} foo`,
+        `${pkgManager} ${pkgManagerPref.meta[pkgManager].install} ${pkgManagerPref.meta[pkgManager].prefix ?? ""}foo`,
       );
   }
 });

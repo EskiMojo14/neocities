@@ -35,7 +35,7 @@ export default class CaseToggle extends LitElement {
       >
         <legend class="sr-only">Case</legend>
         ${repeat(
-          casePref.schema.options,
+          casePref.options,
           (opt) => opt,
           (opt) =>
             toggleButton(

@@ -14,7 +14,7 @@ it("should select the correct theme", async () => {
 
   const { getByLabelText } = page.render(html`<theme-toggle></theme-toggle>`);
 
-  for (const theme of themePref.schema.options) {
+  for (const theme of themePref.options) {
     const label = getByLabelText(`${capitalize(theme)} theme`);
     await user.click(label);
     expect(themePref.data).toBe(theme);

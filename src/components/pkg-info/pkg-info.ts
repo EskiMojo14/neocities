@@ -143,7 +143,7 @@ export default class PkgInfo extends LitElement {
               >
                 <legend class="sr-only">Install with</legend>
                 ${repeat(
-                  pkgManagerPref.schema.options,
+                  pkgManagerPref.options,
                   (key) => key,
                   (key) =>
                     toggleButton(key, {
@@ -163,7 +163,8 @@ export default class PkgInfo extends LitElement {
                   .meta[pkgManager].install}</span> ${when(
                   frontmatterIsSet(devDep),
                   () => html`<span class="token parameter variable">-D</span> `,
-                )}${pkg}</code></pre>
+                )}${pkgManagerPref.meta[pkgManager].prefix ??
+                ""}${pkg}</code></pre>
                 <button
                   class="icon"
                   id="copy-install-to-clipboard"
