@@ -134,7 +134,7 @@ hr {
   border: 1px solid var(--divider);
 }
 
-p:has(img-carousel) {
+p:has(controlled-carousel) {
   display: flex;
   justify-content: center;
 }
