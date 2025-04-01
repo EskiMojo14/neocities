@@ -9,12 +9,9 @@ const createPref =
     {
       dataKey,
       storageKey = dataKey,
-      storage = localStorage,
     }: {
       dataKey: string;
-      dataElement?: { readonly dataset: DOMStringMap };
       storageKey?: string;
-      storage?: Storage;
     },
   ) => {
     const options = objectKeys(meta);
@@ -33,10 +30,10 @@ const createPref =
       },
       storageKey,
       get storage() {
-        return v.parse(schema, storage.getItem(storageKey));
+        return v.parse(schema, localStorage.getItem(storageKey));
       },
       set storage(value) {
-        storage.setItem(storageKey, value);
+        localStorage.setItem(storageKey, value);
       },
     };
   };
