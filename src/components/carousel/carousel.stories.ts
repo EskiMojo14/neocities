@@ -19,9 +19,9 @@ const meta = {
     ></img-carousel>`,
   args: {
     items: [
-      { src: "https://picsum.photos/500", aspectRatio: [1, 1] },
-      { src: "https://picsum.photos/1000/500", aspectRatio: [2, 1] },
-      { src: "https://picsum.photos/500/1000", aspectRatio: [1, 2] },
+      { src: "https://picsum.photos/500" },
+      { src: "https://picsum.photos/1000/500" },
+      { src: "https://picsum.photos/500/1000" },
     ],
     size: 300,
     fit: "contain",
