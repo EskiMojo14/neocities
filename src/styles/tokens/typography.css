@@ -85,6 +85,8 @@
   --font-family-heading: "Monaspace Xenon", monospace;
   --font-family-body: "Monaspace Neon", monospace;
   --font-family-code: "Monaspace Argon", monospace;
+  --font-family-comment: "Monaspace Radon", monospace;
+  --font-family-doc-comment: "Monaspace Xenon", monospace;
   --font-family-icon: "Material Symbols Sharp", serif;
 
   --headline1-family: var(--font-family-heading);
@@ -137,7 +139,7 @@
   --subtitle2-weight: var(--weight-regular);
   --subtitle2-transform: lowercase;
 
-  --button-family: var(--font-family-body);
+  --button-family: var(--font-family-button);
   --button-size: 0.875rem;
   --button-weight: var(--weight-medium);
   --button-transform: lowercase;

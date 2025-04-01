@@ -138,3 +138,10 @@ p:has(controlled-carousel) {
   display: flex;
   justify-content: center;
 }
+
+.token.comment {
+  font-family: var(--font-family-comment);
+  &.doc-comment {
+    font-family: var(--font-family-doc-comment);
+  }
+}
