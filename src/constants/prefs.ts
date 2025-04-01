@@ -8,7 +8,6 @@ const createPref =
     fallback: Fallback,
     {
       dataKey,
-      dataElement = document.documentElement,
       storageKey = dataKey,
       storage = localStorage,
     }: {
@@ -27,10 +26,10 @@ const createPref =
       schema,
       dataKey,
       get data() {
-        return v.parse(schema, dataElement.dataset[dataKey]);
+        return v.parse(schema, document.documentElement.dataset[dataKey]);
       },
       set data(value) {
-        dataElement.dataset[dataKey] = value;
+        document.documentElement.dataset[dataKey] = value;
       },
       storageKey,
       get storage() {
