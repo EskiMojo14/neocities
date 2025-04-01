@@ -1,4 +1,11 @@
 @font-face {
+  font-family: "Mona Sans";
+  src: url("/assets/fonts/Mona-Sans.woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Monaspace Argon";
   src: url("/assets/fonts/MonaspaceArgonVarVF.woff2") format("woff2");
   font-weight: 100 800;
@@ -85,6 +92,7 @@
   --font-family-heading: "Monaspace Xenon", monospace;
   --font-family-body: "Monaspace Neon", monospace;
   --font-family-code: "Monaspace Argon", monospace;
+  --font-family-button: "Monaspace Neon", monospace;
   --font-family-comment: "Monaspace Radon", monospace;
   --font-family-doc-comment: "Monaspace Xenon", monospace;
   --font-family-icon: "Material Symbols Sharp", serif;

@@ -1,16 +1,33 @@
-[data-case="normal"] {
+[data-style="normal"] {
+  --font-family-body: "Mona Sans", sans-serif;
+  --font-family-heading: "Mona Sans", sans-serif;
+  --font-family-button: "Mona Sans", sans-serif;
+
+  --headline1-size: 6rem;
   --headline1-transform: none;
+  --headline2-size: 3.75rem;
   --headline2-transform: none;
+  --headline3-size: 3rem;
   --headline3-transform: none;
+  --headline4-size: 2.125rem;
   --headline4-transform: none;
+  --headline5-size: 1.5rem;
   --headline5-transform: none;
+  --headline6-size: 1.25rem;
   --headline6-transform: none;
+  --body1-size: 1rem;
   --body1-transform: none;
+  --body2-size: 0.875rem;
   --body2-transform: none;
+  --subtitle1-size: 1rem;
   --subtitle1-transform: none;
+  --subtitle2-size: 0.875rem;
   --subtitle2-transform: none;
+  --button-size: 0.875rem;
   --button-transform: none;
+  --overline-size: 0.625rem;
   --overline-transform: none;
+  --caption-size: 0.75rem;
   --caption-transform: none;
 }
 
@@ -19,6 +36,9 @@
   font-size: var(--headline1-size);
   font-weight: var(--headline1-weight);
   text-transform: var(--headline1-transform);
+  a & {
+    font-family: inherit;
+  }
 }
 
 .headline2 {
@@ -26,6 +46,9 @@
   font-size: var(--headline2-size);
   font-weight: var(--headline2-weight);
   text-transform: var(--headline2-transform);
+  a & {
+    font-family: inherit;
+  }
 }
 
 .headline3 {
@@ -33,6 +56,9 @@
   font-size: var(--headline3-size);
   font-weight: var(--headline3-weight);
   text-transform: var(--headline3-transform);
+  a & {
+    font-family: inherit;
+  }
 }
 
 .headline4 {
@@ -40,6 +66,9 @@
   font-size: var(--headline4-size);
   font-weight: var(--headline4-weight);
   text-transform: var(--headline4-transform);
+  a & {
+    font-family: inherit;
+  }
 }
 
 .headline5 {
@@ -47,6 +76,9 @@
   font-size: var(--headline5-size);
   font-weight: var(--headline5-weight);
   text-transform: var(--headline5-transform);
+  a & {
+    font-family: inherit;
+  }
 }
 
 .headline6 {
@@ -54,6 +86,9 @@
   font-size: var(--headline6-size);
   font-weight: var(--headline6-weight);
   text-transform: var(--headline6-transform);
+  a & {
+    font-family: inherit;
+  }
 }
 
 .body1 {
@@ -61,6 +96,9 @@
   font-size: var(--body1-size);
   font-weight: var(--body1-weight);
   text-transform: var(--body1-transform);
+  a & {
+    font-family: inherit;
+  }
 }
 
 .body2 {
@@ -68,6 +106,9 @@
   font-size: var(--body2-size);
   font-weight: var(--body2-weight);
   text-transform: var(--body2-transform);
+  a & {
+    font-family: inherit;
+  }
 }
 
 .subtitle1 {
@@ -75,6 +116,9 @@
   font-size: var(--subtitle1-size);
   font-weight: var(--subtitle1-weight);
   text-transform: var(--subtitle1-transform);
+  a & {
+    font-family: inherit;
+  }
 }
 
 .subtitle2 {
@@ -82,6 +126,9 @@
   font-size: var(--subtitle2-size);
   font-weight: var(--subtitle2-weight);
   text-transform: var(--subtitle2-transform);
+  a & {
+    font-family: inherit;
+  }
 }
 
 .button {
@@ -89,6 +136,9 @@
   font-size: var(--button-size);
   font-weight: var(--button-weight);
   text-transform: var(--button-transform);
+  a & {
+    font-family: inherit;
+  }
 }
 
 .overline {
@@ -96,6 +146,9 @@
   font-size: var(--overline-size);
   font-weight: var(--overline-weight);
   text-transform: var(--overline-transform);
+  a & {
+    font-family: inherit;
+  }
 }
 
 .caption {
@@ -103,4 +156,7 @@
   font-size: var(--caption-size);
   font-weight: var(--caption-weight);
   text-transform: var(--caption-transform);
+  a & {
+    font-family: inherit;
+  }
 }

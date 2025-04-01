@@ -1,7 +1,7 @@
 import { themes } from "@storybook/theming";
 import type { Decorator, Preview } from "@storybook/web-components";
 import * as v from "valibot";
-import { themePref } from "../src/constants/prefs.ts";
+import { stylePref, themePref } from "../src/constants/prefs.ts";
 import pages from "./mocks/graph.json";
 import "../src/styles/global.css";
 
@@ -17,6 +17,11 @@ const rtlDecorator: Decorator = (
 
 const themeDecorator: Decorator = (story, { args: { theme, ...args } }) => {
   themePref.data = v.parse(themePref.schema, theme);
+  return story({ args });
+};
+
+const styleDecorator: Decorator = (story, { args: { style, ...args } }) => {
+  stylePref.data = v.parse(stylePref.schema, style);
   return story({ args });
 };
 
@@ -56,12 +61,17 @@ const preview: Preview = {
       control: "inline-radio",
       options: themePref.options,
     },
+    style: {
+      control: "inline-radio",
+      options: stylePref.options,
+    },
   },
   args: {
     dir: dirSchema.fallback,
     theme: themePref.fallback,
+    style: stylePref.fallback,
   },
-  decorators: [rtlDecorator, themeDecorator],
+  decorators: [rtlDecorator, themeDecorator, styleDecorator],
 };
 
 export default preview;

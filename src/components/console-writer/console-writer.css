@@ -20,6 +20,15 @@ span {
   left: 0;
 }
 
+[data-style="normal"] {
+  .text {
+    color: inherit;
+  }
+  .console {
+    display: none;
+  }
+}
+
 @media (scripting: none) {
   .text {
     color: inherit;

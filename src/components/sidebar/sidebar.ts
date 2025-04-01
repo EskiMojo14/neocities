@@ -14,8 +14,8 @@ import type { WithOptional } from "../../utils/index.ts";
 import { assert, uniqueBy } from "../../utils/index.ts";
 import { clsx, isActiveLink, styleMap } from "../../utils/lit.ts";
 import "../spinner/spinner.ts";
-import "./case-toggle/case-toggle.ts";
 import sidebar from "./sidebar.css?type=raw";
+import "./style-toggle/style-toggle.ts";
 import "./theme-toggle/theme-toggle.ts";
 
 const logo = html`<svg
@@ -284,7 +284,7 @@ export default class Sidebar extends LitElement {
           <h1 class="headline6">${logo}eskimojo</h1>
           <div class="prefs">
             <theme-toggle></theme-toggle>
-            <case-toggle></case-toggle>
+            <style-toggle></style-toggle>
           </div>
         </div>
         <ul>

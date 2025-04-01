@@ -1,4 +1,5 @@
 a {
+  font-family: var(--font-family-button);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;

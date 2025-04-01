@@ -47,6 +47,15 @@ export default class Footer extends LitElement {
               Monaspace (font)
             </a>
           </li>
+          <li>
+            <a
+              href="https://github.com/github/mona-sans"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Mona Sans (font)
+            </a>
+          </li>
         </ul>
       </section>
     </footer>`;

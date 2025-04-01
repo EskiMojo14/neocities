@@ -1,5 +1,6 @@
 import { html, LitElement, unsafeCSS } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
+import { type Style, stylePref } from "../../constants/prefs.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { consolewriter as cwriter } from "../../utils/lit.ts";
 import consolewriter from "./console-writer.css?type=raw";
@@ -25,7 +26,38 @@ export default class ConsoleWriter
   @property({ type: Number })
   maxDuration = cwriter.defaults.maxDuration;
 
+  @state()
+  pageStyle: Style = stylePref.fallback;
+
+  eventAc: AbortController | undefined;
+
+  #retrieveStyle() {
+    this.pageStyle = stylePref.data;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.eventAc = new AbortController();
+    document.addEventListener(
+      "stylechange",
+      (e) => (this.pageStyle = e.newStyle),
+      {
+        signal: this.eventAc.signal,
+      },
+    );
+  }
+
+  firstUpdated() {
+    this.#retrieveStyle();
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.eventAc?.abort();
+  }
+
   render() {
+    if (this.pageStyle === "normal") return this.text;
     return html`<span aria-hidden="true" class="console"
         >${cwriter(this.text, {
           delay: this.delay,

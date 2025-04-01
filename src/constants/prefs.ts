@@ -72,15 +72,15 @@ export const themePref = createPref<{ icon: string }>()(
 
 export type Theme = v.InferOutput<typeof themePref.schema>;
 
-export const casePref = createPref<{ icon: string }>()(
+export const stylePref = createPref<{ icon: string }>()(
   {
-    lower: { icon: "lowercase" },
+    code: { icon: "code" },
     normal: { icon: "match_case" },
   },
-  "lower",
+  "code",
   {
-    dataKey: "case",
+    dataKey: "style",
   },
 );
 
-export type Case = v.InferOutput<typeof casePref.schema>;
+export type Style = v.InferOutput<typeof stylePref.schema>;
