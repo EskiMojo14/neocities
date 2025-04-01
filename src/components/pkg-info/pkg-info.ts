@@ -69,11 +69,7 @@ export default class PkgInfo extends LitElement {
   firstUpdated() {
     this.#retrieveTheme();
     this.#retrievePackageManager();
-    Tooltip.for(
-      this.shadowRoot,
-      "copy-install-to-clipboard",
-      "Copy to clipboard",
-    );
+    Tooltip.for(this.shadowRoot, "copy-install-to-clipboard");
   }
 
   disconnectedCallback() {
@@ -168,6 +164,7 @@ export default class PkgInfo extends LitElement {
                 <button
                   class="icon"
                   id="copy-install-to-clipboard"
+                  aria-label="Copy to clipboard"
                   @click=${() => this.#onCopy()}
                 >
                   <material-symbol aria-hidden="true"
