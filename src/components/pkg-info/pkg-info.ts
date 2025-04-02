@@ -1,5 +1,6 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
+import { ref } from "lit/directives/ref.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import type { PackageManager, Theme } from "../../constants/prefs.ts";
@@ -69,7 +70,6 @@ export default class PkgInfo extends LitElement {
   firstUpdated() {
     this.#retrieveTheme();
     this.#retrievePackageManager();
-    Tooltip.for(this.shadowRoot, "copy-install-to-clipboard");
   }
 
   disconnectedCallback() {
@@ -163,9 +163,11 @@ export default class PkgInfo extends LitElement {
                 ""}${pkg}</code></pre>
                 <button
                   class="icon"
-                  id="copy-install-to-clipboard"
                   aria-label="Copy to clipboard"
                   @click=${() => this.#onCopy()}
+                  ${ref((el) => {
+                    if (el) Tooltip.lazy(el);
+                  })}}
                 >
                   <material-symbol aria-hidden="true"
                     >content_copy</material-symbol

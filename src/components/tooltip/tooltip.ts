@@ -126,7 +126,8 @@ export default class Tooltip extends LitElement {
     super.connectedCallback();
 
     this.target ??= this.previousElementSibling;
-    this.id ||= `${this.target?.id ?? nanoid(10)}-tooltip`;
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+    this.id ||= `${this.target?.id || nanoid(10)}-tooltip`;
     this.text ||= this.target?.ariaLabel ?? "";
 
     this.role = "tooltip";
