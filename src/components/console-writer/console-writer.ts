@@ -56,8 +56,14 @@ export default class ConsoleWriter
     this.eventAc?.abort();
   }
 
+  get prefersReducedMotion() {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion)").matches;
+  }
+
   render() {
-    if (this.pageStyle === "normal") return this.text;
+    if (this.pageStyle === "normal" || this.prefersReducedMotion)
+      return this.text;
     return html`<span aria-hidden="true" class="console"
         >${cwriter(this.text, {
           delay: this.delay,
