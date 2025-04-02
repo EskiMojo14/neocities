@@ -13,20 +13,16 @@ tags:
 A library for rendering lit components in Vitest Browser mode. Provides the usual methods like `render`, `rerender`, and `unmount`.
 
 ```ts
-import { html } from "lit";
-import { expect, it } from "vitest";
 import { render } from "vitest-browser-lit";
+import { expect, test } from "vitest";
+import { html } from "lit";
 
-it("should render", () => {
-  const { getByText, rerender, unmount } = render(html`<p>foo</p>`);
+test("counter button increments the count", async () => {
+  const screen = render(html`<counter-element count="1"></counter-element>`);
 
-  expect(getByText("foo")).toBeInTheDocument();
+  await screen.getByRole("button", { name: "Increment" }).click();
 
-  rerender(html`<p>bar</p>`);
-
-  expect(getByText("bar")).toBeInTheDocument();
-
-  unmount();
+  await expect.element(screen.getByText("Count is 2")).toBeVisible();
 });
 ```
 
@@ -38,20 +34,16 @@ import "vitest-browser-lit";
 
 // my-test.test.ts
 import { page } from "@vitest/browser/context";
+import { test } from "vitest";
 import { html } from "lit";
-import { expect, it } from "vitest";
 
-it("should render", () => {
-  const { getByText, rerender, unmount } = page.render(html`<p>foo</p>`);
-
-  expect(getByText("foo")).toBeInTheDocument();
-
-  rerender(html`<p>bar</p>`);
-
-  expect(getByText("bar")).toBeInTheDocument();
-
-  unmount();
+test("counter button increments the count", async () => {
+  const screen = page.render(
+    html`<counter-element count="1"></counter-element>`,
+  );
 });
+
+// cleanup is done automatically
 ```
 
 If you don't want this, import from `vitest-browser-lit/pure` instead.
