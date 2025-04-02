@@ -2,7 +2,10 @@ import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { type Style, stylePref } from "../../constants/prefs.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
-import { consolewriter as cwriter } from "../../utils/lit.ts";
+import {
+  consolewriter as cwriter,
+  prefersReducedMotion,
+} from "../../utils/lit.ts";
 import consolewriter from "./console-writer.css?type=raw";
 
 @customElement("console-writer")
@@ -56,14 +59,8 @@ export default class ConsoleWriter
     this.eventAc?.abort();
   }
 
-  get prefersReducedMotion() {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia("(prefers-reduced-motion)").matches;
-  }
-
   render() {
-    if (this.pageStyle === "normal" || this.prefersReducedMotion)
-      return this.text;
+    if (this.pageStyle === "normal" || prefersReducedMotion()) return this.text;
     return html`<span aria-hidden="true" class="console"
         >${cwriter(this.text, {
           delay: this.delay,

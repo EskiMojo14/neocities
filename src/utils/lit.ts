@@ -151,3 +151,8 @@ export function cache<T extends object>(
     };
   };
 }
+
+export function prefersReducedMotion() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion)").matches;
+}
