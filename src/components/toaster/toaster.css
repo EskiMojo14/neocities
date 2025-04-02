@@ -1,8 +1,3 @@
-ol,
-li {
-  display: contents;
-}
-
 .region {
   display: flex;
   flex-direction: column;
@@ -42,6 +37,9 @@ li {
   transition-property: background;
   transition-duration: var(--default-duration);
   animation: toast-enter var(--default-duration) forwards;
+  @media (prefers-reduced-motion) {
+    animation-name: toast-fade-in;
+  }
   --icon-fill: 1;
   &:dir(rtl) {
     border-left: var(--normal-border);
@@ -56,12 +54,18 @@ li {
       toast-enter var(--default-duration) forwards,
       toast-exit var(--default-duration)
         calc(max(var(--timeout), 5000ms) + var(--default-duration)) forwards;
+    @media (prefers-reduced-motion) {
+      animation-name: toast-fade-in, toast-fade-out;
+    }
     &:hover:not(.exiting) {
       animation-play-state: paused;
     }
   }
   &.exiting {
     animation: toast-exit var(--default-duration) forwards;
+    @media (prefers-reduced-motion) {
+      animation-name: toast-fade-out;
+    }
   }
   &.error {
     --toast-accent: var(--error);
@@ -93,11 +97,29 @@ li {
   }
 }
 
+@keyframes toast-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes toast-exit {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(150%);
+  }
+}
+
+@keyframes toast-fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

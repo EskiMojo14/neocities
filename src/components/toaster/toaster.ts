@@ -91,66 +91,60 @@ export default class Toaster extends LitElement {
 
   render() {
     return html`
-      <div
+      <section
         class="region"
         role="region"
         tabindex="-1"
         aria-label="${this.#toastState.ids.length} notifications"
         @animationend=${this.#handleAnimationEnd}
       >
-        <ol>
-          ${repeat(
-            this.#toastState.ids,
-            (id) => id,
-            (id) => {
-              const toast = this.#toastState.entities[id];
-              if (!toast) return;
-              return html`
-                <li>
-                  <div
-                    id="toast-${toast.id}"
-                    data-id="${toast.id}"
-                    role="alertdialog"
-                    aria-modal="false"
-                    aria-labelledby="toast-${toast.id}-message"
-                    tabindex="0"
-                    ${ref((toastNode) => {
-                      if (!toastNode) return;
-                      toast.node = toastNode;
-                    })}
-                    class=${clsx("toast", toast.type, {
-                      "has-timeout": !!toast.timeout,
-                    })}
-                    style=${styleMap({
-                      "--timeout": `${typeof toast.timeout === "boolean" ? 1 : toast.timeout}ms`,
-                    })}
+        ${repeat(
+          this.#toastState.ids,
+          (id) => id,
+          (id) => {
+            const toast = this.#toastState.entities[id];
+            if (!toast) return;
+            return html`
+              <output
+                id="toast-${toast.id}"
+                data-id="${toast.id}"
+                role="status"
+                aria-modal="false"
+                aria-labelledby="toast-${toast.id}-message"
+                tabindex="0"
+                ${ref((toastNode) => {
+                  if (!toastNode) return;
+                  toast.node = toastNode;
+                })}
+                class=${clsx("toast", toast.type, {
+                  "has-timeout": !!toast.timeout,
+                })}
+                style=${styleMap({
+                  "--timeout": `${typeof toast.timeout === "boolean" ? 1 : toast.timeout}ms`,
+                })}
+              >
+                <material-symbol aria-hidden="true" class="icon"
+                  >${typeIcons[toast.type]}</material-symbol
+                >
+                <div class="content" role="alert" aria-atomic="true">
+                  <span class="subtitle2" id="toast-${toast.id}-message"
+                    >${toast.message}</span
                   >
-                    <material-symbol aria-hidden="true" class="icon"
-                      >${typeIcons[toast.type]}</material-symbol
-                    >
-                    <div class="content" role="alert" aria-atomic="true">
-                      <span class="subtitle2" id="toast-${toast.id}-message"
-                        >${toast.message}</span
-                      >
-                    </div>
-                    <button
-                      aria-label="Close notification"
-                      class="icon"
-                      @click=${() => {
-                        this.markExiting(toast.id);
-                      }}
-                    >
-                      <material-symbol aria-hidden="true"
-                        >close</material-symbol
-                      >
-                    </button>
-                  </div>
-                </li>
-              `;
-            },
-          )}
-        </ol>
-      </div>
+                </div>
+                <button
+                  aria-label="Close notification"
+                  class="icon"
+                  @click=${() => {
+                    this.markExiting(toast.id);
+                  }}
+                >
+                  <material-symbol aria-hidden="true">close</material-symbol>
+                </button>
+              </output>
+            `;
+          },
+        )}
+      </section>
     `;
   }
 }
