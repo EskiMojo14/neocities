@@ -34,9 +34,7 @@ export default class PageHeader extends LitElement {
 
   @state()
   pageStyle: Style = stylePref.fallback;
-  #retrieveStyle() {
-    this.pageStyle = stylePref.data;
-  }
+
   eventAc: AbortController | undefined;
 
   connectedCallback() {
@@ -50,7 +48,7 @@ export default class PageHeader extends LitElement {
     );
   }
   firstUpdated() {
-    this.#retrieveStyle();
+    this.pageStyle = stylePref.data;
   }
   disconnectedCallback() {
     super.disconnectedCallback();

@@ -34,10 +34,6 @@ export default class ConsoleWriter
 
   eventAc: AbortController | undefined;
 
-  #retrieveStyle() {
-    this.pageStyle = stylePref.data;
-  }
-
   connectedCallback() {
     super.connectedCallback();
     this.eventAc = new AbortController();
@@ -51,7 +47,7 @@ export default class ConsoleWriter
   }
 
   firstUpdated() {
-    this.#retrieveStyle();
+    this.pageStyle = stylePref.data;
   }
 
   disconnectedCallback() {

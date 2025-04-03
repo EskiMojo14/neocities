@@ -44,10 +44,6 @@ export default class PkgInfo extends LitElement {
 
   eventAc: AbortController | undefined;
 
-  #retrieveTheme() {
-    this.theme = themePref.data;
-  }
-
   connectedCallback() {
     super.connectedCallback();
     this.eventAc = new AbortController();
@@ -59,17 +55,13 @@ export default class PkgInfo extends LitElement {
   @state()
   pkgManager: PackageManager = pkgManagerPref.fallback;
 
-  #retrievePackageManager() {
-    this.pkgManager = pkgManagerPref.data;
-  }
-
   #setPackageManager(newValue: PackageManager) {
     this.pkgManager = pkgManagerPref.data = pkgManagerPref.storage = newValue;
   }
 
   firstUpdated() {
-    this.#retrieveTheme();
-    this.#retrievePackageManager();
+    this.theme = themePref.data;
+    this.pkgManager = pkgManagerPref.data;
   }
 
   disconnectedCallback() {
