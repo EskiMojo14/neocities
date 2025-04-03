@@ -21,6 +21,13 @@ button {
     font-variation-settings: "slnt" -8;
     --icon-weight: 500;
   }
+  &.filled {
+    color: var(--button-filled);
+    background: var(--button-filled-background);
+    &:hover {
+      background: var(--button-filled-hover-background);
+    }
+  }
   &[aria-pressed="true"] {
     --icon-fill: 1;
     color: var(--button-selected);
@@ -62,6 +69,23 @@ button {
           border-right: 1px solid var(--divider);
         }
       }
+    }
+    toggle-button.icon {
+      border: none;
+    }
+  }
+  &.filled {
+    background: var(--button-filled-background);
+    button,
+    toggle-button {
+      background: var(--button-filled-background);
+      color: var(--button-filled);
+      &:hover {
+        background: var(--button-filled-hover-background);
+      }
+    }
+    toggle-button input:not(:checked) + label {
+      color: var(--button-filled);
     }
   }
 }

@@ -43,7 +43,7 @@ export default class ScrollToTop extends LitElement {
     return html`
       <button
         aria-label="Scroll to top"
-        class="icon"
+        class="icon filled"
         @click=${() => {
           window.scrollTo({ top: 0, behavior: smoothScroll() });
         }}

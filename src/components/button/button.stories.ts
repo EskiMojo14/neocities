@@ -15,11 +15,16 @@ const meta = {
     textContent: "button",
     onclick: fn(),
   },
+  argTypes: {
+    ariaPressed: {
+      control: "boolean",
+    },
+  },
 } satisfies Meta<HTMLButtonElement>;
 
 export default meta;
 
-type Story = StoryObj<HTMLButtonElement>;
+type Story = StoryObj<HTMLButtonElement & { variant?: "outlined" | "filled" }>;
 
 export const Default: Story = {};
 
@@ -29,12 +34,19 @@ export const Outlined: Story = {
   },
 };
 
+export const Filled: Story = {
+  args: {
+    className: "filled",
+  },
+};
+
 export const Icon: Story = {
-  render: ({ onclick, textContent, ariaLabel }) => html`
+  render: ({ onclick, textContent, ariaLabel, variant, ariaPressed }) => html`
     <button
-      class="icon"
+      class="icon ${variant}"
       @click=${onclick}
       aria-label=${ifDefined(ariaLabel)}
+      aria-pressed=${ifDefined(ariaPressed)}
       ${ref((el) => {
         if (el) Tooltip.lazy(el);
       })}
@@ -45,12 +57,19 @@ export const Icon: Story = {
   args: {
     textContent: "home",
     ariaLabel: "home",
+    variant: undefined,
+  },
+  argTypes: {
+    variant: {
+      control: "inline-radio",
+      options: [undefined, "outlined", "filled"],
+    },
   },
 };
 
 export const Group: Story = {
-  render: ({ onclick, textContent }) => html`
-    <focus-group class="button-group outlined">
+  render: ({ onclick, textContent, variant }) => html`
+    <focus-group class="button-group ${variant}">
       ${repeat(
         Array.from({ length: 3 }, (_, i) => i),
         (i) => i,
@@ -58,4 +77,13 @@ export const Group: Story = {
       )}
     </focus-group>
   `,
+  args: {
+    variant: "outlined",
+  },
+  argTypes: {
+    variant: {
+      control: "inline-radio",
+      options: ["text", "outlined", "filled"],
+    },
+  },
 };

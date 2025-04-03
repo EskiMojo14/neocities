@@ -14,41 +14,31 @@ const meta = {
       control: "inline-radio",
       options: ["radio", "checkbox"],
     },
+    variant: {
+      control: "inline-radio",
+      options: ["text", "outlined", "filled"],
+    },
   },
   args: {
     type: "radio",
     onchange: fn(),
+    variant: "text",
   },
-} satisfies Meta<ToggleButton>;
+} satisfies Meta<ToggleButton & { variant?: "text" | "outlined" | "filled" }>;
 
 export default meta;
 
-type Story = StoryObj<ToggleButton>;
+type Story = StoryObj<ToggleButton & { variant?: "outlined" | "filled" }>;
 
 export const Default: Story = {
-  render: ({ type, onchange }) => html`
-    <fieldset @change=${onchange} class="button-group">
+  render: ({ type, onchange, variant }) => html`
+    <fieldset @change=${onchange} class="button-group ${variant}">
       ${toggleButton(
-        html`<material-symbol aria-hidden="true">home</material-symbol> home`,
+        html`<material-symbol aria-hidden="true">home</material-symbol> Home`,
         { type, name: "toggle", value: "1", checked: true },
       )}
       ${toggleButton(
-        html`<material-symbol aria-hidden="true">house</material-symbol> house`,
-        { type, name: "toggle", value: "2" },
-      )}
-    </fieldset>
-  `,
-};
-
-export const Outlined: Story = {
-  render: ({ type, onchange }) => html`
-    <fieldset @change=${onchange} class="button-group outlined">
-      ${toggleButton(
-        html`<material-symbol aria-hidden="true">home</material-symbol> home`,
-        { type, name: "toggle", value: "1", checked: true },
-      )}
-      ${toggleButton(
-        html`<material-symbol aria-hidden="true">house</material-symbol> house`,
+        html`<material-symbol aria-hidden="true">house</material-symbol> House`,
         { type, name: "toggle", value: "2" },
       )}
     </fieldset>
@@ -56,8 +46,8 @@ export const Outlined: Story = {
 };
 
 export const Icon: Story = {
-  render: ({ type, onchange }) => html`
-    <fieldset @change=${onchange} class="button-group">
+  render: ({ type, onchange, variant }) => html`
+    <fieldset @change=${onchange} class="button-group ${variant}">
       ${toggleButton(
         html`<material-symbol aria-hidden="true">home</material-symbol>`,
         {
@@ -66,7 +56,7 @@ export const Icon: Story = {
           value: "1",
           className: "icon",
           checked: true,
-          ariaLabel: "home",
+          ariaLabel: "Home",
           ref(el) {
             if (el) Tooltip.lazy(el);
           },
@@ -79,7 +69,7 @@ export const Icon: Story = {
           name: "toggle",
           value: "2",
           className: "icon",
-          ariaLabel: "house",
+          ariaLabel: "House",
           ref(el) {
             if (el) Tooltip.lazy(el);
           },

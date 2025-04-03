@@ -7,8 +7,7 @@ scroll-to-top {
   bottom: 16px;
   right: 16px;
   z-index: var(--z-index-tooltip);
-  background: var(--scroll-top-background);
-  border: 1px solid var(--divider);
+  background: var(--button-filled-background);
   border-radius: 50%;
   transform: scale(0);
   transition: transform var(--default-duration);

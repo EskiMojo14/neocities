@@ -33,6 +33,9 @@
   --button-focus: var(--background);
   --button-selected: var(--foreground);
   --button-selected-background: var(--selection);
+  --button-filled-background: var(--pink);
+  --button-filled: var(--foreground);
+  --button-filled-hover-background: var(--pink-secondary);
 
   --sidebar-background: var(--black);
   --footer-background: var(--black);
@@ -89,6 +92,9 @@
   --button-focus: var(--background);
   --button-selected: var(--foreground);
   --button-selected-background: var(--selection);
+  --button-filled: var(--white);
+  --button-filled-background: var(--pink3);
+  --button-filled-hover-background: var(--pink5);
 
   --sidebar-background: var(--white-secondary);
   --footer-background: var(--white-secondary);
