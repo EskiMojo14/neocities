@@ -9,7 +9,7 @@ import { customElement, property } from "lit/decorators.js";
 import { nanoid } from "nanoid/non-secure";
 import { radEventListeners } from "rad-event-listeners";
 import base from "../../styles/utility/baseline.css?type=raw";
-import { safeAssign } from "../../utils/index.ts";
+import { getOrInsertComputed, safeAssign } from "../../utils/index.ts";
 import "../console-writer/console-writer.ts";
 import tooltip from "./tooltip.css?type=raw";
 @customElement("tool-tip")
@@ -54,6 +54,7 @@ export default class Tooltip extends LitElement {
   @property({ type: Number })
   delay = 1000;
 
+  static cache = new WeakMap<Element, Tooltip>();
   static current: Tooltip | null = null;
   static tooltipOpened(tooltip: Tooltip) {
     this.current?.hide();
@@ -171,7 +172,9 @@ export default class Tooltip extends LitElement {
     function createTooltip(delayed = true) {
       return function () {
         if (Tooltip.current?.target === target) return;
-        const tooltip = document.createElement("tool-tip");
+        const tooltip = getOrInsertComputed(Tooltip.cache, target, () =>
+          document.createElement("tool-tip"),
+        );
         safeAssign(tooltip, { target }, opts);
         if (delayed) {
           tooltip.requestShow();
@@ -191,16 +194,6 @@ export default class Tooltip extends LitElement {
         signal: ac.signal,
       },
     );
-  }
-
-  static for(
-    root: Document | ShadowRoot | DocumentFragment | null,
-    id: string,
-    opts?: Partial<Tooltip>,
-  ) {
-    const target = root?.getElementById(id);
-    if (!target) return;
-    Tooltip.lazy(target, opts);
   }
 }
 
