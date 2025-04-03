@@ -98,7 +98,8 @@ h6 {
   }
 }
 
-time {
+time,
+date-format {
   @extend .overline;
 }
 

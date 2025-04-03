@@ -42,3 +42,10 @@ export const json = <T extends GenericSchema>(
 
 export const maybeJson = <T extends GenericSchema>(schema: T) =>
   v.union([schema, json(schema)]);
+
+export const dateString = v.pipe(
+  v.string(),
+  v.transform((date) => new Date(date)),
+  v.date(),
+  v.check((date) => !Number.isNaN(date.getTime()), "Invalid date"),
+);

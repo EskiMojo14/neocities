@@ -1,9 +1,13 @@
 import { html, LitElement, unsafeCSS } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
 import { when } from "lit/directives/when.js";
+import * as v from "valibot";
+import type { Style } from "../../constants/prefs.ts";
+import { stylePref } from "../../constants/prefs.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
-import { frontmatterIsSet } from "../../utils/index.ts";
-import { consolewriter } from "../../utils/lit.ts";
+import { dateFormat, frontmatterIsSet } from "../../utils/index.ts";
+import { cache, consolewriter } from "../../utils/lit.ts";
+import * as vUtils from "../../utils/valibot.ts";
 import "../console-writer/console-writer.ts";
 import header from "./header.css?type=raw";
 
@@ -20,20 +24,55 @@ export default class PageHeader extends LitElement {
   @property({ type: String })
   published = "${unset}";
 
+  @cache(({ published }) => [published])
+  get formattedPublished() {
+    if (!frontmatterIsSet(this.published)) return "";
+    return dateFormat.format(
+      v.parse(vUtils.dateString, this.published.slice(1, -1)),
+    ); // double quoted for some reason
+  }
+
+  @state()
+  pageStyle: Style = stylePref.fallback;
+  #retrieveStyle() {
+    this.pageStyle = stylePref.data;
+  }
+  eventAc: AbortController | undefined;
+
+  connectedCallback() {
+    super.connectedCallback();
+    document.addEventListener(
+      "stylechange",
+      (e) => (this.pageStyle = e.newStyle),
+      {
+        signal: (this.eventAc = new AbortController()).signal,
+      },
+    );
+  }
+  firstUpdated() {
+    this.#retrieveStyle();
+  }
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.eventAc?.abort();
+  }
+
   render() {
-    const { header, subtitle, published } = this;
+    const { header, subtitle, published, formattedPublished, pageStyle } = this;
     const headerDuration = consolewriter.getDuration(header);
     const subtitleDuration = consolewriter.getDuration(subtitle);
     return html`
       <header>
         <hgroup>
           ${when(
-            frontmatterIsSet(published),
+            formattedPublished,
             () =>
-              html`<time datetime="${published.slice(1, -1)}">
+              html`<time date="${published.slice(1, -1)}">
                 <span class="sr-only">Published:</span
                 ><console-writer
-                  text="${published.slice(1, 11)}"
+                  text="${pageStyle === "normal"
+                    ? formattedPublished
+                    : published.slice(1, 11)}"
                   delay=${subtitleDuration + headerDuration}
                 ></console-writer>
               </time>`,

@@ -6,6 +6,7 @@ import { when } from "lit/directives/when.js";
 import { getBlogPosts } from "../../data/index.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
+import "../date-format/date-format.ts";
 import "../spinner/spinner.ts";
 import "../tags/tags.ts";
 import blogList from "./blog-list.css?type=raw";
@@ -38,9 +39,9 @@ export default class BlogList extends LitElement {
             html`<div>
                 <a href="${post.route}">
                   <div class="info">
-                    <time datetime="${post.published}">
-                      ${post.published.slice(0, 10)}
-                    </time>
+                    <date-format
+                      date="${post.published.slice(0, 10)}"
+                    ></date-format>
                     <h3 class="headline6">${post.title}</h3>
                     <p class="subtitle2">${post.description}</p>
                   </div>

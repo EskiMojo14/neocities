@@ -188,3 +188,7 @@ export function shallowEqual(objA: any, objB: any) {
   return true;
 }
 /* eslint-enable */
+
+export const dateFormat = new Intl.DateTimeFormat(undefined, {
+  dateStyle: "medium",
+});

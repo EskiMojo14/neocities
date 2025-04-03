@@ -7,6 +7,7 @@ published: 2025-03-31
 icon: local_activity
 imports:
   - /components/carousel/carousel.ts type="module"
+  - /components/date-format/date-format.ts type="module"
 tags:
   - gigs
   - music
@@ -30,7 +31,7 @@ I thought it could be interesting to share my experiences at each, and if nothin
 February in particular I went to 7 gigs, which is almost certainly a personal record. It seems that many artists stop touring in the winter months, and then tour Europe in the early spring, presumably then touring the US later in the year.
 
 <hgroup>
-<time datetime="2025-01-22">2025-01-22</time>
+<date-format date="2025-01-22">2025-01-22</date-format>
 
 ### Jacob Collier & Chris Thile w/ Britten Sinfonia
 
@@ -70,7 +71,7 @@ Due to the size of the gig, there sadly wasn't a chance to catch either musician
 <hr class="middle" />
 
 <hgroup>
-<time datetime="2025-02-01">2025-02-01</time>
+<date-format date="2025-02-01">2025-02-01</date-format>
 
 ### Lake Street Dive
 
@@ -101,7 +102,7 @@ There was a good mix of originals and covers, and they had an acoustic set in th
 <hr class="middle" />
 
 <hgroup>
-<time datetime="2025-02-04">2025-02-04</time>
+<date-format date="2025-02-04">2025-02-04</date-format>
 
 ### Sam Greenfield
 
@@ -142,7 +143,7 @@ I had a lovely chat with Sam after the show, and he remembered me from last time
 <hr class="middle" />
 
 <hgroup>
-<time datetime="2025-02-07">2025-02-07</time>
+<date-format date="2025-02-07">2025-02-07</date-format>
 
 ### The Olllam
 
@@ -158,7 +159,7 @@ Some text here
 <hr class="middle" />
 
 <hgroup>
-<time datetime="2025-02-14">2025-02-14</time>
+<date-format date="2025-02-14">2025-02-14</date-format>
 
 ### Couch & Cory Wong
 
@@ -175,7 +176,7 @@ Some text here
 <hr class="middle" />
 
 <hgroup>
-<time datetime="2025-02-18">2025-02-18</time>
+<date-format date="2025-02-18">2025-02-18</date-format>
 
 ### Sammy Rae & the Friends
 
@@ -191,7 +192,7 @@ Some text here
 <hr class="middle" />
 
 <hgroup>
-<time datetime="2025-02-22">2025-02-22</time>
+<date-format date="2025-02-22">2025-02-22</date-format>
 
 ### Lawrence
 
@@ -207,7 +208,7 @@ Some text here
 <hr class="middle" />
 
 <hgroup>
-<time datetime="2025-02-25">2025-02-25</time>
+<date-format date="2025-02-25">2025-02-25</date-format>
 
 ### Jazz Emu
 
@@ -223,7 +224,7 @@ Some text here
 <hr class="middle" />
 
 <hgroup>
-<time datetime="2025-03-14">2025-03-14</time>
+<date-format date="2025-03-14">2025-03-14</date-format>
 
 ### Dirty Loops
 
@@ -239,7 +240,7 @@ Some text here
 <hr class="middle" />
 
 <hgroup>
-<time datetime="2025-03-28">2025-03-28</time>
+<date-format date="2025-03-28">2025-03-28</date-format>
 
 ### The Hoosiers
 
