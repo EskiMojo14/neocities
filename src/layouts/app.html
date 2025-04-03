@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="../scripts/initial-prefs.ts"></script>
+    <script type="module" src="../scripts/page-scroll.ts"></script>
     <link rel="stylesheet" href="../styles/global.css" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,6 +12,10 @@
     <script type="module" src="../components/header/header.ts"></script>
     <script type="module" src="../components/footer/footer.ts"></script>
     <script type="module" src="../components/toaster/toaster.ts"></script>
+    <script
+      type="module"
+      src="../components/scroll-to-top/scroll-to-top.ts"
+    ></script>
     <title>eskimojo - ${globalThis.page.title}</title>
     <link rel="icon" href="/assets/icon.ico" sizes="any" />
     <link
@@ -57,5 +62,6 @@
       <page-footer></page-footer>
     </div>
     <toast-queue></toast-queue>
+    <scroll-to-top></scroll-to-top>
   </body>
 </html>

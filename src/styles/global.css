@@ -17,6 +17,7 @@
 @import "../components/pkg-info/pkg-info.global.css";
 @import "../components/sidebar/sidebar.global.css";
 @import "../components/toaster/toaster.global.css";
+@import "../components/scroll-to-top/scroll-to-top.global.css";
 
 :root {
   --default-duration: 250ms;

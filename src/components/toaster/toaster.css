@@ -79,10 +79,6 @@
   &.info {
     --toast-accent: var(--info);
   }
-  &:focus {
-    outline: none;
-    background: var(--focus-background);
-  }
   button {
     margin: 0 -8px;
   }
@@ -90,10 +86,12 @@
 
 @keyframes toast-enter {
   0% {
-    margin-bottom: -72px;
+    margin-bottom: calc(-56px - var(--bottom-offset));
+    margin-top: var(--bottom-offset);
   }
   100% {
     margin-bottom: 0;
+    margin-top: 0;
   }
 }
 

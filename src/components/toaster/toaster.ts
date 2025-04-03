@@ -111,7 +111,6 @@ export default class Toaster extends LitElement {
                 role="status"
                 aria-modal="false"
                 aria-labelledby="toast-${toast.id}-message"
-                tabindex="0"
                 ${ref((toastNode) => {
                   if (!toastNode) return;
                   toast.node = toastNode;

@@ -1,6 +1,8 @@
 toast-queue {
+  --bottom-offset: 0px;
   position: fixed;
-  bottom: 0;
+  transition: bottom var(--default-duration);
+  bottom: var(--bottom-offset);
   right: 0;
   z-index: var(--z-index-toast);
   &:dir(rtl) {
@@ -9,5 +11,9 @@ toast-queue {
   }
   @media (max-width: 1000px) {
     width: 100%;
+  }
+  [data-scrolled] & {
+    /* scroll to top button + padding */
+    --bottom-offset: 66px;
   }
 }

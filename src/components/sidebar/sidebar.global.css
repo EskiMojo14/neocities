@@ -27,7 +27,7 @@ sidebar-nav {
     right: 0;
     border-bottom: 1px solid transparent;
     transition: border-color var(--default-duration);
-    &[data-scrolled] {
+    [data-scrolled] & {
       border-color: var(--divider);
     }
   }
