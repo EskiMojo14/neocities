@@ -2,6 +2,7 @@ import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref } from "lit/directives/ref.js";
 import base from "../../styles/utility/baseline.css?type=raw";
+import { smoothScroll } from "../../utils/lit.ts";
 import Tooltip from "../tooltip/tooltip.ts";
 
 @customElement("scroll-to-top")
@@ -44,7 +45,7 @@ export default class ScrollToTop extends LitElement {
         aria-label="Scroll to top"
         class="icon"
         @click=${() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo({ top: 0, behavior: smoothScroll() });
         }}
         ${ref((el) => {
           Object.assign(this.buttonRef, { value: el });

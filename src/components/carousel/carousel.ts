@@ -5,7 +5,7 @@ import { ref } from "lit/directives/ref.js";
 import { repeat } from "lit/directives/repeat.js";
 import * as v from "valibot";
 import base from "../../styles/utility/baseline.css?type=raw";
-import { cache, styleMap } from "../../utils/lit.ts";
+import { cache, smoothScroll, styleMap } from "../../utils/lit.ts";
 import * as vUtils from "../../utils/valibot.ts";
 import { toggleButton } from "../button/toggle.ts";
 import carousel from "./carousel.css?type=raw";
@@ -53,7 +53,7 @@ export default class Carousel extends LitElement {
     const img = this.imgsByIdx[idx];
     if (!img) return;
     this.currentIdx = idx;
-    img.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    img.scrollIntoView({ behavior: smoothScroll(), block: "nearest" });
   }
 
   @property({ type: Number })

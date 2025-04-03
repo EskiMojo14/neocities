@@ -156,3 +156,8 @@ export function prefersReducedMotion() {
   if (typeof window === "undefined") return false;
   return window.matchMedia("(prefers-reduced-motion)").matches;
 }
+
+/** Returns "smooth" if the user doesn't prefer reduced motion. */
+export function smoothScroll(): ScrollBehavior {
+  return prefersReducedMotion() ? "auto" : "smooth";
+}
