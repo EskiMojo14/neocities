@@ -112,7 +112,32 @@ There was a good mix of originals and covers, and they had an acoustic set in th
 <iframe src="https://open.spotify.com/embed/artist/03ZdbEBsbFHG3uJC6gYiOY?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
-Some text here
+Wasn't really sure what to expect from this one, since Sam Greenfield's music has changed a lot recently, but I had a good time!
+
+The opening act was Gareth Donkin, who I hadn't heard of before, but really loved his vibe. He reminded me a lot of some 80s classics, some influences like Michael Jackson and Toto. Personal favourites were "Suite Escape", "Nobody's Perfect", and "Whenever".
+
+<div class="embeds">
+<iframe style="flex-basis: 100%" src="https://open.spotify.com/embed/artist/05G52WX5mk1SgWBoMJDKbN?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/7JyDUcJw6qyR7qMA9koEFL?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/4gGuLljBIa0c3Buk4aGT0H?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/1nOZdaEDnhuyZst0JPRqSs?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+As for Sam's performance, his current obsession with Japanese jazz fusion was incredibly clear. Almost all songs were instrumental (which I was a little sad about) but the musicianship of his band really carried the show. Some personal highlights were "CHIPS & DIP", "King Bozzi" (made in collaboration with Cory Wong), and the encore "Banana Song".
+
+<div class="embeds">
+<iframe src="https://open.spotify.com/embed/track/32MzdvJ4iUxUiwhRv9UTr0?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/75qwz6Fev9pVKk6BjJauyz?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/31Ibnnvnb7TjmTheOXcNA8?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+I had a lovely chat with Sam after the show, and he remembered me from last time I saw him! We chatted about TWRP (who his friend Nelward was touring with, and sadly I had to miss this time around) and his fiancée Phoebe Katis' single which was due to release at the end of the week. He confirmed that the single was produced by Bill Wurtz, which was awesome to hear!
+
+<div class="embeds four">
+<iframe src="https://open.spotify.com/embed/artist/6N3egqZ7OtcYYXyU6PBdNr?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/4DVe11vtKHN5TRtG8TEjNb?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/5AVRKUdVVbqFCNNLwxXe9I?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
 
 <hr class="middle" />
 
