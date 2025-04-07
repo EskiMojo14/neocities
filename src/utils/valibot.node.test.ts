@@ -126,27 +126,35 @@ describe("valibot utils", () => {
           ]
         `);
     });
+  });
+  describe("coerceDate", () => {
+    it("should coerce a string to a date", () => {
+      expect(v.parse(vUtils.coerceDate, "2020-01-01")).toEqual(
+        new Date("2020-01-01"),
+      );
+    });
 
-    it("should throw an error if not a string", () => {
-      expect(() => v.parse(vUtils.coerceNumber, null))
-        .toThrowErrorMatchingInlineSnapshot(`
-          [ValiError: Invalid type: Expected string but received null]: [
-            {
-              "abortEarly": undefined,
-              "abortPipeEarly": undefined,
-              "expected": "string",
-              "input": null,
-              "issues": undefined,
-              "kind": "schema",
-              "lang": undefined,
-              "message": "Invalid type: Expected string but received null",
-              "path": undefined,
-              "received": "null",
-              "requirement": undefined,
-              "type": "string",
-            },
-          ]
-        `);
+    it("should throw an error if the string is not a date", () => {
+      expect(() =>
+        v.parse(vUtils.coerceDate, "a"),
+      ).toThrowErrorMatchingInlineSnapshot(`
+        [ValiError: Invalid type: Expected Date but received "Invalid Date"]: [
+          {
+            "abortEarly": undefined,
+            "abortPipeEarly": undefined,
+            "expected": "Date",
+            "input": Date { NaN },
+            "issues": undefined,
+            "kind": "schema",
+            "lang": undefined,
+            "message": "Invalid type: Expected Date but received "Invalid Date"",
+            "path": undefined,
+            "received": ""Invalid Date"",
+            "requirement": undefined,
+            "type": "date",
+          },
+        ]
+      `);
     });
   });
   describe("json", () => {

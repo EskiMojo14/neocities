@@ -14,7 +14,7 @@ export default class DateFormat extends LitElement {
 
   @cache(({ date }) => [date])
   get formattedDate() {
-    return dateFormat.format(v.parse(vUtils.dateString, this.date));
+    return dateFormat.format(v.parse(vUtils.coerceDate, this.date));
   }
 
   @state()

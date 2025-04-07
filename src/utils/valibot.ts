@@ -18,7 +18,14 @@ export const formDataShape = <
     v.object(shape),
   );
 
-export const coerceNumber = v.pipe(v.string(), v.transform(Number), v.number());
+export const coerceNumber = v.pipe(v.any(), v.transform(Number), v.number());
+
+export const coerceDate = v.pipe(
+  v.union([v.string(), v.number(), v.date()]),
+  v.transform((date) => new Date(date)),
+  v.date(),
+  v.check((date) => !Number.isNaN(date.getTime()), "Invalid date"),
+);
 
 export const json = <T extends GenericSchema>(
   schema: T,
@@ -42,10 +49,3 @@ export const json = <T extends GenericSchema>(
 
 export const maybeJson = <T extends GenericSchema>(schema: T) =>
   v.union([schema, json(schema)]);
-
-export const dateString = v.pipe(
-  v.string(),
-  v.transform((date) => new Date(date)),
-  v.date(),
-  v.check((date) => !Number.isNaN(date.getTime()), "Invalid date"),
-);

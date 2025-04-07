@@ -28,7 +28,7 @@ export default class PageHeader extends LitElement {
   get formattedPublished() {
     if (!frontmatterIsSet(this.published)) return "";
     return dateFormat.format(
-      v.parse(vUtils.dateString, this.published.slice(1, -1)),
+      v.parse(vUtils.coerceDate, this.published.slice(1, -1)),
     ); // double quoted for some reason
   }
 
