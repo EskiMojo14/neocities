@@ -1,10 +1,9 @@
-import type { GenericSchema } from "valibot";
 import * as v from "valibot";
 
 export const formDataShape = <
   T extends Record<
     string,
-    GenericSchema<FormDataEntryValue | undefined, unknown>
+    v.GenericSchema<FormDataEntryValue | undefined, unknown>
   >,
 >(
   shape: T,
@@ -27,7 +26,7 @@ export const coerceDate = v.pipe(
   v.check((date) => !Number.isNaN(date.getTime()), "Invalid date"),
 );
 
-export const json = <T extends GenericSchema>(
+export const json = <T extends v.GenericSchema>(
   schema: T,
   reviver?: Parameters<typeof JSON.parse>[1],
 ) =>
@@ -47,5 +46,5 @@ export const json = <T extends GenericSchema>(
     schema,
   );
 
-export const maybeJson = <T extends GenericSchema>(schema: T) =>
+export const maybeJson = <T extends v.GenericSchema>(schema: T) =>
   v.union([schema, json(schema)]);
