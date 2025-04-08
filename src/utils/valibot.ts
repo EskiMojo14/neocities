@@ -35,7 +35,6 @@ export const coerceDate = v.pipe(
   v.union([v.string(), v.number(), v.date()]),
   v.transform((date) => new Date(date)),
   v.date(),
-  v.check((date) => !Number.isNaN(date.getTime()), "Invalid date"),
 );
 
 export const json = <T extends v.GenericSchema>(
