@@ -18,18 +18,26 @@ expect.addSnapshotSerializer({
 describe("valibot utils", () => {
   describe("formDataShape", () => {
     it("should parse a valid FormData", () => {
+      const file = new File([], "baz");
       const formData = new FormData();
       formData.append("foo", "bar");
-      formData.append("baz", new File([], "baz"));
+      formData.append("baz", file);
+      formData.append("multi", "one");
+      formData.append("multi", "two");
       expect(
         v.parse(
           vUtils.formDataShape({
             foo: v.string(),
             baz: v.file(),
+            multi: v.array(v.string()),
           }),
           formData,
         ),
-      ).toEqual(Object.fromEntries(formData.entries()));
+      ).toEqual({
+        foo: "bar",
+        baz: file,
+        multi: ["one", "two"],
+      });
     });
 
     it("should throw an error if not a FormData", () => {
@@ -135,9 +143,8 @@ describe("valibot utils", () => {
     });
 
     it("should throw an error if the string is not a date", () => {
-      expect(() =>
-        v.parse(vUtils.coerceDate, "a"),
-      ).toThrowErrorMatchingInlineSnapshot(`
+      expect(() => v.parse(vUtils.coerceDate, "a"))
+        .toThrowErrorMatchingInlineSnapshot(`
         [ValiError: Invalid type: Expected Date but received "Invalid Date"]: [
           {
             "abortEarly": undefined,
