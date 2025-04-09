@@ -57,7 +57,7 @@ export default class ConsoleWriter
 
   render() {
     if (this.pageStyle === "normal" || prefersReducedMotion()) return this.text;
-    return html`<span aria-hidden="true" class="console"
+    return html`<span aria-hidden="true" class="console" needs-js
         >${cwriter(this.text, {
           delay: this.delay,
           finishingDelay: this.finishingDelay,

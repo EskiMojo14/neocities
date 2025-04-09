@@ -259,7 +259,7 @@ export default class Sidebar extends LitElement {
       <nav>
         <div class="header-row">
           <h1 class="headline6">${logo}eskimojo</h1>
-          <div class="prefs">
+          <div class="prefs" needs-js>
             <theme-toggle></theme-toggle>
             <style-toggle></style-toggle>
           </div>

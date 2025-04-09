@@ -33,9 +33,6 @@ span {
   .text {
     color: inherit;
   }
-  .console {
-    display: none;
-  }
 }
 
 .cursor {

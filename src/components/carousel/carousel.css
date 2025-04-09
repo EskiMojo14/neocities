@@ -59,7 +59,4 @@
   .carousel::-webkit-scrollbar {
     display: block;
   }
-  .controls {
-    display: none;
-  }
 }

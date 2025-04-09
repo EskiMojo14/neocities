@@ -146,3 +146,15 @@ p:has(controlled-carousel) {
     font-family: var(--font-family-doc-comment);
   }
 }
+
+@media (scripting: none) {
+  [needs-js] {
+    display: none;
+  }
+}
+
+@media (scripting: enabled) {
+  [no-js] {
+    display: none;
+  }
+}

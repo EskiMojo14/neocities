@@ -128,6 +128,7 @@ export default class PkgInfo extends LitElement {
                     (ev.target as HTMLInputElement).value as PackageManager,
                   );
                 }}
+                needs-js
               >
                 <legend class="sr-only">Install with</legend>
                 ${repeat(
@@ -160,6 +161,7 @@ export default class PkgInfo extends LitElement {
                   ${ref((el) => {
                     if (el) Tooltip.lazy(el);
                   })}}
+                  needs-js
                 >
                   <material-symbol aria-hidden="true"
                     >content_copy</material-symbol

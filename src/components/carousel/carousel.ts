@@ -105,7 +105,7 @@ export default class Carousel extends LitElement {
             </div>`,
         )}
       </div>
-      <div class="controls">
+      <div class="controls" needs-js>
         <button
           class="icon"
           @click=${() => {
