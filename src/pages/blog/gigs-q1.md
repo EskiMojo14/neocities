@@ -39,9 +39,9 @@ February in particular I went to 7 gigs, which is almost certainly a personal re
 </hgroup>
 
 <div class="embeds">
-<iframe  src="https://open.spotify.com/embed/artist/0QWrMNukfcVOmgEU0FEDyD?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-<iframe  src="https://open.spotify.com/embed/artist/1dyGPAYZZHHW6WIqwKN5QF?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-<iframe  src="https://open.spotify.com/embed/artist/3P1VtkpIYbw6YoTo0KYlxy?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/0QWrMNukfcVOmgEU0FEDyD?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/1dyGPAYZZHHW6WIqwKN5QF?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/3P1VtkpIYbw6YoTo0KYlxy?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 This was a really cool gig to kick the year off with. Britten Sinfonia was conducted by Suzie Collier (Jacob Collier's mother!), and featured some other musicians I wasn't familiar with. I'm actually a bigger fan of Chris Thile than I am of Jacob Collier (of whom I admire greatly), so seeing the two of them together was a great experience.
@@ -51,17 +51,17 @@ The first half of the gig was a lot more classical than I was perhaps expecting,
 Jacob also showed off his vocal prowess by _singing_ his half of Bach's "Vivace from Concerto in D Minor", accompanied by Chris on his trusty mandolin.
 
 <div class="embeds four">
-<iframe  src="https://open.spotify.com/embed/track/2KsfHoeeZ6KzjjFoujy6T2?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-<iframe  src="https://open.spotify.com/embed/track/1XQJ8rbgkausevCZMvbRxt?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-<iframe  src="https://open.spotify.com/embed/track/5sf1I8k51UwtYAT4qIT5NK?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-<iframe  src="https://open.spotify.com/embed/track/72yCYYyBTZRckKWeux6zIe?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/2KsfHoeeZ6KzjjFoujy6T2?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/1XQJ8rbgkausevCZMvbRxt?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/5sf1I8k51UwtYAT4qIT5NK?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/72yCYYyBTZRckKWeux6zIe?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 The second half was more what I expected - a selection of songs from both Jacob and Chris' careers. Personal highlights for me were Chris' "Julep" and "My Oh My", and Jacob's "Little Blue" and "Summer Rain". There was also plenty of time for noodling around, and moments where Jacob and Chris had clearly decided to go off on an adventure - we were more than happy to be brought along for the ride!
 
 <div class="embeds four">
-<iframe  src="https://open.spotify.com/embed/track/5a4ZTEMp6wULHTEzJclKxt?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-<iframe  src="https://open.spotify.com/embed/track/4BJR7M2REDNVdhpHDfBBU5?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/5a4ZTEMp6wULHTEzJclKxt?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/4BJR7M2REDNVdhpHDfBBU5?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 <iframe src="https://open.spotify.com/embed/track/4dkxQNsQUboUQ2I4wXkE0d?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 <iframe src="https://open.spotify.com/embed/track/5Mf8pNKP5NlUKL2cbE81iU?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
@@ -96,7 +96,7 @@ There was a good mix of originals and covers, and they had an acoustic set in th
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5aGlygs4voalgMxBCCSg4l?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 <iframe src="https://open.spotify.com/embed/track/0RKKLIOnAPImtlLlYEjbYF?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 <iframe src="https://open.spotify.com/embed/track/5lE2EFXt4muvLFMGQg4hZN?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-<iframe  src="https://open.spotify.com/embed/track/43thKZxOf40xZaJlzaZX9T?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/43thKZxOf40xZaJlzaZX9T?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 <hr class="middle" />
@@ -151,7 +151,7 @@ I had a lovely chat with Sam after the show, and he remembered me from last time
 </hgroup>
 
 <div class="embeds">
-<iframe  src="https://open.spotify.com/embed/artist/6LtwY43IVeNpnireOVay0H?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/6LtwY43IVeNpnireOVay0H?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 Some text here
@@ -167,8 +167,8 @@ Some text here
 </hgroup>
 
 <div class="embeds">
-<iframe  src="https://open.spotify.com/embed/artist/3nYyLjhw4mYzYfJePsCJYJ?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-<iframe  src="https://open.spotify.com/embed/artist/6xt9sJmmyYwWkJv8A6ssiU?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/3nYyLjhw4mYzYfJePsCJYJ?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/6xt9sJmmyYwWkJv8A6ssiU?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 Some text here
@@ -184,7 +184,7 @@ Some text here
 </hgroup>
 
 <div class="embeds">
-<iframe  src="https://open.spotify.com/embed/artist/3lFDsTyYNPQc8WzJExnQWn?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/3lFDsTyYNPQc8WzJExnQWn?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 Some text here
@@ -200,7 +200,7 @@ Some text here
 </hgroup>
 
 <div class="embeds">
-<iframe  src="https://open.spotify.com/embed/artist/5rwUYLyUq8gBsVaOUcUxpE?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/5rwUYLyUq8gBsVaOUcUxpE?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 Some text here
@@ -216,7 +216,7 @@ Some text here
 </hgroup>
 
 <div class="embeds">
-<iframe  src="https://open.spotify.com/embed/artist/69W52X4tUONDDDb6FmGtl6?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/69W52X4tUONDDDb6FmGtl6?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 Some text here
@@ -232,7 +232,7 @@ Some text here
 </hgroup>
 
 <div class="embeds">
-<iframe  src="https://open.spotify.com/embed/artist/5Apl0wL4OwNUDYkx69rMDQ?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/5Apl0wL4OwNUDYkx69rMDQ?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 Some text here
@@ -248,7 +248,7 @@ Some text here
 </hgroup>
 
 <div class="embeds">
-<iframe  src="https://open.spotify.com/embed/artist/4LlDtNr8qFwhrT8eL2wzH4?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/4LlDtNr8qFwhrT8eL2wzH4?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 <img-carousel style="--carousel-w: 16; --carousel-h: 9; --carousel-fit: cover;" items="[
