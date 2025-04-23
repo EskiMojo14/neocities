@@ -15,22 +15,22 @@ const createPref =
     },
   ) => {
     const options = objectKeys(meta);
-    const schema = v.fallback(v.picklist(options), fallback);
+    const parser = v.parser(v.fallback(v.picklist(options), fallback));
     return {
       options,
       fallback,
       meta,
-      schema,
+      parser,
       dataKey,
       get data() {
-        return v.parse(schema, document.documentElement.dataset[dataKey]);
+        return parser(document.documentElement.dataset[dataKey]);
       },
       set data(value) {
         document.documentElement.dataset[dataKey] = value;
       },
       storageKey,
       get storage() {
-        return v.parse(schema, localStorage.getItem(storageKey));
+        return parser(localStorage.getItem(storageKey));
       },
       set storage(value) {
         localStorage.setItem(storageKey, value);
@@ -56,7 +56,7 @@ export const pkgManagerPref = createPref<{
   },
 );
 
-export type PackageManager = v.InferOutput<typeof pkgManagerPref.schema>;
+export type PackageManager = (typeof pkgManagerPref.options)[number];
 
 export const themePref = createPref<{ icon: string }>()(
   {
@@ -70,7 +70,7 @@ export const themePref = createPref<{ icon: string }>()(
   },
 );
 
-export type Theme = v.InferOutput<typeof themePref.schema>;
+export type Theme = (typeof themePref.options)[number];
 
 export const stylePref = createPref<{ icon: string }>()(
   {
@@ -83,4 +83,4 @@ export const stylePref = createPref<{ icon: string }>()(
   },
 );
 
-export type Style = v.InferOutput<typeof stylePref.schema>;
+export type Style = (typeof stylePref.options)[number];

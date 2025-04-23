@@ -16,12 +16,12 @@ const rtlDecorator: Decorator = (
 };
 
 const themeDecorator: Decorator = (story, { args: { theme, ...args } }) => {
-  themePref.data = v.parse(themePref.schema, theme);
+  themePref.data = themePref.parser(theme);
   return story({ args });
 };
 
 const styleDecorator: Decorator = (story, { args: { style, ...args } }) => {
-  stylePref.data = v.parse(stylePref.schema, style);
+  stylePref.data = stylePref.parser(style);
   return story({ args });
 };
 
