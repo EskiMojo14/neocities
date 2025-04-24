@@ -133,27 +133,30 @@ export function cache<T extends object>(
     _propertyKey: string,
     descriptor: CachePropertyDescriptor<T, R>,
   ) {
-    if (!descriptor.get) {
+    const { get } = descriptor;
+    if (!get) {
       throw new Error("cache can only be used on getters");
     }
 
-    const originalGet = descriptor.get;
-
-    let lastDeps: Array<unknown> | undefined;
-    let lastResult: R | undefined;
+    let cached:
+      | {
+          deps: Array<unknown>;
+          result: R;
+        }
+      | undefined;
 
     descriptor.get = function (this: T) {
       const deps = getDeps(this);
       if (
-        lastDeps &&
-        deps.length === lastDeps.length &&
-        deps.every((v, i) => v === lastDeps?.[i])
+        cached?.deps.length !== deps.length ||
+        cached.deps.some((dep, i) => dep !== deps[i])
       ) {
-        return lastResult as R;
+        cached = {
+          deps,
+          result: get.call(this),
+        };
       }
-      lastDeps = deps;
-      lastResult = originalGet.call(this);
-      return lastResult;
+      return cached.result;
     };
   };
 }

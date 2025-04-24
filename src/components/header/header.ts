@@ -83,7 +83,6 @@ export default class PageHeader extends LitElement {
             frontmatterIsSet(subtitle),
             () => html`
               <console-writer
-                role="paragraph"
                 text="${subtitle}"
                 delay=${headerDuration}
                 class="headline5"
