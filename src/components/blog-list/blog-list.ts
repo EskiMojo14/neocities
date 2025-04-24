@@ -39,9 +39,7 @@ export default class BlogList extends LitElement {
             html`<div>
                 <a href="${post.route}">
                   <div class="info">
-                    <date-format
-                      date="${post.published.slice(0, 10)}"
-                    ></date-format>
+                    <date-format date="${post.published}"></date-format>
                     <h3 class="headline6">${post.title}</h3>
                     <p class="subtitle2">${post.description}</p>
                   </div>

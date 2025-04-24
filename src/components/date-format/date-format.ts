@@ -1,4 +1,4 @@
-import { LitElement } from "lit";
+import { html, LitElement } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import * as v from "valibot";
 import type { Style } from "../../constants/prefs.ts";
@@ -12,9 +12,9 @@ export default class DateFormat extends LitElement {
   @property({ type: String })
   date = "";
 
-  @cache(({ date }) => [date])
+  @cache(({ date, pageStyle }) => [date, pageStyle])
   get formattedDate() {
-    return dateFormat.format(v.parse(vUtils.coerceDate, this.date));
+    return dateFormat(v.parse(vUtils.coerceDate, this.date), this.pageStyle);
   }
 
   @state()
@@ -41,7 +41,7 @@ export default class DateFormat extends LitElement {
   }
 
   render() {
-    return this.pageStyle === "code" ? this.date : this.formattedDate;
+    return html`<time datetime="${this.date}">${this.formattedDate}</time>`;
   }
 }
 

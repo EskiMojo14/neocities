@@ -11,6 +11,8 @@ import * as vUtils from "../../utils/valibot.ts";
 import "../console-writer/console-writer.ts";
 import header from "./header.css?type=raw";
 
+const publishedSchema = vUtils.json(vUtils.coerceDate);
+
 @customElement("page-header")
 export default class PageHeader extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(header)];
@@ -24,16 +26,14 @@ export default class PageHeader extends LitElement {
   @property({ type: String })
   published = "${unset}";
 
-  @cache(({ published }) => [published])
-  get formattedPublished() {
-    if (!frontmatterIsSet(this.published)) return "";
-    return dateFormat.format(
-      v.parse(vUtils.coerceDate, this.published.slice(1, -1)),
-    ); // double quoted for some reason
-  }
-
   @state()
   pageStyle: Style = stylePref.fallback;
+
+  @cache(({ published, pageStyle }) => [published, pageStyle])
+  get formattedPublished() {
+    if (!frontmatterIsSet(this.published)) return "";
+    return dateFormat(v.parse(publishedSchema, this.published), this.pageStyle);
+  }
 
   eventAc: AbortController | undefined;
 
@@ -56,7 +56,7 @@ export default class PageHeader extends LitElement {
   }
 
   render() {
-    const { header, subtitle, published, formattedPublished, pageStyle } = this;
+    const { header, subtitle, published, formattedPublished } = this;
     const headerDuration = consolewriter.getDuration(header);
     const subtitleDuration = consolewriter.getDuration(subtitle);
     return html`
@@ -65,12 +65,10 @@ export default class PageHeader extends LitElement {
           ${when(
             formattedPublished,
             () =>
-              html`<time date="${published.slice(1, -1)}">
+              html`<time date="${JSON.parse(published)}">
                 <span class="sr-only">Published:</span
                 ><console-writer
-                  text="${pageStyle === "normal"
-                    ? formattedPublished
-                    : published.slice(1, 11)}"
+                  text="${formattedPublished}"
                   delay=${subtitleDuration + headerDuration}
                 ></console-writer>
               </time>`,

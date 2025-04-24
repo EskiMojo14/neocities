@@ -7,7 +7,7 @@ import type { RefOrCallback } from "lit/directives/ref.js";
 import { ref as _ref } from "lit/directives/ref.js";
 import type { StyleInfo } from "lit/directives/style-map.js";
 import { styleMap as _styleMap } from "lit/directives/style-map.js";
-import { getTypeInterval, safeAssign, shallowEqual, wait } from "./index.ts";
+import { getTypeInterval, safeAssign, wait } from "./index.ts";
 
 declare module "csstype" {
   // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
@@ -143,9 +143,15 @@ export function cache<T extends object>(
     let lastResult: R | undefined;
 
     descriptor.get = function (this: T) {
-      const args = getDeps(this);
-      if (shallowEqual(args, lastDeps)) return lastResult as R;
-      lastDeps = args;
+      const deps = getDeps(this);
+      if (
+        lastDeps &&
+        deps.length === lastDeps.length &&
+        deps.every((v, i) => v === lastDeps?.[i])
+      ) {
+        return lastResult as R;
+      }
+      lastDeps = deps;
       lastResult = originalGet.call(this);
       return lastResult;
     };
