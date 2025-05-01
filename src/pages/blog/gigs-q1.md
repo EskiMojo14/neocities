@@ -154,7 +154,21 @@ I had a lovely chat with Sam after the show, and he remembered me from last time
 <iframe src="https://open.spotify.com/embed/artist/6LtwY43IVeNpnireOVay0H?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
-Some text here
+This was a cool venue! It's a community arts centre and music venue housed inside a former church (hence the Trinity name). Fittings had been added to the ceiling to improve the sound.
+
+The opening act was Seán O'Meara, who also plays guitar for the band. He performed a solo acoustic set, which I quite enjoyed.
+
+<div class="embeds">
+<iframe src="https://open.spotify.com/embed/artist/1YRH6BLzd66Yw1NMCtbGqH?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+The set itself was a lot of fun! I'd seen the band before, at Bristol Beacon, but the venue was a lot smaller this time, and I was closer to the front (thanks to my Christmas present of earplugs!). Though last time I had managed to chat to Joe Dart after the gig, and got my poster signed by all of the members. My personal favourite track from the gig was "lllow the sun", which had a jaunty time signature (10/8, subdivided 3-2-2-3). "with pure crystalll teeth" was another piece with an odd time signature, and i also enjoyed the melancholic "the burialll stone".
+
+<div class="embeds">
+<iframe src="https://open.spotify.com/embed/track/5HPUE1g45hcM35dc3zmJFi?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/7AZ71DEtcLeIQcHVCGNrxr?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/7eCF9SHDcYrc9CNE9z5j4a?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
 
 <hr class="middle" />
 
