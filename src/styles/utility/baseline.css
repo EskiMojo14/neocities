@@ -15,6 +15,7 @@
 ::selection {
   text-shadow: none;
   background-color: var(--selection);
+  color: var(--foreground);
 }
 
 pre,
