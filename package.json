@@ -71,7 +71,7 @@
     "lit": "^3.3.0",
     "nanoid": "^5.1.5",
     "rad-event-listeners": "^1.0.1",
-    "valibot": "^1.0.0"
+    "valibot": "^1.1.0"
   },
   "engines": {
     "node": ">=23.0.0"

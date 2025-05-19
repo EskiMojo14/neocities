@@ -175,7 +175,7 @@ describe("valibot utils", () => {
       expect(() =>
         v.parse(vUtils.json(v.object({ foo: v.string() })), '{"foo":"bar"'),
       ).toThrowErrorMatchingInlineSnapshot(`
-        [ValiError: Expected ',' or '}' after property value in JSON at position 12 (line 1 column 13)]: [
+        [ValiError: Invalid JSON: Received "Expected ',' or '}' after property value in JSON at position 12 (line 1 column 13)"]: [
           {
             "abortEarly": undefined,
             "abortPipeEarly": undefined,
@@ -184,11 +184,11 @@ describe("valibot utils", () => {
             "issues": undefined,
             "kind": "transformation",
             "lang": undefined,
-            "message": "Expected ',' or '}' after property value in JSON at position 12 (line 1 column 13)",
+            "message": "Invalid JSON: Received "Expected ',' or '}' after property value in JSON at position 12 (line 1 column 13)"",
             "path": undefined,
-            "received": ""{"foo":"bar""",
+            "received": ""Expected ',' or '}' after property value in JSON at position 12 (line 1 column 13)"",
             "requirement": undefined,
-            "type": "raw_transform",
+            "type": "parse_json",
           },
         ]
       `);
@@ -313,11 +313,11 @@ describe("valibot utils", () => {
                 "issues": undefined,
                 "kind": "transformation",
                 "lang": undefined,
-                "message": "Expected ',' or '}' after property value in JSON at position 12 (line 1 column 13)",
+                "message": "Invalid JSON: Received "Expected ',' or '}' after property value in JSON at position 12 (line 1 column 13)"",
                 "path": undefined,
-                "received": ""{"foo":"bar""",
+                "received": ""Expected ',' or '}' after property value in JSON at position 12 (line 1 column 13)"",
                 "requirement": undefined,
-                "type": "raw_transform",
+                "type": "parse_json",
               },
             ],
             "kind": "schema",
