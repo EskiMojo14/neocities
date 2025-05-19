@@ -13,6 +13,10 @@ tags:
   - music
   - fox stevenson
   - tom mcguire & the brassholes
+  - choir choir choir
+  - lola mae
+  - hibiscus
+  - pocket sun
 ---
 
 Continuing on from my [previous post](/blog/gigs-q1), here are the concerts I attended in the second quarter of 2025. I'll expand this as time goes on, but for now I'll just list the ones I've already been to.
@@ -82,3 +86,44 @@ Tom McGuire & The Brassholes then took the stage, and it was an awesome time! To
 </div>
 
 After the show I headed to the merch table, and had a brief chat with Tom while picking up a t-shirt. I also signed up for their mailing list, so I'm looking forward to their next album!
+
+<hr class="middle" />
+
+<hgroup>
+<date-format date="2025-05-12"></date-format>
+
+<!-- markdownlint-disable no-trailing-punctuation -->
+
+### Choir! Choir! Choir!
+
+<p class="caption">Lantern Hall, Bristol Beacon - Bristol</p>
+</hgroup>
+
+<div class="embeds">
+<iframe src="https://open.spotify.com/embed/artist/2ZP22Ug8dnz62Q6cCqekCw?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+A very different gig this time! This was essentially a sing-a-long, with two guys (Daveed Goldman and Nobu Adilman) leading the audience as a choir. They entered to "Girls Just Want to Have Fun", and then we sang a few well known songs - "Big Yellow Taxi", "I'm Gonna Be (500 Miles)", and "Can't Help Falling in Love" to name a few.
+
+We then reached the main objective of the gig - learning Leonard Cohen's "Hallelujah". We were split into two halves, and took turns singing harmony or melody. In the verses, my group sang harmony and then swapped to melody for the chorus.
+
+Overall it was a great time! Daveed and Nobu both did a great job leading us, and almost had a "good cop, bad cop" routine going on. Lots of laughs all round.
+
+<div class="embeds">
+<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fchoirx3%2Fvideos%2F697913566118870%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fchoirx3%2Fvideos%2F707573258492679%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+</div>
+
+<hr class="middle" />
+
+<hgroup>
+<date-format date="2025-05-15"></date-format>
+
+### Pocket Sun (featuring Lola Mae and Hibiscus)
+
+<p class="caption">Exchange - Bristol</p>
+</hgroup>
+
+<div class="embeds">
+<iframe src="https://open.spotify.com/embed/artist/2AglFpK0fLt8IxuOPC3SbR?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
