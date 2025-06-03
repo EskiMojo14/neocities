@@ -1,5 +1,6 @@
-import { html, LitElement, unsafeCSS } from "lit";
+import { LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import type { Thing, WithContext } from "schema-dts";
 import base from "../../styles/utility/baseline.css?type=raw";
 
@@ -58,11 +59,11 @@ export default class JsonLd extends LitElement {
       "@context": "https://schema.org",
       ...this.data,
     };
-    return html`
+    return unsafeHTML(`
       <script type="application/ld+json">
         ${JSON.stringify(withContext, safeJsonLdReplacer, this.space)}
       </script>
-    `;
+    `);
   }
 }
 
