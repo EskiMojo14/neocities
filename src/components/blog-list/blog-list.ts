@@ -7,6 +7,7 @@ import { getBlogPosts } from "../../data/index.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import "../date-format/date-format.ts";
+import "../linked-data/blog-post.ts";
 import "../spinner/spinner.ts";
 import "../tags/tags.ts";
 import blogList from "./blog-list.css?type=raw";
@@ -48,6 +49,12 @@ export default class BlogList extends LitElement {
                   >
                 </a>
                 <tags-list path="blog" .tags=${post.tags}></tags-list>
+                <blog-post-ld
+                  title="${post.title}"
+                  description="${post.description}"
+                  published="${post.published}"
+                  url="${post.route}"
+                ></blog-post-ld>
               </div>
               ${when(
                 index < blogPosts.length - 1,

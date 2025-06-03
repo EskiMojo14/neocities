@@ -70,6 +70,10 @@ export function frontmatterIsSet(data: string) {
   return !data.startsWith("${");
 }
 
+export function excludeUnsetFrontmatter(data: string) {
+  return frontmatterIsSet(data) ? data : undefined;
+}
+
 /**
  * Get the active element, including elements in shadow roots.
  *
