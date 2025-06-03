@@ -29,7 +29,10 @@ export default class BlogPostLd extends LitElement {
         headline: excludeUnsetFrontmatter(this.title),
         author: "eskimojo",
         description: excludeUnsetFrontmatter(this.description),
-        datePublished: excludeUnsetFrontmatter(this.published)?.slice(1, -1),
+        datePublished: excludeUnsetFrontmatter(this.published)?.replace(
+          /"/g,
+          "",
+        ),
         url: excludeUnsetFrontmatter(this.url),
         image: "https://eskimojo.neocities.org/assets/icon.png",
       } satisfies BlogPosting}
