@@ -3,7 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import type { BlogPosting } from "schema-dts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { excludeUnsetFrontmatter } from "../../utils/index.ts";
-import "../json-ld/json-ld.ts";
+import "./json-ld.ts";
 
 @customElement("blog-post-ld")
 export default class BlogPostLd extends LitElement {
