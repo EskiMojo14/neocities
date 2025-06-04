@@ -2,6 +2,7 @@ import { getContentByRoute } from "@greenwood/cli/src/data/client.js";
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import base from "../../styles/utility/baseline.css?type=raw";
+import "../linked-data/package.ts";
 import "../pkg-info/pkg-info.ts";
 import "../tags/tags.ts";
 import pkgCard from "./pkg-card.css?type=raw";
@@ -44,6 +45,14 @@ export default class PkgCard extends LitElement {
     const { pkg, repo, docs, name, description, route, icon } = this;
     return html`
       <div class="pkg-card">
+        <pkg-ld
+          pkg="${pkg}"
+          repo="${repo}"
+          docs="${docs}"
+          name="${name}"
+          description="${description}"
+          route="${route}"
+        ></pkg-ld>
         <code class="overline">${pkg}</code>
         <a class="name" href="${route}">
           <h3 class="headline5">${name}</h3>
