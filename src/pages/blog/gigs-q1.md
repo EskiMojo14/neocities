@@ -87,13 +87,13 @@ I liked this concert a lot! Lake Street Dive are a band I listen to every once i
 The opening act was somebody I was unfamiliar with, Alisa Amador, but I enjoyed her performance.
 
 <div class="embeds">
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/1YwCwHqQN5Q7g5e00Hbg4t?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/artist/1YwCwHqQN5Q7g5e00Hbg4t?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 There was a good mix of originals and covers, and they had an acoustic set in the middle for a nice change of pace. Akie Bermiss led a version of Shania Twain's "You're Still the One", which was really nice. Their cover of Hall & Oates' "Rich Girl" was solid, as was their classic "Hypotheticals". I also really enjoyed a track from their newest album, "Dance With a Stranger", in no small part due to its bassline.
 
 <div class="embeds four">
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5aGlygs4voalgMxBCCSg4l?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/5aGlygs4voalgMxBCCSg4l?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 <iframe src="https://open.spotify.com/embed/track/0RKKLIOnAPImtlLlYEjbYF?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 <iframe src="https://open.spotify.com/embed/track/5lE2EFXt4muvLFMGQg4hZN?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 <iframe src="https://open.spotify.com/embed/track/43thKZxOf40xZaJlzaZX9T?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -185,7 +185,19 @@ The set itself was a lot of fun! I'd seen the band before, at Bristol Beacon, bu
 <iframe src="https://open.spotify.com/embed/artist/6xt9sJmmyYwWkJv8A6ssiU?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
-Some text here
+First family gig of the year! We went as a group of 6, and had a great time. Couch are a band that quite a lot of my family likes, and they stole the show for me personally. I managed to have a short chat between sets with Eric Tarlin (their saxophonist), which was awesome! Some of my favourite tracks they played were "Jessie" and "Easy to Love".
+
+<div class="embeds">
+<iframe src="https://open.spotify.com/embed/track/4tNZHcmHZeHsodIwYOBUET?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/4tNZHcmHZeHsodIwYOBUET?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+Cory Wong was as great as usual - the musicianship of his band was incredible. My personal favourite moment was Tema from Couch coming out to sing three songs, including Peter Gabriel's classic "Sledgehammer". "Grid Generation" was also excellent, even sans Louis Cole (the original drummer on the track). Yohannes Tona also did an excellent job on bass.
+
+<div class="embeds">
+<iframe src="https://open.spotify.com/embed/track/029NqmIySn1kOY305AAhxT?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe src="https://open.spotify.com/embed/track/0psCd4ntI6P1lrTZI6TRP2?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
 
 <hr class="middle" />
 
@@ -201,8 +213,6 @@ Some text here
 <iframe src="https://open.spotify.com/embed/artist/3lFDsTyYNPQc8WzJExnQWn?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
-Some text here
-
 <hr class="middle" />
 
 <hgroup>
@@ -216,8 +226,6 @@ Some text here
 <div class="embeds">
 <iframe src="https://open.spotify.com/embed/artist/5rwUYLyUq8gBsVaOUcUxpE?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
-
-Some text here
 
 <hr class="middle" />
 
@@ -233,8 +241,6 @@ Some text here
 <iframe src="https://open.spotify.com/embed/artist/69W52X4tUONDDDb6FmGtl6?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
-Some text here
-
 <hr class="middle" />
 
 <hgroup>
@@ -248,8 +254,6 @@ Some text here
 <div class="embeds">
 <iframe src="https://open.spotify.com/embed/artist/5Apl0wL4OwNUDYkx69rMDQ?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
-
-Some text here
 
 <hr class="middle" />
 
