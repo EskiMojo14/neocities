@@ -28,6 +28,7 @@ export default class BlogLd extends LitElement {
       .data=${{
         "@type": "Blog",
         "@id": blogPage.route,
+        author: "eskimojo",
         name: "eskimojo's Blog",
         description: parsedData.description,
         url: blogPage.route,
