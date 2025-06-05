@@ -1,5 +1,5 @@
 import * as v from "valibot";
-import { objectKeys } from "../utils/index.ts";
+import { unsafeKeys } from "../utils/index.ts";
 
 const createPref =
   <Meta>() =>
@@ -14,7 +14,7 @@ const createPref =
       storageKey?: string;
     },
   ) => {
-    const options = objectKeys(meta);
+    const options = unsafeKeys(meta);
     const parser = v.parser(v.fallback(v.picklist(options), fallback));
     return {
       options,

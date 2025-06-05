@@ -4,7 +4,7 @@ import { ref } from "lit/directives/ref.js";
 import { repeat } from "lit/directives/repeat.js";
 import { nanoid } from "nanoid/non-secure";
 import base from "../../styles/utility/baseline.css?type=raw";
-import { assert, objectFromEntries, objectKeys } from "../../utils/index.ts";
+import { assert, unsafeFromEntries, unsafeKeys } from "../../utils/index.ts";
 import { clsx, styleMap } from "../../utils/lit.ts";
 import toaster from "./toaster.css?type=raw";
 
@@ -20,7 +20,7 @@ interface Toast {
   id: string;
   message: string;
   type: ToastType;
-  timeout?: number | boolean;
+  timeout?: number | true;
   node?: Element;
 }
 
@@ -46,7 +46,7 @@ export default class Toaster extends LitElement {
     entities: {},
   };
 
-  push(type: ToastType, message: string, timeout?: number | boolean) {
+  push(type: ToastType, message: string, timeout?: number | true) {
     const id = nanoid();
     this.#toastState.ids.push(id);
     this.#toastState.entities[id] = {
@@ -156,8 +156,8 @@ function _toast(...args: Parameters<Toaster["push"]>) {
 
 export const toast = Object.assign(
   _toast,
-  objectFromEntries(
-    objectKeys(typeIcons).map(
+  unsafeFromEntries(
+    unsafeKeys(typeIcons).map(
       (type) => [type, _toast.bind(null, type)] as const,
     ),
   ),

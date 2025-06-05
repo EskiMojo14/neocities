@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import * as v from "valibot";
-import { assert, objectKeys } from "../../utils/index.ts";
+import { assert, unsafeKeys } from "../../utils/index.ts";
 import * as vUtils from "../../utils/valibot.ts";
 import { toast, typeIcons } from "./toaster.ts";
 
 const formSchema = vUtils.formDataShape({
-  type: v.picklist(objectKeys(typeIcons)),
+  type: v.picklist(unsafeKeys(typeIcons)),
   message: v.string(),
   timeout: vUtils.coerceNumber,
 });
