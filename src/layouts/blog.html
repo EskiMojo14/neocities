@@ -2,8 +2,15 @@
   <head>
     <script type="module" src="../components/tags/tags.ts"></script>
     <link rel="stylesheet" href="../styles/layouts/blog.css" crossorigin />
+    <script type="module" src="../components/linked-data/blog-post.ts"></script>
   </head>
   <body>
+    <blog-post-ld
+      title="${globalThis.page.title}"
+      description="${globalThis.page.data.description}"
+      published="${globalThis.page.data.published}"
+      url="${globalThis.page.route}"
+    ></blog-post-ld>
     <tags-list path="blog" tags="${globalThis.page.data.tags}"></tags-list>
     <!-- markdown content will get output here -->
     <content-outlet></content-outlet>
