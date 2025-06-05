@@ -24,11 +24,6 @@ interface Toast {
   node?: Element;
 }
 
-interface ToastState {
-  ids: Array<string>;
-  entities: Record<string, Toast>;
-}
-
 @customElement("toast-queue")
 export default class Toaster extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(toaster)];
@@ -41,20 +36,16 @@ export default class Toaster extends LitElement {
     }, 200);
   }
 
-  #toastState: ToastState = {
-    ids: [],
-    entities: {},
-  };
+  #toastState = new Map<string, Toast>();
 
   push(type: ToastType, message: string, timeout?: number | true) {
     const id = nanoid();
-    this.#toastState.ids.push(id);
-    this.#toastState.entities[id] = {
+    this.#toastState.set(id, {
       id,
       message,
       type,
       timeout,
-    };
+    });
     // update immediately
     clearTimeout(this.#debouncedUpdateId);
     this.requestUpdate();
@@ -64,15 +55,13 @@ export default class Toaster extends LitElement {
   }
 
   markExiting(id: string) {
-    const toast = this.#toastState.entities[id];
+    const toast = this.#toastState.get(id);
     if (!toast) return;
     toast.node?.classList.add("exiting");
   }
 
   close(id: string) {
-    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-    delete this.#toastState.entities[id];
-    this.#toastState.ids.splice(this.#toastState.ids.indexOf(id), 1);
+    this.#toastState.delete(id);
 
     this.#debounceUpdate();
   }
@@ -95,15 +84,13 @@ export default class Toaster extends LitElement {
         class="region"
         role="region"
         tabindex="-1"
-        aria-label="${this.#toastState.ids.length} notifications"
+        aria-label="${this.#toastState.size} notifications"
         @animationend=${this.#handleAnimationEnd}
       >
         ${repeat(
-          this.#toastState.ids,
-          (id) => id,
-          (id) => {
-            const toast = this.#toastState.entities[id];
-            if (!toast) return;
+          this.#toastState.entries(),
+          ([id]) => id,
+          ([, toast]) => {
             return html`
               <output
                 id="toast-${toast.id}"
