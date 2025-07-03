@@ -1,0 +1,47 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+img {
+  width: 87px;
+  height: 87px;
+  border-radius: var(--shape-medium);
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  material-symbol {
+    &.date {
+      color: var(--logo1);
+    }
+    &.track {
+      color: var(--logo3);
+    }
+    &.artist {
+      color: var(--logo4);
+    }
+    &.album {
+      color: var(--logo5);
+    }
+  }
+  &.now-playing {
+    --icon-fill: 1;
+    color: var(--logo1);
+  }
+}
