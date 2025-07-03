@@ -14,6 +14,9 @@ importers:
       dracula-prism:
         specifier: ^2.1.16
         version: 2.1.16
+      ky:
+        specifier: ^1.8.1
+        version: 1.8.1
       lit:
         specifier: ^3.3.0
         version: 3.3.0
@@ -2728,6 +2731,10 @@ packages:
   koa@2.16.1:
     resolution: {integrity: sha512-umfX9d3iuSxTQP4pnzLOz0HKnPg0FaUUIKcye2lOiz3KPu1Y3M3xlz76dISdFPQs37P9eJz1wUpcTS6KDPn9fA==}
     engines: {node: ^4.8.4 || ^6.10.1 || ^7.10.1 || >= 8.1.4}
+
+  ky@1.8.1:
+    resolution: {integrity: sha512-7Bp3TpsE+L+TARSnnDpk3xg8Idi8RwSLdj6CMbNWoOARIrGrbuLGusV0dYwbZOm4bB3jHNxSw8Wk/ByDqJEnDw==}
+    engines: {node: '>=18'}
 
   lazy-cache@2.0.2:
     resolution: {integrity: sha512-7vp2Acd2+Kz4XkzxGxaB1FWOi8KjWIWsgdfD5MCb86DWvlLqhRPM+d6Pro3iNEL5VT9mstz5hKAlcd+QR6H3aA==}
@@ -6906,6 +6913,8 @@ snapshots:
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
+
+  ky@1.8.1: {}
 
   lazy-cache@2.0.2:
     dependencies:

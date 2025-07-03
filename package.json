@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js develop",
+    "dev": "DEBUG_IMPORT_META_ENV=1 node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js develop",
     "prebuild": "rm -rf ./public/ && pnpm run generate-thumbs",
     "build": "node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js build",
     "serve": "node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js serve",
@@ -68,6 +68,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1.7.0",
     "dracula-prism": "^2.1.16",
+    "ky": "^1.8.1",
     "lit": "^3.3.0",
     "nanoid": "^5.1.5",
     "rad-event-listeners": "^1.0.1",
