@@ -23,7 +23,6 @@ const itemSchema = v.pipe(
 
 const baseTrackSchema = v.object({
   name: v.string(),
-  album: v.optional(itemSchema),
   image: v.pipe(
     v.array(
       v.object({
@@ -40,11 +39,16 @@ const baseTrackSchema = v.object({
   ),
 });
 
+const commonRecentTrackSchema = v.object({
+  ...baseTrackSchema.entries,
+  artist: itemSchema,
+  album: itemSchema,
+});
+
 const recentTrackSchema = v.union([
   v.pipe(
     v.object({
-      ...baseTrackSchema.entries,
-      artist: itemSchema,
+      ...commonRecentTrackSchema.entries,
       date: v.pipe(
         v.object({
           // seconds since unix epoch
@@ -60,8 +64,7 @@ const recentTrackSchema = v.union([
   ),
   v.pipe(
     v.object({
-      ...baseTrackSchema.entries,
-      artist: itemSchema,
+      ...commonRecentTrackSchema.entries,
       date: v.optional(v.never()),
       "@attr": v.object({
         nowplaying: v.literal("true"),
