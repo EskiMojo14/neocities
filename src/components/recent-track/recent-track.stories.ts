@@ -1,13 +1,31 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+import { repeat } from "lit/directives/repeat.js";
 import "./recent-track.ts";
 
 const meta = {
   title: "Components/Recent Track",
   tags: ["autodocs"],
   component: "recent-track",
+  render: (args) => html`
+    <div style="display: flex; flex-direction: column; ">
+      ${repeat(
+        Array.from({ length: 6 }, (_, i) => i),
+        (i) => i,
+        () =>
+          html`<recent-track
+              .artist=${args.artist}
+              .name=${args.name}
+              .thumbnail=${args.thumbnail}
+              .date=${args.date}
+              .nowPlaying=${args.nowPlaying}
+            ></recent-track>
+            <hr class="inset" />`,
+      )}
+    </div>
+  `,
   args: {
     artist: "Dirty Loops",
-    album: "Beagle",
     name: "When The Time Is Right",
     thumbnail:
       "https://lastfm.freetls.fastly.net/i/u/174s/14d1fe21a22a2e4eca73353ce613d555.jpg",
