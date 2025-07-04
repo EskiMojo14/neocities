@@ -1,0 +1,53 @@
+import { html, LitElement, unsafeCSS } from "lit";
+import { customElement, property } from "lit/decorators.js";
+import base from "../../../styles/utility/baseline.css?type=raw";
+import track from "../track.css?type=raw";
+
+@customElement("top-track")
+export default class TopTrack extends LitElement {
+  static styles = [unsafeCSS(base), unsafeCSS(track)];
+
+  @property({ type: String })
+  artist = "";
+
+  @property({ type: String })
+  name = "";
+
+  @property({ type: String })
+  thumbnail = "";
+
+  @property({ type: Number })
+  rank = 0;
+
+  @property({ type: Number })
+  playcount = 0;
+
+  render() {
+    return html`
+      <material-symbol aria-label="Rank ${this.rank}"
+        >counter_${this.rank}</material-symbol
+      >
+      <img src="${this.thumbnail}" alt="" />
+      <ul class="info">
+        <li class="body2">
+          <material-symbol aria-hidden="true">music_history</material-symbol>
+          ${this.playcount} plays
+        </li>
+        <li class="body2">
+          <material-symbol aria-label="Track">music_note</material-symbol>
+          ${this.name}
+        </li>
+        <li class="body2">
+          <material-symbol aria-label="Artist">artist</material-symbol>
+          ${this.artist}
+        </li>
+      </ul>
+    `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "top-track": TopTrack;
+  }
+}

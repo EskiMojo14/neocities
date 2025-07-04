@@ -1,38 +1,38 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { repeat } from "lit/directives/repeat.js";
-import "./recent-track.ts";
+import "./top-track.ts";
 
 const meta = {
-  title: "Components/Recent Track",
+  title: "Components/Track/Top",
   tags: ["autodocs"],
-  component: "recent-track",
+  component: "top-track",
   render: (args) => html`
-    <div style="display: flex; flex-direction: column; ">
+    <ol style="display: flex; flex-direction: column; ">
       ${repeat(
         Array.from({ length: 6 }, (_, i) => i),
         (i) => i,
-        () =>
-          html`<recent-track
+        (i) =>
+          html`<top-track
+              role="listitem"
               .artist=${args.artist}
               .name=${args.name}
               .thumbnail=${args.thumbnail}
-              .date=${args.date}
-              .nowPlaying=${args.nowPlaying}
-            ></recent-track>
+              .rank=${i + 1}
+              .playcount=${args.playcount}
+            ></top-track>
             <hr class="inset" />`,
       )}
-    </div>
+    </ol>
   `,
   args: {
     artist: "Dirty Loops",
     name: "When The Time Is Right",
     thumbnail:
       "https://lastfm.freetls.fastly.net/i/u/174s/14d1fe21a22a2e4eca73353ce613d555.jpg",
-    date: "2025-07-03T16:29:47.000Z",
-    nowPlaying: false,
+    playcount: 100,
   },
-} satisfies Meta<HTMLElementTagNameMap["recent-track"]>;
+} satisfies Meta<HTMLElementTagNameMap["top-track"]>;
 
 export default meta;
 
