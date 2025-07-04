@@ -166,4 +166,7 @@ export const timeFormatter = new Intl.DateTimeFormat(undefined, {
 });
 
 export const timeFormat = (date: Date, style: Style) =>
-  style === "normal" ? timeFormatter.format(date) : date.toISOString();
+  style === "normal"
+    ? timeFormatter.format(date)
+    : // remove ms
+      date.toISOString().slice(0, 19) + "Z";
