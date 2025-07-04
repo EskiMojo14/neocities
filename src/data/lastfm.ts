@@ -21,22 +21,24 @@ const itemSchema = v.pipe(
   v.transform((item) => item["#text"]),
 );
 
+const imageSchema = v.pipe(
+  v.array(
+    v.object({
+      size: imageSizeSchema,
+      "#text": v.string(),
+    }),
+  ),
+  v.transform((images) =>
+    images.reduce<Partial<Record<ImageSize, string>>>((acc, image) => {
+      acc[image.size] = image["#text"];
+      return acc;
+    }, {}),
+  ),
+);
+
 const baseTrackSchema = v.object({
   name: v.string(),
-  image: v.pipe(
-    v.array(
-      v.object({
-        size: imageSizeSchema,
-        "#text": v.string(),
-      }),
-    ),
-    v.transform((images) =>
-      images.reduce<Partial<Record<ImageSize, string>>>((acc, image) => {
-        acc[image.size] = image["#text"];
-        return acc;
-      }, {}),
-    ),
-  ),
+  image: imageSchema,
 });
 
 const commonRecentTrackSchema = v.object({
@@ -99,10 +101,22 @@ export async function getRecentTracks(
   const parsed = v.safeParse(recentTracksResponseSchema, unparsed);
   if (!parsed.success) {
     console.error(v.summarize(parsed.issues));
-    return [];
+    throw new Error("Invalid response from API", {
+      cause: new v.ValiError(parsed.issues),
+    });
   }
   return parsed.output.recenttracks.track;
 }
+
+export const periodSchema = v.picklist([
+  "7day",
+  "1month",
+  "3month",
+  "6month",
+  "12month",
+  "overall",
+]);
+export type Period = v.InferOutput<typeof periodSchema>;
 
 const topTrackSchema = v.pipe(
   v.object({
@@ -130,16 +144,6 @@ const topTracksResponseSchema = v.object({
   }),
 });
 
-export const periodSchema = v.picklist([
-  "7day",
-  "1month",
-  "3month",
-  "6month",
-  "12month",
-  "overall",
-]);
-export type Period = v.InferOutput<typeof periodSchema>;
-
 export async function getTopTracks(
   period: Period,
   limit: number,
@@ -151,10 +155,62 @@ export async function getTopTracks(
       signal,
     })
     .json();
-  const parsed = v.safeParse(topTracksResponseSchema, unparsed);
-  if (!parsed.success) {
-    console.error(v.summarize(parsed.issues));
-    return [];
+  const { success, output, issues } = v.safeParse(
+    topTracksResponseSchema,
+    unparsed,
+  );
+  if (!success) {
+    console.error(v.summarize(issues));
+    throw new Error("Invalid response from API", {
+      cause: new v.ValiError(issues),
+    });
   }
-  return parsed.output.toptracks.track;
+  return output.toptracks.track;
+}
+
+const topArtistSchema = v.pipe(
+  v.object({
+    name: v.string(),
+    playcount: vUtils.coerceNumber,
+    image: imageSchema,
+    "@attr": v.object({
+      rank: vUtils.coerceNumber,
+    }),
+  }),
+  v.transform(({ "@attr": { rank }, ...artist }) => ({
+    ...artist,
+    rank,
+  })),
+);
+
+export type TopArtist = v.InferOutput<typeof topArtistSchema>;
+
+const topArtistsResponseSchema = v.object({
+  topartists: v.object({
+    artist: v.array(topArtistSchema),
+  }),
+});
+
+export async function getTopArtists(
+  period: Period,
+  limit: number,
+  { signal }: { signal?: AbortSignal } = {},
+): Promise<Array<TopArtist>> {
+  const unparsed = await api
+    .get("", {
+      searchParams: { method: "user.getTopArtists", limit, period },
+      signal,
+    })
+    .json();
+  const { success, output, issues } = v.safeParse(
+    topArtistsResponseSchema,
+    unparsed,
+  );
+  if (!success) {
+    console.error(v.summarize(issues));
+    throw new Error("Invalid response from API", {
+      cause: new v.ValiError(issues),
+    });
+  }
+  return output.topartists.artist;
 }
