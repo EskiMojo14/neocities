@@ -1,13 +1,14 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { when } from "lit/directives/when.js";
-import base from "../../styles/utility/baseline.css?type=raw";
-import "../date-format/date-format.ts";
-import recentTrack from "./recent-track.css?type=raw";
+import base from "../../../styles/utility/baseline.css?type=raw";
+import { clsx } from "../../../utils/lit.ts";
+import "../../date-format/date-format.ts";
+import track from "../track.css?type=raw";
 
 @customElement("recent-track")
 export default class RecentTrack extends LitElement {
-  static styles = [unsafeCSS(base), unsafeCSS(recentTrack)];
+  static styles = [unsafeCSS(base), unsafeCSS(track)];
 
   @property({ type: String })
   artist = "";
@@ -29,17 +30,22 @@ export default class RecentTrack extends LitElement {
 
   render() {
     return html`
+      <material-symbol aria-hidden="true">music_history</material-symbol>
       ${when(this.thumbnail, (src) => html`<img src="${src}" alt="" />`)}
-      <ul class="info">
+      <ul
+        class=${clsx("info", {
+          "now-playing": this.nowPlaying,
+        })}
+      >
         ${when(
           this.nowPlaying,
           () =>
-            html`<li class="date body2 now-playing">
+            html`<li class="body2">
               <material-symbol aria-hidden="true">today</material-symbol>
               Now playing
             </li>`,
           () =>
-            html`<li class="date body2">
+            html`<li class="body2">
               <material-symbol aria-label="Scrobble date"
                 >event</material-symbol
               >
