@@ -1,10 +1,12 @@
 import type { PropertyValues } from "lit";
+import { state } from "lit/decorators.js";
 import type { Style } from "../constants/prefs.ts";
 import { stylePref } from "../constants/prefs.ts";
 import type { LitConstructor } from "./types.ts";
 
-export const withStyle = <T extends LitConstructor>(baseElement: T) =>
-  class extends baseElement {
+export const withStyle = <T extends LitConstructor>(BaseElement: T) => {
+  class StyleMixin extends BaseElement {
+    @state()
     pageStyle: Style = stylePref.fallback;
 
     styleAc: AbortController | undefined;
@@ -29,4 +31,6 @@ export const withStyle = <T extends LitConstructor>(baseElement: T) =>
       super.disconnectedCallback();
       this.styleAc?.abort();
     }
-  };
+  }
+  return StyleMixin;
+};
