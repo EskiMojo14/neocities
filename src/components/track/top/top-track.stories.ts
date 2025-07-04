@@ -3,7 +3,7 @@ import "./top-track.ts";
 import "../track-list.css";
 
 const meta = {
-  title: "Components/Track/Top",
+  title: "Components/Track/Top Track",
   tags: ["autodocs"],
   component: "top-track",
   args: {

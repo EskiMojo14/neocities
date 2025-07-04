@@ -3,7 +3,7 @@ import "./recent-track.ts";
 import "../track-list.css";
 
 const meta = {
-  title: "Components/Track/Recent",
+  title: "Components/Track/Recent Track",
   tags: ["autodocs"],
   component: "recent-track",
   args: {
