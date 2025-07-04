@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import "./top-tracks.ts";
+import "./top-artists.ts";
 
 const meta = {
-  title: "Components/Track/Top Tracks",
+  title: "Components/LastFM/Top Artists",
   tags: ["autodocs"],
-  component: "top-tracks",
-  render: () => html`<top-tracks></top-tracks>`,
-} satisfies Meta<HTMLElementTagNameMap["top-tracks"]>;
+  component: "top-artists",
+  render: () => html`<top-artists></top-artists>`,
+} satisfies Meta<HTMLElementTagNameMap["top-artists"]>;
 
 export default meta;
 

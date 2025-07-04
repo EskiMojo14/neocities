@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  height: 5.5rem;
+  material-symbol {
+    color: var(--accent-color);
+  }
+  > material-symbol {
+    --icon-size: 32;
+  }
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+img {
+  width: 87px;
+  height: 87px;
+  border-radius: var(--shape-medium);
+}
+
+h3,
+p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

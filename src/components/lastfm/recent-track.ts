@@ -1,10 +1,10 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { when } from "lit/directives/when.js";
-import base from "../../../styles/utility/baseline.css?type=raw";
-import { clsx } from "../../../utils/lit.ts";
-import "../../date-format/date-format.ts";
-import track from "../track.css?type=raw";
+import base from "../../styles/utility/baseline.css?type=raw";
+import { clsx } from "../../utils/lit.ts";
+import "../date-format/date-format.ts";
+import track from "./track.css?type=raw";
 
 @customElement("recent-track")
 export default class RecentTrack extends LitElement {

@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import "./top-track.ts";
-import "../track-list.css";
 
 const meta = {
-  title: "Components/Track/Top Track",
+  title: "Components/LastFM/Top Track",
   tags: ["autodocs"],
   component: "top-track",
   args: {

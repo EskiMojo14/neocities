@@ -7,26 +7,18 @@ import { when } from "lit/directives/when.js";
 import {
   getTopTracks,
   type Period,
+  periodLabels,
   periodSchema,
-} from "../../../data/lastfm.ts";
-import base from "../../../styles/utility/baseline.css?type=raw";
-import { toggleButton } from "../../button/toggle.ts";
-import "../../spinner/spinner.ts";
-import trackList from "../track-list.css?type=raw";
+} from "../../data/lastfm.ts";
+import base from "../../styles/utility/baseline.css?type=raw";
+import { toggleButton } from "../button/toggle.ts";
+import "../spinner/spinner.ts";
+import list from "./list.css?type=raw";
 import "./top-track.ts";
-
-const periodLabels: Record<Period, string> = {
-  "7day": "7 days",
-  "1month": "30 days",
-  "3month": "3 months",
-  "6month": "6 months",
-  "12month": "12 months",
-  overall: "Overall",
-};
 
 @customElement("top-tracks")
 export default class TopTracks extends LitElement {
-  static styles = [unsafeCSS(base), unsafeCSS(trackList)];
+  static styles = [unsafeCSS(base), unsafeCSS(list)];
 
   @state()
   period: Period = "overall";
@@ -38,7 +30,7 @@ export default class TopTracks extends LitElement {
 
   render() {
     return html`
-      <h4 class="headline6">Top tracks</h4>
+      <h4 class="headline5">Top tracks</h4>
       <fieldset
         class="button-group outlined"
         @change=${(ev: Event) => {
@@ -56,7 +48,7 @@ export default class TopTracks extends LitElement {
             }),
         )}
       </fieldset>
-      <ol class="track-list">
+      <ol class="list">
         ${this.#fetchTracks.render({
           pending: () => html`<hourglass-spinner></hourglass-spinner>`,
           complete: (tracks) =>

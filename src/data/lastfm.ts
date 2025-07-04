@@ -7,11 +7,17 @@ const api = ky.create({
   searchParams: {
     api_key: import.meta.env.LASTFM_API_KEY,
     format: "json",
-    user: import.meta.env.LASTFM_USERNAME,
+    user: import.meta.env.LASTFM_USER,
   },
 });
 
-const imageSizeSchema = v.picklist(["small", "medium", "large", "extralarge"]);
+const imageSizeSchema = v.picklist([
+  "small",
+  "medium",
+  "large",
+  "extralarge",
+  "mega",
+]);
 type ImageSize = v.InferOutput<typeof imageSizeSchema>;
 
 const itemSchema = v.pipe(
@@ -117,6 +123,15 @@ export const periodSchema = v.picklist([
   "overall",
 ]);
 export type Period = v.InferOutput<typeof periodSchema>;
+
+export const periodLabels: Record<Period, string> = {
+  "7day": "7 days",
+  "1month": "30 days",
+  "3month": "3 months",
+  "6month": "6 months",
+  "12month": "12 months",
+  overall: "Overall",
+};
 
 const topTrackSchema = v.pipe(
   v.object({
