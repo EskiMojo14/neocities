@@ -170,3 +170,23 @@ export const timeFormat = (date: Date, style: Style) =>
     ? timeFormatter.format(date)
     : // remove ms
       date.toISOString().slice(0, 19) + "Z";
+
+export const decimalFormatter = new Intl.NumberFormat(undefined, {
+  style: "decimal",
+  maximumFractionDigits: 2,
+});
+
+const codeSeparators: Partial<Record<Intl.NumberFormatPartTypes, string>> = {
+  group: "_",
+  decimal: ".",
+};
+
+export const decimalFormat = (value: number, style: Style) => {
+  if (style === "code") {
+    const parts = decimalFormatter.formatToParts(value);
+    return parts
+      .map(({ type, value }) => codeSeparators[type] ?? value)
+      .join("");
+  }
+  return decimalFormatter.format(value);
+};

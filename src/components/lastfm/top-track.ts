@@ -1,6 +1,9 @@
 import { html, LitElement, unsafeCSS } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
+import type { Style } from "../../constants/prefs.ts";
+import { stylePref } from "../../constants/prefs.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
+import { decimalFormat } from "../../utils/index.ts";
 import track from "./track.css?type=raw";
 
 @customElement("top-track")
@@ -22,6 +25,31 @@ export default class TopTrack extends LitElement {
   @property({ type: Number })
   playcount = 0;
 
+  @state()
+  pageStyle: Style = stylePref.fallback;
+
+  eventAc: AbortController | undefined;
+
+  connectedCallback() {
+    super.connectedCallback();
+    document.addEventListener(
+      "stylechange",
+      (e) => (this.pageStyle = e.newStyle),
+      {
+        signal: (this.eventAc = new AbortController()).signal,
+      },
+    );
+  }
+
+  firstUpdated() {
+    this.pageStyle = stylePref.data;
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.eventAc?.abort();
+  }
+
   render() {
     return html`
       <material-symbol aria-label="Rank ${this.rank}"
@@ -38,7 +66,7 @@ export default class TopTrack extends LitElement {
         </li>
         <li class="body2">
           <material-symbol aria-hidden="true">music_history</material-symbol>
-          ${this.playcount} plays
+          ${decimalFormat(this.playcount, this.pageStyle)} plays
         </li>
       </ul>
     `;

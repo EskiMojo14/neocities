@@ -11,11 +11,18 @@ description: Where the heart is
     <script type="module" src="../components/lastfm/recent-tracks.ts"></script>
     <script type="module" src="../components/lastfm/top-tracks.ts"></script>
     <script type="module" src="../components/lastfm/top-artists.ts"></script>
+    <script type="module" src="../components/lastfm/scrobble-data.ts"></script>
   </head>
   <body>
     <h4>Music</h4>
     <p class="caption">
       Powered by <a href="https://www.last.fm/user/eskimojo14">Last.fm</a>
+    </p>
+    <p>I love music! So far I've listened to:</p>
+    <scrobble-data></scrobble-data>
+    <p>
+      since <date-format class="body1" date="2017-09-22"></date-format>, and
+      that's just the ones LastFM knows about.
     </p>
     <div class="last-fm">
       <top-tracks></top-tracks>

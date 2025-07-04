@@ -1,3 +1,4 @@
+import type { Options } from "ky";
 import ky from "ky";
 import * as v from "valibot";
 import * as vUtils from "../utils/valibot.ts";
@@ -11,6 +12,21 @@ const api = ky.create({
     user: import.meta.env.LASTFM_USER,
   },
 });
+
+async function fetchWithSchema<TSchema extends v.GenericSchema>(
+  options: Options,
+  schema: TSchema,
+) {
+  const unparsed = await api("", options).json();
+  const { success, output, issues } = v.safeParse(schema, unparsed);
+  if (!success) {
+    console.error(v.summarize(issues));
+    throw new Error("Invalid response from API", {
+      cause: new v.ValiError(issues),
+    });
+  }
+  return output;
+}
 
 const imageSizeSchema = v.picklist([
   "small",
@@ -99,20 +115,14 @@ export const getRecentTracks = (limit: number, componentSignal: AbortSignal) =>
   queryOptions({
     queryKey: ["lastfm", "recent-tracks", limit],
     async queryFn({ signal }) {
-      const unparsed = await api
-        .get("", {
+      const response = await fetchWithSchema(
+        {
           searchParams: { method: "user.getRecentTracks", limit },
           signal: AbortSignal.any([signal, componentSignal]),
-        })
-        .json();
-      const parsed = v.safeParse(recentTracksResponseSchema, unparsed);
-      if (!parsed.success) {
-        console.error(v.summarize(parsed.issues));
-        throw new Error("Invalid response from API", {
-          cause: new v.ValiError(parsed.issues),
-        });
-      }
-      return parsed.output.recenttracks.track;
+        },
+        recentTracksResponseSchema,
+      );
+      return response.recenttracks.track;
     },
   });
 
@@ -178,23 +188,14 @@ export const getTopTracks = (
   queryOptions({
     queryKey: ["lastfm", "top-tracks", period, limit],
     async queryFn({ signal }) {
-      const unparsed = await api
-        .get("", {
+      const response = await fetchWithSchema(
+        {
           searchParams: { method: "user.getTopTracks", limit, period },
           signal: AbortSignal.any([signal, componentSignal]),
-        })
-        .json();
-      const { success, output, issues } = v.safeParse(
+        },
         topTracksResponseSchema,
-        unparsed,
       );
-      if (!success) {
-        console.error(v.summarize(issues));
-        throw new Error("Invalid response from API", {
-          cause: new v.ValiError(issues),
-        });
-      }
-      return output.toptracks.track;
+      return response.toptracks.track;
     },
   });
 
@@ -229,22 +230,41 @@ export const getTopArtists = (
   queryOptions({
     queryKey: ["lastfm", "top-artists", period, limit],
     async queryFn({ signal }) {
-      const unparsed = await api
-        .get("", {
+      const response = await fetchWithSchema(
+        {
           searchParams: { method: "user.getTopArtists", limit, period },
           signal: AbortSignal.any([signal, componentSignal]),
-        })
-        .json();
-      const { success, output, issues } = v.safeParse(
+        },
         topArtistsResponseSchema,
-        unparsed,
       );
-      if (!success) {
-        console.error(v.summarize(issues));
-        throw new Error("Invalid response from API", {
-          cause: new v.ValiError(issues),
-        });
-      }
-      return output.topartists.artist;
+      return response.topartists.artist;
+    },
+  });
+
+const userDataSchema = v.object({
+  playcount: vUtils.coerceNumber,
+  artist_count: vUtils.coerceNumber,
+  track_count: vUtils.coerceNumber,
+  album_count: vUtils.coerceNumber,
+});
+
+export type UserData = v.InferOutput<typeof userDataSchema>;
+
+const userResponseSchema = v.object({
+  user: userDataSchema,
+});
+
+export const getUserData = (componentSignal: AbortSignal) =>
+  queryOptions({
+    queryKey: ["lastfm", "user"],
+    async queryFn({ signal }) {
+      const response = await fetchWithSchema(
+        {
+          searchParams: { method: "user.getInfo" },
+          signal: AbortSignal.any([signal, componentSignal]),
+        },
+        userResponseSchema,
+      );
+      return response.user;
     },
   });
