@@ -12,6 +12,7 @@ import {
   periodSchema,
 } from "../../data/lastfm.ts";
 import { queryClient } from "../../data/query.ts";
+import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { toggleButton } from "../button/toggle.ts";
 import "../spinner/spinner.ts";
@@ -19,7 +20,7 @@ import list from "./list.css?type=raw";
 import "./top-track.ts";
 
 @customElement("top-tracks")
-export default class TopTracks extends LitElement {
+export default class TopTracks extends withStyle(LitElement) {
   static styles = [unsafeCSS(base), unsafeCSS(list)];
 
   @state()
@@ -45,12 +46,17 @@ export default class TopTracks extends LitElement {
             periodSchema.options,
             (period) => period,
             (period) =>
-              toggleButton(periodLabels[period], {
-                name: "top-tracks-period",
-                value: period,
-                checked: period === this.period,
-                ariaLabel: fullPeriodLabels[period],
-              }),
+              toggleButton(
+                (this.pageStyle === "normal" ? fullPeriodLabels : periodLabels)[
+                  period
+                ],
+                {
+                  name: "top-tracks-period",
+                  value: period,
+                  checked: period === this.period,
+                  ariaLabel: fullPeriodLabels[period],
+                },
+              ),
           )}
         </fieldset>
       </div>
