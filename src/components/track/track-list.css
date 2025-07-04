@@ -2,11 +2,19 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  max-height: 26rem;
+  height: 26rem;
   border-radius: var(--shape-large);
   border: 1px solid var(--divider);
   padding: 1rem 0;
   hr:last-child {
     display: none;
+  }
+  hourglass-spinner,
+  p.error {
+    margin: auto;
+    padding: 1rem;
+  }
+  p.error {
+    color: var(--error);
   }
 }

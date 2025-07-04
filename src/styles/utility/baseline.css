@@ -159,3 +159,25 @@ p:has(controlled-carousel) {
     display: none;
   }
 }
+
+recent-track,
+top-track {
+  &:nth-of-type(1) {
+    --accent-color: var(--logo1);
+  }
+  &:nth-of-type(2) {
+    --accent-color: var(--logo2);
+  }
+  &:nth-of-type(3) {
+    --accent-color: var(--logo3);
+  }
+  &:nth-of-type(4) {
+    --accent-color: var(--logo4);
+  }
+  &:nth-of-type(5) {
+    --accent-color: var(--logo5);
+  }
+  &:nth-of-type(6) {
+    --accent-color: var(--logo6);
+  }
+}

@@ -86,10 +86,14 @@ const recentTracksResponseSchema = v.object({
   }),
 });
 
-export async function getRecentTracks(limit = 6): Promise<Array<RecentTrack>> {
+export async function getRecentTracks(
+  limit: number,
+  { signal }: { signal?: AbortSignal } = {},
+): Promise<Array<RecentTrack>> {
   const unparsed = await api
     .get("", {
       searchParams: { method: "user.getRecentTracks", limit },
+      signal,
     })
     .json();
   const parsed = v.safeParse(recentTracksResponseSchema, unparsed);
@@ -137,12 +141,14 @@ export const periodSchema = v.picklist([
 export type Period = v.InferOutput<typeof periodSchema>;
 
 export async function getTopTracks(
-  period: Period = "overall",
-  limit = 6,
+  period: Period,
+  limit: number,
+  { signal }: { signal?: AbortSignal } = {},
 ): Promise<Array<TopTrack>> {
   const unparsed = await api
     .get("", {
       searchParams: { method: "user.getTopTracks", limit, period },
+      signal,
     })
     .json();
   const parsed = v.safeParse(topTracksResponseSchema, unparsed);
