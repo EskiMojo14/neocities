@@ -1,6 +1,7 @@
 import ky from "ky";
 import * as v from "valibot";
 import * as vUtils from "../utils/valibot.ts";
+import { queryOptions } from "./query.ts";
 
 const api = ky.create({
   prefixUrl: "https://ws.audioscrobbler.com/2.0/",
@@ -94,25 +95,26 @@ const recentTracksResponseSchema = v.object({
   }),
 });
 
-export async function getRecentTracks(
-  limit: number,
-  { signal }: { signal?: AbortSignal } = {},
-): Promise<Array<RecentTrack>> {
-  const unparsed = await api
-    .get("", {
-      searchParams: { method: "user.getRecentTracks", limit },
-      signal,
-    })
-    .json();
-  const parsed = v.safeParse(recentTracksResponseSchema, unparsed);
-  if (!parsed.success) {
-    console.error(v.summarize(parsed.issues));
-    throw new Error("Invalid response from API", {
-      cause: new v.ValiError(parsed.issues),
-    });
-  }
-  return parsed.output.recenttracks.track;
-}
+export const getRecentTracks = (limit: number, componentSignal: AbortSignal) =>
+  queryOptions({
+    queryKey: ["lastfm", "recent-tracks", limit],
+    async queryFn({ signal }) {
+      const unparsed = await api
+        .get("", {
+          searchParams: { method: "user.getRecentTracks", limit },
+          signal: AbortSignal.any([signal, componentSignal]),
+        })
+        .json();
+      const parsed = v.safeParse(recentTracksResponseSchema, unparsed);
+      if (!parsed.success) {
+        console.error(v.summarize(parsed.issues));
+        throw new Error("Invalid response from API", {
+          cause: new v.ValiError(parsed.issues),
+        });
+      }
+      return parsed.output.recenttracks.track;
+    },
+  });
 
 export const periodSchema = v.picklist([
   "7day",
@@ -168,29 +170,33 @@ const topTracksResponseSchema = v.object({
   }),
 });
 
-export async function getTopTracks(
+export const getTopTracks = (
   period: Period,
   limit: number,
-  { signal }: { signal?: AbortSignal } = {},
-): Promise<Array<TopTrack>> {
-  const unparsed = await api
-    .get("", {
-      searchParams: { method: "user.getTopTracks", limit, period },
-      signal,
-    })
-    .json();
-  const { success, output, issues } = v.safeParse(
-    topTracksResponseSchema,
-    unparsed,
-  );
-  if (!success) {
-    console.error(v.summarize(issues));
-    throw new Error("Invalid response from API", {
-      cause: new v.ValiError(issues),
-    });
-  }
-  return output.toptracks.track;
-}
+  componentSignal: AbortSignal,
+) =>
+  queryOptions({
+    queryKey: ["lastfm", "top-tracks", period, limit],
+    async queryFn({ signal }) {
+      const unparsed = await api
+        .get("", {
+          searchParams: { method: "user.getTopTracks", limit, period },
+          signal: AbortSignal.any([signal, componentSignal]),
+        })
+        .json();
+      const { success, output, issues } = v.safeParse(
+        topTracksResponseSchema,
+        unparsed,
+      );
+      if (!success) {
+        console.error(v.summarize(issues));
+        throw new Error("Invalid response from API", {
+          cause: new v.ValiError(issues),
+        });
+      }
+      return output.toptracks.track;
+    },
+  });
 
 const topArtistSchema = v.pipe(
   v.object({
@@ -215,26 +221,30 @@ const topArtistsResponseSchema = v.object({
   }),
 });
 
-export async function getTopArtists(
+export const getTopArtists = (
   period: Period,
   limit: number,
-  { signal }: { signal?: AbortSignal } = {},
-): Promise<Array<TopArtist>> {
-  const unparsed = await api
-    .get("", {
-      searchParams: { method: "user.getTopArtists", limit, period },
-      signal,
-    })
-    .json();
-  const { success, output, issues } = v.safeParse(
-    topArtistsResponseSchema,
-    unparsed,
-  );
-  if (!success) {
-    console.error(v.summarize(issues));
-    throw new Error("Invalid response from API", {
-      cause: new v.ValiError(issues),
-    });
-  }
-  return output.topartists.artist;
-}
+  componentSignal: AbortSignal,
+) =>
+  queryOptions({
+    queryKey: ["lastfm", "top-artists", period, limit],
+    async queryFn({ signal }) {
+      const unparsed = await api
+        .get("", {
+          searchParams: { method: "user.getTopArtists", limit, period },
+          signal: AbortSignal.any([signal, componentSignal]),
+        })
+        .json();
+      const { success, output, issues } = v.safeParse(
+        topArtistsResponseSchema,
+        unparsed,
+      );
+      if (!success) {
+        console.error(v.summarize(issues));
+        throw new Error("Invalid response from API", {
+          cause: new v.ValiError(issues),
+        });
+      }
+      return output.topartists.artist;
+    },
+  });

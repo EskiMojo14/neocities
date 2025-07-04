@@ -5,6 +5,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import { getRecentTracks } from "../../data/lastfm.ts";
+import { queryClient } from "../../data/query.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import "../spinner/spinner.ts";
 import list from "./list.css?type=raw";
@@ -17,7 +18,7 @@ export default class RecentTracks extends LitElement {
   #fetchTracks = new Task(this, {
     args: () => [],
     // limit doesn't include now playing track, so might be 6 if current track is now playing
-    task: async (_, { signal }) => getRecentTracks(5, { signal }),
+    task: (_, { signal }) => queryClient.fetchQuery(getRecentTracks(5, signal)),
   });
 
   render() {

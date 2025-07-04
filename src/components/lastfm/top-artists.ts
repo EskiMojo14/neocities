@@ -11,6 +11,7 @@ import {
   periodLabels,
   periodSchema,
 } from "../../data/lastfm.ts";
+import { queryClient } from "../../data/query.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { toggleButton } from "../button/toggle.ts";
 import "../spinner/spinner.ts";
@@ -26,7 +27,8 @@ export default class TopArtists extends LitElement {
 
   #fetchArtists = new Task(this, {
     args: () => [this.period],
-    task: async ([period], { signal }) => getTopArtists(period, 5, { signal }),
+    task: ([period], { signal }) =>
+      queryClient.fetchQuery(getTopArtists(period, 5, signal)),
   });
 
   render() {
