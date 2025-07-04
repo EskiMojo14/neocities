@@ -2,13 +2,15 @@ import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { repeat } from "lit/directives/repeat.js";
 import "./top-track.ts";
+import "../track-list.css";
 
 const meta = {
   title: "Components/Track/Top",
   tags: ["autodocs"],
   component: "top-track",
   render: (args) => html`
-    <ol style="display: flex; flex-direction: column; ">
+    <h4 class="headline6">Top tracks</h4>
+    <ol class="track-list">
       ${repeat(
         Array.from({ length: 6 }, (_, i) => i),
         (i) => i,
