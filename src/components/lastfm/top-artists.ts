@@ -48,30 +48,32 @@ export default class TopArtists extends LitElement {
             }),
         )}
       </fieldset>
-      <ol class="list">
-        ${this.#fetchArtists.render({
-          pending: () => html`<hourglass-spinner></hourglass-spinner>`,
-          complete: (artists) =>
-            repeat(
-              artists,
-              (artist) => artist.name,
-              (artist, index) =>
-                html`<top-artist
-                    role="listitem"
-                    name=${artist.name}
-                    thumbnail=${ifDefined(artist.image.large)}
-                    rank=${artist.rank}
-                    playcount=${artist.playcount}
-                  ></top-artist>
-                  ${when(
-                    index < artists.length - 1,
-                    () => html`<hr class="inset" />`,
-                  )}`,
-            ),
-          error: () =>
-            html`<p class="error body2">Failed to load top artists</p>`,
-        })}
-      </ol>
+      <div class="list-container">
+        <ol class="list">
+          ${this.#fetchArtists.render({
+            pending: () => html`<hourglass-spinner></hourglass-spinner>`,
+            complete: (artists) =>
+              repeat(
+                artists,
+                (artist) => artist.name,
+                (artist, index) =>
+                  html`<top-artist
+                      role="listitem"
+                      name=${artist.name}
+                      thumbnail=${ifDefined(artist.image.large)}
+                      rank=${artist.rank}
+                      playcount=${artist.playcount}
+                    ></top-artist>
+                    ${when(
+                      index < artists.length - 1,
+                      () => html`<hr class="inset" />`,
+                    )}`,
+              ),
+            error: () =>
+              html`<p class="error body2">Failed to load top artists</p>`,
+          })}
+        </ol>
+      </div>
     `;
   }
 }

@@ -3,9 +3,8 @@
   flex-direction: column;
   overflow-y: auto;
   height: 26rem;
-  border-radius: var(--shape-large);
-  border: 1px solid var(--divider);
   padding: 1rem 0;
+  margin: 0;
   hr:last-child {
     display: none;
   }
@@ -17,4 +16,14 @@
   p.error {
     color: var(--error);
   }
+}
+
+.list-container {
+  border-radius: var(--shape-large);
+  overflow: hidden;
+  border: 1px solid var(--divider);
+}
+
+.button-group {
+  margin-bottom: 1rem;
 }
