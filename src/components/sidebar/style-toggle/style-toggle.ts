@@ -3,9 +3,9 @@ import { customElement, state } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import type { Style } from "../../../constants/prefs.ts";
 import { stylePref } from "../../../constants/prefs.ts";
+import base from "../../../styles/utility/baseline.css?type=raw";
 import { capitalize } from "../../../utils/index.ts";
 import { toggleButton } from "../../button/toggle.ts";
-import base from "../../styles/utility/baseline.css?type=raw";
 import Tooltip from "../../tooltip/tooltip.ts";
 import styleToggle from "./style-toggle.css?type=raw";
 

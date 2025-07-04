@@ -1,0 +1,29 @@
+.chip-collection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  height: 32px;
+  padding: 0 1rem;
+  border-radius: var(--shape-pill);
+  border: 1px solid var(--divider);
+  --icon-size: 18;
+  --icon-color: var(--divider);
+  material-symbol {
+    color: var(--icon-color);
+    margin-left: -0.5rem;
+    &:dir(rtl) {
+      margin-right: -0.5rem;
+      margin-left: 0;
+    }
+  }
+}

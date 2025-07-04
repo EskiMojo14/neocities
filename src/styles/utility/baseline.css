@@ -1,5 +1,6 @@
 @import "./typography.css";
 @import "../../components/button/button.baseline.css";
+@import "../../components/chip/chip.baseline.css";
 @import "../../components/focus-group/focus-group.baseline.css";
 @import "../../components/link/link.baseline.css";
 @import "../../components/button/toggle.baseline.css";
