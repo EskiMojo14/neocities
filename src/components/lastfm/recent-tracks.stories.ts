@@ -3,7 +3,7 @@ import { html } from "lit";
 import "./recent-tracks.ts";
 
 const meta = {
-  title: "Components/Track/Recent Tracks",
+  title: "Components/LastFM/Recent Tracks",
   tags: ["autodocs"],
   component: "recent-tracks",
   render: () => html`<recent-tracks></recent-tracks>`,

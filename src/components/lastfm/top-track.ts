@@ -1,7 +1,7 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import base from "../../../styles/utility/baseline.css?type=raw";
-import track from "../track.css?type=raw";
+import base from "../../styles/utility/baseline.css?type=raw";
+import track from "./track.css?type=raw";
 
 @customElement("top-track")
 export default class TopTrack extends LitElement {
