@@ -158,3 +158,12 @@ export const dateFormat = (date: Date, style: Style) =>
   style === "normal"
     ? dateFormatter.format(date)
     : date.toISOString().slice(0, 10);
+
+export const timeFormatter = new Intl.DateTimeFormat(undefined, {
+  dateStyle: "medium",
+  timeStyle: "short",
+  hour12: false,
+});
+
+export const timeFormat = (date: Date, style: Style) =>
+  style === "normal" ? timeFormatter.format(date) : date.toISOString();

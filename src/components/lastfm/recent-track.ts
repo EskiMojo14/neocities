@@ -48,7 +48,11 @@ export default class RecentTrack extends LitElement {
               <material-symbol aria-label="Scrobble date"
                 >event</material-symbol
               >
-              <date-format class="overline" date="${this.date}"></date-format>
+              <date-format
+                class="caption"
+                date="${this.date}"
+                show-time
+              ></date-format>
             `,
           )}
         </li>
