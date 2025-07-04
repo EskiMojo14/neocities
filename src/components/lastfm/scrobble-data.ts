@@ -1,8 +1,7 @@
-import { Task } from "@lit/task";
 import { html, LitElement, nothing, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
+import { QueryController } from "../../controllers/query-controller.ts";
 import { getUserData } from "../../data/lastfm.ts";
-import { queryClient } from "../../data/query.ts";
 import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
@@ -12,16 +11,13 @@ import "../spinner/spinner.ts";
 export default class ScrobbleData extends withStyle(LitElement) {
   static styles = [unsafeCSS(base)];
 
-  #fetchData = new Task(this, {
-    args: () => [],
-    task: (_, { signal }) => queryClient.fetchQuery(getUserData(signal)),
-  });
+  #fetchData = new QueryController(this, () => getUserData());
 
-  render() {
+  render(): unknown {
     if (typeof window === "undefined") return nothing;
     return this.#fetchData.render({
       pending: () => html`<hourglass-spinner></hourglass-spinner>`,
-      complete: (data) =>
+      success: ({ data }) =>
         html`<ul class="chip-collection">
           <li class="chip body2">
             <material-symbol aria-hidden="true">music_history</material-symbol>

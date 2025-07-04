@@ -111,14 +111,14 @@ const recentTracksResponseSchema = v.object({
   }),
 });
 
-export const getRecentTracks = (limit: number, componentSignal: AbortSignal) =>
+export const getRecentTracks = (limit: number) =>
   queryOptions({
     queryKey: ["lastfm", "recent-tracks", limit],
     async queryFn({ signal }) {
       const response = await fetchWithSchema(
         {
           searchParams: { method: "user.getRecentTracks", limit },
-          signal: AbortSignal.any([signal, componentSignal]),
+          signal,
         },
         recentTracksResponseSchema,
       );
@@ -180,18 +180,14 @@ const topTracksResponseSchema = v.object({
   }),
 });
 
-export const getTopTracks = (
-  period: Period,
-  limit: number,
-  componentSignal: AbortSignal,
-) =>
+export const getTopTracks = (period: Period, limit: number) =>
   queryOptions({
     queryKey: ["lastfm", "top-tracks", period, limit],
     async queryFn({ signal }) {
       const response = await fetchWithSchema(
         {
           searchParams: { method: "user.getTopTracks", limit, period },
-          signal: AbortSignal.any([signal, componentSignal]),
+          signal,
         },
         topTracksResponseSchema,
       );
@@ -222,18 +218,14 @@ const topArtistsResponseSchema = v.object({
   }),
 });
 
-export const getTopArtists = (
-  period: Period,
-  limit: number,
-  componentSignal: AbortSignal,
-) =>
+export const getTopArtists = (period: Period, limit: number) =>
   queryOptions({
     queryKey: ["lastfm", "top-artists", period, limit],
     async queryFn({ signal }) {
       const response = await fetchWithSchema(
         {
           searchParams: { method: "user.getTopArtists", limit, period },
-          signal: AbortSignal.any([signal, componentSignal]),
+          signal,
         },
         topArtistsResponseSchema,
       );
@@ -254,14 +246,14 @@ const userResponseSchema = v.object({
   user: userDataSchema,
 });
 
-export const getUserData = (componentSignal: AbortSignal) =>
+export const getUserData = () =>
   queryOptions({
     queryKey: ["lastfm", "user"],
     async queryFn({ signal }) {
       const response = await fetchWithSchema(
         {
           searchParams: { method: "user.getInfo" },
-          signal: AbortSignal.any([signal, componentSignal]),
+          signal,
         },
         userResponseSchema,
       );
