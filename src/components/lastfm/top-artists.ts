@@ -1,9 +1,9 @@
-import { Task } from "@lit/task";
 import { html, LitElement, nothing, unsafeCSS } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
+import { QueryController } from "../../controllers/query-controller.ts";
 import {
   fullPeriodLabels,
   getTopArtists,
@@ -11,7 +11,6 @@ import {
   periodLabels,
   periodSchema,
 } from "../../data/lastfm.ts";
-import { queryClient } from "../../data/query.ts";
 import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { toggleButton } from "../button/toggle.ts";
@@ -26,13 +25,11 @@ export default class TopArtists extends withStyle(LitElement) {
   @state()
   period: Period = "overall";
 
-  #fetchArtists = new Task(this, {
-    args: () => [this.period],
-    task: ([period], { signal }) =>
-      queryClient.fetchQuery(getTopArtists(period, 5, signal)),
-  });
+  #fetchArtists = new QueryController(this, () =>
+    getTopArtists(this.period, 5),
+  );
 
-  render() {
+  render(): unknown {
     if (typeof window === "undefined") return nothing;
     return html`
       <h4 class="headline5">Top artists</h4>
@@ -65,7 +62,7 @@ export default class TopArtists extends withStyle(LitElement) {
         <ol class="list">
           ${this.#fetchArtists.render({
             pending: () => html`<hourglass-spinner></hourglass-spinner>`,
-            complete: (artists) =>
+            success: ({ data: artists }) =>
               repeat(
                 artists,
                 (artist) => artist.name,

@@ -17,7 +17,7 @@ export function queryOptions<
   TQueryFnData = unknown,
   TError = Error,
   TData = TQueryFnData,
-  const TQueryKey extends QueryKey = ReadonlyArray<unknown>,
+  const TQueryKey extends QueryKey = QueryKey,
 >(
   options: WithRequired<
     QueryOptions<TQueryFnData, TError, TData, TQueryKey>,
