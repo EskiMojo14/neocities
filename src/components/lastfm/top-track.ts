@@ -27,19 +27,18 @@ export default class TopTrack extends LitElement {
       <material-symbol aria-label="Rank ${this.rank}"
         >counter_${this.rank}</material-symbol
       >
-      <img src="${this.thumbnail}" alt="" />
       <ul class="info">
-        <li class="body2">
-          <material-symbol aria-hidden="true">music_history</material-symbol>
-          ${this.playcount} plays
+        <li class="caption">
+          <material-symbol aria-label="Artist">artist</material-symbol>
+          ${this.artist}
         </li>
-        <li class="body2">
+        <li class="headline6">
           <material-symbol aria-label="Track">music_note</material-symbol>
           ${this.name}
         </li>
         <li class="body2">
-          <material-symbol aria-label="Artist">artist</material-symbol>
-          ${this.artist}
+          <material-symbol aria-hidden="true">music_history</material-symbol>
+          ${this.playcount} plays
         </li>
       </ul>
     `;

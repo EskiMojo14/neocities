@@ -7,5 +7,20 @@ description: Where the heart is
 ---
 
 <html>
-  <body></body>
+  <head>
+    <script type="module" src="../components/lastfm/recent-tracks.ts"></script>
+    <script type="module" src="../components/lastfm/top-tracks.ts"></script>
+    <script type="module" src="../components/lastfm/top-artists.ts"></script>
+  </head>
+  <body>
+    <h4>Music</h4>
+    <p class="caption">
+      Powered by <a href="https://www.last.fm/user/eskimojo14">Last.fm</a>
+    </p>
+    <div class="last-fm">
+      <top-tracks></top-tracks>
+      <top-artists></top-artists>
+      <recent-tracks></recent-tracks>
+    </div>
+  </body>
 </html>

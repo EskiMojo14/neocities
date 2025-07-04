@@ -24,7 +24,6 @@ export default class TopArtist extends LitElement {
       <material-symbol aria-label="Rank ${this.rank}"
         >counter_${this.rank}</material-symbol
       >
-      <img src="${this.thumbnail}" alt="" />
       <div class="info">
         <h3 class="headline6">
           <material-symbol aria-hidden="true">artist</material-symbol>${this

@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0 1rem;
   height: 5.5rem;
   material-symbol {
     color: var(--accent-color);
@@ -40,4 +40,7 @@ li {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

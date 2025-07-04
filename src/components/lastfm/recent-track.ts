@@ -37,22 +37,22 @@ export default class RecentTrack extends LitElement {
           "now-playing": this.nowPlaying,
         })}
       >
-        ${when(
-          this.nowPlaying,
-          () =>
-            html`<li class="body2">
+        <li class="caption">
+          ${when(
+            this.nowPlaying,
+            () => html`
               <material-symbol aria-hidden="true">today</material-symbol>
               Now playing
-            </li>`,
-          () =>
-            html`<li class="body2">
+            `,
+            () => html`
               <material-symbol aria-label="Scrobble date"
                 >event</material-symbol
               >
-              <date-format class="body2" date="${this.date}"></date-format>
-            </li>`,
-        )}
-        <li class="body2">
+              <date-format class="overline" date="${this.date}"></date-format>
+            `,
+          )}
+        </li>
+        <li class="headline6">
           <material-symbol aria-label="Track">music_note</material-symbol>
           ${this.name}
         </li>
