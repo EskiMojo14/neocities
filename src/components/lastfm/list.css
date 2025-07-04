@@ -24,6 +24,12 @@
   border: 1px solid var(--divider);
 }
 
-.button-group {
+.headline5 {
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+
+.button-group-container {
+  display: flex;
   margin-bottom: 1rem;
 }
