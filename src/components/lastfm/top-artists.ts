@@ -5,6 +5,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import {
+  fullPeriodLabels,
   getTopArtists,
   type Period,
   periodLabels,
@@ -31,23 +32,26 @@ export default class TopArtists extends LitElement {
   render() {
     return html`
       <h4 class="headline5">Top artists</h4>
-      <fieldset
-        class="button-group outlined"
-        @change=${(ev: Event) => {
-          this.period = (ev.target as HTMLInputElement).value as Period;
-        }}
-      >
-        ${repeat(
-          periodSchema.options,
-          (period) => period,
-          (period) =>
-            toggleButton(periodLabels[period], {
-              name: "top-artists-period",
-              value: period,
-              checked: period === this.period,
-            }),
-        )}
-      </fieldset>
+      <div class="button-group-container">
+        <fieldset
+          class="button-group outlined"
+          @change=${(ev: Event) => {
+            this.period = (ev.target as HTMLInputElement).value as Period;
+          }}
+        >
+          ${repeat(
+            periodSchema.options,
+            (period) => period,
+            (period) =>
+              toggleButton(periodLabels[period], {
+                name: "top-artists-period",
+                value: period,
+                checked: period === this.period,
+                ariaLabel: fullPeriodLabels[period],
+              }),
+          )}
+        </fieldset>
+      </div>
       <div class="list-container">
         <ol class="list">
           ${this.#fetchArtists.render({

@@ -125,12 +125,21 @@ export const periodSchema = v.picklist([
 export type Period = v.InferOutput<typeof periodSchema>;
 
 export const periodLabels: Record<Period, string> = {
-  "7day": "7 days",
-  "1month": "30 days",
-  "3month": "3 months",
-  "6month": "6 months",
-  "12month": "12 months",
-  overall: "Overall",
+  "7day": "7d",
+  "1month": "30d",
+  "3month": "3m",
+  "6month": "6m",
+  "12month": "12m",
+  overall: "All",
+};
+
+export const fullPeriodLabels: Record<Period, string> = {
+  "7day": "Last 7 days",
+  "1month": "Last 30 days",
+  "3month": "Last 3 months",
+  "6month": "Last 6 months",
+  "12month": "Last 12 months",
+  overall: "All time",
 };
 
 const topTrackSchema = v.pipe(
