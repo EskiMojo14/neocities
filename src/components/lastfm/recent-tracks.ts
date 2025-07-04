@@ -1,5 +1,5 @@
 import { Task } from "@lit/task";
-import { html, LitElement, unsafeCSS } from "lit";
+import { html, LitElement, nothing, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
@@ -22,6 +22,7 @@ export default class RecentTracks extends LitElement {
   });
 
   render() {
+    if (typeof window === "undefined") return nothing;
     return html`
       <h4 class="headline5">Recently played</h4>
       <div class="list-container">

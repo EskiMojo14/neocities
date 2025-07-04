@@ -1,5 +1,5 @@
 import { Task } from "@lit/task";
-import { html, LitElement, unsafeCSS } from "lit";
+import { html, LitElement, nothing, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getUserData } from "../../data/lastfm.ts";
 import { queryClient } from "../../data/query.ts";
@@ -18,6 +18,7 @@ export default class ScrobbleData extends withStyle(LitElement) {
   });
 
   render() {
+    if (typeof window === "undefined") return nothing;
     return this.#fetchData.render({
       pending: () => html`<hourglass-spinner></hourglass-spinner>`,
       complete: (data) =>
