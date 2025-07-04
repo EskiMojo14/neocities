@@ -1,48 +1,22 @@
 import { Task } from "@lit/task";
 import { html, LitElement, unsafeCSS } from "lit";
-import { customElement, state } from "lit/decorators.js";
-import type { Style } from "../../constants/prefs.ts";
-import { stylePref } from "../../constants/prefs.ts";
+import { customElement } from "lit/decorators.js";
 import { getUserData } from "../../data/lastfm.ts";
 import { queryClient } from "../../data/query.ts";
+import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
 import "../spinner/spinner.ts";
 import scrobbleData from "./scrobble-data.css?type=raw";
 
 @customElement("scrobble-data")
-export default class ScrobbleData extends LitElement {
+export default class ScrobbleData extends withStyle(LitElement) {
   static styles = [unsafeCSS(base), unsafeCSS(scrobbleData)];
 
   #fetchData = new Task(this, {
     args: () => [],
     task: (_, { signal }) => queryClient.fetchQuery(getUserData(signal)),
   });
-
-  @state()
-  pageStyle: Style = stylePref.fallback;
-
-  eventAc: AbortController | undefined;
-
-  connectedCallback() {
-    super.connectedCallback();
-    document.addEventListener(
-      "stylechange",
-      (e) => (this.pageStyle = e.newStyle),
-      {
-        signal: (this.eventAc = new AbortController()).signal,
-      },
-    );
-  }
-
-  firstUpdated() {
-    this.pageStyle = stylePref.data;
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.eventAc?.abort();
-  }
 
   render() {
     return this.#fetchData.render({
