@@ -3,7 +3,7 @@ import { customElement, property, state } from "lit/decorators.js";
 import * as v from "valibot";
 import type { Style } from "../../constants/prefs.ts";
 import { stylePref } from "../../constants/prefs.ts";
-import { dateFormat } from "../../utils/index.ts";
+import { dateFormat, timeFormat } from "../../utils/index.ts";
 import { cache } from "../../utils/lit.ts";
 import * as vUtils from "../../utils/valibot.ts";
 
@@ -12,9 +12,15 @@ export default class DateFormat extends LitElement {
   @property({ type: String })
   date = "";
 
-  @cache(({ date, pageStyle }) => [date, pageStyle])
+  @property({ type: Boolean, attribute: "show-time" })
+  showTime = false;
+
+  @cache(({ date, pageStyle, showTime }) => [date, pageStyle, showTime])
   get formattedDate() {
-    return dateFormat(v.parse(vUtils.coerceDate, this.date), this.pageStyle);
+    const dateObj = v.parse(vUtils.coerceDate, this.date);
+    return this.showTime
+      ? timeFormat(dateObj, this.pageStyle)
+      : dateFormat(dateObj, this.pageStyle);
   }
 
   @state()
