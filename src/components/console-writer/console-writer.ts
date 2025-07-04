@@ -1,6 +1,6 @@
 import { html, LitElement, unsafeCSS } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
-import { type Style, stylePref } from "../../constants/prefs.ts";
+import { customElement, property } from "lit/decorators.js";
+import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import {
   consolewriter as cwriter,
@@ -10,7 +10,7 @@ import consolewriter from "./console-writer.css?type=raw";
 
 @customElement("console-writer")
 export default class ConsoleWriter
-  extends LitElement
+  extends withStyle(LitElement)
   implements Required<cwriter.Config>
 {
   static styles = [unsafeCSS(base), unsafeCSS(consolewriter)];
@@ -28,32 +28,6 @@ export default class ConsoleWriter
   minInterval = cwriter.defaults.minInterval;
   @property({ type: Number })
   maxDuration = cwriter.defaults.maxDuration;
-
-  @state()
-  pageStyle: Style = stylePref.fallback;
-
-  eventAc: AbortController | undefined;
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.eventAc = new AbortController();
-    document.addEventListener(
-      "stylechange",
-      (e) => (this.pageStyle = e.newStyle),
-      {
-        signal: this.eventAc.signal,
-      },
-    );
-  }
-
-  firstUpdated() {
-    this.pageStyle = stylePref.data;
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.eventAc?.abort();
-  }
 
   render() {
     if (this.pageStyle === "normal" || prefersReducedMotion()) return this.text;

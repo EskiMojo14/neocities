@@ -1,13 +1,12 @@
 import { html, LitElement, unsafeCSS } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
-import type { Style } from "../../constants/prefs.ts";
-import { stylePref } from "../../constants/prefs.ts";
+import { customElement, property } from "lit/decorators.js";
+import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
 import track from "./track.css?type=raw";
 
 @customElement("top-track")
-export default class TopTrack extends LitElement {
+export default class TopTrack extends withStyle(LitElement) {
   static styles = [unsafeCSS(base), unsafeCSS(track)];
 
   @property({ type: String })
@@ -24,31 +23,6 @@ export default class TopTrack extends LitElement {
 
   @property({ type: Number })
   playcount = 0;
-
-  @state()
-  pageStyle: Style = stylePref.fallback;
-
-  eventAc: AbortController | undefined;
-
-  connectedCallback() {
-    super.connectedCallback();
-    document.addEventListener(
-      "stylechange",
-      (e) => (this.pageStyle = e.newStyle),
-      {
-        signal: (this.eventAc = new AbortController()).signal,
-      },
-    );
-  }
-
-  firstUpdated() {
-    this.pageStyle = stylePref.data;
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.eventAc?.abort();
-  }
 
   render() {
     return html`
