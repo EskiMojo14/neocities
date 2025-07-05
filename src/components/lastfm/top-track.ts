@@ -40,7 +40,10 @@ export default class TopTrack extends withStyle(LitElement) {
         </li>
         <li class="body2">
           <material-symbol aria-hidden="true">music_history</material-symbol>
-          ${decimalFormat(this.playcount, this.pageStyle)} plays
+          <span aria-label=${decimalFormat(this.playcount, "normal")}>
+            ${decimalFormat(this.playcount, this.pageStyle)}
+          </span>
+          plays
         </li>
       </ul>
     `;
