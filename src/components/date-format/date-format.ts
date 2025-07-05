@@ -14,16 +14,29 @@ export default class DateFormat extends withStyle(LitElement) {
   @property({ type: Boolean, attribute: "show-time" })
   showTime = false;
 
-  @cache(({ date, pageStyle, showTime }) => [date, pageStyle, showTime])
-  get formattedDate() {
-    const dateObj = v.parse(vUtils.coerceDate, this.date);
+  @cache(({ date }) => [date])
+  get dateObj() {
+    return v.parse(vUtils.coerceDate, this.date);
+  }
+
+  @cache(({ dateObj, showTime }) => [dateObj, showTime])
+  get dateLabel() {
     return this.showTime
-      ? timeFormat(dateObj, this.pageStyle)
-      : dateFormat(dateObj, this.pageStyle);
+      ? timeFormat(this.dateObj, "normal")
+      : dateFormat(this.dateObj, "normal");
+  }
+
+  @cache(({ dateObj, pageStyle, showTime }) => [dateObj, pageStyle, showTime])
+  get formattedDate() {
+    return this.showTime
+      ? timeFormat(this.dateObj, this.pageStyle)
+      : dateFormat(this.dateObj, this.pageStyle);
   }
 
   render() {
-    return html`<time datetime="${this.date}">${this.formattedDate}</time>`;
+    return html`<time datetime="${this.date}" title="${this.dateLabel}"
+      >${this.formattedDate}</time
+    >`;
   }
 }
 

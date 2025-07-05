@@ -25,14 +25,26 @@ export default class PageHeader extends withStyle(LitElement) {
   @property({ type: String })
   published = "${unset}";
 
-  @cache(({ published, pageStyle }) => [published, pageStyle])
+  @cache(({ published }) => [published])
+  get publishedDate() {
+    if (!frontmatterIsSet(this.published)) return undefined;
+    return v.parse(publishedSchema, this.published);
+  }
+
+  @cache(({ publishedDate }) => [publishedDate])
+  get publishedLabel() {
+    return this.publishedDate ? dateFormat(this.publishedDate, "normal") : "";
+  }
+
+  @cache(({ publishedDate, pageStyle }) => [publishedDate, pageStyle])
   get formattedPublished() {
-    if (!frontmatterIsSet(this.published)) return "";
-    return dateFormat(v.parse(publishedSchema, this.published), this.pageStyle);
+    if (!this.publishedDate) return "";
+    return dateFormat(this.publishedDate, this.pageStyle);
   }
 
   render() {
-    const { header, subtitle, published, formattedPublished } = this;
+    const { header, subtitle, published, publishedLabel, formattedPublished } =
+      this;
     const headerDuration = consolewriter.getDuration(header);
     const subtitleDuration = consolewriter.getDuration(subtitle);
     return html`
@@ -41,11 +53,12 @@ export default class PageHeader extends withStyle(LitElement) {
           ${when(
             formattedPublished,
             () =>
-              html`<time date="${JSON.parse(published)}">
-                <span class="sr-only">Published:</span
-                ><console-writer
+              html`<time datetime="${JSON.parse(published)}">
+                <span class="sr-only">Published: </span>
+                <console-writer
                   text="${formattedPublished}"
                   delay=${subtitleDuration + headerDuration}
+                  aria-label="${publishedLabel}"
                 ></console-writer>
               </time>`,
           )}

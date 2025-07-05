@@ -21,19 +21,31 @@ export default class ScrobbleData extends withStyle(LitElement) {
         html`<ul class="chip-collection">
           <li class="chip body2">
             <material-symbol aria-hidden="true">music_history</material-symbol>
-            ${decimalFormat(data.playcount, this.pageStyle)} scrobbles
+            <span aria-label=${decimalFormat(data.playcount, "normal")}>
+              ${decimalFormat(data.playcount, this.pageStyle)}
+            </span>
+            scrobbles
           </li>
           <li class="chip body2">
             <material-symbol aria-hidden="true">artist</material-symbol>
-            ${decimalFormat(data.artist_count, this.pageStyle)} artists
+            <span aria-label=${decimalFormat(data.artist_count, "normal")}>
+              ${decimalFormat(data.artist_count, this.pageStyle)}
+            </span>
+            artists
           </li>
           <li class="chip body2">
             <material-symbol aria-hidden="true">album</material-symbol>
-            ${decimalFormat(data.album_count, this.pageStyle)} albums
+            <span aria-label=${decimalFormat(data.album_count, "normal")}>
+              ${decimalFormat(data.album_count, this.pageStyle)}
+            </span>
+            albums
           </li>
           <li class="chip body2">
             <material-symbol aria-hidden="true">music_note</material-symbol>
-            ${decimalFormat(data.track_count, this.pageStyle)} tracks
+            <span aria-label=${decimalFormat(data.track_count, "normal")}>
+              ${decimalFormat(data.track_count, this.pageStyle)}
+            </span>
+            tracks
           </li>
         </ul>`,
       error: () => "Failed to load scrobble data",
