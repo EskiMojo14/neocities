@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "DEBUG_IMPORT_META_ENV=1 node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js develop",
+    "dev": "node --env-file .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js develop",
     "prebuild": "rm -rf ./public/ && pnpm run generate-thumbs",
-    "build": "node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js build",
-    "serve": "node --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js serve",
+    "build": "node --env-file .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js build",
+    "serve": "node --env-file .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/index.js serve",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "generate-thumbs": "node scripts/generate-thumbs.ts",
