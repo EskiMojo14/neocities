@@ -1,15 +1,16 @@
 import type { Options } from "ky";
 import ky from "ky";
 import * as v from "valibot";
+import env from "../constants/env.ts";
 import * as vUtils from "../utils/valibot.ts";
 import { queryOptions } from "./query.ts";
 
 const api = ky.create({
   prefixUrl: "https://ws.audioscrobbler.com/2.0/",
   searchParams: {
-    api_key: import.meta.env.LASTFM_API_KEY,
+    api_key: env.LASTFM_API_KEY,
     format: "json",
-    user: import.meta.env.LASTFM_USER,
+    user: env.LASTFM_USER,
   },
 });
 
