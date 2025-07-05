@@ -28,8 +28,15 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - uses: pnpm/action-setup@v4
+      # we're actually getting the env variables from secrets, so this is just to make the build not fail
+      - name: Make empty env file
+        run: touch .env
       # If you have a different build process, replace this with your own build steps
       - name: Install deps and build
+        env:
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
+          LASTFM_USER: ${{ secrets.LASTFM_USER }}
         run: |
           pnpm i
           pnpm run build
