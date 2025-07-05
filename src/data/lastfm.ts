@@ -6,7 +6,7 @@ import * as vUtils from "../utils/valibot.ts";
 import { queryOptions } from "./query.ts";
 
 const api = ky.create({
-  prefixUrl: "https://ws.audioscrobbler.com/2.0/",
+  prefixUrl: "http://ws.audioscrobbler.com/2.0/",
   searchParams: {
     api_key: env.LASTFM_API_KEY,
     format: "json",
