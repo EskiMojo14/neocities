@@ -147,11 +147,11 @@ export const periodLabels: Record<Period, string> = {
 };
 
 export const fullPeriodLabels: Record<Period, string> = {
-  "7day": "Last 7 days",
-  "1month": "Last 30 days",
-  "3month": "Last 3 months",
-  "6month": "Last 6 months",
-  "12month": "Last 12 months",
+  "7day": "7 days",
+  "1month": "30 days",
+  "3month": "3 months",
+  "6month": "6 months",
+  "12month": "12 months",
   overall: "All time",
 };
 
