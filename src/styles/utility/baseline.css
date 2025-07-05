@@ -96,7 +96,7 @@ h6 {
     word-break: break-all;
   }
   hgroup & {
-    margin: 0;
+    margin-bottom: 0;
   }
 }
 
