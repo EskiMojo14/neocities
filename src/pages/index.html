@@ -12,6 +12,10 @@ description: Where the heart is
     <script type="module" src="../components/lastfm/top-tracks.ts"></script>
     <script type="module" src="../components/lastfm/top-artists.ts"></script>
     <script type="module" src="../components/lastfm/scrobble-data.ts"></script>
+    <script
+      type="module"
+      src="../components/lastfm/daily-avg-scrobbles.ts"
+    ></script>
   </head>
   <body>
     Welcome to my site! I'm Eski, and here you'll find things that matter to me,
@@ -25,8 +29,9 @@ description: Where the heart is
     <p>I love music! So far I've listened to:</p>
     <scrobble-data></scrobble-data>
     <p>
-      since <date-format class="body1" date="2017-09-22"></date-format>, and
-      that's just the ones Last.fm knows about.
+      since <date-format class="body1" date="2017-09-22"></date-format>
+      <daily-avg-scrobbles></daily-avg-scrobbles>, and that's just the ones
+      Last.fm knows about.
     </p>
     <div class="last-fm">
       <top-tracks></top-tracks>
