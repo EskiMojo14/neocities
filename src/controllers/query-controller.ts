@@ -78,13 +78,10 @@ export class QueryController<
   }
 
   private observeQuery(optimistic = true) {
-    this.queryObserver = new QueryObserver(
-      queryClient,
-      this.getDefaultedOptions(this.getOptions()),
-    );
+    this.queryObserver = new QueryObserver(queryClient, this.getOptions());
     if (optimistic) {
       this.result = this.queryObserver.getOptimisticResult(
-        this.getDefaultedOptions(this.getOptions()),
+        queryClient.defaultQueryOptions(this.getOptions()),
       );
     } else {
       this.result = undefined;
@@ -119,8 +116,7 @@ export class QueryController<
 
   hostUpdate() {
     void this.whenQueryObserver.promise.then((queryObserver) => {
-      const defaultedOptions = this.getDefaultedOptions(this.getOptions());
-      queryObserver.setOptions(defaultedOptions);
+      queryObserver.setOptions(this.getOptions());
     });
   }
 
@@ -132,29 +128,5 @@ export class QueryController<
       : renderers[this.result.status];
     // @ts-expect-error unions become intersections
     return renderer ? renderer(this.result) : nothing;
-  }
-
-  /**
-   * Retrieves the default query options by combining the user-provided options
-   * with the default options from the query client.
-   *
-   * @returns The default query options.
-   */
-  protected getDefaultedOptions(
-    options: QueryObserverOptions<
-      TQueryFnData,
-      TError,
-      TData,
-      TQueryData,
-      TQueryKey
-    >,
-  ) {
-    return queryClient.defaultQueryOptions<
-      TQueryFnData,
-      TError,
-      TData,
-      TQueryData,
-      TQueryKey
-    >(options);
   }
 }
