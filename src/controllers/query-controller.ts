@@ -17,9 +17,8 @@ type QueryResultRenderers<TData, TError> = {
 };
 
 type RendererResult<
-  TData,
-  TError,
-  Renderer extends QueryResultRenderers<TData, TError>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Renderer extends QueryResultRenderers<any, any>,
 > = {
   [Status in keyof Renderer]: Renderer[Status] extends (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -120,14 +119,14 @@ export class QueryController<
     });
   }
 
-  render<T extends QueryResultRenderers<TData, TError>>(
-    renderers: T,
-  ): RendererResult<TData, TError, T> {
+  render<TRenderers extends QueryResultRenderers<TData, TError>>(
+    renderers: TRenderers,
+  ): RendererResult<TRenderers> {
     const renderer = !this.result
       ? renderers.initial
       : renderers[this.result.status];
     return (
       renderer ? renderer(this.result as never) : nothing
-    ) as RendererResult<TData, TError, T>;
+    ) as RendererResult<TRenderers>;
   }
 }
