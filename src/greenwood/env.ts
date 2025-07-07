@@ -25,8 +25,9 @@ export const envPlugin = (): ResourcePlugin => {
             const value = process.env[name];
             if (value === undefined) {
               console.warn(`Missing env variable: ${name} in ${request.url}`);
+              return "undefined";
             }
-            return value ? `"${value}"` : "undefined";
+            return `"${value}"`;
           });
           return new Response(replaced);
         },
