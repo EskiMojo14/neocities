@@ -126,7 +126,8 @@ export class QueryController<
     const renderer = !this.result
       ? renderers.initial
       : renderers[this.result.status];
-    // @ts-expect-error unions become intersections
-    return renderer ? renderer(this.result) : nothing;
+    return (
+      renderer ? renderer(this.result as never) : nothing
+    ) as RendererResult<TData, TError, T>;
   }
 }
