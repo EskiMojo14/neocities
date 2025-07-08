@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
-import "./skeleton.ts";
+import "./text-skeleton.ts";
 
 const meta = {
   title: "Components/Skeleton",

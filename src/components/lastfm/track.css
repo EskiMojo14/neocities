@@ -30,7 +30,8 @@
   }
 }
 
-img {
+img,
+image-skeleton {
   width: 87px;
   height: 87px;
   border-radius: var(--shape-medium);

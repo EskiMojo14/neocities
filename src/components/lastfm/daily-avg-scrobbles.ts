@@ -5,7 +5,7 @@ import { getUserData } from "../../data/lastfm.ts";
 import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
-import "../skeleton/skeleton.ts";
+import "../skeleton/text-skeleton.ts";
 import "../spinner/spinner.ts";
 
 const startDate = new Date("2017-09-22");

@@ -6,7 +6,7 @@ import { getUserData, type UserData } from "../../data/lastfm.ts";
 import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat, unsafeEntries } from "../../utils/index.ts";
-import "../skeleton/skeleton.ts";
+import "../skeleton/text-skeleton.ts";
 
 const userDataChips: Record<
   keyof UserData,

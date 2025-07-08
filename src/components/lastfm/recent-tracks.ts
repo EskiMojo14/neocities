@@ -20,34 +20,41 @@ export default class RecentTracks extends LitElement {
     if (typeof window === "undefined") return nothing;
     return html`
       <h4 class="headline5">Recently played</h4>
-      <div class="list-container">
-        <ol class="list">
-          ${this.#fetchTracks.render({
-            pending: () => html`<hourglass-spinner></hourglass-spinner>`,
-            success: ({ data: tracks }) =>
-              repeat(
-                tracks,
-                (track) => track.name,
-                (track, index) =>
-                  html`<recent-track
-                      role="listitem"
-                      artist=${track.artist}
-                      album=${track.album}
-                      name=${track.name}
-                      thumbnail=${ifDefined(track.image.large)}
-                      date=${ifDefined(track.date)}
-                      .nowPlaying=${track.nowPlaying}
-                    ></recent-track>
-                    ${when(
-                      index < tracks.length - 1,
-                      () => html`<hr class="inset" />`,
-                    )}`,
-              ),
-            error: () =>
-              html`<p class="error body2">Failed to load recent tracks</p>`,
-          })}
-        </ol>
-      </div>
+      <ol class="list">
+        ${this.#fetchTracks.render({
+          pending: () =>
+            repeat(
+              Array(5),
+              () => "skeleton",
+              (_, index) =>
+                html`<recent-track-skeleton></recent-track-skeleton>${when(
+                    index < 4,
+                    () => html`<hr class="inset" />`,
+                  )}`,
+            ),
+          success: ({ data: tracks }) =>
+            repeat(
+              tracks,
+              (track) => track.name,
+              (track, index) =>
+                html`<recent-track
+                    role="listitem"
+                    artist=${track.artist}
+                    album=${track.album}
+                    name=${track.name}
+                    thumbnail=${ifDefined(track.image.large)}
+                    date=${ifDefined(track.date)}
+                    .nowPlaying=${track.nowPlaying}
+                  ></recent-track>
+                  ${when(
+                    index < tracks.length - 1,
+                    () => html`<hr class="inset" />`,
+                  )}`,
+            ),
+          error: () =>
+            html`<p class="error body2">Failed to load recent tracks</p>`,
+        })}
+      </ol>
     `;
   }
 }
