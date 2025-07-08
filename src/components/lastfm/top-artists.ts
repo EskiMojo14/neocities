@@ -58,32 +58,39 @@ export default class TopArtists extends withStyle(LitElement) {
           )}
         </fieldset>
       </div>
-      <div class="list-container">
-        <ol class="list">
-          ${this.#fetchArtists.render({
-            pending: () => html`<hourglass-spinner></hourglass-spinner>`,
-            success: ({ data: artists }) =>
-              repeat(
-                artists,
-                (artist) => artist.name,
-                (artist, index) =>
-                  html`<top-artist
-                      role="listitem"
-                      name=${artist.name}
-                      thumbnail=${ifDefined(artist.image.large)}
-                      rank=${artist.rank}
-                      playcount=${artist.playcount}
-                    ></top-artist>
-                    ${when(
-                      index < artists.length - 1,
-                      () => html`<hr class="inset" />`,
-                    )}`,
-              ),
-            error: () =>
-              html`<p class="error body2">Failed to load top artists</p>`,
-          })}
-        </ol>
-      </div>
+      <ol class="list">
+        ${this.#fetchArtists.render({
+          pending: () =>
+            repeat(
+              Array(5),
+              () => "skeleton",
+              (_, index) =>
+                html`<top-artist-skeleton></top-artist-skeleton>${when(
+                    index < 4,
+                    () => html`<hr class="inset" />`,
+                  )}`,
+            ),
+          success: ({ data: artists }) =>
+            repeat(
+              artists,
+              (artist) => artist.name,
+              (artist, index) =>
+                html`<top-artist
+                    role="listitem"
+                    name=${artist.name}
+                    thumbnail=${ifDefined(artist.image.large)}
+                    rank=${artist.rank}
+                    playcount=${artist.playcount}
+                  ></top-artist>
+                  ${when(
+                    index < artists.length - 1,
+                    () => html`<hr class="inset" />`,
+                  )}`,
+            ),
+          error: () =>
+            html`<p class="error body2">Failed to load top artists</p>`,
+        })}
+      </ol>
     `;
   }
 }

@@ -3,6 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
+import "../skeleton/text-skeleton.ts";
 import track from "./artist.css?type=raw";
 
 @customElement("top-artist")
@@ -43,8 +44,31 @@ export default class TopArtist extends withStyle(LitElement) {
   }
 }
 
+@customElement("top-artist-skeleton")
+export class TopArtistSkeleton extends LitElement {
+  static styles = [unsafeCSS(base), unsafeCSS(track)];
+
+  render() {
+    return html`
+      <material-symbol aria-hidden="true">counter_1</material-symbol>
+      <div class="info">
+        <h3 class="headline6">
+          <material-symbol aria-hidden="true">artist</material-symbol>
+          <text-skeleton>Artist name</text-skeleton>
+        </h3>
+        <p class="body2">
+          <material-symbol aria-hidden="true">music_history</material-symbol>
+          <text-skeleton>000,000</text-skeleton>
+          plays
+        </p>
+      </div>
+    `;
+  }
+}
+
 declare global {
   interface HTMLElementTagNameMap {
     "top-artist": TopArtist;
+    "top-artist-skeleton": TopArtistSkeleton;
   }
 }

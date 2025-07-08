@@ -50,8 +50,35 @@ export default class TopTrack extends withStyle(LitElement) {
   }
 }
 
+@customElement("top-track-skeleton")
+export class TopTrackSkeleton extends LitElement {
+  static styles = [unsafeCSS(base), unsafeCSS(track)];
+
+  render() {
+    return html`
+      <material-symbol aria-hidden="true">counter_1</material-symbol>
+      <ul class="info">
+        <li class="caption">
+          <material-symbol aria-hidden="true">artist</material-symbol>
+          <text-skeleton>Artist name</text-skeleton>
+        </li>
+        <li class="headline6">
+          <material-symbol aria-hidden="true">music_note</material-symbol>
+          <text-skeleton>Track name</text-skeleton>
+        </li>
+        <li class="body2">
+          <material-symbol aria-hidden="true">music_history</material-symbol>
+          <text-skeleton>000,000</text-skeleton>
+          plays
+        </li>
+      </ul>
+    `;
+  }
+}
+
 declare global {
   interface HTMLElementTagNameMap {
     "top-track": TopTrack;
+    "top-track-skeleton": TopTrackSkeleton;
   }
 }

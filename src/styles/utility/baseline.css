@@ -6,6 +6,7 @@
 @import "../../components/button/toggle.baseline.css";
 @import "../../components/symbol/symbol.baseline.css";
 @import "../../components/tooltip/tooltip.baseline.css";
+@import "../../components/skeleton/skeleton.baseline.css";
 
 * {
   box-sizing: border-box;
@@ -163,8 +164,11 @@ p:has(controlled-carousel) {
 }
 
 recent-track,
+recent-track-skeleton,
 top-track,
-top-artist {
+top-track-skeleton,
+top-artist,
+top-artist-skeleton {
   &:nth-of-type(1) {
     --accent-color: var(--logo1);
   }
