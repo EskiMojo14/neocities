@@ -8,12 +8,9 @@
   hr:last-child {
     display: none;
   }
-  hourglass-spinner,
   p.error {
     margin: auto;
     padding: 1rem;
-  }
-  p.error {
     color: var(--error);
   }
 }
