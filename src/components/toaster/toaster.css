@@ -11,8 +11,10 @@
     padding-left: var(--padding);
   }
   @media (max-width: 1000px) {
-    --padding: 8px;
-    padding: var(--padding);
+    &,
+    &:dir(rtl) {
+      padding: 8px;
+    }
     padding-top: 0;
     align-items: stretch;
     .toast {
@@ -26,24 +28,37 @@
   align-items: center;
   gap: 8px;
   padding: 0 8px;
+  padding-left: 16px;
   height: 40px;
   background: var(--toast-surface);
   color: var(--toast-accent);
   --normal-border: 1px solid var(--divider);
-  --accent-border: 8px solid var(--toast-accent);
   border: var(--normal-border);
-  border-left: var(--accent-border);
   border-radius: var(--shape-medium);
+  overflow: hidden;
   transition-property: background;
   transition-duration: var(--default-duration);
   animation: toast-enter var(--default-duration) forwards;
+  position: relative;
   @media (prefers-reduced-motion) {
     animation-name: toast-fade-in;
   }
   --icon-fill: 1;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 8px;
+    height: 100%;
+    background: var(--toast-accent);
+  }
   &:dir(rtl) {
-    border-left: var(--normal-border);
-    border-right: var(--accent-border);
+    padding-left: 8px;
+    padding-right: 16px;
+    &::before {
+      left: auto;
+      right: 0;
+    }
   }
   .content {
     flex: 1;

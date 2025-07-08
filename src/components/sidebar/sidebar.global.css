@@ -1,5 +1,8 @@
 :root {
   --sidebar-width: 19rem;
+  @supports (corner-shape: bevel) {
+    --sidebar-width: 20rem;
+  }
 }
 
 sidebar-nav {
