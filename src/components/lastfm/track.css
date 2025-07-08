@@ -22,6 +22,8 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  max-width: 100%;
+  overflow: hidden;
   &.now-playing {
     --icon-fill: 1;
     li:first-child {
@@ -35,13 +37,20 @@ image-skeleton {
   width: 87px;
   height: 87px;
   border-radius: var(--shape-medium);
+  @media (max-width: 1200px) {
+    display: none;
+  }
 }
 
 li {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  max-width: 100%;
+  > span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

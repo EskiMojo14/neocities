@@ -25,6 +25,9 @@ image-skeleton {
   width: 87px;
   height: 87px;
   border-radius: var(--shape-medium);
+  @media (max-width: 1200px) {
+    display: none;
+  }
 }
 
 h3,
@@ -33,7 +36,12 @@ p {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  max-width: 100%;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  > span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

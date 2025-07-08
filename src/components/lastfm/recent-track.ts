@@ -59,11 +59,11 @@ export default class RecentTrack extends LitElement {
         </li>
         <li class="headline6">
           <material-symbol aria-label="Track">music_note</material-symbol>
-          ${this.name}
+          <span> ${this.name}</span>
         </li>
         <li class="body2">
-          <material-symbol aria-label="Artist">artist</material-symbol>${this
-            .artist}
+          <material-symbol aria-label="Artist">artist</material-symbol>
+          <span>${this.artist}</span>
         </li>
       </ul>
     `;

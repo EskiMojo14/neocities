@@ -32,18 +32,20 @@ export default class TopTrack extends withStyle(LitElement) {
       <ul class="info">
         <li class="caption">
           <material-symbol aria-label="Artist">artist</material-symbol>
-          ${this.artist}
+          <span>${this.artist}</span>
         </li>
         <li class="headline6">
           <material-symbol aria-label="Track">music_note</material-symbol>
-          ${this.name}
+          <span>${this.name}</span>
         </li>
         <li class="body2">
           <material-symbol aria-hidden="true">music_history</material-symbol>
-          <span aria-label=${decimalFormat(this.playcount, "normal")}>
-            ${decimalFormat(this.playcount, this.pageStyle)}
-          </span>
-          plays
+          <span>
+            <span aria-label=${decimalFormat(this.playcount, "normal")}>
+              ${decimalFormat(this.playcount, this.pageStyle)}
+            </span>
+            plays</span
+          >
         </li>
       </ul>
     `;

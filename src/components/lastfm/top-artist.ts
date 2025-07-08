@@ -29,15 +29,17 @@ export default class TopArtist extends withStyle(LitElement) {
       >
       <div class="info">
         <h3 class="headline6">
-          <material-symbol aria-hidden="true">artist</material-symbol>${this
-            .name}
+          <material-symbol aria-hidden="true">artist</material-symbol>
+          <span>${this.name}</span>
         </h3>
         <p class="body2">
           <material-symbol aria-hidden="true">music_history</material-symbol>
-          <span aria-label=${decimalFormat(this.playcount, "normal")}>
-            ${decimalFormat(this.playcount, this.pageStyle)}
-          </span>
-          plays
+          <span>
+            <span aria-label=${decimalFormat(this.playcount, "normal")}>
+              ${decimalFormat(this.playcount, this.pageStyle)}
+            </span>
+            plays</span
+          >
         </p>
       </div>
     `;
