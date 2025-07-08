@@ -5,6 +5,7 @@ import { getUserData } from "../../data/lastfm.ts";
 import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
+import "../skeleton/skeleton.ts";
 import "../spinner/spinner.ts";
 
 const startDate = new Date("2017-09-22");
@@ -27,8 +28,11 @@ export default class DailyAvgScrobbles extends withStyle(LitElement) {
   render(): unknown {
     if (typeof window === "undefined") return nothing;
     return this.#fetchPlaycount.render({
+      pending: () =>
+        html` (an average of <text-skeleton>00</text-skeleton> scrobbles per
+          day)`,
       success: ({ data }) =>
-        html`(an average of
+        html` (an average of
           <span aria-label=${decimalFormat(data, "normal")}>
             ${decimalFormat(data, this.pageStyle)}
           </span>

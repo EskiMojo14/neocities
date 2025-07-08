@@ -1,0 +1,22 @@
+:host {
+  display: inline-block;
+  overflow: hidden;
+  background: var(--divider);
+  vertical-align: bottom;
+  border-radius: var(--shape-small);
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.content {
+  visibility: hidden;
+}
+
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
