@@ -64,38 +64,40 @@ button {
     border-radius: 0;
   }
   /* temporary workaround: manually provide border radius for first and last buttons accordingly */
-  button,
-  toggle-button:not(.icon) {
-    &:first-of-type label {
-      border-top-left-radius: var(--shape-pill);
-      border-bottom-left-radius: var(--shape-pill);
-      padding-left: 1rem;
-    }
-
-    &:last-of-type label {
-      border-top-right-radius: var(--shape-pill);
-      border-bottom-right-radius: var(--shape-pill);
-      padding-right: 1rem;
-    }
-  }
-  &:dir(rtl) {
+  @supports (corner-shape: bevel) {
     button,
     toggle-button:not(.icon) {
       &:first-of-type label {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border-top-right-radius: var(--shape-pill);
-        border-bottom-right-radius: var(--shape-pill);
-        padding-left: 0.5rem;
-        padding-right: 1rem;
-      }
-      &:last-of-type label {
         border-top-left-radius: var(--shape-pill);
         border-bottom-left-radius: var(--shape-pill);
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
         padding-left: 1rem;
-        padding-right: 0.5rem;
+      }
+
+      &:last-of-type label {
+        border-top-right-radius: var(--shape-pill);
+        border-bottom-right-radius: var(--shape-pill);
+        padding-right: 1rem;
+      }
+    }
+    &:dir(rtl) {
+      button,
+      toggle-button:not(.icon) {
+        &:first-of-type label {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          border-top-right-radius: var(--shape-pill);
+          border-bottom-right-radius: var(--shape-pill);
+          padding-left: 0.5rem;
+          padding-right: 1rem;
+        }
+        &:last-of-type label {
+          border-top-left-radius: var(--shape-pill);
+          border-bottom-left-radius: var(--shape-pill);
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          padding-left: 1rem;
+          padding-right: 0.5rem;
+        }
       }
     }
   }

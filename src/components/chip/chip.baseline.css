@@ -13,7 +13,10 @@
   gap: 0.25rem;
   margin: 0;
   height: 32px;
-  padding: 0 1rem;
+  padding: 0 0.75rem;
+  @supports (corner-shape: bevel) {
+    padding: 0 1rem;
+  }
   border-radius: var(--shape-pill);
   border: 1px solid var(--divider);
   --icon-size: 18;
