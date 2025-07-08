@@ -1,5 +1,5 @@
-import { useArgs } from "@storybook/preview-api";
-import type { Meta, StoryObj } from "@storybook/web-components";
+import { useArgs } from "storybook/preview-api";
+import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
 import "../../scripts/page-scroll.ts";
 import "./sidebar.ts";
