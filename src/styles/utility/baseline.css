@@ -152,13 +152,13 @@ p:has(controlled-carousel) {
 
 @media (scripting: none) {
   [needs-js] {
-    display: none;
+    display: none !important;
   }
 }
 
 @media (scripting: enabled) {
   [no-js] {
-    display: none;
+    display: none !important;
   }
 }
 
