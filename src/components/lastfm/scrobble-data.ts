@@ -1,11 +1,26 @@
 import { html, LitElement, nothing, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
+import { repeat } from "lit/directives/repeat.js";
 import { QueryController } from "../../controllers/query-controller.ts";
-import { getUserData } from "../../data/lastfm.ts";
+import { getUserData, type UserData } from "../../data/lastfm.ts";
 import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
-import { decimalFormat } from "../../utils/index.ts";
-import "../spinner/spinner.ts";
+import { decimalFormat, unsafeEntries } from "../../utils/index.ts";
+import "../skeleton/skeleton.ts";
+
+const userDataChips: Record<
+  keyof UserData,
+  { icon: string; placeholder: string; label: string }
+> = {
+  playcount: {
+    icon: "music_history",
+    placeholder: "000,000",
+    label: "scrobbles",
+  },
+  artist_count: { icon: "artist", placeholder: "0,000", label: "artists" },
+  album_count: { icon: "album", placeholder: "00,000", label: "albums" },
+  track_count: { icon: "music_note", placeholder: "00,000", label: "tracks" },
+};
 
 @customElement("scrobble-data")
 export default class ScrobbleData extends withStyle(LitElement) {
@@ -16,37 +31,37 @@ export default class ScrobbleData extends withStyle(LitElement) {
   render(): unknown {
     if (typeof window === "undefined") return nothing;
     return this.#fetchData.render({
-      pending: () => html`<hourglass-spinner></hourglass-spinner>`,
+      pending: () =>
+        html`<ul class="chip-collection">
+          ${repeat(
+            unsafeEntries(userDataChips),
+            ([key]) => key,
+            ([, value]) =>
+              html`<li class="chip body2">
+                <material-symbol aria-hidden="true"
+                  >${value.icon}</material-symbol
+                >
+                <text-skeleton>${value.placeholder}</text-skeleton>
+                ${value.label}
+              </li>`,
+          )}
+        </ul>`,
       success: ({ data }) =>
         html`<ul class="chip-collection">
-          <li class="chip body2">
-            <material-symbol aria-hidden="true">music_history</material-symbol>
-            <span aria-label=${decimalFormat(data.playcount, "normal")}>
-              ${decimalFormat(data.playcount, this.pageStyle)}
-            </span>
-            scrobbles
-          </li>
-          <li class="chip body2">
-            <material-symbol aria-hidden="true">artist</material-symbol>
-            <span aria-label=${decimalFormat(data.artist_count, "normal")}>
-              ${decimalFormat(data.artist_count, this.pageStyle)}
-            </span>
-            artists
-          </li>
-          <li class="chip body2">
-            <material-symbol aria-hidden="true">album</material-symbol>
-            <span aria-label=${decimalFormat(data.album_count, "normal")}>
-              ${decimalFormat(data.album_count, this.pageStyle)}
-            </span>
-            albums
-          </li>
-          <li class="chip body2">
-            <material-symbol aria-hidden="true">music_note</material-symbol>
-            <span aria-label=${decimalFormat(data.track_count, "normal")}>
-              ${decimalFormat(data.track_count, this.pageStyle)}
-            </span>
-            tracks
-          </li>
+          ${repeat(
+            unsafeEntries(userDataChips),
+            ([key]) => key,
+            ([key, value]) =>
+              html`<li class="chip body2">
+                <material-symbol aria-hidden="true"
+                  >${value.icon}</material-symbol
+                >
+                <span aria-label=${decimalFormat(data[key], "normal")}>
+                  ${decimalFormat(data[key], this.pageStyle)}
+                </span>
+                ${value.label}
+              </li>`,
+          )}
         </ul>`,
       error: () => "Failed to load scrobble data",
     });
