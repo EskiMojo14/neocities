@@ -1,5 +1,5 @@
-import { fn } from "@storybook/test";
-import type { Meta, StoryObj } from "@storybook/web-components";
+import { fn } from "storybook/test";
+import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
 import Tooltip from "../tooltip/tooltip.ts";
 import type { ToggleButton } from "./toggle.ts";

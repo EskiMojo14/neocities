@@ -1,5 +1,5 @@
-import { themes } from "@storybook/theming";
-import type { Decorator, Preview } from "@storybook/web-components";
+import { themes } from "storybook/theming";
+import type { Decorator, Preview } from "@storybook/web-components-vite";
 import * as v from "valibot";
 import { stylePref, themePref } from "../src/constants/prefs.ts";
 import pages from "./mocks/graph.json";
