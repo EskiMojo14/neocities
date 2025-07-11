@@ -1,9 +1,34 @@
 import { themes } from "storybook/theming";
 import type { Decorator, Preview } from "@storybook/web-components-vite";
+import { initialize, mswLoader } from "msw-storybook-addon";
+import { http, HttpResponse } from "msw";
 import * as v from "valibot";
 import { stylePref, themePref } from "../src/constants/prefs.ts";
 import pages from "./mocks/graph.json";
 import "../src/styles/global.css";
+
+const ignorePatterns = [
+  /\/src\//,
+  /fonts\.googleapis\.com/,
+  /lastfm\.freetls\.fastly\.net/,
+];
+
+initialize(
+  {
+    onUnhandledRequest(req, print) {
+      if (!ignorePatterns.some((pattern) => pattern.test(req.url))) {
+        print.warning();
+      }
+    },
+  },
+  [
+    http.get(/localhost:\d+\/___graph.json/, () => HttpResponse.json(pages)),
+    // redirect assets folder to root
+    http.get(/localhost:\d+\/assets/, ({ request }) => {
+      return fetch(request.url.replace("/assets", ""));
+    }),
+  ],
+);
 
 const dirSchema = v.fallback(v.picklist(["auto", "ltr", "rtl"]), "auto");
 
@@ -39,18 +64,6 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-    fetchMock: {
-      mocks: [
-        {
-          matcher: {
-            url: "http://localhost:1984/___graph.json",
-            response: {
-              body: pages,
-            },
-          },
-        },
-      ],
-    },
   },
   argTypes: {
     dir: {
@@ -72,6 +85,7 @@ const preview: Preview = {
     style: stylePref.fallback,
   },
   decorators: [rtlDecorator, themeDecorator, styleDecorator],
+  loaders: [mswLoader],
 };
 
 export default preview;
