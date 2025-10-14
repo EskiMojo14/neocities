@@ -33,7 +33,7 @@ for await (const event of on.click(document, {
 }
 ```
 
-## Type inference
+### Type inference
 
 The event type is inferred from the target's `on${TEventType}` property (e.g. `onclick`).
 
@@ -51,7 +51,7 @@ for await (const event of on.click<PointerEvent>(customTarget)) {
 }
 ```
 
-### Methods
+#### Methods
 
 A Proxy is used to allow providing the type via calling a method instead of passing it as a parameter. (e.g. `on.click(document)` instead of `on(document, "click")`). This allows any type in runtime, but in Typescript the keys need to be known at compile time for inference to work. Additionally, if you're using `noUncheckedIndexedAccess`, unknown keys will be marked as potentially undefined due to the [index signature](https://github.com/microsoft/TypeScript/issues/47594).
 
