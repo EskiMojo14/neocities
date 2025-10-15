@@ -4,6 +4,7 @@ title: Required React Context
 description: For creating React context that needs to be provided
 package: required-react-context
 repo: EskiMojo14/required-react-context
+icon: syringe
 tags:
   - react
 ---
