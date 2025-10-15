@@ -5,6 +5,8 @@ description: For iterating over events
 icon: stream
 package: event-gen
 repo: EskiMojo14/event-gen
+tags:
+  - events
 ---
 
 Create an async iterable of events from an EventTarget.

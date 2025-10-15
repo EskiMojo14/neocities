@@ -5,6 +5,8 @@ description: For adding multiple event listeners
 icon: hearing
 package: rad-event-listeners
 repo: EskiMojo14/rad-event-listeners
+tags:
+  - events
 ---
 
 ### `radEventListeners`
