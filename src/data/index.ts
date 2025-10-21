@@ -41,27 +41,3 @@ export async function getPackages() {
     )
     .sort((a, b) => a.title.localeCompare(b.title));
 }
-
-const blogSchema = v.object({
-  ...baseSchema.entries,
-  published: v.pipe(v.string(), v.isoTimestamp()),
-});
-
-export type BlogPost = v.InferOutput<typeof blogSchema>;
-
-export async function getBlogPosts() {
-  const content = await getContentByRoute("/blog/");
-  return content
-    .filter(contentRoutesFor("/blog/"))
-    .map((page) =>
-      v.parse(blogSchema, {
-        title: page.title,
-        description: page.data.description,
-        route: page.route,
-        published: page.data.published,
-        icon: page.data.icon,
-        tags: page.data.tags,
-      } satisfies Record<keyof BlogPost, unknown>),
-    )
-    .sort((a, b) => b.published.localeCompare(a.published));
-}

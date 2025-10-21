@@ -105,7 +105,6 @@ async function getSidebarItems() {
   const base: Record<string, SidebarItem | SidebarGroup> = {};
   const content = await Promise.all([
     getContentByCollection("nav"),
-    getContentByRoute("/blog/"),
     getContentByRoute("/packages/"),
   ]);
   const uniqueByRoute = uniqueBy((page: Page) => page.route);

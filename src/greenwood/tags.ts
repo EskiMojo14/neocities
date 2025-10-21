@@ -33,21 +33,6 @@ const paths: Record<
     },
     itemPlural: "Packages",
   },
-  blog: {
-    create(tag) {
-      return {
-        imports: ["../components/blog-list/blog-list.ts"],
-        body: html`
-          <script
-            type="module"
-            src="../components/blog-list/blog-list.ts"
-          ></script>
-          <blog-list tag="${tag}"></blog-list>
-        `,
-      };
-    },
-    itemPlural: "Blog Posts",
-  },
 };
 
 export const tagsPlugin = (): SourcePlugin => {
