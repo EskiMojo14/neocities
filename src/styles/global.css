@@ -101,3 +101,37 @@ body {
     }
   }
 }
+
+.not-found-icon {
+  --icon-size: 192;
+  margin: 8rem auto;
+  display: block;
+  animation: rainbow 10s linear infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    color: var(--logo1);
+  }
+  14.28% {
+    color: var(--logo2);
+  }
+  28.56% {
+    color: var(--logo3);
+  }
+  42.84% {
+    color: var(--logo4);
+  }
+  57.12% {
+    color: var(--logo5);
+  }
+  71.4% {
+    color: var(--logo6);
+  }
+  85.68% {
+    color: var(--logo1);
+  }
+  100% {
+    color: var(--logo1);
+  }
+}
