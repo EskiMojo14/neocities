@@ -1,4 +1,4 @@
-import { page, userEvent } from "@vitest/browser/context";
+import { page, userEvent } from "vitest/browser";
 import { html } from "lit";
 import { afterAll, expect, it } from "vitest";
 import { stylePref } from "../../../constants/prefs.ts";

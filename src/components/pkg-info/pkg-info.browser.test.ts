@@ -1,4 +1,4 @@
-import { page, userEvent } from "@vitest/browser/context";
+import { page, userEvent } from "vitest/browser";
 import { html } from "lit";
 import { expect, it } from "vitest";
 import { pkgManagerPref } from "../../constants/prefs.ts";

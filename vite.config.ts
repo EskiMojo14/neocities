@@ -1,4 +1,5 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
+import { playwright } from "@vitest/browser-playwright";
 import { transformRawImports } from "./src/vite/raw-plugin.ts";
 
 export default defineConfig({
@@ -14,5 +15,29 @@ export default defineConfig({
           key.startsWith("VITE"),
       ),
     ),
+  },
+  test: {
+    projects: [
+      {
+        extends: true,
+        test: {
+          include: ["**/*.node.test.ts"],
+          setupFiles: ["src/vite/setup.node.ts"],
+        },
+      },
+      {
+        extends: true,
+        test: {
+          include: ["**/*.browser.test.ts"],
+          setupFiles: ["src/vite/setup.browser.ts"],
+          browser: {
+            enabled: true,
+            provider: playwright(),
+            // https://vitest.dev/guide/browser/playwright
+            instances: [{ browser: "chromium" }],
+          },
+        },
+      },
+    ],
   },
 });

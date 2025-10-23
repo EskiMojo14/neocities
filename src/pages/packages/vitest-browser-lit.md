@@ -33,7 +33,7 @@ Default endpoint will also enable auto-cleanup and add `page.render`:
 import "vitest-browser-lit";
 
 // my-test.test.ts
-import { page } from "@vitest/browser/context";
+import { page } from "vitest/browser";
 import { test } from "vitest";
 import { html } from "lit";
 
