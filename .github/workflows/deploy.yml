@@ -40,6 +40,8 @@ jobs:
         run: |
           pnpm i
           pnpm run build
+      - name: Rename 404 page
+        run: mv public/not_found/index.html public/not_found.html
       # When the dist_dir is ready, deploy it to neocities
       # Here we deploy the folder named `public`
       - name: Deploy to neocities
