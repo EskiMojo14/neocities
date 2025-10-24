@@ -54,3 +54,10 @@ li {
     white-space: nowrap;
   }
 }
+
+focus-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  --icon-size: 32;
+}

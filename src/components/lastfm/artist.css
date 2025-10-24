@@ -7,7 +7,8 @@
   material-symbol {
     color: var(--accent-color);
   }
-  > material-symbol {
+  > material-symbol,
+  > a > material-symbol {
     --icon-size: 32;
   }
 }
@@ -44,4 +45,11 @@ p {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+}
+
+focus-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  --icon-size: 32;
 }

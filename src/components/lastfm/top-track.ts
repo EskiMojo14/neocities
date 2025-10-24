@@ -3,7 +3,10 @@ import { customElement, property } from "lit/decorators.js";
 import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
+import { searchLinks } from "../../data/music.ts";
+import "../focus-group/focus-group.ts";
 import track from "./track.css?type=raw";
+import { repeat } from "lit/directives/repeat.js";
 
 @customElement("top-track")
 export default class TopTrack extends withStyle(LitElement) {
@@ -48,6 +51,22 @@ export default class TopTrack extends withStyle(LitElement) {
           >
         </li>
       </ul>
+      <focus-group>
+        ${repeat(
+          searchLinks,
+          (link) => link.label,
+          (link) =>
+            html`<a
+              href=${link.getLink(this.name + " " + this.artist)}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Search ${link.label} for ${this.name} by ${this
+                .artist}"
+            >
+              <material-symbol aria-hidden="true">${link.icon}</material-symbol>
+            </a>`,
+        )}
+      </focus-group>
     `;
   }
 }
