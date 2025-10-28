@@ -6,7 +6,6 @@ import * as vUtils from "../utils/valibot.ts";
 import { queryOptions } from "./query.ts";
 
 const api = ky.create({
-  prefixUrl: "http://ws.audioscrobbler.com/2.0/",
   searchParams: {
     api_key: env.LASTFM_API_KEY,
     format: "json",
@@ -18,7 +17,10 @@ async function fetchWithSchema<TSchema extends v.GenericSchema>(
   options: Options,
   schema: TSchema,
 ) {
-  const unparsed = await api("", options).json();
+  const unparsed = await api(
+    "http://ws.audioscrobbler.com/2.0/",
+    options,
+  ).json();
   const { success, output, issues } = v.safeParse(schema, unparsed);
   if (!success) {
     console.error(v.summarize(issues));

@@ -160,7 +160,7 @@ export default class PkgInfo extends LitElement {
                   @click=${() => this.#onCopy()}
                   ${ref((el) => {
                     if (el) Tooltip.lazy(el);
-                  })}}
+                  })}
                   needs-js
                 >
                   <material-symbol aria-hidden="true"
