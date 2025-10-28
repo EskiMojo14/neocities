@@ -12,7 +12,7 @@ for (const pref of [pkgManagerPref, themePref, stylePref]) {
 }
 
 expect.extend({
-  // replace jest-dom matcher with one that supports shadow roots
+  // replace matcher with one that supports shadow roots
   toHaveFocus,
   toHaveData,
 });
