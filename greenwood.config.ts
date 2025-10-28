@@ -1,8 +1,8 @@
 import type { Config } from "@greenwood/cli";
 import { greenwoodPluginImportRaw } from "@greenwood/plugin-import-raw";
+import { greenwoodPluginMarkdown } from "@greenwood/plugin-markdown";
 import { greenwoodPluginPostCss } from "@greenwood/plugin-postcss";
 import { greenwoodPluginRendererLit } from "@greenwood/plugin-renderer-lit";
-import { greenwoodPluginMarkdown } from "@greenwood/plugin-markdown";
 import { envPlugin } from "./src/greenwood/env.ts";
 import { tagsPlugin } from "./src/greenwood/tags.ts";
 

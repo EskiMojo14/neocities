@@ -1,9 +1,9 @@
-import { fn } from "storybook/test";
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { ref } from "lit/directives/ref.js";
 import { repeat } from "lit/directives/repeat.js";
+import { fn } from "storybook/test";
 import "../focus-group/focus-group.ts";
 import Tooltip from "../tooltip/tooltip.ts";
 

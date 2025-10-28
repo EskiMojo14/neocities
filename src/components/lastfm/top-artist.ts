@@ -1,13 +1,13 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { repeat } from "lit/directives/repeat.js";
+import { searchLinks } from "../../data/music.ts";
 import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
-import { searchLinks } from "../../data/music.ts";
 import "../focus-group/focus-group.ts";
 import "../skeleton/text-skeleton.ts";
 import track from "./artist.css?type=raw";
-import { repeat } from "lit/directives/repeat.js";
 
 @customElement("top-artist")
 export default class TopArtist extends withStyle(LitElement) {

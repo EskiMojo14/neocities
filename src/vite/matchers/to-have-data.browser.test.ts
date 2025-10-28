@@ -1,6 +1,6 @@
-import { page } from "vitest/browser";
 import { html } from "lit";
 import { expect, it } from "vitest";
+import { page } from "vitest/browser";
 
 it("should pass without value", () => {
   page.render(html`<div data-foo="bar">text</div>`);

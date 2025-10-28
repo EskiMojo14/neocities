@@ -1,6 +1,6 @@
-import { page, userEvent } from "vitest/browser";
 import { html } from "lit";
 import { expect, it } from "vitest";
+import { page, userEvent } from "vitest/browser";
 
 it("should pass without shadow root", async () => {
   const user = userEvent.setup();

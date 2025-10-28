@@ -17,10 +17,8 @@ const compilation: Compilation = {
 };
 
 // 3) initialize the plugin
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const rawResource = greenwoodPluginImportRaw()[0]!.provider(compilation);
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const postCssResource = greenwoodPluginPostCss()[0]!.provider(compilation);
+const rawResource = greenwoodPluginImportRaw()[0].provider(compilation);
+const postCssResource = greenwoodPluginPostCss()[0].provider(compilation);
 
 // 4) customize Vite
 export function transformRawImports(): Plugin {

@@ -1,6 +1,6 @@
-import { fn } from "storybook/test";
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
+import { fn } from "storybook/test";
 import Tooltip from "../tooltip/tooltip.ts";
 import type { ToggleButton } from "./toggle.ts";
 import { toggleButton } from "./toggle.ts";

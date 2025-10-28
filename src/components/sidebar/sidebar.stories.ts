@@ -1,6 +1,6 @@
-import { useArgs } from "storybook/preview-api";
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
+import { useArgs } from "storybook/preview-api";
 import "../../scripts/page-scroll.ts";
 import "./sidebar.ts";
 import type { ThemeChangeEvent } from "./theme-toggle/theme-toggle.ts";

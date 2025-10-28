@@ -1,12 +1,12 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { repeat } from "lit/directives/repeat.js";
+import { searchLinks } from "../../data/music.ts";
 import { withStyle } from "../../mixins/page-style.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
-import { searchLinks } from "../../data/music.ts";
 import "../focus-group/focus-group.ts";
 import track from "./track.css?type=raw";
-import { repeat } from "lit/directives/repeat.js";
 
 @customElement("top-track")
 export default class TopTrack extends withStyle(LitElement) {
