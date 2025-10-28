@@ -122,7 +122,7 @@ export default class PkgInfo extends LitElement {
           () => html`
             <div class="install">
               <fieldset
-                class="button-group install-buttons"
+                class="button-group button-group--square install-buttons"
                 @change=${(ev: Event) => {
                   this.#setPackageManager(
                     (ev.target as HTMLInputElement).value as PackageManager,

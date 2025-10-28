@@ -9,7 +9,6 @@
 }
 
 .install-buttons {
-  border-radius: 0;
   border-bottom: 1px solid var(--divider);
 }
 
