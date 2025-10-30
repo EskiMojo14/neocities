@@ -1,7 +1,18 @@
-import type { QueryKey } from "@tanstack/query-core";
+import type { StandardSchemaV1Dictionary } from "@standard-schema/utils";
+import { parseDictionarySync } from "@standard-schema/utils";
+import type {
+  QueryKey,
+  QueryOptions,
+  WithRequired,
+} from "@tanstack/query-core";
 import type { Options, SearchParamsOption } from "ky";
 import ky from "ky";
-import type { HttpCustomPredicate, PathParams } from "msw";
+import type {
+  DefaultBodyType,
+  HttpResponseResolver,
+  RequestHandlerOptions,
+} from "msw";
+import { http } from "msw";
 import * as v from "valibot";
 import env from "../constants/env.ts";
 import {
@@ -38,83 +49,156 @@ async function fetchWithSchema<TSchema extends v.GenericSchema>(
   return output;
 }
 
-type MswParams<TParams extends PropertyKey, TMultiParams extends TParams> = {
-  [K in TParams]: K extends TMultiParams ? ReadonlyArray<string> : string;
-};
+type ParamsArgs<
+  TParamsDict extends StandardSchemaV1Dictionary<
+    Extract<SearchParamsOption, Record<string, unknown>>
+  >,
+> = HasRequiredProps<
+  StandardSchemaV1Dictionary.InferInput<TParamsDict>,
+  [params: StandardSchemaV1Dictionary.InferInput<TParamsDict>],
+  [params?: StandardSchemaV1Dictionary.InferInput<TParamsDict>]
+>;
 
-const makeParamsParser =
-  <TParams extends PropertyKey, TMultiParams extends TParams>(
-    params: ReadonlyArray<TParams>,
-    multiParams: ReadonlyArray<TMultiParams>,
-  ) =>
-  (searchParams: URLSearchParams) =>
-    unsafeFromEntries(
-      params.map((key) => [
-        key,
-        multiParams.includes(key as TMultiParams)
-          ? searchParams.getAll(key as string)
-          : (searchParams.get(key as string) ?? undefined),
-      ]),
-    ) as MswParams<TParams, TMultiParams>;
+interface EndpointOptions<
+  TParamsDict extends StandardSchemaV1Dictionary<
+    Extract<SearchParamsOption, Record<string, unknown>>
+  >,
+  TResponseSchema extends v.GenericSchema<DefaultBodyType>,
+  TQueryKey extends QueryKey,
+  Selected,
+  TMultiParams extends keyof TParamsDict,
+> {
+  method: string;
+  paramsSchema?: TParamsDict;
+  responseSchema: TResponseSchema;
+  getQueryKey: (
+    params: StandardSchemaV1Dictionary.InferOutput<TParamsDict>,
+  ) => TQueryKey;
+  select?: (output: v.InferOutput<TResponseSchema>) => Selected;
+  multiParams?: Array<TMultiParams>;
+}
+
+interface Endpoint<
+  TResponseSchema extends v.GenericSchema<DefaultBodyType>,
+  TQueryKey extends QueryKey,
+  Selected,
+  TParamsDict extends StandardSchemaV1Dictionary<
+    Extract<SearchParamsOption, Record<string, unknown>>
+  >,
+  TMultiParams extends keyof TParamsDict,
+> {
+  (
+    ...args: ParamsArgs<TParamsDict>
+  ): WithRequired<
+    QueryOptions<Selected, Error, Selected, readonly ["lastfm", ...TQueryKey]>,
+    "queryKey"
+  >;
+  method: string;
+  paramsSchema: TParamsDict;
+  multiParams: Array<TMultiParams>;
+  responseSchema: TResponseSchema;
+}
 
 const buildEndpoint = <
-  TResponseSchema extends v.GenericSchema,
+  TResponseSchema extends v.GenericSchema<DefaultBodyType>,
   const TQueryKey extends QueryKey,
   Selected = v.InferOutput<TResponseSchema>,
-  TParams extends Extract<SearchParamsOption, Record<string, unknown>> = {},
-  TMultiParams extends keyof TParams = never,
+  TParamsDict extends StandardSchemaV1Dictionary<
+    Extract<SearchParamsOption, Record<string, unknown>>
+  > = {},
+  TMultiParams extends keyof TParamsDict = never,
 >({
   method,
-  params = {} as never,
+  paramsSchema = {} as never,
   responseSchema,
   getQueryKey,
   multiParams = [] as Array<TMultiParams>,
   select = (output) => output as Selected,
-}: {
-  method: string;
-  params?: {
-    [K in keyof TParams]: v.GenericSchema<TParams[K]>;
-  };
-  responseSchema: TResponseSchema;
-  getQueryKey: (params: TParams) => TQueryKey;
-  select?: (output: v.InferOutput<TResponseSchema>) => Selected;
-  multiParams?: Array<TMultiParams>;
-}) => {
-  const parseParams = makeParamsParser(unsafeKeys(params), multiParams);
-  return {
-    predicate: ({ request }: { request: Request }) => {
-      const url = new URL(request.url);
-      const matches =
-        url.hostname === "ws.audioscrobbler.com" &&
-        url.pathname === "/2.0" &&
-        url.searchParams.get("method") === method;
-      return {
-        matches,
-        params: matches ? parseParams(url.searchParams) : ({} as never),
-      } satisfies ReturnType<HttpCustomPredicate<PathParams<keyof TParams>>>;
-    },
-    queryOptions: (
-      ...[params = {} as TParams]: HasRequiredProps<
-        TParams,
-        [TParams],
-        [TParams?]
-      >
-    ) =>
-      queryOptions({
-        queryKey: ["lastfm", ...getQueryKey(params)],
+}: EndpointOptions<
+  TParamsDict,
+  TResponseSchema,
+  TQueryKey,
+  Selected,
+  TMultiParams
+>): Endpoint<TResponseSchema, TQueryKey, Selected, TParamsDict, TMultiParams> =>
+  Object.assign(
+    function endpointOptions(params: Record<string, unknown> = {}) {
+      const parsed = parseDictionarySync(paramsSchema, params);
+      return queryOptions({
+        queryKey: ["lastfm", ...getQueryKey(parsed)],
         async queryFn({ signal }) {
           const response = await fetchWithSchema(
             {
-              searchParams: { method, ...params },
+              searchParams: { method, ...parsed },
               signal,
             },
             responseSchema,
           );
           return select(response);
         },
-      }),
-  };
-};
+      });
+    },
+    {
+      method,
+      paramsSchema,
+      multiParams,
+      responseSchema,
+    },
+  );
+
+export const mockEndpoint = <
+  TResponseSchema extends v.GenericSchema<DefaultBodyType>,
+  TParamsDict extends StandardSchemaV1Dictionary<
+    Extract<SearchParamsOption, Record<string, unknown>>
+  >,
+  TMultiParams extends keyof TParamsDict = never,
+>(
+  {
+    method,
+    paramsSchema,
+    multiParams,
+  }: {
+    method: string;
+    paramsSchema: TParamsDict;
+    responseSchema: TResponseSchema;
+    multiParams: Array<TMultiParams>;
+  },
+  resolver: HttpResponseResolver<
+    {
+      [K in keyof TParamsDict]: K extends TMultiParams
+        ? ReadonlyArray<string>
+        : string;
+    },
+    never,
+    v.InferInput<TResponseSchema>
+  >,
+  options?: RequestHandlerOptions,
+) =>
+  http.get(
+    ({ request }) => {
+      const url = new URL(request.url);
+      const matches =
+        url.hostname === "ws.audioscrobbler.com" &&
+        url.pathname === "/2.0/" &&
+        url.searchParams.get("format") === "json" &&
+        url.searchParams.get("method") === method;
+      return (
+        matches && {
+          matches,
+          params: unsafeFromEntries(
+            unsafeKeys(paramsSchema).map((key) => [
+              key,
+              multiParams.includes(key as never)
+                ? url.searchParams.getAll(key)
+                : (url.searchParams.get(key) ?? ""),
+            ]),
+          ) as never,
+        }
+      );
+    },
+    resolver,
+    options,
+  );
 
 const imageSizeSchema = v.picklist([
   "small",
@@ -195,7 +279,7 @@ export type RecentTrack = v.InferOutput<typeof recentTrackSchema>;
 
 export const getRecentTracks = buildEndpoint({
   method: "user.getRecentTracks",
-  params: {
+  paramsSchema: {
     limit: v.number(),
   },
   responseSchema: v.object({
@@ -257,7 +341,7 @@ export type TopTrack = v.InferOutput<typeof topTrackSchema>;
 
 export const getTopTracks = buildEndpoint({
   method: "user.getTopTracks",
-  params: {
+  paramsSchema: {
     period: periodSchema,
     limit: v.number(),
   },
@@ -295,7 +379,7 @@ const topArtistsResponseSchema = v.object({
 
 export const getTopArtists = buildEndpoint({
   method: "user.getTopArtists",
-  params: {
+  paramsSchema: {
     period: periodSchema,
     limit: v.number(),
   },

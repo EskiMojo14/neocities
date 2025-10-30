@@ -26,7 +26,7 @@ export default class TopArtists extends withStyle(LitElement) {
   period: Period = "overall";
 
   #fetchArtists = new QueryController(this, () =>
-    getTopArtists.queryOptions({ period: this.period, limit: 5 }),
+    getTopArtists({ period: this.period, limit: 5 }),
   );
 
   render(): unknown {

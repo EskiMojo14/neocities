@@ -14,6 +14,9 @@ importers:
       '@lit/task':
         specifier: ^1.0.3
         version: 1.0.3
+      '@standard-schema/utils':
+        specifier: link:../standard-schema/packages/utils
+        version: link:../standard-schema/packages/utils
       '@tanstack/query-core':
         specifier: ^5.90.5
         version: 5.90.5

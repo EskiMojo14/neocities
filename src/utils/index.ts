@@ -92,7 +92,7 @@ export function getActiveElement(parent?: HTMLElement) {
   return el;
 }
 
-export const unsafeKeys: <T extends object>(obj: T) => Array<keyof T> =
+export const unsafeKeys: <T extends object>(obj: T) => Array<keyof T & string> =
   Object.keys;
 export const unsafeEntries: <T extends object>(
   obj: T,
