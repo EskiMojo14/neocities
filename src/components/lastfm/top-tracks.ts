@@ -1,4 +1,4 @@
-import { html, LitElement, nothing, unsafeCSS } from "lit";
+import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
@@ -25,15 +25,15 @@ export default class TopTracks extends withStyle(LitElement) {
   @state()
   period: Period = "overall";
 
-  #fetchTracks = new QueryController(this, () =>
-    getTopTracks({
+  #fetchTracks = new QueryController(this, () => ({
+    ...getTopTracks({
       period: this.period,
       limit: 5,
     }),
-  );
+    enabled: typeof window !== "undefined",
+  }));
 
   render(): unknown {
-    if (typeof window === "undefined") return nothing;
     return html`
       <h4 class="headline5">Top tracks</h4>
       <div class="button-group-container">
@@ -63,7 +63,7 @@ export default class TopTracks extends withStyle(LitElement) {
       </div>
       <ol class="list">
         ${this.#fetchTracks.render({
-          pending: () =>
+          initialOrPending: () =>
             repeat(
               Array(5),
               () => "skeleton",

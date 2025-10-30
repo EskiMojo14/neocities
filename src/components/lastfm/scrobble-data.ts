@@ -1,4 +1,4 @@
-import { html, LitElement, nothing, unsafeCSS } from "lit";
+import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { QueryController } from "../../controllers/query-controller.ts";
@@ -26,12 +26,14 @@ const userDataChips: Record<
 export default class ScrobbleData extends withStyle(LitElement) {
   static styles = [unsafeCSS(base)];
 
-  #fetchData = new QueryController(this, getUserData);
+  #fetchData = new QueryController(this, () => ({
+    ...getUserData(),
+    enabled: typeof window !== "undefined",
+  }));
 
   render(): unknown {
-    if (typeof window === "undefined") return nothing;
     return this.#fetchData.render({
-      pending: () =>
+      initialOrPending: () =>
         html`<ul class="chip-collection">
           ${repeat(
             unsafeEntries(userDataChips),

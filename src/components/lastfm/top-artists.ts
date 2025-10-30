@@ -1,4 +1,4 @@
-import { html, LitElement, nothing, unsafeCSS } from "lit";
+import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
@@ -25,12 +25,12 @@ export default class TopArtists extends withStyle(LitElement) {
   @state()
   period: Period = "overall";
 
-  #fetchArtists = new QueryController(this, () =>
-    getTopArtists({ period: this.period, limit: 5 }),
-  );
+  #fetchArtists = new QueryController(this, () => ({
+    ...getTopArtists({ period: this.period, limit: 5 }),
+    enabled: typeof window !== "undefined",
+  }));
 
   render(): unknown {
-    if (typeof window === "undefined") return nothing;
     return html`
       <h4 class="headline5">Top artists</h4>
       <div class="button-group-container">
@@ -60,7 +60,7 @@ export default class TopArtists extends withStyle(LitElement) {
       </div>
       <ol class="list">
         ${this.#fetchArtists.render({
-          pending: () =>
+          initialOrPending: () =>
             repeat(
               Array(5),
               () => "skeleton",

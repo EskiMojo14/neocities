@@ -1,4 +1,4 @@
-import { html, LitElement, nothing, unsafeCSS } from "lit";
+import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
@@ -14,15 +14,17 @@ import "./recent-track.ts";
 export default class RecentTracks extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(list)];
 
-  #fetchTracks = new QueryController(this, () => getRecentTracks({ limit: 5 }));
+  #fetchTracks = new QueryController(this, () => ({
+    ...getRecentTracks({ limit: 5 }),
+    enabled: typeof window !== "undefined",
+  }));
 
   render(): unknown {
-    if (typeof window === "undefined") return nothing;
     return html`
       <h4 class="headline5">Recently played</h4>
       <ol class="list">
         ${this.#fetchTracks.render({
-          pending: () =>
+          initialOrPending: () =>
             repeat(
               Array(5),
               () => "skeleton",

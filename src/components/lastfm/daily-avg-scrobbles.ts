@@ -1,4 +1,4 @@
-import { html, LitElement, nothing, unsafeCSS } from "lit";
+import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { QueryController } from "../../controllers/query-controller.ts";
 import { getUserData } from "../../data/lastfm.ts";
@@ -23,13 +23,13 @@ export default class DailyAvgScrobbles extends withStyle(LitElement) {
 
   #fetchPlaycount = new QueryController(this, () => ({
     ...getUserData(),
+    enabled: typeof window !== "undefined",
     select: (data) => this.calculateDailyAvg(data.playcount),
   }));
 
   render(): unknown {
-    if (typeof window === "undefined") return nothing;
     return this.#fetchPlaycount.render({
-      pending: () =>
+      initialOrPending: () =>
         html` (an average of <text-skeleton>00</text-skeleton> scrobbles per
           day)`,
       success: ({ data }) =>

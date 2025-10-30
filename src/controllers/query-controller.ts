@@ -14,6 +14,7 @@ type QueryResultRenderers<TData, TError> = {
   ) => unknown;
 } & {
   initial?: () => unknown;
+  initialOrPending?: () => unknown;
 };
 
 type RendererResult<
@@ -122,9 +123,14 @@ export class QueryController<
   render<TRenderers extends QueryResultRenderers<TData, TError>>(
     renderers: TRenderers,
   ): RendererResult<TRenderers> {
-    const renderer = !this.result
-      ? renderers.initial
-      : renderers[this.result.status];
+    let renderer;
+    if (renderers.initialOrPending && (!this.result || this.result.isPending)) {
+      renderer = renderers.initialOrPending;
+    } else {
+      renderer = this.result
+        ? renderers[this.result.status]
+        : renderers.initial;
+    }
     return (
       renderer ? renderer(this.result as never) : nothing
     ) as RendererResult<TRenderers>;
