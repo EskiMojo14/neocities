@@ -32,7 +32,10 @@ export const test = baseTest.extend<{
   worker: [
     async ({}, use) => {
       // Start the worker before the test.
-      await worker.start();
+      await worker.start({
+        quiet: true,
+        onUnhandledRequest: "error",
+      });
 
       // Expose the worker object on the test's context.
       await use(worker);
