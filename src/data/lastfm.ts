@@ -1,11 +1,9 @@
-import type { StandardSchemaV1Dictionary } from "@standard-schema/utils";
-import { parseDictionarySync } from "@standard-schema/utils";
 import type {
   QueryKey,
   QueryOptions,
   WithRequired,
 } from "@tanstack/query-core";
-import type { Options, SearchParamsOption } from "ky";
+import type { Options } from "ky";
 import ky from "ky";
 import * as v from "valibot";
 import env from "../constants/env.ts";
@@ -39,31 +37,31 @@ async function fetchWithSchema<TSchema extends v.GenericSchema>(
   return output;
 }
 
-type ParamsArgs<
-  TParamsDict extends StandardSchemaV1Dictionary<
-    Extract<SearchParamsOption, Record<string, unknown>>
+type ParamsSchema = v.ObjectSchema<
+  Record<
+    string,
+    v.GenericSchema<unknown, string | number | boolean | undefined>
   >,
-> = HasRequiredProps<
-  StandardSchemaV1Dictionary.InferInput<TParamsDict>,
-  [params: StandardSchemaV1Dictionary.InferInput<TParamsDict>],
-  [params?: StandardSchemaV1Dictionary.InferInput<TParamsDict>]
+  v.ErrorMessage<v.ObjectIssue> | undefined
+>;
+
+type ParamsArgs<TParamsSchema extends ParamsSchema> = HasRequiredProps<
+  v.InferInput<TParamsSchema>,
+  [params: v.InferInput<TParamsSchema>],
+  [params?: v.InferInput<TParamsSchema>]
 >;
 
 interface EndpointOptions<
-  TParamsDict extends StandardSchemaV1Dictionary<
-    Extract<SearchParamsOption, Record<string, unknown>>
-  >,
+  TParamsSchema extends ParamsSchema,
   TResponseSchema extends v.GenericSchema,
   TQueryKey extends QueryKey,
   Selected,
-  TMultiParams extends keyof TParamsDict,
+  TMultiParams extends keyof v.InferInput<TParamsSchema>,
 > {
   method: string;
-  paramsSchema?: TParamsDict;
+  paramsSchema: TParamsSchema;
   responseSchema: TResponseSchema;
-  getQueryKey: (
-    params: StandardSchemaV1Dictionary.InferOutput<TParamsDict>,
-  ) => TQueryKey;
+  getQueryKey: (params: v.InferInput<TParamsSchema>) => TQueryKey;
   select?: (output: v.InferOutput<TResponseSchema>) => Selected;
   multiParams?: Array<TMultiParams>;
 }
@@ -72,19 +70,17 @@ interface Endpoint<
   TResponseSchema extends v.GenericSchema,
   TQueryKey extends QueryKey,
   Selected,
-  TParamsDict extends StandardSchemaV1Dictionary<
-    Extract<SearchParamsOption, Record<string, unknown>>
-  >,
-  TMultiParams extends keyof TParamsDict,
+  TParamsSchema extends ParamsSchema,
+  TMultiParams extends keyof v.InferInput<TParamsSchema>,
 > {
   (
-    ...args: ParamsArgs<TParamsDict>
+    ...args: ParamsArgs<TParamsSchema>
   ): WithRequired<
     QueryOptions<Selected, Error, Selected, readonly ["lastfm", ...TQueryKey]>,
     "queryKey"
   >;
   method: string;
-  paramsSchema: TParamsDict;
+  paramsSchema: TParamsSchema;
   multiParams: Array<TMultiParams>;
   responseSchema: TResponseSchema;
 }
@@ -92,28 +88,32 @@ interface Endpoint<
 const buildEndpoint = <
   TResponseSchema extends v.GenericSchema,
   const TQueryKey extends QueryKey,
+  TParamsSchema extends ParamsSchema = v.ObjectSchema<{}, undefined>,
   Selected = v.InferOutput<TResponseSchema>,
-  TParamsDict extends StandardSchemaV1Dictionary<
-    Extract<SearchParamsOption, Record<string, unknown>>
-  > = {},
-  TMultiParams extends keyof TParamsDict = never,
+  TMultiParams extends keyof v.InferInput<TParamsSchema> = never,
 >({
   method,
-  paramsSchema = {} as never,
+  paramsSchema,
   responseSchema,
   getQueryKey,
   multiParams = [] as Array<TMultiParams>,
   select = (output) => output as Selected,
 }: EndpointOptions<
-  TParamsDict,
+  TParamsSchema,
   TResponseSchema,
   TQueryKey,
   Selected,
   TMultiParams
->): Endpoint<TResponseSchema, TQueryKey, Selected, TParamsDict, TMultiParams> =>
-  Object.assign(
+>): Endpoint<
+  TResponseSchema,
+  TQueryKey,
+  Selected,
+  TParamsSchema,
+  TMultiParams
+> => {
+  return Object.assign(
     function endpointOptions(params: Record<string, unknown> = {}) {
-      const parsed = parseDictionarySync(paramsSchema, params);
+      const parsed = v.parse(paramsSchema, params);
       return queryOptions({
         queryKey: ["lastfm", ...getQueryKey(parsed)],
         async queryFn({ signal }) {
@@ -135,6 +135,7 @@ const buildEndpoint = <
       responseSchema,
     },
   );
+};
 
 const imageSizeSchema = v.picklist([
   "small",
@@ -215,9 +216,9 @@ export type RecentTrack = v.InferOutput<typeof recentTrackSchema>;
 
 export const getRecentTracks = buildEndpoint({
   method: "user.getRecentTracks",
-  paramsSchema: {
+  paramsSchema: v.object({
     limit: v.number(),
-  },
+  }),
   responseSchema: v.object({
     recenttracks: v.object({
       track: v.array(recentTrackSchema),
@@ -277,10 +278,10 @@ export type TopTrack = v.InferOutput<typeof topTrackSchema>;
 
 export const getTopTracks = buildEndpoint({
   method: "user.getTopTracks",
-  paramsSchema: {
+  paramsSchema: v.object({
     period: periodSchema,
     limit: v.number(),
-  },
+  }),
   responseSchema: v.object({
     toptracks: v.object({
       track: v.array(topTrackSchema),
@@ -315,10 +316,10 @@ const topArtistsResponseSchema = v.object({
 
 export const getTopArtists = buildEndpoint({
   method: "user.getTopArtists",
-  paramsSchema: {
+  paramsSchema: v.object({
     period: periodSchema,
     limit: v.number(),
-  },
+  }),
   responseSchema: topArtistsResponseSchema,
   getQueryKey: ({ period, limit }) => ["top-artists", { period, limit }],
   select: (res) => res.topartists.artist,
@@ -335,6 +336,7 @@ export type UserData = v.InferOutput<typeof userDataSchema>;
 
 export const getUserData = buildEndpoint({
   method: "user.getInfo",
+  paramsSchema: v.object({}),
   responseSchema: v.object({
     user: userDataSchema,
   }),

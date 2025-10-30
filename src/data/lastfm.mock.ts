@@ -1,5 +1,3 @@
-import type { StandardSchemaV1Dictionary } from "@standard-schema/utils";
-import type { SearchParamsOption } from "ky";
 import type {
   DefaultBodyType,
   HttpResponseResolver,
@@ -10,11 +8,9 @@ import type * as v from "valibot";
 import { unsafeFromEntries, unsafeKeys } from "../utils/index.ts";
 
 export const mockEndpoint = <
-  TResponseSchema extends v.GenericSchema<DefaultBodyType>,
-  TParamsDict extends StandardSchemaV1Dictionary<
-    Extract<SearchParamsOption, Record<string, unknown>>
-  >,
-  TMultiParams extends keyof TParamsDict = never,
+  TResponse extends DefaultBodyType,
+  TParamsEntries extends Record<string, unknown>,
+  TMultiParams extends keyof TParamsEntries = never,
 >(
   {
     method,
@@ -22,18 +18,18 @@ export const mockEndpoint = <
     multiParams,
   }: {
     method: string;
-    paramsSchema: TParamsDict;
-    responseSchema: TResponseSchema;
+    paramsSchema: { entries: TParamsEntries };
+    responseSchema: v.GenericSchema<TResponse, unknown>;
     multiParams: Array<TMultiParams>;
   },
   resolver: HttpResponseResolver<
     {
-      [K in keyof TParamsDict]: K extends TMultiParams
+      [K in keyof TParamsEntries]: K extends TMultiParams
         ? ReadonlyArray<string>
         : string;
     },
     never,
-    v.InferInput<TResponseSchema>
+    TResponse
   >,
   options?: RequestHandlerOptions,
 ) =>
@@ -49,7 +45,7 @@ export const mockEndpoint = <
         matches && {
           matches,
           params: unsafeFromEntries(
-            unsafeKeys(paramsSchema).map((key) => [
+            unsafeKeys(paramsSchema.entries).map((key) => [
               key,
               multiParams.includes(key as never)
                 ? url.searchParams.getAll(key)
