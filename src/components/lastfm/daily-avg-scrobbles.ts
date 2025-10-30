@@ -9,15 +9,16 @@ import "../skeleton/text-skeleton.ts";
 import "../spinner/spinner.ts";
 
 const startDate = new Date("2017-09-22");
+const oneDay = 1000 * 60 * 60 * 24;
 
 @customElement("daily-avg-scrobbles")
 export default class DailyAvgScrobbles extends withStyle(LitElement) {
   static styles = [unsafeCSS(base)];
 
   calculateDailyAvg(playcount: number) {
-    return Math.round(
-      playcount / ((Date.now() - startDate.getTime()) / (1000 * 60 * 60 * 24)),
-    );
+    const msSince = Date.now() - startDate.getTime();
+    const daysSince = msSince / oneDay;
+    return Math.round(playcount / daysSince);
   }
 
   #fetchPlaycount = new QueryController(this, () => ({
