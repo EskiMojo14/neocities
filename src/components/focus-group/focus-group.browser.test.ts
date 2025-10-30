@@ -1,6 +1,7 @@
 import { html } from "lit";
-import { expect, it } from "vitest";
+import { expect } from "vitest";
 import { page, userEvent } from "vitest/browser";
+import { it } from "../../vite/utils.browser.ts";
 import "./focus-group.ts";
 
 it("should move focus with arrow keys", async () => {

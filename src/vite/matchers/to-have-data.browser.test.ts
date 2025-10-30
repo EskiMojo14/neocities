@@ -1,6 +1,7 @@
 import { html } from "lit";
-import { expect, it } from "vitest";
+import { expect } from "vitest";
 import { page } from "vitest/browser";
+import { it } from "../utils.browser.ts";
 
 it("should pass without value", () => {
   page.render(html`<div data-foo="bar">text</div>`);

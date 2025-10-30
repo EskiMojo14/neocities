@@ -80,7 +80,6 @@
   "prettier": {},
   "msw": {
     "workerDirectory": [
-      "static",
       "src/assets"
     ]
   }

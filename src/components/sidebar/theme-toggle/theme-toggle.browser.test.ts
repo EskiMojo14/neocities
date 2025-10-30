@@ -1,8 +1,9 @@
 import { html } from "lit";
-import { afterAll, expect, it } from "vitest";
+import { afterAll, expect } from "vitest";
 import { page, userEvent } from "vitest/browser";
 import { themePref } from "../../../constants/prefs.ts";
 import { capitalize } from "../../../utils/index.ts";
+import { it } from "../../../vite/utils.browser.ts";
 import "./theme-toggle.ts";
 
 afterAll(() => {
