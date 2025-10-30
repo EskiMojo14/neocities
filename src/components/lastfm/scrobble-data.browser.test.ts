@@ -2,7 +2,8 @@ import { html } from "lit";
 import { delay, HttpResponse } from "msw";
 import { expect } from "vitest";
 import { page } from "vitest/browser";
-import { getUserData, mockEndpoint } from "../../data/lastfm.ts";
+import { mockEndpoint } from "../../data/lastfm.mock.ts";
+import { getUserData } from "../../data/lastfm.ts";
 import { it } from "../../vite/utils.browser.ts";
 import "./scrobble-data.ts";
 

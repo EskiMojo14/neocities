@@ -7,19 +7,9 @@ import type {
 } from "@tanstack/query-core";
 import type { Options, SearchParamsOption } from "ky";
 import ky from "ky";
-import type {
-  DefaultBodyType,
-  HttpResponseResolver,
-  RequestHandlerOptions,
-} from "msw";
-import { http } from "msw";
 import * as v from "valibot";
 import env from "../constants/env.ts";
-import {
-  type HasRequiredProps,
-  unsafeFromEntries,
-  unsafeKeys,
-} from "../utils/index.ts";
+import type { HasRequiredProps } from "../utils/index.ts";
 import * as vUtils from "../utils/valibot.ts";
 import { queryOptions } from "./query.ts";
 
@@ -63,7 +53,7 @@ interface EndpointOptions<
   TParamsDict extends StandardSchemaV1Dictionary<
     Extract<SearchParamsOption, Record<string, unknown>>
   >,
-  TResponseSchema extends v.GenericSchema<DefaultBodyType>,
+  TResponseSchema extends v.GenericSchema,
   TQueryKey extends QueryKey,
   Selected,
   TMultiParams extends keyof TParamsDict,
@@ -79,7 +69,7 @@ interface EndpointOptions<
 }
 
 interface Endpoint<
-  TResponseSchema extends v.GenericSchema<DefaultBodyType>,
+  TResponseSchema extends v.GenericSchema,
   TQueryKey extends QueryKey,
   Selected,
   TParamsDict extends StandardSchemaV1Dictionary<
@@ -100,7 +90,7 @@ interface Endpoint<
 }
 
 const buildEndpoint = <
-  TResponseSchema extends v.GenericSchema<DefaultBodyType>,
+  TResponseSchema extends v.GenericSchema,
   const TQueryKey extends QueryKey,
   Selected = v.InferOutput<TResponseSchema>,
   TParamsDict extends StandardSchemaV1Dictionary<
@@ -144,60 +134,6 @@ const buildEndpoint = <
       multiParams,
       responseSchema,
     },
-  );
-
-export const mockEndpoint = <
-  TResponseSchema extends v.GenericSchema<DefaultBodyType>,
-  TParamsDict extends StandardSchemaV1Dictionary<
-    Extract<SearchParamsOption, Record<string, unknown>>
-  >,
-  TMultiParams extends keyof TParamsDict = never,
->(
-  {
-    method,
-    paramsSchema,
-    multiParams,
-  }: {
-    method: string;
-    paramsSchema: TParamsDict;
-    responseSchema: TResponseSchema;
-    multiParams: Array<TMultiParams>;
-  },
-  resolver: HttpResponseResolver<
-    {
-      [K in keyof TParamsDict]: K extends TMultiParams
-        ? ReadonlyArray<string>
-        : string;
-    },
-    never,
-    v.InferInput<TResponseSchema>
-  >,
-  options?: RequestHandlerOptions,
-) =>
-  http.get(
-    ({ request }) => {
-      const url = new URL(request.url);
-      const matches =
-        url.hostname === "ws.audioscrobbler.com" &&
-        url.pathname === "/2.0/" &&
-        url.searchParams.get("format") === "json" &&
-        url.searchParams.get("method") === method;
-      return (
-        matches && {
-          matches,
-          params: unsafeFromEntries(
-            unsafeKeys(paramsSchema).map((key) => [
-              key,
-              multiParams.includes(key as never)
-                ? url.searchParams.getAll(key)
-                : (url.searchParams.get(key) ?? ""),
-            ]),
-          ) as never,
-        }
-      );
-    },
-    resolver,
-    options,
   );
 
 const imageSizeSchema = v.picklist([
