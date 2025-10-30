@@ -21,6 +21,7 @@ export default defineConfig({
       {
         extends: true,
         test: {
+          name: "node",
           include: ["**/*.node.test.ts"],
           setupFiles: ["src/vite/setup.node.ts"],
         },
@@ -28,6 +29,7 @@ export default defineConfig({
       {
         extends: true,
         test: {
+          name: "browser",
           include: ["**/*.browser.test.ts"],
           setupFiles: ["src/vite/setup.browser.ts"],
           browser: {
