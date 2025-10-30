@@ -6,55 +6,57 @@ import { it } from "../../vite/utils.browser.ts";
 import "./pkg-info.ts";
 
 it("should only show docs link when set", async () => {
-  const { getByRole, rerender } = page.render(html`
+  const screen = page.render(html`
     <pkg-info pkg="foo" repo="foo"></pkg-info>
   `);
   const links = {
-    docs: getByRole("link", { name: "Docs" }),
-    npm: getByRole("link", { name: "NPM" }),
-    github: getByRole("link", { name: "GitHub" }),
+    docs: screen.getByRole("link", { name: "Docs" }),
+    npm: screen.getByRole("link", { name: "NPM" }),
+    github: screen.getByRole("link", { name: "GitHub" }),
   };
   expect(links.docs.query()).not.toBeInTheDocument();
   await expect.element(links.npm).toBeInTheDocument();
   await expect.element(links.github).toBeInTheDocument();
 
-  rerender(html`
+  screen.rerender(html`
     <pkg-info pkg="foo" repo="foo" docs="https://foo.com"></pkg-info>
   `);
   await expect.element(links.docs).toBeInTheDocument();
 });
 
 it("should show install command when include-install is set", async () => {
-  const { getByText, rerender } = page.render(html`
+  const screen = page.render(html`
     <pkg-info pkg="foo" repo="foo"></pkg-info>
   `);
-  expect(getByText("Install with").query()).not.toBeInTheDocument();
+  expect(screen.getByText("Install with").query()).not.toBeInTheDocument();
 
-  rerender(html` <pkg-info pkg="foo" repo="foo" include-install></pkg-info> `);
-  await expect.element(getByText("Install with")).toBeInTheDocument();
+  screen.rerender(html`
+    <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
+  `);
+  await expect.element(screen.getByText("Install with")).toBeInTheDocument();
 });
 
 it("should show devDep flag when set", async () => {
-  const { getByText, rerender } = page.render(html`
+  const screen = page.render(html`
     <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
   `);
-  expect(getByText("-D").query()).not.toBeInTheDocument();
+  expect(screen.getByText("-D").query()).not.toBeInTheDocument();
 
-  rerender(html`
+  screen.rerender(html`
     <pkg-info pkg="foo" repo="foo" dev-dep="true" include-install></pkg-info>
   `);
-  await expect.element(getByText("-D")).toBeInTheDocument();
+  await expect.element(screen.getByText("-D")).toBeInTheDocument();
 });
 
 it("should allow switching between package managers", async () => {
   localStorage.removeItem(pkgManagerPref.storageKey);
 
-  const { getByLabelText } = page.render(html`
+  const screen = page.render(html`
     <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
   `);
 
   for (const pkgManager of pkgManagerPref.options) {
-    const button = getByLabelText(`Install with ${pkgManager}`);
+    const button = screen.getByLabelText(`Install with ${pkgManager}`);
 
     await button.click();
     await expect.poll(() => pkgManagerPref.storage).toBe(pkgManager);

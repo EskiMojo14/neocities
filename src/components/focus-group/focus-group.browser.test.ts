@@ -5,7 +5,7 @@ import { it } from "../../vite/utils.browser.ts";
 import "./focus-group.ts";
 
 it("should move focus with arrow keys", async ({ user }) => {
-  const { getByText } = page.render(html`
+  const screen = page.render(html`
     <focus-group>
       <button>1</button>
       <button>2</button>
@@ -13,9 +13,9 @@ it("should move focus with arrow keys", async ({ user }) => {
     </focus-group>
   `);
   const buttons = {
-    1: getByText("1"),
-    2: getByText("2"),
-    3: getByText("3"),
+    1: screen.getByText("1"),
+    2: screen.getByText("2"),
+    3: screen.getByText("3"),
   };
   await buttons[1].click();
   await expect.element(buttons[1]).toHaveFocus();

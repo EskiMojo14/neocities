@@ -11,10 +11,10 @@ afterAll(() => {
 });
 
 it("should select the correct theme", async () => {
-  const { getByLabelText } = page.render(html`<theme-toggle></theme-toggle>`);
+  const screen = page.render(html`<theme-toggle></theme-toggle>`);
 
   for (const theme of themePref.options) {
-    const label = getByLabelText(`${capitalize(theme)} theme`);
+    const label = screen.getByLabelText(`${capitalize(theme)} theme`);
     await label.click();
     expect(themePref.data).toBe(theme);
   }

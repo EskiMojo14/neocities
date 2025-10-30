@@ -11,10 +11,10 @@ afterAll(() => {
 });
 
 it("should select the correct style", async () => {
-  const { getByLabelText } = page.render(html`<style-toggle></style-toggle>`);
+  const screen = page.render(html`<style-toggle></style-toggle>`);
 
   for (const theme of stylePref.options) {
-    const label = getByLabelText(`${capitalize(theme)} style`);
+    const label = screen.getByLabelText(`${capitalize(theme)} style`);
     await label.click();
     expect(stylePref.data).toBe(theme);
   }
