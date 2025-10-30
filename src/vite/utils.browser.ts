@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-pattern */
 import type { SetupWorker } from "msw/browser";
 import { test as baseTest } from "vitest";
 import type { UserEvent } from "vitest/browser";
@@ -6,7 +7,7 @@ import { worker } from "../mocks/browser.ts";
 
 export const test = baseTest.extend<{ worker: SetupWorker; user: UserEvent }>({
   worker: [
-    async (_, use) => {
+    async ({}, use) => {
       // Start the worker before the test.
       await worker.start();
 
@@ -24,7 +25,7 @@ export const test = baseTest.extend<{ worker: SetupWorker; user: UserEvent }>({
       auto: true,
     },
   ],
-  user: (_, use) => use(userEvent.setup()),
+  user: ({}, use) => use(userEvent.setup()),
 });
 
 export { test as it };
