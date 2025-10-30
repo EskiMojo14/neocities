@@ -55,6 +55,12 @@ export type WithOptional<T, K extends keyof T> = Compute<
 export type WithRequired<T, K extends keyof T> = Compute<
   Omit<T, K> & Required<Pick<T, K>>
 >;
+export type NonOptionalKeys<T> = {
+  [K in keyof T]-?: undefined extends T[K] ? never : K;
+}[keyof T];
+
+export type HasRequiredProps<T, True, False> =
+  NonOptionalKeys<T> extends never ? False : True;
 
 export function uniqueBy<T>(getKey: (item: T) => unknown) {
   const seen = new Set<unknown>();

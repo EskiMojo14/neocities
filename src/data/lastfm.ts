@@ -1,7 +1,14 @@
-import type { Options } from "ky";
+import type { QueryKey } from "@tanstack/query-core";
+import type { Options, SearchParamsOption } from "ky";
 import ky from "ky";
+import type { HttpCustomPredicate, PathParams } from "msw";
 import * as v from "valibot";
 import env from "../constants/env.ts";
+import {
+  type HasRequiredProps,
+  unsafeFromEntries,
+  unsafeKeys,
+} from "../utils/index.ts";
 import * as vUtils from "../utils/valibot.ts";
 import { queryOptions } from "./query.ts";
 
@@ -30,6 +37,84 @@ async function fetchWithSchema<TSchema extends v.GenericSchema>(
   }
   return output;
 }
+
+type MswParams<TParams extends PropertyKey, TMultiParams extends TParams> = {
+  [K in TParams]: K extends TMultiParams ? ReadonlyArray<string> : string;
+};
+
+const makeParamsParser =
+  <TParams extends PropertyKey, TMultiParams extends TParams>(
+    params: ReadonlyArray<TParams>,
+    multiParams: ReadonlyArray<TMultiParams>,
+  ) =>
+  (searchParams: URLSearchParams) =>
+    unsafeFromEntries(
+      params.map((key) => [
+        key,
+        multiParams.includes(key as TMultiParams)
+          ? searchParams.getAll(key as string)
+          : (searchParams.get(key as string) ?? undefined),
+      ]),
+    ) as MswParams<TParams, TMultiParams>;
+
+const buildEndpoint = <
+  TResponseSchema extends v.GenericSchema,
+  const TQueryKey extends QueryKey,
+  Selected = v.InferOutput<TResponseSchema>,
+  TParams extends Extract<SearchParamsOption, Record<string, unknown>> = {},
+  TMultiParams extends keyof TParams = never,
+>({
+  method,
+  params = {} as never,
+  responseSchema,
+  getQueryKey,
+  multiParams = [] as Array<TMultiParams>,
+  select = (output) => output as Selected,
+}: {
+  method: string;
+  params?: {
+    [K in keyof TParams]: v.GenericSchema<TParams[K]>;
+  };
+  responseSchema: TResponseSchema;
+  getQueryKey: (params: TParams) => TQueryKey;
+  select?: (output: v.InferOutput<TResponseSchema>) => Selected;
+  multiParams?: Array<TMultiParams>;
+}) => {
+  const parseParams = makeParamsParser(unsafeKeys(params), multiParams);
+  return {
+    predicate: ({ request }: { request: Request }) => {
+      const url = new URL(request.url);
+      const matches =
+        url.hostname === "ws.audioscrobbler.com" &&
+        url.pathname === "/2.0" &&
+        url.searchParams.get("method") === method;
+      return {
+        matches,
+        params: matches ? parseParams(url.searchParams) : ({} as never),
+      } satisfies ReturnType<HttpCustomPredicate<PathParams<keyof TParams>>>;
+    },
+    queryOptions: (
+      ...[params = {} as TParams]: HasRequiredProps<
+        TParams,
+        [TParams],
+        [TParams?]
+      >
+    ) =>
+      queryOptions({
+        queryKey: ["lastfm", ...getQueryKey(params)],
+        async queryFn({ signal }) {
+          const response = await fetchWithSchema(
+            {
+              searchParams: { method, ...params },
+              signal,
+            },
+            responseSchema,
+          );
+          return select(response);
+        },
+      }),
+  };
+};
 
 const imageSizeSchema = v.picklist([
   "small",
@@ -108,26 +193,19 @@ const recentTrackSchema = v.union([
 
 export type RecentTrack = v.InferOutput<typeof recentTrackSchema>;
 
-const recentTracksResponseSchema = v.object({
-  recenttracks: v.object({
-    track: v.array(recentTrackSchema),
+export const getRecentTracks = buildEndpoint({
+  method: "user.getRecentTracks",
+  params: {
+    limit: v.number(),
+  },
+  responseSchema: v.object({
+    recenttracks: v.object({
+      track: v.array(recentTrackSchema),
+    }),
   }),
+  getQueryKey: ({ limit }) => ["recent-tracks", { limit }],
+  select: (res) => res.recenttracks.track,
 });
-
-export const getRecentTracks = (limit: number) =>
-  queryOptions({
-    queryKey: ["lastfm", "recent-tracks", limit],
-    async queryFn({ signal }) {
-      const response = await fetchWithSchema(
-        {
-          searchParams: { method: "user.getRecentTracks", limit },
-          signal,
-        },
-        recentTracksResponseSchema,
-      );
-      return response.recenttracks.track;
-    },
-  });
 
 export const periodSchema = v.picklist([
   "7day",
@@ -177,26 +255,20 @@ const topTrackSchema = v.pipe(
 
 export type TopTrack = v.InferOutput<typeof topTrackSchema>;
 
-const topTracksResponseSchema = v.object({
-  toptracks: v.object({
-    track: v.array(topTrackSchema),
+export const getTopTracks = buildEndpoint({
+  method: "user.getTopTracks",
+  params: {
+    period: periodSchema,
+    limit: v.number(),
+  },
+  responseSchema: v.object({
+    toptracks: v.object({
+      track: v.array(topTrackSchema),
+    }),
   }),
+  getQueryKey: ({ period, limit }) => ["top-tracks", { period, limit }],
+  select: (res) => res.toptracks.track,
 });
-
-export const getTopTracks = (period: Period, limit: number) =>
-  queryOptions({
-    queryKey: ["lastfm", "top-tracks", period, limit],
-    async queryFn({ signal }) {
-      const response = await fetchWithSchema(
-        {
-          searchParams: { method: "user.getTopTracks", limit, period },
-          signal,
-        },
-        topTracksResponseSchema,
-      );
-      return response.toptracks.track;
-    },
-  });
 
 const topArtistSchema = v.pipe(
   v.object({
@@ -221,20 +293,16 @@ const topArtistsResponseSchema = v.object({
   }),
 });
 
-export const getTopArtists = (period: Period, limit: number) =>
-  queryOptions({
-    queryKey: ["lastfm", "top-artists", period, limit],
-    async queryFn({ signal }) {
-      const response = await fetchWithSchema(
-        {
-          searchParams: { method: "user.getTopArtists", limit, period },
-          signal,
-        },
-        topArtistsResponseSchema,
-      );
-      return response.topartists.artist;
-    },
-  });
+export const getTopArtists = buildEndpoint({
+  method: "user.getTopArtists",
+  params: {
+    period: periodSchema,
+    limit: v.number(),
+  },
+  responseSchema: topArtistsResponseSchema,
+  getQueryKey: ({ period, limit }) => ["top-artists", { period, limit }],
+  select: (res) => res.topartists.artist,
+});
 
 const userDataSchema = v.object({
   playcount: vUtils.coerceNumber,
@@ -245,21 +313,11 @@ const userDataSchema = v.object({
 
 export type UserData = v.InferOutput<typeof userDataSchema>;
 
-const userResponseSchema = v.object({
-  user: userDataSchema,
+export const getUserData = buildEndpoint({
+  method: "user.getInfo",
+  responseSchema: v.object({
+    user: userDataSchema,
+  }),
+  getQueryKey: () => ["user"],
+  select: (res) => res.user,
 });
-
-export const getUserData = () =>
-  queryOptions({
-    queryKey: ["lastfm", "user"],
-    async queryFn({ signal }) {
-      const response = await fetchWithSchema(
-        {
-          searchParams: { method: "user.getInfo" },
-          signal,
-        },
-        userResponseSchema,
-      );
-      return response.user;
-    },
-  });

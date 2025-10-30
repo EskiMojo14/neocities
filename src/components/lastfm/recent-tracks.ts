@@ -14,7 +14,9 @@ import "./recent-track.ts";
 export default class RecentTracks extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(list)];
 
-  #fetchTracks = new QueryController(this, () => getRecentTracks(5));
+  #fetchTracks = new QueryController(this, () =>
+    getRecentTracks.queryOptions({ limit: 5 }),
+  );
 
   render(): unknown {
     if (typeof window === "undefined") return nothing;

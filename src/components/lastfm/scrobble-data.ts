@@ -26,7 +26,7 @@ const userDataChips: Record<
 export default class ScrobbleData extends withStyle(LitElement) {
   static styles = [unsafeCSS(base)];
 
-  #fetchData = new QueryController(this, () => getUserData());
+  #fetchData = new QueryController(this, getUserData.queryOptions);
 
   render(): unknown {
     if (typeof window === "undefined") return nothing;

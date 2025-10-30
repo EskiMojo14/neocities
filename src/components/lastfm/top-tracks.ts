@@ -25,7 +25,12 @@ export default class TopTracks extends withStyle(LitElement) {
   @state()
   period: Period = "overall";
 
-  #fetchTracks = new QueryController(this, () => getTopTracks(this.period, 5));
+  #fetchTracks = new QueryController(this, () =>
+    getTopTracks.queryOptions({
+      period: this.period,
+      limit: 5,
+    }),
+  );
 
   render(): unknown {
     if (typeof window === "undefined") return nothing;

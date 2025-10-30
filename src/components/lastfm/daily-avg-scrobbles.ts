@@ -21,7 +21,7 @@ export default class DailyAvgScrobbles extends withStyle(LitElement) {
   }
 
   #fetchPlaycount = new QueryController(this, () => ({
-    ...getUserData(),
+    ...getUserData.queryOptions(),
     select: (data) => this.calculateDailyAvg(data.playcount),
   }));
 
