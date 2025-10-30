@@ -1,6 +1,6 @@
 import { ScrollStateEvent } from "../constants/events.ts";
 
-function setupScroll() {
+if (typeof window !== "undefined") {
   if (window.scrollY > 0) {
     document.documentElement.dataset.scrolled = "true";
   }
@@ -15,8 +15,4 @@ function setupScroll() {
 
     document.documentElement.dispatchEvent(new ScrollStateEvent(scrolled));
   });
-}
-
-if (typeof window !== "undefined") {
-  setupScroll();
 }
