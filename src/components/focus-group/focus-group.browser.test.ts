@@ -1,11 +1,10 @@
 import { html } from "lit";
 import { expect } from "vitest";
-import { page, userEvent } from "vitest/browser";
+import { page } from "vitest/browser";
 import { it } from "../../vite/utils.browser.ts";
 import "./focus-group.ts";
 
-it("should move focus with arrow keys", async () => {
-  const user = userEvent.setup();
+it("should move focus with arrow keys", async ({ user }) => {
   const { getByText } = page.render(html`
     <focus-group>
       <button>1</button>
@@ -18,7 +17,7 @@ it("should move focus with arrow keys", async () => {
     2: getByText("2"),
     3: getByText("3"),
   };
-  await user.click(buttons[1]);
+  await buttons[1].click();
   await expect.element(buttons[1]).toHaveFocus();
   await user.keyboard("[ArrowRight]");
   await expect.element(buttons[2]).toHaveFocus();

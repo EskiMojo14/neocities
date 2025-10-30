@@ -1,8 +1,10 @@
 import type { SetupWorker } from "msw/browser";
 import { test as baseTest } from "vitest";
+import type { UserEvent } from "vitest/browser";
+import { userEvent } from "vitest/browser";
 import { worker } from "../mocks/browser.ts";
 
-export const test = baseTest.extend<{ worker: SetupWorker }>({
+export const test = baseTest.extend<{ worker: SetupWorker; user: UserEvent }>({
   worker: [
     async (_, use) => {
       // Start the worker before the test.
@@ -22,6 +24,7 @@ export const test = baseTest.extend<{ worker: SetupWorker }>({
       auto: true,
     },
   ],
+  user: (_, use) => use(userEvent.setup()),
 });
 
 export { test as it };

@@ -1,6 +1,6 @@
 import { html } from "lit";
 import { expect } from "vitest";
-import { page, userEvent } from "vitest/browser";
+import { page } from "vitest/browser";
 import { pkgManagerPref } from "../../constants/prefs.ts";
 import { it } from "../../vite/utils.browser.ts";
 import "./pkg-info.ts";
@@ -48,7 +48,6 @@ it("should show devDep flag when set", async () => {
 
 it("should allow switching between package managers", async () => {
   localStorage.removeItem(pkgManagerPref.storageKey);
-  const user = userEvent.setup();
 
   const { getByLabelText } = page.render(html`
     <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
@@ -57,7 +56,7 @@ it("should allow switching between package managers", async () => {
   for (const pkgManager of pkgManagerPref.options) {
     const button = getByLabelText(`Install with ${pkgManager}`);
 
-    await user.click(button);
+    await button.click();
     await expect.poll(() => pkgManagerPref.storage).toBe(pkgManager);
     await expect
       .poll(() =>

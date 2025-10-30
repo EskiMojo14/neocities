@@ -1,18 +1,16 @@
 import { html } from "lit";
 import { expect } from "vitest";
-import { page, userEvent } from "vitest/browser";
+import { page } from "vitest/browser";
 import { it } from "../utils.browser.ts";
 
 it("should pass without shadow root", async () => {
-  const user = userEvent.setup();
   page.render(html`<button>Button</button>`);
   const button = page.getByRole("button");
-  await user.click(button);
+  await button.click();
   expect(button.element()).toHaveFocus();
 });
 
 it("should pass with shadow root", async () => {
-  const user = userEvent.setup();
   const lightContainer = document.body.appendChild(
     document.createElement("div"),
   );
@@ -21,15 +19,14 @@ it("should pass with shadow root", async () => {
   page.render(html`<button>Button</button>`, { container: shadowContainer });
 
   const button = page.getByRole("button");
-  await user.click(button);
+  await button.click();
   expect(button.element()).toHaveFocus();
 });
 
 it("should fail without shadow root", async () => {
-  const user = userEvent.setup();
   page.render(html`<button>Button</button><input />`);
   const button = page.getByRole("button");
-  await user.click(button);
+  await button.click();
   expect(() =>
     expect(page.getByRole("textbox").element()).toHaveFocus(),
   ).toThrowErrorMatchingSnapshot();
@@ -39,7 +36,6 @@ it("should fail without shadow root", async () => {
 });
 
 it("should fail with shadow root", async () => {
-  const user = userEvent.setup();
   const lightContainer = document.body.appendChild(
     document.createElement("div"),
   );
@@ -50,7 +46,7 @@ it("should fail with shadow root", async () => {
   });
 
   const button = page.getByRole("button");
-  await user.click(button);
+  await button.click();
   expect(() =>
     expect(page.getByRole("textbox").element()).toHaveFocus(),
   ).toThrowErrorMatchingSnapshot();
