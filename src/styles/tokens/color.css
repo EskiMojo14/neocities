@@ -1,133 +1,80 @@
+[data-theme="system"] {
+  color-scheme: light dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
 :root {
   --page-background: var(--background);
   --page-foreground: var(--foreground);
+  --focus-background: light-dark(var(--light-blue), var(--comment));
 
+  --success: light-dark(var(--green5, green), var(--green, green));
+  --warning: light-dark(var(--yellow5, yellow), var(--yellow, yellow));
+  --error: light-dark(var(--red5, red), var(--red, red));
+  --info: light-dark(var(--blue, blue), var(--cyan, cyan));
+
+  --link: light-dark(var(--blue, blue), var(--cyan, cyan));
+  --link-visited: light-dark(
+    var(--blue-secondary, blue),
+    var(--cyan-secondary, cyan)
+  );
+  --link-focus: light-dark(var(--purple, purple), var(--green, green));
+  --link-current: var(--foreground);
+  --link-current-background: var(--selection);
   --link-hover-opacity: 0.7;
   --link-hover: rgba(from var(--link) r g b / var(--link-hover-opacity));
   --link-visited-hover: rgba(
     from var(--link-visited) r g b / var(--link-hover-opacity)
   );
 
+  --button: light-dark(var(--pink5, pink), var(--pink, pink));
+  --button-hover: light-dark(var(--pink7, pink), var(--pink-secondary, pink));
+  --button-focus: var(--background);
+  --button-selected: var(--foreground);
+  --button-selected-background: var(--selection);
+  --button-filled: light-dark(var(--white), var(--foreground));
+  --button-filled-background: light-dark(var(--pink3, pink), var(--pink, pink));
+  --button-filled-hover-background: light-dark(
+    var(--pink5, pink),
+    var(--pink-secondary, pink)
+  );
   --button-hover-background-opacity: 0.1;
   --button-hover-background: rgba(
     from var(--button) r g b / var(--button-hover-background-opacity)
   );
-}
 
-%dark {
-  --focus-background: var(--comment);
+  --sidebar-background: light-dark(var(--white-secondary, white), var(--black));
+  --footer-background: light-dark(var(--white-secondary, white), var(--black));
+  --carousel-background: light-dark(
+    var(--white-secondary, white),
+    var(--black)
+  );
 
-  --success: var(--green);
-  --warning: var(--yellow);
-  --error: var(--red);
-  --info: var(--cyan);
+  --code-background: light-dark(var(--white-secondary, white), var(--black));
 
-  --link: var(--cyan);
-  --link-visited: var(--cyan-secondary);
-  --link-focus: var(--green);
-  --link-current: var(--foreground);
-  --link-current-background: var(--selection);
+  --divider: light-dark(var(--grey), var(--disabled, grey));
 
-  --button: var(--pink);
-  --button-hover: var(--pink-secondary);
-  --button-focus: var(--background);
-  --button-selected: var(--foreground);
-  --button-selected-background: var(--selection);
-  --button-filled-background: var(--pink);
-  --button-filled: var(--foreground);
-  --button-filled-hover-background: var(--pink-secondary);
-
-  --sidebar-background: var(--black);
-  --footer-background: var(--black);
-  --carousel-background: var(--black);
-
-  --code-background: var(--black);
-
-  --divider: var(--disabled);
-
-  --scroll-track: var(--black);
+  --scroll-track: light-dark(var(--white-secondary, white), var(--black));
   --scroll-thumb: var(--purple);
 
   --logo1: var(--red);
-  --logo2: var(--yellow);
-  --logo3: var(--green);
-  --logo4: var(--cyan);
+  --logo2: light-dark(var(--yellow5, yellow), var(--yellow, yellow));
+  --logo3: light-dark(var(--green5, green), var(--green, green));
+  --logo4: light-dark(var(--blue, blue), var(--cyan, cyan));
   --logo5: var(--purple);
-  --logo6: var(--pink);
+  --logo6: light-dark(var(--pink5, pink), var(--pink, pink));
 
-  --toast-surface: var(--black);
+  --toast-surface: light-dark(var(--white), var(--black));
 
-  --tooltip-background: var(--black);
-  --tooltip-foreground: var(--white);
+  --tooltip-background: light-dark(var(--white), var(--black));
+  --tooltip-foreground: light-dark(var(--black), var(--white));
 
-  --scroll-top-background: var(--black);
-}
-
-@media (prefers-color-scheme: dark) {
-  [data-theme="system"] {
-    @extend %dark;
-  }
-}
-
-[data-theme="dark"] {
-  @extend %dark;
-}
-
-%light {
-  --focus-background: var(--light-blue);
-
-  --success: var(--green5);
-  --warning: var(--yellow5);
-  --error: var(--red5);
-  --info: var(--blue);
-
-  --link: var(--blue);
-  --link-visited: var(--blue-secondary);
-  --link-focus: var(--purple);
-  --link-current: var(--foreground);
-  --link-current-background: var(--selection);
-
-  --button: var(--pink5);
-  --button-hover: var(--pink7);
-  --button-focus: var(--background);
-  --button-selected: var(--foreground);
-  --button-selected-background: var(--selection);
-  --button-filled: var(--white);
-  --button-filled-background: var(--pink3);
-  --button-filled-hover-background: var(--pink5);
-
-  --sidebar-background: var(--white-secondary);
-  --footer-background: var(--white-secondary);
-  --carousel-background: var(--white-secondary);
-
-  --code-background: var(--white-secondary);
-
-  --divider: var(--grey);
-
-  --scroll-track: var(--white-secondary);
-  --scroll-thumb: var(--purple);
-
-  --logo1: var(--red);
-  --logo2: var(--yellow5);
-  --logo3: var(--green5);
-  --logo4: var(--blue);
-  --logo5: var(--purple);
-  --logo6: var(--pink5);
-
-  --toast-surface: var(--white);
-
-  --tooltip-background: var(--white);
-  --tooltip-foreground: var(--black);
-
-  --scroll-top-background: var(--white);
-}
-
-@media (prefers-color-scheme: light) {
-  [data-theme="system"] {
-    @extend %light;
-  }
-}
-
-[data-theme="light"] {
-  @extend %light;
+  --scroll-top-background: light-dark(var(--white), var(--black));
 }
