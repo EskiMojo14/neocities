@@ -13,7 +13,7 @@
 :root {
   --page-background: var(--background);
   --page-foreground: var(--foreground);
-  --focus-background: light-dark(var(--light-blue), var(--comment));
+  --focus-background: light-dark(var(--light-blue, lightblue), var(--comment));
 
   --success: light-dark(var(--green5, green), var(--green, green));
   --warning: light-dark(var(--yellow5, yellow), var(--yellow, yellow));
