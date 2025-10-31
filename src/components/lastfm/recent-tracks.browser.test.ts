@@ -8,7 +8,7 @@ import { searchLinks } from "../../data/music.ts";
 import { it } from "../../vite/utils.browser.ts";
 import "./recent-tracks.ts";
 
-it("should display recent tracks", async ({ worker }) => {
+it("should display recent tracks", async ({ worker, setStyle }) => {
   worker.use(
     mockEndpoint(getRecentTracks, async () => {
       await delay();
@@ -55,4 +55,11 @@ it("should display recent tracks", async ({ worker }) => {
       )
       .toBeInTheDocument();
   }
+
+  const date = screen.getByRole("time");
+  await expect.element(date).toBeInTheDocument();
+  await expect.element(date).toHaveTextContent("2025-07-06T14:09:47Z");
+
+  await setStyle("normal");
+  await expect.element(date).toHaveTextContent("6 Jul 2025");
 });
