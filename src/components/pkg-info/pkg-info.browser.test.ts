@@ -14,7 +14,7 @@ it("should only show docs link when set", async () => {
     npm: screen.getByRole("link", { name: "NPM" }),
     github: screen.getByRole("link", { name: "GitHub" }),
   };
-  expect(links.docs.query()).not.toBeInTheDocument();
+  await expect.element(links.docs).not.toBeInTheDocument();
   await expect.element(links.npm).toBeInTheDocument();
   await expect.element(links.github).toBeInTheDocument();
 
@@ -28,7 +28,9 @@ it("should show install command when include-install is set", async () => {
   const screen = page.render(html`
     <pkg-info pkg="foo" repo="foo"></pkg-info>
   `);
-  expect(screen.getByText("Install with").query()).not.toBeInTheDocument();
+  await expect
+    .element(screen.getByText("Install with"))
+    .not.toBeInTheDocument();
 
   screen.rerender(html`
     <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
@@ -40,7 +42,7 @@ it("should show devDep flag when set", async () => {
   const screen = page.render(html`
     <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
   `);
-  expect(screen.getByText("-D").query()).not.toBeInTheDocument();
+  await expect.element(screen.getByText("-D")).not.toBeInTheDocument();
 
   screen.rerender(html`
     <pkg-info pkg="foo" repo="foo" dev-dep="true" include-install></pkg-info>
