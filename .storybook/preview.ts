@@ -4,7 +4,7 @@ import { initialize, mswLoader } from "msw-storybook-addon";
 import { themes } from "storybook/theming";
 import * as v from "valibot";
 import { stylePref, themePref } from "../src/constants/prefs.ts";
-import pages from "./mocks/graph.json";
+import pages from "../src/mocks/graph.json";
 import "../src/styles/global.css";
 
 const ignorePatterns = [
@@ -24,9 +24,9 @@ initialize(
   [
     http.get(/localhost:\d+\/___graph.json/, () => HttpResponse.json(pages)),
     // redirect assets folder to root
-    http.get(/localhost:\d+\/assets/, ({ request }) => {
-      return fetch(request.url.replace("/assets", ""));
-    }),
+    http.get(/localhost:\d+\/assets/, ({ request }) =>
+      fetch(request.url.replace("/assets", "")),
+    ),
   ],
 );
 
