@@ -1,0 +1,2 @@
+patchedDependencies:
+  '@greenwood/cli@0.33.3': patches/@greenwood__cli@0.33.3.patch

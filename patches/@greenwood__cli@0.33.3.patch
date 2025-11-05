@@ -1,0 +1,24 @@
+diff --git a/src/plugins/resource/plugin-standard-css.js b/src/plugins/resource/plugin-standard-css.js
+index 18919a7149412380d4565bbc3e84c645818e2aa3..3e11e155fc77ab5b465552fb1f0ce504b55359ba 100644
+--- a/src/plugins/resource/plugin-standard-css.js
++++ b/src/plugins/resource/plugin-standard-css.js
+@@ -183,6 +183,9 @@ function bundleCss(body, sourceUrl, compilation, workingUrl) {
+           case "highlight":
+           case "part":
+           case "slotted":
++          case "view-transition-old":
++          case "view-transition-new":
++          case "view-transition-group":
+             optimizedCss += "(";
+             break;
+           default:
+@@ -319,6 +322,9 @@ function bundleCss(body, sourceUrl, compilation, workingUrl) {
+             case "highlight":
+             case "part":
+             case "slotted":
++            case "view-transition-old":
++            case "view-transition-new":
++            case "view-transition-group":
+               optimizedCss += ")";
+               break;
+             default:
