@@ -46,10 +46,12 @@ body {
     }
   }
   .root {
+    background: var(--page-background);
     display: flex;
     flex-direction: column;
     gap: 1rem;
     flex: 1;
+    view-transition-name: content;
   }
   page-header {
     display: block;
@@ -137,5 +139,35 @@ body {
   }
   100% {
     color: var(--logo1);
+  }
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes slide-from-right {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-old(content),
+::view-transition-new(content) {
+  animation-duration: var(--default-duration);
+}
+
+@media (min-width: 1000px) {
+  ::view-transition-old(content) {
+    animation: none;
+  }
+  ::view-transition-new(content) {
+    animation-name: slide-from-right;
+    animation-timing-function: ease-out;
   }
 }

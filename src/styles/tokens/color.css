@@ -51,7 +51,6 @@
   );
 
   --sidebar-background: light-dark(var(--white-secondary, white), var(--black));
-  --footer-background: light-dark(var(--white-secondary, white), var(--black));
   --carousel-background: light-dark(
     var(--white-secondary, white),
     var(--black)

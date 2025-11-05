@@ -12,6 +12,9 @@ import header from "./header.css?type=raw";
 
 const publishedSchema = vUtils.json(vUtils.coerceDate);
 
+/** View transition duration in ms. */
+const transitionDuration = 250;
+
 @customElement("page-header")
 export default class PageHeader extends withStyle(LitElement) {
   static styles = [unsafeCSS(base), unsafeCSS(header)];
@@ -57,7 +60,9 @@ export default class PageHeader extends withStyle(LitElement) {
                 <span class="sr-only">Published: </span>
                 <console-writer
                   text="${formattedPublished}"
-                  delay=${subtitleDuration + headerDuration}
+                  delay=${subtitleDuration +
+                  headerDuration +
+                  transitionDuration}
                   aria-label="${publishedLabel}"
                 ></console-writer>
               </time>`,
@@ -67,13 +72,14 @@ export default class PageHeader extends withStyle(LitElement) {
             aria-level="1"
             class="headline2"
             text="${header}"
+            delay=${transitionDuration}
           ></console-writer>
           ${when(
             frontmatterIsSet(subtitle),
             () => html`
               <console-writer
                 text="${subtitle}"
-                delay=${headerDuration}
+                delay=${headerDuration + transitionDuration}
                 class="headline5"
               ></console-writer>
             `,
