@@ -19,6 +19,10 @@
 @import "../components/toaster/toaster.global.css";
 @import "../components/scroll-to-top/scroll-to-top.global.css";
 
+@view-transition {
+  navigation: auto;
+}
+
 :root {
   --default-duration: 250ms;
 }
