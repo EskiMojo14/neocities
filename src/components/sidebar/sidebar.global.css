@@ -16,6 +16,7 @@ sidebar-nav {
   overflow: hidden;
   flex-shrink: 0;
   z-index: var(--z-index-sidebar);
+  view-transition-name: sidebar;
   &:dir(rtl) {
     left: auto;
     right: 0;
@@ -34,4 +35,20 @@ sidebar-nav {
       border-color: var(--divider);
     }
   }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+::view-transition-old(sidebar) {
+  animation: none;
+}
+::view-transition-new(sidebar) {
+  animation-name: fade-in;
 }
