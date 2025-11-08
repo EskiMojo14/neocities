@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { when } from "lit/directives/when.js";
 import * as v from "valibot";
-import { withStyle } from "../../mixins/page-style.ts";
+import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { dateFormat, frontmatterIsSet } from "../../utils/index.ts";
 import { cache, consolewriter } from "../../utils/lit.ts";
@@ -16,7 +16,7 @@ const publishedSchema = vUtils.json(vUtils.coerceDate);
 const transitionDuration = 250;
 
 @customElement("page-header")
-export default class PageHeader extends withStyle(LitElement) {
+export default class PageHeader extends StyleWatcher(LitElement) {
   static styles = [unsafeCSS(base), unsafeCSS(header)];
 
   @property({ type: String })

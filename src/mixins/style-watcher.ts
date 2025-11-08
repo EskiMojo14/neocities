@@ -3,12 +3,12 @@ import type { PropertyValues } from "lit";
 import { state } from "lit/decorators.js";
 import type { Style } from "../constants/prefs.ts";
 import { stylePref } from "../constants/prefs.ts";
-import { withSignal } from "./mount-signal.ts";
+import { Signalled } from "./signalled.ts";
 import type { LitConstructor } from "./types.ts";
 
-export const withStyle = dedupeMixin(
-  <T extends LitConstructor>(BaseElement: T) => {
-    class StyleMixin extends withSignal(BaseElement) {
+export const StyleWatcher = dedupeMixin(
+  <T extends LitConstructor>(baseClass: T) => {
+    class StyleWatcherClass extends Signalled(baseClass) {
       @state()
       pageStyle: Style = stylePref.fallback;
 
@@ -26,6 +26,6 @@ export const withStyle = dedupeMixin(
         this.pageStyle = stylePref.data;
       }
     }
-    return StyleMixin;
+    return StyleWatcherClass;
   },
 );

@@ -1,9 +1,9 @@
 import { dedupeMixin } from "@open-wc/dedupe-mixin";
 import type { LitConstructor } from "./types.ts";
 
-export const withSignal = dedupeMixin(
-  <T extends LitConstructor>(BaseElement: T) => {
-    class SignalMixin extends BaseElement {
+export const Signalled = dedupeMixin(
+  <T extends LitConstructor>(superClass: T) => {
+    class SignalledClass extends superClass {
       #connectAc = new AbortController();
       /**
        * An abort signal that is aborted when the element is disconnected.
@@ -20,6 +20,6 @@ export const withSignal = dedupeMixin(
         this.#connectAc.abort();
       }
     }
-    return SignalMixin;
+    return SignalledClass;
   },
 );

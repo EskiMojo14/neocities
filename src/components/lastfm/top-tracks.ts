@@ -11,7 +11,7 @@ import {
   periodLabels,
   periodSchema,
 } from "../../data/lastfm.ts";
-import { withStyle } from "../../mixins/page-style.ts";
+import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { toggleButton } from "../button/toggle.ts";
 import "../spinner/spinner.ts";
@@ -19,7 +19,7 @@ import list from "./list.css?type=raw";
 import "./top-track.ts";
 
 @customElement("top-tracks")
-export default class TopTracks extends withStyle(LitElement) {
+export default class TopTracks extends StyleWatcher(LitElement) {
   static styles = [unsafeCSS(base), unsafeCSS(list)];
 
   @state()

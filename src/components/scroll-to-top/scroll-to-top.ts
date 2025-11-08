@@ -1,13 +1,13 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref } from "lit/directives/ref.js";
-import { withSignal } from "../../mixins/mount-signal.ts";
+import { Signalled } from "../../mixins/signalled.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { smoothScroll } from "../../utils/lit.ts";
 import Tooltip from "../tooltip/tooltip.ts";
 
 @customElement("scroll-to-top")
-export default class ScrollToTop extends withSignal(LitElement) {
+export default class ScrollToTop extends Signalled(LitElement) {
   static styles = [unsafeCSS(base)];
 
   buttonRef = createRef<HTMLButtonElement>();

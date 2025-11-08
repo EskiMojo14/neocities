@@ -2,14 +2,14 @@ import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { searchLinks } from "../../data/music.ts";
-import { withStyle } from "../../mixins/page-style.ts";
+import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
 import "../focus-group/focus-group.ts";
 import track from "./track.css?type=raw";
 
 @customElement("top-track")
-export default class TopTrack extends withStyle(LitElement) {
+export default class TopTrack extends StyleWatcher(LitElement) {
   static styles = [unsafeCSS(base), unsafeCSS(track)];
 
   @property({ type: String })

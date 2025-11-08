@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { QueryController } from "../../controllers/query-controller.ts";
 import { getUserData } from "../../data/lastfm.ts";
-import { withStyle } from "../../mixins/page-style.ts";
+import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
 import "../skeleton/text-skeleton.ts";
@@ -12,7 +12,7 @@ const startDate = new Date("2017-09-22");
 const oneDay = 1000 * 60 * 60 * 24;
 
 @customElement("daily-avg-scrobbles")
-export default class DailyAvgScrobbles extends withStyle(LitElement) {
+export default class DailyAvgScrobbles extends StyleWatcher(LitElement) {
   static styles = [unsafeCSS(base)];
 
   calculateDailyAvg(playcount: number) {

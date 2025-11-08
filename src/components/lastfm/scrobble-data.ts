@@ -3,7 +3,7 @@ import { customElement } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { QueryController } from "../../controllers/query-controller.ts";
 import { getUserData, type UserData } from "../../data/lastfm.ts";
-import { withStyle } from "../../mixins/page-style.ts";
+import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat, unsafeEntries } from "../../utils/index.ts";
 import "../skeleton/text-skeleton.ts";
@@ -23,7 +23,7 @@ const userDataChips: Record<
 };
 
 @customElement("scrobble-data")
-export default class ScrobbleData extends withStyle(LitElement) {
+export default class ScrobbleData extends StyleWatcher(LitElement) {
   static styles = [unsafeCSS(base)];
 
   #fetchData = new QueryController(this, () => ({

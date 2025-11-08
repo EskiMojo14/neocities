@@ -1,6 +1,6 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { withStyle } from "../../mixins/page-style.ts";
+import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import {
   consolewriter as cwriter,
@@ -10,7 +10,7 @@ import consolewriter from "./console-writer.css?type=raw";
 
 @customElement("console-writer")
 export default class ConsoleWriter
-  extends withStyle(LitElement)
+  extends StyleWatcher(LitElement)
   implements Required<cwriter.Config>
 {
   static styles = [unsafeCSS(base), unsafeCSS(consolewriter)];

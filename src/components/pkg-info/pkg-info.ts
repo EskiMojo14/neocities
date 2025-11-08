@@ -5,7 +5,7 @@ import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import type { PackageManager, Theme } from "../../constants/prefs.ts";
 import { pkgManagerPref, themePref } from "../../constants/prefs.ts";
-import { withSignal } from "../../mixins/mount-signal.ts";
+import { Signalled } from "../../mixins/signalled.ts";
 import dracula from "../../styles/themes/dracula.css?type=raw";
 import githubLight from "../../styles/themes/github-light.css?type=raw";
 import base from "../../styles/utility/baseline.css?type=raw";
@@ -17,7 +17,7 @@ import Tooltip from "../tooltip/tooltip.ts";
 import pkgInfo from "./pkg-info.css?type=raw";
 
 @customElement("pkg-info")
-export default class PkgInfo extends withSignal(LitElement) {
+export default class PkgInfo extends Signalled(LitElement) {
   static styles = [
     unsafeCSS(base),
     unsafeCSS(githubLight),

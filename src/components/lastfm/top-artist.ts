@@ -2,7 +2,7 @@ import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { searchLinks } from "../../data/music.ts";
-import { withStyle } from "../../mixins/page-style.ts";
+import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
 import "../focus-group/focus-group.ts";
@@ -10,7 +10,7 @@ import "../skeleton/text-skeleton.ts";
 import track from "./artist.css?type=raw";
 
 @customElement("top-artist")
-export default class TopArtist extends withStyle(LitElement) {
+export default class TopArtist extends StyleWatcher(LitElement) {
   static styles = [unsafeCSS(base), unsafeCSS(track)];
 
   @property({ type: String })

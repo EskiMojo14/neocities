@@ -8,14 +8,14 @@ import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { nanoid } from "nanoid/non-secure";
 import { radEventListeners } from "rad-event-listeners";
-import { withSignal } from "../../mixins/mount-signal.ts";
+import { Signalled } from "../../mixins/signalled.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { getOrInsertComputed, safeAssign } from "../../utils/index.ts";
 import "../console-writer/console-writer.ts";
 import tooltip from "./tooltip.css?type=raw";
 
 @customElement("tool-tip")
-export default class Tooltip extends withSignal(LitElement) {
+export default class Tooltip extends Signalled(LitElement) {
   static styles = [unsafeCSS(base), unsafeCSS(tooltip)];
 
   @property({ type: Number })
