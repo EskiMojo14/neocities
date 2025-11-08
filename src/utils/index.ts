@@ -156,6 +156,16 @@ export function capitalize<T extends string>(text: T) {
   return (text.charAt(0).toUpperCase() + text.slice(1)) as Capitalize<T>;
 }
 
+export const alphabeticalCollator = new Intl.Collator(undefined, {
+  numeric: true,
+  sensitivity: "base",
+});
+
+export const compare =
+  <T>(select: (item: T) => string) =>
+  (a: T, b: T) =>
+    alphabeticalCollator.compare(select(a), select(b));
+
 export const dateFormatter = new Intl.DateTimeFormat(undefined, {
   dateStyle: "medium",
 });

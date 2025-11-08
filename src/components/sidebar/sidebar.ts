@@ -11,7 +11,12 @@ import { repeat } from "lit/directives/repeat.js";
 import * as v from "valibot";
 import base from "../../styles/utility/baseline.css?type=raw";
 import type { WithOptional } from "../../utils/index.ts";
-import { assert, uniqueBy } from "../../utils/index.ts";
+import {
+  alphabeticalCollator,
+  assert,
+  compare,
+  uniqueBy,
+} from "../../utils/index.ts";
 import { clsx, isActiveLink, styleMap } from "../../utils/lit.ts";
 import "../spinner/spinner.ts";
 import sidebar from "./sidebar.css?type=raw";
@@ -99,6 +104,7 @@ const itemSchema = v.object({
   icon: v.optional(v.string()),
   childIcon: v.optional(v.string()),
   maxChildren: v.optional(v.number()),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) satisfies v.GenericSchema<any, SidebarItem>;
 
 async function getSidebarItems() {
@@ -113,7 +119,7 @@ async function getSidebarItems() {
     .filter(
       (page) => uniqueByRoute(page) && page.route.split("/")[2] !== "tags",
     )
-    .sort((a, b) => a.route.localeCompare(b.route))) {
+    .sort(compare((page) => page.route))) {
     const paths = page.route.split("/").filter(Boolean);
     let cursor = base;
     const last = paths.pop() ?? "";
@@ -183,7 +189,7 @@ function orderSort(a: { order?: number }, b: { order?: number }) {
 
 function publishedSort(a: { published?: string }, b: { published?: string }) {
   if (a.published && b.published) {
-    return b.published.localeCompare(a.published);
+    return alphabeticalCollator.compare(b.published, a.published);
   }
   if (a.published || b.published) {
     return a.published ? -1 : 1;
@@ -195,7 +201,9 @@ const sortSidebarItems = (
   a: SidebarItem | SidebarGroup,
   b: SidebarItem | SidebarGroup,
 ): number =>
-  orderSort(a, b) ?? publishedSort(a, b) ?? a.label.localeCompare(b.label);
+  orderSort(a, b) ??
+  publishedSort(a, b) ??
+  alphabeticalCollator.compare(a.label, b.label);
 
 function renderSidebarGroup(
   group: SidebarGroup,

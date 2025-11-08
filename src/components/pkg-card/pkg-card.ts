@@ -2,14 +2,14 @@ import { getContentByRoute } from "@greenwood/cli/src/data/client.js";
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import base from "../../styles/utility/baseline.css?type=raw";
+import { compare } from "../../utils/index.ts";
 import "../pkg-info/pkg-info.ts";
 import "../tags/tags.ts";
 import pkgCard from "./pkg-card.css?type=raw";
 
 const pkgChildIcon = String(
-  (await getContentByRoute("/packages/")).sort((a, b) =>
-    a.route.localeCompare(b.route),
-  )[0]?.data.childIcon,
+  (await getContentByRoute("/packages/")).sort(compare((page) => page.route))[0]
+    ?.data.childIcon,
 );
 
 @customElement("pkg-card")

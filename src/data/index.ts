@@ -1,6 +1,7 @@
 import type { Page } from "@greenwood/cli";
 import { getContentByRoute } from "@greenwood/cli/src/data/client.js";
 import * as v from "valibot";
+import { compare } from "../utils/index.ts";
 
 const baseSchema = v.object({
   title: v.string(),
@@ -39,5 +40,5 @@ export async function getPackages() {
         tags: page.data.tags,
       } satisfies Record<keyof Package, unknown>),
     )
-    .sort((a, b) => a.title.localeCompare(b.title));
+    .sort(compare((page) => page.title));
 }
