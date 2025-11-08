@@ -1,16 +1,12 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { when } from "lit/directives/when.js";
-import * as v from "valibot";
 import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
-import { dateFormat, frontmatterIsSet } from "../../utils/index.ts";
-import { cache, consolewriter } from "../../utils/lit.ts";
-import * as vUtils from "../../utils/valibot.ts";
+import { frontmatterIsSet } from "../../utils/index.ts";
+import { consolewriter } from "../../utils/lit.ts";
 import "../console-writer/console-writer.ts";
 import header from "./header.css?type=raw";
-
-const publishedSchema = vUtils.json(vUtils.coerceDate);
 
 /** View transition duration in ms. */
 const transitionDuration = 250;
@@ -25,48 +21,12 @@ export default class PageHeader extends StyleWatcher(LitElement) {
   @property({ type: String })
   subtitle = "${unset}";
 
-  @property({ type: String })
-  published = "${unset}";
-
-  @cache(({ published }) => [published])
-  get publishedDate() {
-    if (!frontmatterIsSet(this.published)) return undefined;
-    return v.parse(publishedSchema, this.published);
-  }
-
-  @cache(({ publishedDate }) => [publishedDate])
-  get publishedLabel() {
-    return this.publishedDate ? dateFormat(this.publishedDate, "normal") : "";
-  }
-
-  @cache(({ publishedDate, pageStyle }) => [publishedDate, pageStyle])
-  get formattedPublished() {
-    if (!this.publishedDate) return "";
-    return dateFormat(this.publishedDate, this.pageStyle);
-  }
-
   render() {
-    const { header, subtitle, published, publishedLabel, formattedPublished } =
-      this;
+    const { header, subtitle } = this;
     const headerDuration = consolewriter.getDuration(header);
-    const subtitleDuration = consolewriter.getDuration(subtitle);
     return html`
       <header>
         <hgroup>
-          ${when(
-            formattedPublished,
-            () =>
-              html`<time datetime="${JSON.parse(published)}">
-                <span class="sr-only">Published: </span>
-                <console-writer
-                  text="${formattedPublished}"
-                  delay=${subtitleDuration +
-                  headerDuration +
-                  transitionDuration}
-                  aria-label="${publishedLabel}"
-                ></console-writer>
-              </time>`,
-          )}
           <console-writer
             role="heading"
             aria-level="1"

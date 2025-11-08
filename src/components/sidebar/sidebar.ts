@@ -68,7 +68,6 @@ interface SidebarItemCommon {
   href: string;
   label: string;
   order?: number;
-  published?: string;
   icon?: string;
 }
 
@@ -98,7 +97,6 @@ type SidebarGroup = GroupIconUnion &
 const itemSchema = v.object({
   type: v.literal("item"),
   order: v.optional(v.number()),
-  published: v.optional(v.pipe(v.string(), v.isoTimestamp())),
   label: v.string(),
   href: v.string(),
   icon: v.optional(v.string()),
@@ -144,7 +142,6 @@ async function getSidebarItems() {
         icon: page.data.icon,
         childIcon: page.data.childIcon,
         order: page.data.order,
-        published: page.data.published,
         maxChildren: page.data.maxChildren,
       } satisfies Record<keyof v.InferInput<typeof itemSchema>, unknown>);
     } catch (error) {
@@ -187,23 +184,10 @@ function orderSort(a: { order?: number }, b: { order?: number }) {
   return undefined;
 }
 
-function publishedSort(a: { published?: string }, b: { published?: string }) {
-  if (a.published && b.published) {
-    return alphabeticalCollator.compare(b.published, a.published);
-  }
-  if (a.published || b.published) {
-    return a.published ? -1 : 1;
-  }
-  return undefined;
-}
-
 const sortSidebarItems = (
   a: SidebarItem | SidebarGroup,
   b: SidebarItem | SidebarGroup,
-): number =>
-  orderSort(a, b) ??
-  publishedSort(a, b) ??
-  alphabeticalCollator.compare(a.label, b.label);
+): number => orderSort(a, b) ?? alphabeticalCollator.compare(a.label, b.label);
 
 function renderSidebarGroup(
   group: SidebarGroup,
