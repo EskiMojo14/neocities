@@ -33,6 +33,11 @@ export default class Toaster extends LitElement {
     wait: 200,
   });
 
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.#debouncedUpdate.cancel();
+  }
+
   #toastState = new Map<string, Toast>();
 
   push(type: ToastType, message: string, timeout?: number | true) {
