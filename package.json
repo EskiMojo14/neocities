@@ -65,6 +65,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
     "@lit/task": "^1.0.3",
+    "@tanstack/pacer": "^0.16.0",
     "@tanstack/query-core": "^5.90.5",
     "dracula-prism": "^2.1.16",
     "ky": "^1.13.0",
