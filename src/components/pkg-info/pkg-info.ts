@@ -5,6 +5,7 @@ import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import type { PackageManager, Theme } from "../../constants/prefs.ts";
 import { pkgManagerPref, themePref } from "../../constants/prefs.ts";
+import { withSignal } from "../../mixins/mount-signal.ts";
 import dracula from "../../styles/themes/dracula.css?type=raw";
 import githubLight from "../../styles/themes/github-light.css?type=raw";
 import base from "../../styles/utility/baseline.css?type=raw";
@@ -16,7 +17,7 @@ import Tooltip from "../tooltip/tooltip.ts";
 import pkgInfo from "./pkg-info.css?type=raw";
 
 @customElement("pkg-info")
-export default class PkgInfo extends LitElement {
+export default class PkgInfo extends withSignal(LitElement) {
   static styles = [
     unsafeCSS(base),
     unsafeCSS(githubLight),
@@ -42,13 +43,10 @@ export default class PkgInfo extends LitElement {
   @state()
   theme: Theme = themePref.fallback;
 
-  eventAc: AbortController | undefined;
-
   connectedCallback() {
     super.connectedCallback();
-    this.eventAc = new AbortController();
     document.addEventListener("themechange", (e) => (this.theme = e.newTheme), {
-      signal: this.eventAc.signal,
+      signal: this.signal,
     });
   }
 
@@ -62,11 +60,6 @@ export default class PkgInfo extends LitElement {
   firstUpdated() {
     this.theme = themePref.data;
     this.pkgManager = pkgManagerPref.data;
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.eventAc?.abort();
   }
 
   async #onCopy() {

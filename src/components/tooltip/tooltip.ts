@@ -8,12 +8,14 @@ import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { nanoid } from "nanoid/non-secure";
 import { radEventListeners } from "rad-event-listeners";
+import { withSignal } from "../../mixins/mount-signal.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { getOrInsertComputed, safeAssign } from "../../utils/index.ts";
 import "../console-writer/console-writer.ts";
 import tooltip from "./tooltip.css?type=raw";
+
 @customElement("tool-tip")
-export default class Tooltip extends LitElement {
+export default class Tooltip extends withSignal(LitElement) {
   static styles = [unsafeCSS(base), unsafeCSS(tooltip)];
 
   @property({ type: Number })
@@ -21,8 +23,6 @@ export default class Tooltip extends LitElement {
 
   @property({ type: String })
   text = "";
-
-  #documentAc: AbortController | undefined;
 
   #targetAc: AbortController | undefined;
   #target: Element | null = null;
@@ -133,7 +133,6 @@ export default class Tooltip extends LitElement {
 
     this.role = "tooltip";
 
-    const ac = (this.#documentAc = new AbortController());
     radEventListeners(
       document,
       {
@@ -142,15 +141,8 @@ export default class Tooltip extends LitElement {
           if (event.key === "Escape") this.hide();
         },
       },
-      {
-        signal: ac.signal,
-      },
+      { signal: this.signal },
     );
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-    this.#documentAc?.abort();
   }
 
   render() {

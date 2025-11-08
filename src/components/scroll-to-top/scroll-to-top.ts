@@ -1,12 +1,13 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { createRef, ref } from "lit/directives/ref.js";
+import { withSignal } from "../../mixins/mount-signal.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { smoothScroll } from "../../utils/lit.ts";
 import Tooltip from "../tooltip/tooltip.ts";
 
 @customElement("scroll-to-top")
-export default class ScrollToTop extends LitElement {
+export default class ScrollToTop extends withSignal(LitElement) {
   static styles = [unsafeCSS(base)];
 
   buttonRef = createRef<HTMLButtonElement>();
@@ -19,7 +20,6 @@ export default class ScrollToTop extends LitElement {
     }
   }
 
-  eventAc: AbortController | undefined;
   connectedCallback() {
     super.connectedCallback();
     this.#setTabIndex(!!document.documentElement.dataset.scrolled);
@@ -28,15 +28,8 @@ export default class ScrollToTop extends LitElement {
       (e) => {
         this.#setTabIndex(e.scrolled);
       },
-      {
-        signal: (this.eventAc = new AbortController()).signal,
-      },
+      { signal: this.signal },
     );
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.eventAc?.abort();
   }
 
   render() {
