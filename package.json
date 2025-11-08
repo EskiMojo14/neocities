@@ -65,6 +65,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
     "@lit/task": "^1.0.3",
+    "@open-wc/dedupe-mixin": "^2.0.1",
     "@tanstack/pacer": "^0.16.0",
     "@tanstack/query-core": "^5.90.5",
     "dracula-prism": "^2.1.16",

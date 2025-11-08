@@ -1,3 +1,4 @@
+import { dedupeMixin } from "@open-wc/dedupe-mixin";
 import type { PropertyValues } from "lit";
 import { state } from "lit/decorators.js";
 import type { Style } from "../constants/prefs.ts";
@@ -5,24 +6,26 @@ import { stylePref } from "../constants/prefs.ts";
 import { withSignal } from "./mount-signal.ts";
 import type { LitConstructor } from "./types.ts";
 
-export const withStyle = <T extends LitConstructor>(BaseElement: T) => {
-  class StyleMixin extends withSignal(BaseElement) {
-    @state()
-    pageStyle: Style = stylePref.fallback;
+export const withStyle = dedupeMixin(
+  <T extends LitConstructor>(BaseElement: T) => {
+    class StyleMixin extends withSignal(BaseElement) {
+      @state()
+      pageStyle: Style = stylePref.fallback;
 
-    connectedCallback() {
-      super.connectedCallback();
-      document.addEventListener(
-        "stylechange",
-        (e) => (this.pageStyle = e.newStyle),
-        { signal: this.signal },
-      );
-    }
+      connectedCallback() {
+        super.connectedCallback();
+        document.addEventListener(
+          "stylechange",
+          (e) => (this.pageStyle = e.newStyle),
+          { signal: this.signal },
+        );
+      }
 
-    firstUpdated(_changedProperties: PropertyValues<this>) {
-      super.firstUpdated(_changedProperties);
-      this.pageStyle = stylePref.data;
+      firstUpdated(_changedProperties: PropertyValues<this>) {
+        super.firstUpdated(_changedProperties);
+        this.pageStyle = stylePref.data;
+      }
     }
-  }
-  return StyleMixin;
-};
+    return StyleMixin;
+  },
+);

@@ -14,6 +14,9 @@ importers:
       '@lit/task':
         specifier: ^1.0.3
         version: 1.0.3
+      '@open-wc/dedupe-mixin':
+        specifier: ^2.0.1
+        version: 2.0.1
       '@tanstack/pacer':
         specifier: ^0.16.0
         version: 0.16.0
@@ -798,6 +801,9 @@ packages:
 
   '@open-draft/until@2.1.0':
     resolution: {integrity: sha512-U69T3ItWHvLwGg5eJ0n3I62nWuE6ilHlmz7zM0npLBRvPRd7e6NYmg54vvRtP5mZG7kZqZCFVdsTWo7BPtBujg==}
+
+  '@open-wc/dedupe-mixin@2.0.1':
+    resolution: {integrity: sha512-+R4VxvceUxHAUJXJQipkkoV9fy10vNo+OnUnGKZnVmcwxMl460KLzytnUM4S35SI073R0yZQp9ra0MbPUwVcEA==}
 
   '@paralleldrive/cuid2@2.3.1':
     resolution: {integrity: sha512-XO7cAxhnTZl0Yggq6jOgjiOHhbgcO4NqFqwSmQpjK3b6TEE6Uj/jfSk6wzYyemh3+I0sHirKSetjQwn5cZktFw==}
@@ -4592,6 +4598,8 @@ snapshots:
       outvariant: 1.4.3
 
   '@open-draft/until@2.1.0': {}
+
+  '@open-wc/dedupe-mixin@2.0.1': {}
 
   '@paralleldrive/cuid2@2.3.1':
     dependencies:
