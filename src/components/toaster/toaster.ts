@@ -1,3 +1,4 @@
+import { Debouncer } from "@tanstack/pacer";
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { ref } from "lit/directives/ref.js";
@@ -28,13 +29,9 @@ interface Toast {
 export default class Toaster extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(toaster)];
 
-  #debouncedUpdateId: ReturnType<typeof setTimeout> | undefined;
-  #debounceUpdate() {
-    clearTimeout(this.#debouncedUpdateId);
-    this.#debouncedUpdateId = setTimeout(() => {
-      this.requestUpdate();
-    }, 200);
-  }
+  #debouncedUpdate = new Debouncer(this.requestUpdate.bind(this), {
+    wait: 200,
+  });
 
   #toastState = new Map<string, Toast>();
 
@@ -47,7 +44,7 @@ export default class Toaster extends LitElement {
       timeout,
     });
     // update immediately
-    clearTimeout(this.#debouncedUpdateId);
+    this.#debouncedUpdate.cancel();
     this.requestUpdate();
     return () => {
       this.markExiting(id);
@@ -63,7 +60,7 @@ export default class Toaster extends LitElement {
   close(id: string) {
     this.#toastState.delete(id);
 
-    this.#debounceUpdate();
+    this.#debouncedUpdate.maybeExecute();
   }
 
   #handleAnimationEnd(e: AnimationEvent) {
