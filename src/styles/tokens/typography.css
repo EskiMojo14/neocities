@@ -40,54 +40,6 @@
   font-display: swap;
 }
 
-%light {
-  --weight-thin: 100;
-  --weight-extralight: 200;
-  --weight-light: 300;
-  --weight-regular: 400;
-  --weight-medium: 500;
-  --weight-semibold: 600;
-  --weight-bold: 700;
-  --weight-extrabold: 800;
-  --weight-black: 900;
-
-  --icon-grade: 0;
-}
-
-@media (prefers-color-scheme: light) {
-  [data-theme="system"] {
-    @extend %light;
-  }
-}
-
-[data-theme="light"] {
-  @extend %light;
-}
-
-%dark {
-  --weight-thin: 100;
-  --weight-extralight: 150;
-  --weight-light: 250;
-  --weight-regular: 350;
-  --weight-medium: 450;
-  --weight-semibold: 550;
-  --weight-bold: 650;
-  --weight-extrabold: 750;
-  --weight-black: 850;
-
-  --icon-grade: -25;
-}
-
-@media (prefers-color-scheme: dark) {
-  [data-theme="system"] {
-    @extend %dark;
-  }
-}
-
-[data-theme="dark"] {
-  @extend %dark;
-}
-
 :root {
   --font-family-heading: "Monaspace Xenon", monospace;
   --font-family-body: "Monaspace Neon", monospace;
@@ -96,6 +48,34 @@
   --font-family-comment: "Monaspace Radon", monospace;
   --font-family-doc-comment: "Monaspace Xenon", monospace;
   --font-family-icon: "Material Symbols Sharp", serif;
+
+  @media (prefers-color-scheme: light) {
+    --weight-thin: 100;
+    --weight-extralight: 200;
+    --weight-light: 300;
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-extrabold: 800;
+    --weight-black: 900;
+
+    --icon-grade: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --weight-thin: 100;
+    --weight-extralight: 150;
+    --weight-light: 250;
+    --weight-regular: 350;
+    --weight-medium: 450;
+    --weight-semibold: 550;
+    --weight-bold: 650;
+    --weight-extrabold: 750;
+    --weight-black: 850;
+
+    --icon-grade: -25;
+  }
 
   --headline1-family: var(--font-family-heading);
   --headline1-size: 6.0625rem;

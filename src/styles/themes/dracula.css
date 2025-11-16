@@ -20,74 +20,76 @@ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascr
 
 /* Scrollbars */
 
-%darkTheme {
-  --black: #21222c;
-  --black-secondary: #414558;
-  --black-ternary: #a7abbe;
-  --grey: #414558;
-  --grey-secondary: #626784;
-  --white: #f8f8f2;
-  --white-secondary: #ffffff;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --black: #21222c;
+    --black-secondary: #414558;
+    --black-ternary: #a7abbe;
+    --grey: #414558;
+    --grey-secondary: #626784;
+    --white: #f8f8f2;
+    --white-secondary: #ffffff;
 
-  --cyan: #80ffea;
-  --cyan-secondary: #ccfff6;
-  --cyan-ternary: #8be9fd;
-  --green: #8aff80;
-  --green-secondary: #d0ffcc;
-  --green-ternary: #50fa7b;
-  --orange: #ffca80;
-  --orange-secondary: #ffeacc;
-  --orange-ternary: #ffb86c;
-  --pink: #ff80bf;
-  --pink-secondary: #ffcce6;
-  --pink-ternary: #ff79c6;
-  --purple: #9580ff;
-  --purple-secondary: #d4ccff;
-  --purple-ternary: #bd93f9;
-  --red: #ff9580;
-  --red-secondary: #ffd4cc;
-  --red-ternary: #ff5555;
-  --yellow: #ffff80;
-  --yellow-secondary: #ffffcc;
-  --yellow-ternary: #f1fa8c;
+    --cyan: #80ffea;
+    --cyan-secondary: #ccfff6;
+    --cyan-ternary: #8be9fd;
+    --green: #8aff80;
+    --green-secondary: #d0ffcc;
+    --green-ternary: #50fa7b;
+    --orange: #ffca80;
+    --orange-secondary: #ffeacc;
+    --orange-ternary: #ffb86c;
+    --pink: #ff80bf;
+    --pink-secondary: #ffcce6;
+    --pink-ternary: #ff79c6;
+    --purple: #9580ff;
+    --purple-secondary: #d4ccff;
+    --purple-ternary: #bd93f9;
+    --red: #ff9580;
+    --red-secondary: #ffd4cc;
+    --red-ternary: #ff5555;
+    --yellow: #ffff80;
+    --yellow-secondary: #ffffcc;
+    --yellow-ternary: #f1fa8c;
 
-  --background: #282a36;
-  --comment: #6272a4;
-  --foreground: var(--white);
-  --selection: #44475a;
-  --disabled: #6c7393;
+    --background: #282a36;
+    --comment: #6272a4;
+    --foreground: var(--white);
+    --selection: #44475a;
+    --disabled: #6c7393;
 
-  --line-num: #999;
+    --line-num: #999;
 
-  /* Transparency */
+    /* Transparency */
 
-  /** 30% of transparency **/
-  --background-30: rgba(from var(--background) r g b / 0.2);
-  --comment-30: rgba(from var(--comment) r g b / 0.2);
-  --foreground-30: rgba(from var(--foreground) r g b / 0.2);
-  --selection-30: rgba(from var(--selection) r g b / 0.2);
+    /** 30% of transparency **/
+    --background-30: rgba(from var(--background) r g b / 0.2);
+    --comment-30: rgba(from var(--comment) r g b / 0.2);
+    --foreground-30: rgba(from var(--foreground) r g b / 0.2);
+    --selection-30: rgba(from var(--selection) r g b / 0.2);
 
-  --cyan-30: rgba(from var(--cyan-ternary) r g b / 0.2);
-  --green-30: rgba(from var(--green-ternary) r g b / 0.2);
-  --orange-30: rgba(from var(--orange-ternary) r g b / 0.2);
-  --pink-30: rgba(from var(--pink-ternary) r g b / 0.2);
-  --purple-30: rgba(from var(--purple-ternary) r g b / 0.2);
-  --red-30: rgba(from var(--red-ternary) r g b / 0.2);
-  --yellow-30: rgba(from var(--yellow-ternary) r g b / 0.2);
+    --cyan-30: rgba(from var(--cyan-ternary) r g b / 0.2);
+    --green-30: rgba(from var(--green-ternary) r g b / 0.2);
+    --orange-30: rgba(from var(--orange-ternary) r g b / 0.2);
+    --pink-30: rgba(from var(--pink-ternary) r g b / 0.2);
+    --purple-30: rgba(from var(--purple-ternary) r g b / 0.2);
+    --red-30: rgba(from var(--red-ternary) r g b / 0.2);
+    --yellow-30: rgba(from var(--yellow-ternary) r g b / 0.2);
 
-  /** 40% of transparency **/
-  --background-40: rgba(from var(--background) r g b / 0.4);
-  --comment-40: rgba(from var(--comment) r g b / 0.4);
-  --foreground-40: rgba(from var(--foreground) r g b / 0.4);
-  --selection-40: rgba(from var(--selection) r g b / 0.4);
+    /** 40% of transparency **/
+    --background-40: rgba(from var(--background) r g b / 0.4);
+    --comment-40: rgba(from var(--comment) r g b / 0.4);
+    --foreground-40: rgba(from var(--foreground) r g b / 0.4);
+    --selection-40: rgba(from var(--selection) r g b / 0.4);
 
-  --cyan-40: rgba(from var(--cyan-ternary) r g b / 0.4);
-  --green-40: rgba(from var(--green-ternary) r g b / 0.4);
-  --orange-40: rgba(from var(--orange-ternary) r g b / 0.4);
-  --pink-40: rgba(from var(--pink-ternary) r g b / 0.4);
-  --purple-40: rgba(from var(--purple-ternary) r g b / 0.4);
-  --red-40: rgba(from var(--red-ternary) r g b / 0.4);
-  --yellow-40: rgba(from var(--yellow-ternary) r g b / 0.4);
+    --cyan-40: rgba(from var(--cyan-ternary) r g b / 0.4);
+    --green-40: rgba(from var(--green-ternary) r g b / 0.4);
+    --orange-40: rgba(from var(--orange-ternary) r g b / 0.4);
+    --pink-40: rgba(from var(--pink-ternary) r g b / 0.4);
+    --purple-40: rgba(from var(--purple-ternary) r g b / 0.4);
+    --red-40: rgba(from var(--red-ternary) r g b / 0.4);
+    --yellow-40: rgba(from var(--yellow-ternary) r g b / 0.4);
+  }
 
   /* Selection */
 
@@ -514,14 +516,4 @@ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascr
   .highlight-line-remove {
     background-color: var(--red-30);
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  [data-theme="system"] {
-    @extend %darkTheme;
-  }
-}
-
-[data-theme="dark"] {
-  @extend %darkTheme;
 }
