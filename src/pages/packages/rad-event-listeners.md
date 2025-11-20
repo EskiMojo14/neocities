@@ -13,16 +13,18 @@ tags:
 
 The main API, allowing you to pass an object of event names and handlers, and get back an unsubscribe function for each event (attached to a global unsubscribe function).
 
+The listener also receives an abort signal, which will be aborted when the listener is next called.
+
 ```ts
 import { radEventListeners } from "rad-event-listeners";
 
 const unsub = radEventListeners(
   window,
   {
-    click: (ev) => console.log(ev),
+    click: (ev, signal) => console.log(ev, signal),
     keydown: [
       {
-        handleEvent: (ev) => console.log(ev),
+        handleEvent: (ev, signal) => console.log(ev, signal),
       },
       // Event options
       { once: true },
