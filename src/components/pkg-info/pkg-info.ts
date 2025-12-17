@@ -5,25 +5,34 @@ import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import type { PackageManager } from "../../constants/prefs.ts";
 import { pkgManagerPref } from "../../constants/prefs.ts";
+import { QueryController } from "../../controllers/query-controller.ts";
+import { getMonthlyDownloads } from "../../data/npm.ts";
+import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import { ThemeWatcher } from "../../mixins/theme-watcher.ts";
 import dracula from "../../styles/themes/dracula.css?type=raw";
 import githubLight from "../../styles/themes/github-light.css?type=raw";
 import base from "../../styles/utility/baseline.css?type=raw";
-import { frontmatterIsSet } from "../../utils/index.ts";
+import { decimalFormat, frontmatterIsSet } from "../../utils/index.ts";
 import { toggleButton } from "../button/toggle.ts";
 import "../focus-group/focus-group.ts";
+import "../skeleton/text-skeleton.ts";
 import { toast } from "../toaster/toaster.ts";
 import Tooltip from "../tooltip/tooltip.ts";
 import pkgInfo from "./pkg-info.css?type=raw";
 
 @customElement("pkg-info")
-export default class PkgInfo extends ThemeWatcher(LitElement) {
+export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
   static styles = [
     unsafeCSS(base),
     unsafeCSS(githubLight),
     unsafeCSS(dracula),
     unsafeCSS(pkgInfo),
   ];
+
+  #fetchDownloads = new QueryController(this, () => ({
+    ...getMonthlyDownloads(this.pkg),
+    enabled: typeof window !== "undefined",
+  }));
 
   @property({ type: String, attribute: "dev-dep" })
   devDep = "${unset}";
@@ -64,7 +73,7 @@ export default class PkgInfo extends ThemeWatcher(LitElement) {
     }
   }
 
-  render() {
+  render(): unknown {
     const { devDep, pkg, repo, docs, includeInstall, pkgManager } = this;
     return html`
       <div data-theme=${this.theme}>
@@ -81,14 +90,39 @@ export default class PkgInfo extends ThemeWatcher(LitElement) {
               |
             `,
           )}
-          <a
-            href="https://www.npmjs.com/package/${pkg}"
-            target="_blank"
-            rel="noopener noreferrer"
+          <span>
+            <a
+              href="https://www.npmjs.com/package/${pkg}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <material-symbol aria-hidden="true"
+                >deployed_code</material-symbol
+              >
+              NPM
+            </a>
+            ${when(
+              !this.#fetchDownloads.result?.isError,
+              () => html`
+                <span class="download-count">
+                  <material-symbol aria-hidden="true">download</material-symbol>
+                  <span>
+                    ${this.#fetchDownloads.render({
+                      initialOrPending: () =>
+                        html`<text-skeleton>00</text-skeleton>`,
+                      success: ({ data }) =>
+                        html`<span
+                          aria-label=${decimalFormat(data.downloads, "normal")}
+                        >
+                          ${decimalFormat(data.downloads, this.pageStyle)}</span
+                        >`,
+                    })}
+                    <span aria-label="downloads in the last month">/mo</span>
+                  </span>
+                </span>
+              `,
+            )}</span
           >
-            <material-symbol aria-hidden="true">deployed_code</material-symbol>
-            NPM
-          </a>
           |
           <a
             href="https://github.com/${repo}"

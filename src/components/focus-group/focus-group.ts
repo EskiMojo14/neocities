@@ -1,5 +1,5 @@
 import { html, LitElement } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { getActiveElement } from "../../utils/index.ts";
 
 @customElement("focus-group")
@@ -9,7 +9,16 @@ export default class FocusGroup extends LitElement {
     this.addEventListener("keydown", this.#handleKeyDown.bind(this));
   }
 
+  @property()
+  direction: "horizontal" | "vertical" = "horizontal";
+
   #getNextKeys() {
+    if (this.direction === "vertical") {
+      return {
+        next: "ArrowDown",
+        prev: "ArrowUp",
+      };
+    }
     const isRtl = this.matches(":dir(rtl)");
     return {
       next: isRtl ? "ArrowLeft" : "ArrowRight",
@@ -24,12 +33,18 @@ export default class FocusGroup extends LitElement {
     switch (event.key) {
       case keys.prev: {
         const prev = focused.previousElementSibling;
-        if (prev instanceof HTMLElement) prev.focus();
+        if (prev instanceof HTMLElement) {
+          prev.focus();
+          event.preventDefault();
+        }
         break;
       }
       case keys.next: {
         const next = focused.nextElementSibling;
-        if (next instanceof HTMLElement) next.focus();
+        if (next instanceof HTMLElement) {
+          next.focus();
+          event.preventDefault();
+        }
         break;
       }
     }

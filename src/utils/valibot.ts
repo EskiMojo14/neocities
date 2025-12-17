@@ -29,12 +29,11 @@ export const formDataShape = <
 ) =>
   v.pipe(v.instance(FormData), v.transform(objectifyFormData), v.object(shape));
 
-export const coerceNumber = v.pipe(v.any(), v.transform(Number), v.number());
+export const coerceNumber = v.pipe(v.any(), v.toNumber());
 
 export const coerceDate = v.pipe(
   v.union([v.string(), v.number(), v.date()]),
-  v.transform((date) => new Date(date)),
-  v.date(),
+  v.toDate(),
 );
 
 export const json = <T extends v.GenericSchema>(

@@ -29,3 +29,29 @@ it("should move focus with arrow keys", async ({ user }) => {
   await user.keyboard("[ArrowLeft]");
   await expect.element(buttons[1]).toHaveFocus();
 });
+
+it("should move focus with arrow keys in vertical mode", async ({ user }) => {
+  const screen = page.render(html`
+    <focus-group direction="vertical">
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+    </focus-group>
+  `);
+  const buttons = {
+    1: screen.getByText("1"),
+    2: screen.getByText("2"),
+    3: screen.getByText("3"),
+  };
+  await buttons[1].click();
+  await expect.element(buttons[1]).toHaveFocus();
+  await user.keyboard("[ArrowDown]");
+  await expect.element(buttons[2]).toHaveFocus();
+  await user.keyboard("[ArrowDown]");
+  await expect.element(buttons[3]).toHaveFocus();
+
+  await user.keyboard("[ArrowUp]");
+  await expect.element(buttons[2]).toHaveFocus();
+  await user.keyboard("[ArrowUp]");
+  await expect.element(buttons[1]).toHaveFocus();
+});

@@ -175,6 +175,15 @@ export const dateFormat = (date: Date, style: Style) =>
     ? dateFormatter.format(date)
     : date.toISOString().slice(0, 10);
 
+export const dateRangeFormat = (start: Date, end: Date, style: Style) => {
+  if (style === "normal") {
+    return dateFormatter.formatRange(start, end);
+  }
+  return `${start.toISOString().slice(0, 10)} – ${end
+    .toISOString()
+    .slice(0, 10)}`;
+};
+
 export const timeFormatter = new Intl.DateTimeFormat(undefined, {
   dateStyle: "medium",
   timeStyle: "short",
