@@ -22,3 +22,13 @@
     margin: 0 0.5rem;
   }
 }
+
+.download-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  > span {
+    display: inline-flex;
+    align-items: baseline;
+  }
+}
