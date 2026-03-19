@@ -1,8 +1,4 @@
-import type {
-  QueryKey,
-  QueryObserverOptions,
-  QueryObserverResult,
-} from "@tanstack/query-core";
+import type { QueryKey, QueryObserverOptions, QueryObserverResult } from "@tanstack/query-core";
 import { QueryObserver } from "@tanstack/query-core";
 import type { LitElement, ReactiveController } from "lit";
 import { nothing } from "lit";
@@ -48,28 +44,14 @@ export class QueryController<
   >;
 
   private whenQueryObserver =
-    Promise.withResolvers<
-      QueryObserver<TQueryFnData, TError, TData, TQueryData, TQueryKey>
-    >();
-  queryObserver?: QueryObserver<
-    TQueryFnData,
-    TError,
-    TData,
-    TQueryData,
-    TQueryKey
-  >;
+    Promise.withResolvers<QueryObserver<TQueryFnData, TError, TData, TQueryData, TQueryKey>>();
+  queryObserver?: QueryObserver<TQueryFnData, TError, TData, TQueryData, TQueryKey>;
 
   result?: QueryObserverResult<TData, TError>;
 
   constructor(
     host: LitElement,
-    getOptions: () => QueryObserverOptions<
-      TQueryFnData,
-      TError,
-      TData,
-      TQueryData,
-      TQueryKey
-    >,
+    getOptions: () => QueryObserverOptions<TQueryFnData, TError, TData, TQueryData, TQueryKey>,
   ) {
     (this.host = host).addController(this);
     this.getOptions = getOptions;
@@ -126,12 +108,8 @@ export class QueryController<
     if (renderers.initialOrPending && (!this.result || this.result.isPending)) {
       renderer = renderers.initialOrPending;
     } else {
-      renderer = this.result
-        ? renderers[this.result.status]
-        : renderers.initial;
+      renderer = this.result ? renderers[this.result.status] : renderers.initial;
     }
-    return (
-      renderer ? renderer(this.result as never) : nothing
-    ) as RendererResult<TRenderers>;
+    return (renderer ? renderer(this.result as never) : nothing) as RendererResult<TRenderers>;
   }
 }

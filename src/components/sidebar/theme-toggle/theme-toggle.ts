@@ -34,12 +34,8 @@ export default class ThemeToggle extends LitElement {
   set currentTheme(theme: Theme) {
     this._currentTheme = theme;
 
-    document
-      .getElementById("svg-favicon")
-      ?.setAttribute("href", `/assets/icon-${theme}.svg`);
-    const [meta1, ...rest] = document.querySelectorAll<HTMLMetaElement>(
-      "meta[name=theme-color]",
-    );
+    document.getElementById("svg-favicon")?.setAttribute("href", `/assets/icon-${theme}.svg`);
+    const [meta1, ...rest] = document.querySelectorAll<HTMLMetaElement>("meta[name=theme-color]");
     rest.forEach((meta) => {
       meta.remove();
     });

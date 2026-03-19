@@ -45,9 +45,7 @@ export default class TopArtists extends StyleWatcher(LitElement) {
             (period) => period,
             (period) =>
               toggleButton(
-                (this.pageStyle === "normal" ? fullPeriodLabels : periodLabels)[
-                  period
-                ],
+                (this.pageStyle === "normal" ? fullPeriodLabels : periodLabels)[period],
                 {
                   name: "top-artists-period",
                   value: period,
@@ -66,9 +64,12 @@ export default class TopArtists extends StyleWatcher(LitElement) {
               () => "skeleton",
               (_, index) =>
                 html`<top-artist-skeleton></top-artist-skeleton>${when(
-                    index < 4,
-                    () => html`<hr class="inset" />`,
-                  )}`,
+                  index < 4,
+                  () =>
+                    html`
+                      <hr class="inset" />
+                    `,
+                )}`,
             ),
           success: ({ data: artists }) =>
             repeat(
@@ -84,11 +85,16 @@ export default class TopArtists extends StyleWatcher(LitElement) {
                   ></top-artist>
                   ${when(
                     index < artists.length - 1,
-                    () => html`<hr class="inset" />`,
+                    () =>
+                      html`
+                        <hr class="inset" />
+                      `,
                   )}`,
             ),
           error: () =>
-            html`<p class="error body2">Failed to load top artists</p>`,
+            html`
+              <p class="error body2">Failed to load top artists</p>
+            `,
         })}
       </ol>
     `;

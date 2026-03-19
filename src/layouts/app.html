@@ -17,48 +17,23 @@
     <script type="module" src="../components/header/header.ts"></script>
     <script type="module" src="../components/footer/footer.ts"></script>
     <script type="module" src="../components/toaster/toaster.ts"></script>
-    <script
-      type="module"
-      src="../components/scroll-to-top/scroll-to-top.ts"
-    ></script>
+    <script type="module" src="../components/scroll-to-top/scroll-to-top.ts"></script>
     <title>eskimojo - ${globalThis.page.title}</title>
     <link rel="icon" href="/assets/icon.ico" sizes="any" />
-    <link
-      id="svg-favicon"
-      rel="icon"
-      href="/assets/icon-system.svg"
-      type="image/svg+xml"
-    />
-    <meta
-      name="theme-color"
-      content="#eff1f3"
-      media="(prefers-color-scheme: light)"
-    />
-    <meta
-      name="theme-color"
-      content="#21222c"
-      media="(prefers-color-scheme: dark)"
-    />
+    <link id="svg-favicon" rel="icon" href="/assets/icon-system.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#eff1f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#21222c" media="(prefers-color-scheme: dark)" />
     <meta property="og:title" content="eskimojo - ${globalThis.page.title}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://eskimojo.neocities.org/" />
-    <meta
-      property="og:description"
-      content="${globalThis.page.data.description}"
-    />
-    <meta
-      property="og:image"
-      content="https://eskimojo.neocities.org/assets/icon.png"
-    />
+    <meta property="og:description" content="${globalThis.page.data.description}" />
+    <meta property="og:image" content="https://eskimojo.neocities.org/assets/icon.png" />
   </head>
   <body>
     <a class="skip-to-content headline5" href="#root">Skip to content</a>
     <sidebar-nav current-route="${globalThis.page.route}"></sidebar-nav>
     <div class="root" id="root">
-      <page-header
-        header="${globalThis.page.title}"
-        subtitle="${globalThis.page.data.description}"
-      >
+      <page-header header="${globalThis.page.title}" subtitle="${globalThis.page.data.description}">
       </page-header>
       <main>
         <page-outlet></page-outlet>

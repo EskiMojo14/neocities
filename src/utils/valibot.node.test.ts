@@ -4,14 +4,7 @@ import * as vUtils from "./valibot.ts";
 
 expect.addSnapshotSerializer({
   test: (value) => value instanceof v.ValiError,
-  serialize: (
-    valiError: v.ValiError<v.GenericSchema>,
-    config,
-    indentation,
-    depth,
-    refs,
-    printer,
-  ) =>
+  serialize: (valiError: v.ValiError<v.GenericSchema>, config, indentation, depth, refs, printer) =>
     `[ValiError: ${valiError.message}]: ${printer(valiError.issues, config, indentation, depth, refs)}`,
 });
 
@@ -114,8 +107,7 @@ describe("valibot utils", () => {
     });
 
     it("should throw an error if the string is not a number", () => {
-      expect(() => v.parse(vUtils.coerceNumber, "a"))
-        .toThrowErrorMatchingInlineSnapshot(`
+      expect(() => v.parse(vUtils.coerceNumber, "a")).toThrowErrorMatchingInlineSnapshot(`
           [ValiError: Invalid type: Expected number but received NaN]: [
             {
               "abortEarly": undefined,
@@ -137,14 +129,11 @@ describe("valibot utils", () => {
   });
   describe("coerceDate", () => {
     it("should coerce a string to a date", () => {
-      expect(v.parse(vUtils.coerceDate, "2020-01-01")).toEqual(
-        new Date("2020-01-01"),
-      );
+      expect(v.parse(vUtils.coerceDate, "2020-01-01")).toEqual(new Date("2020-01-01"));
     });
 
     it("should throw an error if the string is not a date", () => {
-      expect(() => v.parse(vUtils.coerceDate, "a"))
-        .toThrowErrorMatchingInlineSnapshot(`
+      expect(() => v.parse(vUtils.coerceDate, "a")).toThrowErrorMatchingInlineSnapshot(`
         [ValiError: Invalid type: Expected Date but received "Invalid Date"]: [
           {
             "abortEarly": undefined,
@@ -166,15 +155,14 @@ describe("valibot utils", () => {
   });
   describe("json", () => {
     it("should parse a valid JSON string", () => {
-      expect(
-        v.parse(vUtils.json(v.object({ foo: v.string() })), '{"foo":"bar"}'),
-      ).toEqual({ foo: "bar" });
+      expect(v.parse(vUtils.json(v.object({ foo: v.string() })), '{"foo":"bar"}')).toEqual({
+        foo: "bar",
+      });
     });
 
     it("should throw an error if the JSON is invalid", () => {
-      expect(() =>
-        v.parse(vUtils.json(v.object({ foo: v.string() })), '{"foo":"bar"'),
-      ).toThrowErrorMatchingInlineSnapshot(`
+      expect(() => v.parse(vUtils.json(v.object({ foo: v.string() })), '{"foo":"bar"'))
+        .toThrowErrorMatchingInlineSnapshot(`
         [ValiError: Invalid JSON: Received "Expected ',' or '}' after property value in JSON at position 12 (line 1 column 13)"]: [
           {
             "abortEarly": undefined,
@@ -217,9 +205,8 @@ describe("valibot utils", () => {
     });
 
     it("should throw an error if the JSON does not match the schema", () => {
-      expect(() =>
-        v.parse(vUtils.json(v.object({ foo: v.string() })), '{"foo":1}'),
-      ).toThrowErrorMatchingInlineSnapshot(`
+      expect(() => v.parse(vUtils.json(v.object({ foo: v.string() })), '{"foo":1}'))
+        .toThrowErrorMatchingInlineSnapshot(`
         [ValiError: Invalid type: Expected string but received 1]: [
           {
             "abortEarly": undefined,
@@ -261,12 +248,9 @@ describe("valibot utils", () => {
   });
   describe("maybeJson", () => {
     it("should parse a valid JSON string", () => {
-      expect(
-        v.parse(
-          vUtils.maybeJson(v.object({ foo: v.string() })),
-          '{"foo":"bar"}',
-        ),
-      ).toEqual({ foo: "bar" });
+      expect(v.parse(vUtils.maybeJson(v.object({ foo: v.string() })), '{"foo":"bar"}')).toEqual({
+        foo: "bar",
+      });
     });
 
     it("should parse a valid object", () => {
@@ -278,12 +262,8 @@ describe("valibot utils", () => {
     });
 
     it("should throw an error if the JSON is invalid", () => {
-      expect(() =>
-        v.parse(
-          vUtils.maybeJson(v.object({ foo: v.string() })),
-          '{"foo":"bar"',
-        ),
-      ).toThrowErrorMatchingInlineSnapshot(`
+      expect(() => v.parse(vUtils.maybeJson(v.object({ foo: v.string() })), '{"foo":"bar"'))
+        .toThrowErrorMatchingInlineSnapshot(`
         [ValiError: Invalid type: Expected (Object | string) but received "{"foo":"bar""]: [
           {
             "abortEarly": undefined,
@@ -332,9 +312,8 @@ describe("valibot utils", () => {
       `);
     });
     it("should throw an error if the JSON does not match the schema", () => {
-      expect(() =>
-        v.parse(vUtils.maybeJson(v.object({ foo: v.string() })), '{"foo":1}'),
-      ).toThrowErrorMatchingInlineSnapshot(`
+      expect(() => v.parse(vUtils.maybeJson(v.object({ foo: v.string() })), '{"foo":1}'))
+        .toThrowErrorMatchingInlineSnapshot(`
         [ValiError: Invalid type: Expected (Object | string) but received "{"foo":1}"]: [
           {
             "abortEarly": undefined,
@@ -393,9 +372,8 @@ describe("valibot utils", () => {
       `);
     });
     it("should throw an error if the object does not match the schema", () => {
-      expect(() =>
-        v.parse(vUtils.maybeJson(v.object({ foo: v.string() })), { foo: 1 }),
-      ).toThrowErrorMatchingInlineSnapshot(`
+      expect(() => v.parse(vUtils.maybeJson(v.object({ foo: v.string() })), { foo: 1 }))
+        .toThrowErrorMatchingInlineSnapshot(`
         [ValiError: Invalid type: Expected (Object | string) but received Object]: [
           {
             "abortEarly": undefined,

@@ -67,8 +67,8 @@
   &.has-timeout {
     animation:
       toast-enter var(--default-duration) forwards,
-      toast-exit var(--default-duration)
-        calc(max(var(--timeout), 5000ms) + var(--default-duration)) forwards;
+      toast-exit var(--default-duration) calc(max(var(--timeout), 5000ms) + var(--default-duration))
+        forwards;
     @media (prefers-reduced-motion) {
       animation-name: toast-fade-in, toast-fade-out;
     }

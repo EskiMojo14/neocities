@@ -110,8 +110,7 @@ export default class Carousel extends LitElement {
           class="icon"
           @click=${() => {
             this.scrollToImg(
-              (this.currentIdx - 1 + this.parsedItems.length) %
-                this.parsedItems.length,
+              (this.currentIdx - 1 + this.parsedItems.length) % this.parsedItems.length,
             );
           }}
         >

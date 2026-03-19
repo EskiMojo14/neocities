@@ -48,9 +48,7 @@ export default class TopTracks extends StyleWatcher(LitElement) {
             (period) => period,
             (period) =>
               toggleButton(
-                (this.pageStyle === "normal" ? fullPeriodLabels : periodLabels)[
-                  period
-                ],
+                (this.pageStyle === "normal" ? fullPeriodLabels : periodLabels)[period],
                 {
                   name: "top-tracks-period",
                   value: period,
@@ -69,9 +67,12 @@ export default class TopTracks extends StyleWatcher(LitElement) {
               () => "skeleton",
               (_, index) =>
                 html`<top-track-skeleton></top-track-skeleton>${when(
-                    index < 4,
-                    () => html`<hr class="inset" />`,
-                  )}`,
+                  index < 4,
+                  () =>
+                    html`
+                      <hr class="inset" />
+                    `,
+                )}`,
             ),
           success: ({ data: tracks }) =>
             repeat(
@@ -88,11 +89,16 @@ export default class TopTracks extends StyleWatcher(LitElement) {
                   ></top-track>
                   ${when(
                     index < tracks.length - 1,
-                    () => html`<hr class="inset" />`,
+                    () =>
+                      html`
+                        <hr class="inset" />
+                      `,
                   )}`,
             ),
           error: () =>
-            html`<p class="error body2">Failed to load top tracks</p>`,
+            html`
+              <p class="error body2">Failed to load top tracks</p>
+            `,
         })}
       </ol>
     `;

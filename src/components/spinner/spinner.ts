@@ -8,10 +8,10 @@ export default class Spinner extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(spinner)];
 
   render() {
-    return html`<material-symbol aria-hidden="true"
-        >hourglass_bottom</material-symbol
-      >
-      <material-symbol aria-hidden="true">hourglass_top</material-symbol>`;
+    return html`
+      <material-symbol aria-hidden="true">hourglass_bottom</material-symbol>
+      <material-symbol aria-hidden="true">hourglass_top</material-symbol>
+    `;
   }
 }
 

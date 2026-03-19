@@ -28,9 +28,7 @@ it("should show install command when include-install is set", async () => {
   const screen = page.render(html`
     <pkg-info pkg="foo" repo="foo"></pkg-info>
   `);
-  await expect
-    .element(screen.getByText("Install with"))
-    .not.toBeInTheDocument();
+  await expect.element(screen.getByText("Install with")).not.toBeInTheDocument();
 
   screen.rerender(html`
     <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
@@ -63,11 +61,7 @@ it("should allow switching between package managers", async () => {
     await button.click();
     await expect.poll(() => pkgManagerPref.storage).toBe(pkgManager);
     await expect
-      .poll(() =>
-        document
-          .querySelector("pkg-info")
-          ?.shadowRoot?.getElementById("install-command"),
-      )
+      .poll(() => document.querySelector("pkg-info")?.shadowRoot?.getElementById("install-command"))
       .toHaveTextContent(
         `${pkgManager} ${pkgManagerPref.meta[pkgManager].install} ${pkgManagerPref.meta[pkgManager].prefix ?? ""}foo`,
       );

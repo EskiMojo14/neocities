@@ -11,7 +11,11 @@ afterAll(() => {
 });
 
 it("should select the correct style", async () => {
-  const screen = page.render(html`<style-toggle></style-toggle>`);
+  const screen = page.render(
+    html`
+      <style-toggle></style-toggle>
+    `,
+  );
 
   for (const theme of stylePref.options) {
     const label = screen.getByLabelText(`${capitalize(theme)} style`);

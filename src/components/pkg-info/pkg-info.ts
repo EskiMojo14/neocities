@@ -22,12 +22,7 @@ import pkgInfo from "./pkg-info.css?type=raw";
 
 @customElement("pkg-info")
 export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
-  static styles = [
-    unsafeCSS(base),
-    unsafeCSS(githubLight),
-    unsafeCSS(dracula),
-    unsafeCSS(pkgInfo),
-  ];
+  static styles = [unsafeCSS(base), unsafeCSS(githubLight), unsafeCSS(dracula), unsafeCSS(pkgInfo)];
 
   #fetchDownloads = new QueryController(this, () => ({
     ...getMonthlyDownloads(this.pkg),
@@ -62,8 +57,7 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
 
   async #onCopy() {
     try {
-      const text =
-        this.shadowRoot?.getElementById("install-command")?.textContent;
+      const text = this.shadowRoot?.getElementById("install-command")?.textContent;
       if (!text) return;
       await navigator.clipboard.writeText(text);
       toast.success("Copied to clipboard", true);
@@ -109,7 +103,9 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
                   <span>
                     ${this.#fetchDownloads.render({
                       initialOrPending: () =>
-                        html`<text-skeleton>00</text-skeleton>`,
+                        html`
+                          <text-skeleton>00</text-skeleton>
+                        `,
                       success: ({ data }) =>
                         html`<span
                           aria-label=${decimalFormat(data.downloads, "normal")}
@@ -140,9 +136,7 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
               <fieldset
                 class="button-group button-group--square install-buttons"
                 @change=${(ev: Event) => {
-                  this.#setPackageManager(
-                    (ev.target as HTMLInputElement).value as PackageManager,
-                  );
+                  this.#setPackageManager((ev.target as HTMLInputElement).value as PackageManager);
                 }}
                 needs-js
               >
@@ -164,12 +158,15 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
                 <pre
                   class="language-bash"
                   id="install-command"
-                ><code class="language-bash"><span class="token function">${pkgManager}</span> <span class="token function">${pkgManagerPref
-                  .meta[pkgManager].install}</span> ${when(
+                ><code class="language-bash"><span class="token function">${pkgManager}</span> <span class="token function">${
+                  pkgManagerPref.meta[pkgManager].install
+                }</span> ${when(
                   frontmatterIsSet(devDep),
-                  () => html`<span class="token parameter variable">-D</span> `,
-                )}${pkgManagerPref.meta[pkgManager].prefix ??
-                ""}${pkg}</code></pre>
+                  () =>
+                    html`
+                      <span class="token parameter variable">-D</span>
+                    `,
+                )}${pkgManagerPref.meta[pkgManager].prefix ?? ""}${pkg}</code></pre>
                 <button
                   class="icon"
                   aria-label="Copy to clipboard"

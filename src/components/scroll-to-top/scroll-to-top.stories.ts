@@ -8,8 +8,10 @@ const meta = {
   tags: ["autodocs"],
   component: "scroll-to-top",
   render: () =>
-    html`<div style="height: 150vh"></div>
-      <scroll-to-top></scroll-to-top>`,
+    html`
+      <div style="height: 150vh"></div>
+      <scroll-to-top></scroll-to-top>
+    `,
 } satisfies Meta<HTMLElementTagNameMap["scroll-to-top"]>;
 
 export default meta;

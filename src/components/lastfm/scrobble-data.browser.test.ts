@@ -7,10 +7,7 @@ import { getUserData } from "../../data/lastfm.ts";
 import { it } from "../../vite/utils.browser.ts";
 import "./scrobble-data.ts";
 
-it("should render placeholder data while loading, then real data", async ({
-  worker,
-  setStyle,
-}) => {
+it("should render placeholder data while loading, then real data", async ({ worker, setStyle }) => {
   worker.use(
     mockEndpoint(getUserData, async () => {
       await delay();
@@ -26,7 +23,11 @@ it("should render placeholder data while loading, then real data", async ({
     }),
   );
 
-  const screen = page.render(html`<scrobble-data></scrobble-data>`);
+  const screen = page.render(
+    html`
+      <scrobble-data></scrobble-data>
+    `,
+  );
   await expect.element(screen.getByText("0,000 artists")).toBeInTheDocument();
 
   await expect.element(screen.getByText("10_000 artists")).toBeInTheDocument();

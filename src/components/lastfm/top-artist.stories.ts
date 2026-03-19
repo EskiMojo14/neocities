@@ -7,8 +7,7 @@ const meta = {
   component: "top-artist",
   args: {
     name: "Dirty Loops",
-    thumbnail:
-      "https://lastfm.freetls.fastly.net/i/u/174s/14d1fe21a22a2e4eca73353ce613d555.jpg",
+    thumbnail: "https://lastfm.freetls.fastly.net/i/u/174s/14d1fe21a22a2e4eca73353ce613d555.jpg",
     playcount: 100,
     rank: 1,
   },

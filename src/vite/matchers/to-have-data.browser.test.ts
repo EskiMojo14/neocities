@@ -4,12 +4,20 @@ import { page } from "vitest/browser";
 import { it } from "../utils.browser.ts";
 
 it("should pass without value", () => {
-  const screen = page.render(html`<div data-foo="bar">text</div>`);
+  const screen = page.render(
+    html`
+      <div data-foo="bar">text</div>
+    `,
+  );
   expect(screen.getByText("text").element()).toHaveData("foo");
 });
 
 it("should fail without value", () => {
-  const screen = page.render(html`<div data-foo="bar">text</div>`);
+  const screen = page.render(
+    html`
+      <div data-foo="bar">text</div>
+    `,
+  );
   expect(() => {
     expect(screen.getByText("text").element()).toHaveData("baz");
   }).toThrowErrorMatchingSnapshot();
@@ -19,12 +27,20 @@ it("should fail without value", () => {
 });
 
 it("should pass with value", () => {
-  const screen = page.render(html`<div data-foo="bar">text</div>`);
+  const screen = page.render(
+    html`
+      <div data-foo="bar">text</div>
+    `,
+  );
   expect(screen.getByText("text").element()).toHaveData("foo", "bar");
 });
 
 it("should fail with value", () => {
-  const screen = page.render(html`<div data-foo="bar">text</div>`);
+  const screen = page.render(
+    html`
+      <div data-foo="bar">text</div>
+    `,
+  );
   expect(() => {
     expect(screen.getByText("text").element()).toHaveData("foo", "baz");
   }).toThrowErrorMatchingSnapshot();

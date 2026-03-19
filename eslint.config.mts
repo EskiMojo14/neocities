@@ -38,18 +38,12 @@ export default tseslint.config(
   configs["flat/recommended"],
   {
     rules: {
-      "sort-imports": [
-        "error",
-        { ignoreCase: true, ignoreDeclarationSort: true },
-      ],
+      "sort-imports": ["error", { ignoreCase: true, ignoreDeclarationSort: true }],
       "@typescript-eslint/array-type": ["error", { default: "generic" }],
       "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/only-throw-error": "off",
-      "@typescript-eslint/restrict-template-expressions": [
-        "error",
-        { allowNumber: true },
-      ],
+      "@typescript-eslint/restrict-template-expressions": ["error", { allowNumber: true }],
       "@typescript-eslint/no-namespace": "off", // covered by eraseableSyntaxOnly
       "@typescript-eslint/unbound-method": "off",
       "import-x/no-unresolved": "off",
@@ -63,15 +57,7 @@ export default tseslint.config(
             orderImportKind: "asc",
             caseInsensitive: true,
           },
-          groups: [
-            "builtin",
-            "external",
-            "internal",
-            "parent",
-            "sibling",
-            "index",
-            "object",
-          ],
+          groups: ["builtin", "external", "internal", "parent", "sibling", "index", "object"],
           pathGroups: [
             {
               pattern: "*.{css,scss}",

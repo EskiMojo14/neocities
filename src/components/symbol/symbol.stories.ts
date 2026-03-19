@@ -6,15 +6,7 @@ const meta = {
   title: "Components/Material Symbol",
   tags: ["autodocs"],
   component: "material-symbol",
-  render: ({
-    children,
-    size,
-    fill,
-    weight,
-    grade,
-    opticalSize,
-    "flip-rtl": flipRtl,
-  }) => html`
+  render: ({ children, size, fill, weight, grade, opticalSize, "flip-rtl": flipRtl }) => html`
     <material-symbol
       aria-hidden="true"
       ?flip-rtl=${flipRtl}

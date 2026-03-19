@@ -34,11 +34,15 @@ export const Default: Story = {
   render: ({ type, onchange, variant }) => html`
     <fieldset @change=${onchange} class="button-group ${variant}">
       ${toggleButton(
-        html`<material-symbol aria-hidden="true">home</material-symbol> Home`,
+        html`
+          <material-symbol aria-hidden="true">home</material-symbol> Home
+        `,
         { type, name: "toggle", value: "1", checked: true },
       )}
       ${toggleButton(
-        html`<material-symbol aria-hidden="true">house</material-symbol> House`,
+        html`
+          <material-symbol aria-hidden="true">house</material-symbol> House
+        `,
         { type, name: "toggle", value: "2" },
       )}
     </fieldset>
@@ -49,7 +53,9 @@ export const Icon: Story = {
   render: ({ type, onchange, variant }) => html`
     <fieldset @change=${onchange} class="button-group ${variant}">
       ${toggleButton(
-        html`<material-symbol aria-hidden="true">home</material-symbol>`,
+        html`
+          <material-symbol aria-hidden="true">home</material-symbol>
+        `,
         {
           type,
           name: "toggle",
@@ -63,7 +69,9 @@ export const Icon: Story = {
         },
       )}
       ${toggleButton(
-        html`<material-symbol aria-hidden="true">house</material-symbol>`,
+        html`
+          <material-symbol aria-hidden="true">house</material-symbol>
+        `,
         {
           type,
           name: "toggle",

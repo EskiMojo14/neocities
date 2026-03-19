@@ -11,7 +11,11 @@ afterAll(() => {
 });
 
 it("should select the correct theme", async () => {
-  const screen = page.render(html`<theme-toggle></theme-toggle>`);
+  const screen = page.render(
+    html`
+      <theme-toggle></theme-toggle>
+    `,
+  );
 
   for (const theme of themePref.options) {
     const label = screen.getByLabelText(`${capitalize(theme)} theme`);

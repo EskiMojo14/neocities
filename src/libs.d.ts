@@ -20,9 +20,7 @@ declare module "@greenwood/cli/src/lifecycles/config.js" {
 
 declare module "@greenwood/cli/src/lifecycles/context.js" {
   import type { Compilation, Config } from "@greenwood/cli";
-  export function initContext(opts: {
-    config: Config;
-  }): Promise<Compilation["context"]>;
+  export function initContext(opts: { config: Config }): Promise<Compilation["context"]>;
 }
 
 declare module "@greenwood/cli/src/data/client.js" {
@@ -35,9 +33,7 @@ declare module "@greenwood/cli/src/data/client.js" {
   }
   export function getContent(): Promise<Array<Page>>;
   export function getContentByRoute(route: string): Promise<Array<Page>>;
-  export function getContentByCollection(
-    collection: string,
-  ): Promise<Array<Page>>;
+  export function getContentByCollection(collection: string): Promise<Array<Page>>;
 }
 
 declare module "postcss-extend-rule" {

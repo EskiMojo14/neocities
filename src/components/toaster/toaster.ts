@@ -71,10 +71,7 @@ export default class Toaster extends LitElement {
   #handleAnimationEnd(e: AnimationEvent) {
     if (e.animationName !== "toast-exit") return;
     const { target } = e;
-    assert(
-      target instanceof HTMLElement,
-      "Expected target to be an HTMLElement",
-    );
+    assert(target instanceof HTMLElement, "Expected target to be an HTMLElement");
     const id = target.dataset.id;
     assert(id, "Expected data-id to be present");
     this.close(id);
@@ -145,11 +142,7 @@ function _toast(...args: Parameters<Toaster["push"]>) {
 
 export const toast = Object.assign(
   _toast,
-  unsafeFromEntries(
-    unsafeKeys(typeIcons).map(
-      (type) => [type, _toast.bind(null, type)] as const,
-    ),
-  ),
+  unsafeFromEntries(unsafeKeys(typeIcons).map((type) => [type, _toast.bind(null, type)] as const)),
 );
 
 declare global {

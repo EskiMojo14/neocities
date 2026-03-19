@@ -78,8 +78,7 @@ export default class RecentTrack extends LitElement {
               href=${link.getLink(this.name + " " + this.artist)}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Search ${link.label} for ${this.name} by ${this
-                .artist}"
+              aria-label="Search ${link.label} for ${this.name} by ${this.artist}"
             >
               <material-symbol aria-hidden="true">${link.icon}</material-symbol>
             </a>`,
@@ -101,8 +100,7 @@ export class RecentTrackSkeleton extends LitElement {
         <li class="caption">
           <material-symbol aria-hidden="true">event</material-symbol>
           <text-skeleton>
-            <date-format date="1980-01-01T00:00:00.000Z" show-time>
-            </date-format>
+            <date-format date="1980-01-01T00:00:00.000Z" show-time> </date-format>
           </text-skeleton>
         </li>
         <li class="headline6">

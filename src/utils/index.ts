@@ -5,17 +5,13 @@ export const safeAssign: <T extends object>(
   ...sources: ReadonlyArray<Partial<NoInfer<T>>>
 ) => T = Object.assign;
 
-export function assert(
-  condition: unknown,
-  message?: string,
-): asserts condition {
+export function assert(condition: unknown, message?: string): asserts condition {
   if (!condition) {
     throw new Error(message);
   }
 }
 
-export const wait = (ms: number) =>
-  new Promise<void>((resolve) => setTimeout(resolve, ms));
+export const wait = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
 export function getTypeInterval(text: string, config?: getTypeInterval.Config) {
   const {
@@ -32,10 +28,7 @@ getTypeInterval.defaults = {
   maxDuration: 1000,
 } satisfies Required<getTypeInterval.Config>;
 
-getTypeInterval.getDuration = function getDuration(
-  text: string,
-  config?: getTypeInterval.Config,
-) {
+getTypeInterval.getDuration = function getDuration(text: string, config?: getTypeInterval.Config) {
   return getTypeInterval(text, config) * text.length;
 };
 
@@ -49,18 +42,13 @@ export namespace getTypeInterval {
 
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export type Compute<T> = { [K in keyof T]: T[K] } & unknown;
-export type WithOptional<T, K extends keyof T> = Compute<
-  Omit<T, K> & Partial<Pick<T, K>>
->;
-export type WithRequired<T, K extends keyof T> = Compute<
-  Omit<T, K> & Required<Pick<T, K>>
->;
+export type WithOptional<T, K extends keyof T> = Compute<Omit<T, K> & Partial<Pick<T, K>>>;
+export type WithRequired<T, K extends keyof T> = Compute<Omit<T, K> & Required<Pick<T, K>>>;
 export type NonOptionalKeys<T> = {
   [K in keyof T]-?: undefined extends T[K] ? never : K;
 }[keyof T];
 
-export type HasRequiredProps<T, True, False> =
-  NonOptionalKeys<T> extends never ? False : True;
+export type HasRequiredProps<T, True, False> = NonOptionalKeys<T> extends never ? False : True;
 
 export function uniqueBy<T>(getKey: (item: T) => unknown) {
   const seen = new Set<unknown>();
@@ -92,8 +80,7 @@ export function getActiveElement(parent?: HTMLElement) {
   return el;
 }
 
-export const unsafeKeys: <T extends object>(obj: T) => Array<keyof T & string> =
-  Object.keys;
+export const unsafeKeys: <T extends object>(obj: T) => Array<keyof T & string> = Object.keys;
 export const unsafeEntries: <T extends object>(
   obj: T,
 ) => Array<
@@ -105,11 +92,7 @@ export const unsafeFromEntries: <K extends PropertyKey, V>(
   entries: ReadonlyArray<readonly [K, V]>,
 ) => Record<K, V> = Object.fromEntries;
 
-export function getOrInsert<K extends object, V>(
-  map: WeakMap<K, V>,
-  key: K,
-  value: V,
-): V;
+export function getOrInsert<K extends object, V>(map: WeakMap<K, V>, key: K, value: V): V;
 export function getOrInsert<K, V>(map: Map<K, V>, key: K, value: V): V;
 export function getOrInsert<K extends object, V>(
   map: Map<K, V> | WeakMap<K, V>,
@@ -126,11 +109,7 @@ export function getOrInsertComputed<K extends object, V>(
   key: K,
   compute: (key: K) => V,
 ): V;
-export function getOrInsertComputed<K, V>(
-  map: Map<K, V>,
-  key: K,
-  compute: (key: K) => V,
-): V;
+export function getOrInsertComputed<K, V>(map: Map<K, V>, key: K, compute: (key: K) => V): V;
 export function getOrInsertComputed<K extends object, V>(
   map: Map<K, V> | WeakMap<K, V>,
   key: K,
@@ -171,17 +150,13 @@ export const dateFormatter = new Intl.DateTimeFormat(undefined, {
 });
 
 export const dateFormat = (date: Date, style: Style) =>
-  style === "normal"
-    ? dateFormatter.format(date)
-    : date.toISOString().slice(0, 10);
+  style === "normal" ? dateFormatter.format(date) : date.toISOString().slice(0, 10);
 
 export const dateRangeFormat = (start: Date, end: Date, style: Style) => {
   if (style === "normal") {
     return dateFormatter.formatRange(start, end);
   }
-  return `${start.toISOString().slice(0, 10)} – ${end
-    .toISOString()
-    .slice(0, 10)}`;
+  return `${start.toISOString().slice(0, 10)} – ${end.toISOString().slice(0, 10)}`;
 };
 
 export const timeFormatter = new Intl.DateTimeFormat(undefined, {
@@ -209,9 +184,7 @@ const codeSeparators: Partial<Record<Intl.NumberFormatPartTypes, string>> = {
 export const decimalFormat = (value: number, style: Style) => {
   if (style === "code") {
     const parts = decimalFormatter.formatToParts(value);
-    return parts
-      .map(({ type, value }) => codeSeparators[type] ?? value)
-      .join("");
+    return parts.map(({ type, value }) => codeSeparators[type] ?? value).join("");
   }
   return decimalFormatter.format(value);
 };

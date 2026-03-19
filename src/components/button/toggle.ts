@@ -35,11 +35,7 @@ export function toggleButton(
     >
       <input
         type=${type}
-        ${ref(
-          (input) =>
-            input &&
-            safeAssign(input as HTMLInputElement, opts, { name, value, id }),
-        )}
+        ${ref((input) => input && safeAssign(input as HTMLInputElement, opts, { name, value, id }))}
         @focus=${(e: FocusEvent) => {
           const input = e.target as HTMLInputElement;
           input.parentElement?.dispatchEvent(new FocusEvent("focus"));
@@ -49,10 +45,7 @@ export function toggleButton(
       <label
         for=${id}
         id=${`${id}-label`}
-        ${ref(
-          (label) =>
-            label && labelAttributes && safeAssign(label, labelAttributes),
-        )}
+        ${ref((label) => label && labelAttributes && safeAssign(label, labelAttributes))}
         >${content}</label
       >
     </toggle-button>

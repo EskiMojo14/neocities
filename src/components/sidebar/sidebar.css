@@ -12,9 +12,7 @@ ul {
   flex-direction: column;
   list-style: none;
   gap: 0.5rem;
-  --padding-s: calc(
-    var(--padding-per-level) * var(--level, 0) + var(--padding-h)
-  );
+  --padding-s: calc(var(--padding-per-level) * var(--level, 0) + var(--padding-h));
   padding: 0;
   margin: 0;
   overflow-y: auto;
