@@ -1,6 +1,6 @@
 import { html } from "lit";
-import { afterAll, expect } from "vitest";
-import { page } from "vitest/browser";
+import { afterAll, expect } from "vite-plus/test";
+import { page } from "vite-plus/test/browser";
 import { stylePref } from "../../../constants/prefs.ts";
 import { capitalize } from "../../../utils/index.ts";
 import { it } from "../../../vite/utils.browser.ts";

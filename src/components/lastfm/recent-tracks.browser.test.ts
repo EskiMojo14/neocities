@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { delay, HttpResponse } from "msw";
-import { expect } from "vitest";
-import { page } from "vitest/browser";
+import { expect } from "vite-plus/test";
+import { page } from "vite-plus/test/browser";
 import { mockEndpoint } from "../../data/lastfm.mock.ts";
 import { getRecentTracks } from "../../data/lastfm.ts";
 import { searchLinks } from "../../data/music.ts";

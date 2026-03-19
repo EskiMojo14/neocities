@@ -5,7 +5,11 @@
   "typescript.preferences.importModuleSpecifierEnding": "js",
   "typescript.preferences.preferTypeOnlyAutoImports": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.oxc": "explicit"
   },
-  "editor.defaultFormatter": "oxc.oxc-vscode"
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "oxc.fmt.configPath": "./vite.config.ts",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file"
 }

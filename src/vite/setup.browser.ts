@@ -1,5 +1,5 @@
 import "mix-n-matchers/vitest";
-import { expect, vi } from "vitest";
+import { expect, vi } from "vite-plus/test";
 import "vitest-browser-lit";
 import type * as env from "../constants/env.ts";
 import { pkgManagerPref, stylePref, themePref } from "../constants/prefs.ts";

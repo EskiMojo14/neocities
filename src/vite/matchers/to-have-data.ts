@@ -39,7 +39,7 @@ export const toHaveData: RawMatcherFn = function (element, key: string, value?: 
   };
 };
 
-declare module "vitest" {
+declare module "vite-plus/test" {
   // oxlint-disable-next-line @typescript-eslint/no-explicit-any
   interface Assertion<T = any> {
     /**

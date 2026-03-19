@@ -1,6 +1,6 @@
 import { html } from "lit";
-import { expect } from "vitest";
-import { page } from "vitest/browser";
+import { expect } from "vite-plus/test";
+import { page } from "vite-plus/test/browser";
 import { it } from "../utils.browser.ts";
 
 it("should pass without shadow root", async () => {
