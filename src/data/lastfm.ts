@@ -1,31 +1,19 @@
 import type { QueryKey, QueryOptions, WithRequired } from "@tanstack/query-core";
-import type { Options } from "ky";
-import ky from "ky";
 import * as v from "valibot";
 import env from "../constants/env.ts";
 import type { HasRequiredProps } from "../utils/index.ts";
 import * as vUtils from "../utils/valibot.ts";
 import { queryOptions } from "./query.ts";
+import { up } from "up-fetch";
 
-const api = ky.create({
-  searchParams: {
+const lastfmFetch = up(fetch, () => ({
+  baseUrl: "http://ws.audioscrobbler.com/2.0/",
+  params: {
     api_key: env.LASTFM_API_KEY,
     format: "json",
     user: env.LASTFM_USER,
   },
-});
-
-async function fetchWithSchema<TSchema extends v.GenericSchema>(options: Options, schema: TSchema) {
-  const unparsed = await api("http://ws.audioscrobbler.com/2.0/", options).json();
-  const { success, output, issues } = v.safeParse(schema, unparsed);
-  if (!success) {
-    console.error(v.summarize(issues));
-    throw new Error("Invalid response from API", {
-      cause: new v.ValiError(issues),
-    });
-  }
-  return output;
-}
+}));
 
 type ParamsSchema = v.ObjectSchema<
   Record<string, v.GenericSchema<unknown, string | number | boolean | undefined>>,
@@ -91,22 +79,21 @@ const buildEndpoint = <
   Selected,
   TParamsSchema,
   TMultiParams
-> => {
-  return Object.assign(
+> =>
+  Object.assign(
     function endpointOptions(params: Record<string, unknown> = {}) {
       const parsed = v.parse(paramsSchema, params);
       return queryOptions({
         queryKey: ["lastfm", ...getQueryKey(parsed)],
-        async queryFn({ signal }) {
-          const response = await fetchWithSchema(
-            {
-              searchParams: { method, ...parsed },
-              signal,
+        queryFn: ({ signal }) =>
+          lastfmFetch("/", {
+            params: {
+              method,
+              ...parsed,
             },
-            responseSchema,
-          );
-          return select(response);
-        },
+            signal,
+            schema: responseSchema,
+          }).then(select),
       });
     },
     {
@@ -116,7 +103,6 @@ const buildEndpoint = <
       responseSchema,
     },
   );
-};
 
 const imageSizeSchema = v.picklist(["small", "medium", "large", "extralarge", "mega"]);
 type ImageSize = v.InferOutput<typeof imageSizeSchema>;
