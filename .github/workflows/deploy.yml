@@ -18,16 +18,9 @@ jobs:
     steps:
       # The checkout step copies your repo into the action runner. Important!
       - uses: actions/checkout@v4
-      - name: Read .nvmrc
-        run: echo "NODE_VERSION=$(cat .nvmrc)" >> "$GITHUB_ENV"
-      # Set up any tools and build steps here
-      # This example uses a Node.js toolchain to build a site
-      # If you don't need Node.js to build your site, you can omit this.
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - uses: voidzero-dev/setup-vp@v1
         with:
-          node-version: ${{ env.NODE_VERSION }}
-      - uses: pnpm/action-setup@v4
+          cache: true
       # we're actually getting the env variables from secrets, so this is just to make the build not fail
       - name: Make empty env file
         run: touch .env
@@ -38,8 +31,8 @@ jobs:
           LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
           LASTFM_USER: ${{ secrets.LASTFM_USER }}
         run: |
-          pnpm i
-          pnpm run build
+          vp install
+          vp run build
       - name: Rename 404 page
         run: mv public/not_found/index.html public/not_found.html
       # When the dist_dir is ready, deploy it to neocities
