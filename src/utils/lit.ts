@@ -116,8 +116,10 @@ export namespace consolewriter {
   }
 }
 
-interface CachePropertyDescriptor<T extends object, R>
-  extends TypedPropertyDescriptor<R> {
+interface CachePropertyDescriptor<
+  T extends object,
+  R,
+> extends TypedPropertyDescriptor<R> {
   get?(this: T): R;
 }
 
