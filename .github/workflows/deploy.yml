@@ -22,12 +22,16 @@ jobs:
         with:
           cache: true
       # If you have a different build process, replace this with your own build steps
+      - name: Create .env file
+        run: |
+          echo "LASTFM_API_KEY=${{ secrets.LASTFM_API_KEY }}" >> .env
+          echo "LASTFM_SECRET=${{ secrets.LASTFM_SECRET }}" >> .env
+          echo "LASTFM_USER=${{ secrets.LASTFM_USER }}" >> .env
       - name: Build
-        env:
-          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
-          LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
-          LASTFM_USER: ${{ secrets.LASTFM_USER }}
         run: vp run build
+      - name: Clean up .env file
+        if: always()
+        run: rm -f .env
       - name: Rename 404 page
         run: mv public/not_found/index.html public/not_found.html
       # When the dist_dir is ready, deploy it to neocities
