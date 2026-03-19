@@ -90,4 +90,33 @@ export default defineConfig({
       },
     ],
   },
+  run: {
+    tasks: {
+      clean: {
+        command: "rm -rf ./public/",
+      },
+      "generate-thumbs": {
+        command: "node scripts/generate-thumbs.ts",
+      },
+      dev: {
+        command:
+          "node --env-file .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/bin.js develop",
+      },
+      build: {
+        dependsOn: ["clean", "generate-thumbs"],
+        command:
+          "node --env-file .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/bin.js build",
+      },
+      serve: {
+        command:
+          "node --env-file .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/bin.js serve",
+      },
+      storybook: {
+        command: "storybook dev -p 6006",
+      },
+      "build-storybook": {
+        command: "storybook build",
+      },
+    },
+  },
 });

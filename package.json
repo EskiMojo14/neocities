@@ -4,18 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node --env-file .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/bin.js develop",
-    "prebuild": "rm -rf ./public/ && pnpm run generate-thumbs",
-    "build": "node --env-file .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/bin.js build",
-    "serve": "node --env-file .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/bin.js serve",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "generate-thumbs": "node scripts/generate-thumbs.ts",
-    "lint": "vp lint",
-    "format": "vp fmt",
-    "typecheck": "tsc --noEmit",
-    "test": "vp test run",
-    "test:watch": "vp test",
     "prepare": "vp config"
   },
   "dependencies": {
