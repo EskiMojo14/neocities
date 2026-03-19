@@ -25,14 +25,12 @@ jobs:
       - name: Make empty env file
         run: touch .env
       # If you have a different build process, replace this with your own build steps
-      - name: Install deps and build
+      - name: Build
         env:
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
           LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
           LASTFM_USER: ${{ secrets.LASTFM_USER }}
-        run: |
-          vp install
-          vp run build
+        run: vp run build
       - name: Rename 404 page
         run: mv public/not_found/index.html public/not_found.html
       # When the dist_dir is ready, deploy it to neocities
