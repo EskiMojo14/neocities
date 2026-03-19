@@ -6,6 +6,7 @@ import { pkgManagerPref, stylePref, themePref } from "../constants/prefs.ts";
 import { toHaveData } from "./matchers/to-have-data.ts";
 import { toHaveFocus } from "./matchers/to-have-focus.ts";
 import "../styles/global.css";
+import "./setup.browser.css";
 
 vi.mock("../constants/env.ts", (): typeof env => ({
   default: {

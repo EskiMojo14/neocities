@@ -108,23 +108,23 @@ describe("valibot utils", () => {
 
     it("should throw an error if the string is not a number", () => {
       expect(() => v.parse(vUtils.coerceNumber, "a")).toThrowErrorMatchingInlineSnapshot(`
-          [ValiError: Invalid type: Expected number but received NaN]: [
-            {
-              "abortEarly": undefined,
-              "abortPipeEarly": undefined,
-              "expected": "number",
-              "input": NaN,
-              "issues": undefined,
-              "kind": "schema",
-              "lang": undefined,
-              "message": "Invalid type: Expected number but received NaN",
-              "path": undefined,
-              "received": "NaN",
-              "requirement": undefined,
-              "type": "number",
-            },
-          ]
-        `);
+      	[ValiError: Invalid number: Received NaN]: [
+      	  {
+      	    "abortEarly": undefined,
+      	    "abortPipeEarly": undefined,
+      	    "expected": null,
+      	    "input": NaN,
+      	    "issues": undefined,
+      	    "kind": "transformation",
+      	    "lang": undefined,
+      	    "message": "Invalid number: Received NaN",
+      	    "path": undefined,
+      	    "received": "NaN",
+      	    "requirement": undefined,
+      	    "type": "to_number",
+      	  },
+      	]
+      `);
     });
   });
   describe("coerceDate", () => {
@@ -134,22 +134,22 @@ describe("valibot utils", () => {
 
     it("should throw an error if the string is not a date", () => {
       expect(() => v.parse(vUtils.coerceDate, "a")).toThrowErrorMatchingInlineSnapshot(`
-        [ValiError: Invalid type: Expected Date but received "Invalid Date"]: [
-          {
-            "abortEarly": undefined,
-            "abortPipeEarly": undefined,
-            "expected": "Date",
-            "input": Date { NaN },
-            "issues": undefined,
-            "kind": "schema",
-            "lang": undefined,
-            "message": "Invalid type: Expected Date but received "Invalid Date"",
-            "path": undefined,
-            "received": ""Invalid Date"",
-            "requirement": undefined,
-            "type": "date",
-          },
-        ]
+      	[ValiError: Invalid date: Received "Invalid Date"]: [
+      	  {
+      	    "abortEarly": undefined,
+      	    "abortPipeEarly": undefined,
+      	    "expected": null,
+      	    "input": Date { NaN },
+      	    "issues": undefined,
+      	    "kind": "transformation",
+      	    "lang": undefined,
+      	    "message": "Invalid date: Received "Invalid Date"",
+      	    "path": undefined,
+      	    "received": ""Invalid Date"",
+      	    "requirement": undefined,
+      	    "type": "to_date",
+      	  },
+      	]
       `);
     });
   });

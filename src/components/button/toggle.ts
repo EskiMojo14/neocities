@@ -1,4 +1,4 @@
-import { html } from "lit";
+import { html, nothing } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 import type { RefOrCallback } from "lit/directives/ref.js";
 import { ref } from "lit/directives/ref.js";
@@ -31,7 +31,7 @@ export function toggleButton(
     <toggle-button
       .ariaLabel=${ariaLabel}
       class=${ifDefined(className)}
-      ${ref(refCallback)}
+      ${refCallback ? ref(refCallback) : nothing}
     >
       <input
         type=${type}
@@ -45,7 +45,7 @@ export function toggleButton(
       <label
         for=${id}
         id=${`${id}-label`}
-        ${ref((label) => label && labelAttributes && safeAssign(label, labelAttributes))}
+        ${labelAttributes ? ref((label) => label && safeAssign(label, labelAttributes)) : nothing}
         >${content}</label
       >
     </toggle-button>

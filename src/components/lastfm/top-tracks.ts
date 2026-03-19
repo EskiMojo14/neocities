@@ -18,20 +18,27 @@ import "../spinner/spinner.ts";
 import list from "./list.css?type=raw";
 import "./top-track.ts";
 
-@customElement("top-tracks")
-export default class TopTracks extends StyleWatcher(LitElement) {
-  static styles = [unsafeCSS(base), unsafeCSS(list)];
-
-  @state()
-  period: Period = "overall";
-
-  #fetchTracks = new QueryController(this, () => ({
+const getFetchTracks = (el: TopTracks) =>
+  new QueryController(el, () => ({
     ...getTopTracks({
-      period: this.period,
+      period: el.period,
       limit: 5,
     }),
     enabled: typeof window !== "undefined",
   }));
+
+@customElement("top-tracks")
+export default class TopTracks extends StyleWatcher(LitElement) {
+  #fetchTracks!: ReturnType<typeof getFetchTracks>;
+  constructor() {
+    super();
+    this.#fetchTracks = getFetchTracks(this);
+  }
+
+  static styles = [unsafeCSS(base), unsafeCSS(list)];
+
+  @state()
+  period: Period = "overall";
 
   render(): unknown {
     return html`

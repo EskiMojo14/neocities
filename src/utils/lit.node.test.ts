@@ -14,13 +14,13 @@ describe("cache", () => {
   });
   it("recalculates the result of a getter when the values returned by a function change", () => {
     class Test {
-      #cacheKey = 0;
-      @cache((test) => [test.#cacheKey])
+      cacheKey = 0;
+      @cache((test) => [test.cacheKey])
       get value() {
         return Math.random();
       }
       clearCache() {
-        this.#cacheKey++;
+        this.cacheKey++;
       }
     }
     const test = new Test();

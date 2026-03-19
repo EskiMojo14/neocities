@@ -18,17 +18,24 @@ import "../spinner/spinner.ts";
 import list from "./list.css?type=raw";
 import "./top-artist.ts";
 
+const getFetchArtists = (el: TopArtists) =>
+  new QueryController(el, () => ({
+    ...getTopArtists({ period: el.period, limit: 5 }),
+    enabled: typeof window !== "undefined",
+  }));
+
 @customElement("top-artists")
 export default class TopArtists extends StyleWatcher(LitElement) {
+  #fetchArtists!: ReturnType<typeof getFetchArtists>;
+  constructor() {
+    super();
+    this.#fetchArtists = getFetchArtists(this);
+  }
+
   static styles = [unsafeCSS(base), unsafeCSS(list)];
 
   @state()
   period: Period = "overall";
-
-  #fetchArtists = new QueryController(this, () => ({
-    ...getTopArtists({ period: this.period, limit: 5 }),
-    enabled: typeof window !== "undefined",
-  }));
 
   render(): unknown {
     return html`
