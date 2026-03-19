@@ -1,8 +1,59 @@
-import { playwright } from "@vitest/browser-playwright";
-import { defineConfig } from "vitest/config";
+import { playwright } from "vite-plus/test/browser-playwright";
+import { defineConfig } from "vite-plus";
 import { transformRawImports } from "./src/vite/raw-plugin.ts";
+import { configs as storybook } from "eslint-plugin-storybook";
+import { configs as lit } from "eslint-plugin-lit";
+import type { OxlintOverride } from "vite-plus/lint";
 
 export default defineConfig({
+  staged: {
+    "*": "vp check --fix",
+  },
+  lint: {
+    options: { typeAware: true, typeCheck: true, reportUnusedDisableDirectives: "error" },
+    plugins: ["typescript", "import", "vitest"],
+    categories: {
+      correctness: "warn",
+      suspicious: "warn",
+    },
+    jsPlugins: [
+      {
+        name: "storybook",
+        specifier: "eslint-plugin-storybook",
+      },
+      {
+        name: "lit",
+        specifier: "eslint-plugin-lit",
+      },
+    ],
+    rules: {
+      ...lit.recommended.rules,
+      "import/no-absolute-path": "error",
+      "import/extensions": ["error", "ignorePackages"],
+      "import/no-unassigned-import": "off",
+      "typescript/array-type": ["error", { default: "generic" }],
+      "typescript/no-empty-object-type": "off",
+      "typescript/no-explicit-any": "warn",
+      "typescript/only-throw-error": "off",
+      "typescript/restrict-template-expressions": ["error", { allowNumber: true }],
+      "typescript/no-namespace": "off",
+      "typescript/unbound-method": "off",
+      "typescript/consistent-type-imports": ["error", { fixStyle: "separate-type-imports" }],
+      "no-shadow": "off",
+    },
+    overrides: [
+      ...(storybook.recommended.overrides as unknown as Array<OxlintOverride>),
+      {
+        files: ["**/*.test.{js,mjs,cjs,ts,jsx,tsx}"],
+        rules: {
+          "vitest/valid-title": ["error", { allowArguments: true }],
+        },
+      },
+    ],
+  },
+  fmt: {
+    ignorePatterns: ["mockServiceWorker.js"],
+  },
   publicDir: "./src/assets",
   // 5) add it the plugins option
   plugins: [transformRawImports()],

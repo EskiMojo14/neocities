@@ -6,7 +6,7 @@ import { readAndMergeConfig } from "@greenwood/cli/src/lifecycles/config.js";
 import { initContext } from "@greenwood/cli/src/lifecycles/context.js";
 import { greenwoodPluginImportRaw } from "@greenwood/plugin-import-raw";
 import { greenwoodPluginPostCss } from "@greenwood/plugin-postcss";
-import type { Plugin } from "vite";
+import type { Plugin } from "vite-plus";
 
 // 2) initialize Greenwood lifecycles
 const config = await readAndMergeConfig();

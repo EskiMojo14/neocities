@@ -1,9 +1,9 @@
 /* oxlint-disable no-empty-pattern */
 import { html } from "lit";
 import type { SetupWorker } from "msw/browser";
-import { test as baseTest } from "vitest";
-import type { UserEvent } from "vitest/browser";
-import { page, userEvent } from "vitest/browser";
+import { test as baseTest } from "vite-plus/test";
+import type { UserEvent } from "vite-plus/test/browser";
+import { page, userEvent } from "vite-plus/test/browser";
 import "../components/sidebar/style-toggle/style-toggle.ts";
 import type { Style } from "../constants/prefs.ts";
 import { stylePref } from "../constants/prefs.ts";
@@ -14,7 +14,6 @@ const styleToggles = unsafeFromEntries(
   stylePref.options.map((opt) => [opt, page.getByLabelText(`${capitalize(opt)} style`)]),
 );
 
-// oxlint-disable-next-line jest/expect-expect, jest/no-disabled-tests
 export const test = baseTest.extend<{
   worker: SetupWorker;
   user: UserEvent;

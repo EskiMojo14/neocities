@@ -11,11 +11,12 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "generate-thumbs": "node scripts/generate-thumbs.ts",
-    "lint": "oxlint",
-    "format": "oxfmt",
+    "lint": "vp lint",
+    "format": "vp fmt",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "test": "vp test run",
+    "test:watch": "vp test",
+    "prepare": "vp config"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.6",
@@ -43,7 +44,6 @@
     "@types/node": "^25.5.0",
     "@types/trusted-types": "^2.0.7",
     "@typescript-eslint/parser": "^8.57.1",
-    "@vitest/browser-playwright": "^4.1.0",
     "@vitest/expect": "^4.1.0",
     "csstype": "^3.2.3",
     "eslint": "^10.0.3",
@@ -60,9 +60,6 @@
     "msw": "^2.12.13",
     "msw-storybook-addon": "^2.0.6",
     "normalize.css": "^8.0.1",
-    "oxfmt": "^0.41.0",
-    "oxlint": "^1.56.0",
-    "oxlint-tsgolint": "^0.17.0",
     "playwright": "^1.58.2",
     "postcss": "^8.5.8",
     "postcss-extend-rule": "^4.0.0",
@@ -73,14 +70,21 @@
     "ts-lit-plugin": "^2.0.2",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.57.1",
-    "vite": "^8.0.1",
-    "vitest": "^4.1.0",
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vite-plus": "latest",
+    "vitest": "npm:@voidzero-dev/vite-plus-test@latest",
     "vitest-browser-lit": "^1.0.1"
   },
   "engines": {
     "node": ">=24.0.0"
   },
   "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be",
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+      "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+    }
+  },
   "msw": {
     "workerDirectory": [
       "src/assets"

@@ -1,6 +1,6 @@
 import { html } from "lit";
-import { expect } from "vitest";
-import { page } from "vitest/browser";
+import { expect } from "vite-plus/test";
+import { page } from "vite-plus/test/browser";
 import { pkgManagerPref } from "../../constants/prefs.ts";
 import { it } from "../../vite/utils.browser.ts";
 import "./pkg-info.ts";
