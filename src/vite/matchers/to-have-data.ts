@@ -40,7 +40,7 @@ export const toHaveData: RawMatcherFn = function (element, key: string, value?: 
 };
 
 declare module "vitest" {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line @typescript-eslint/no-explicit-any
   interface Assertion<T = any> {
     /**
      * Assert that a data attribute exists.
@@ -62,7 +62,6 @@ declare module "vitest" {
      *
      * expect(element).toHaveData("foo", "bar");
      */
-    // eslint-disable-next-line @typescript-eslint/unified-signatures
     toHaveData(key: string, value: string): void;
   }
 }

@@ -45,11 +45,9 @@ export function transformRawImports(): Plugin {
         let response = new Response(contents);
 
         if (filename.endsWith(".css")) {
-          /* eslint-disable @typescript-eslint/no-non-null-assertion */
           response = await postCssResource.preIntercept!(url, null!, response);
         }
         response = await rawResource.intercept!(url, null!, response);
-        /* eslint-enable @typescript-eslint/no-non-null-assertion */
         const body = await response.text();
 
         return body;

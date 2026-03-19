@@ -14,11 +14,11 @@ type QueryResultRenderers<TData, TError> = {
 };
 
 type RendererResult<
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line @typescript-eslint/no-explicit-any
   Renderer extends QueryResultRenderers<any, any>,
 > = {
   [Status in keyof Renderer]: Renderer[Status] extends (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // oxlint-disable-next-line @typescript-eslint/no-explicit-any
     ...args: Array<any>
   ) => infer R
     ? R

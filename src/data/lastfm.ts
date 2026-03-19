@@ -179,7 +179,6 @@ const recentTrackSchema = v.union([
         nowplaying: v.literal("true"),
       }),
     }),
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     v.transform(({ "@attr": _attr, ...rest }) => ({
       ...rest,
       nowPlaying: true as const,
