@@ -40,7 +40,7 @@ export namespace getTypeInterval {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+// oxlint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export type Compute<T> = { [K in keyof T]: T[K] } & unknown;
 export type WithOptional<T, K extends keyof T> = Compute<Omit<T, K> & Partial<Pick<T, K>>>;
 export type WithRequired<T, K extends keyof T> = Compute<Omit<T, K> & Required<Pick<T, K>>>;

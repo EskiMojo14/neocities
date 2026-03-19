@@ -1,4 +1,4 @@
-/* eslint-disable no-empty-pattern */
+/* oxlint-disable no-empty-pattern */
 import { html } from "lit";
 import type { SetupWorker } from "msw/browser";
 import { test as baseTest } from "vitest";
@@ -14,6 +14,7 @@ const styleToggles = unsafeFromEntries(
   stylePref.options.map((opt) => [opt, page.getByLabelText(`${capitalize(opt)} style`)]),
 );
 
+// oxlint-disable-next-line jest/expect-expect, jest/no-disabled-tests
 export const test = baseTest.extend<{
   worker: SetupWorker;
   user: UserEvent;

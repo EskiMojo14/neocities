@@ -93,7 +93,7 @@ const itemSchema = v.object({
   icon: v.optional(v.string()),
   childIcon: v.optional(v.string()),
   maxChildren: v.optional(v.number()),
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line @typescript-eslint/no-explicit-any
 }) satisfies v.GenericSchema<any, SidebarItem>;
 
 async function getSidebarItems() {

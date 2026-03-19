@@ -122,7 +122,6 @@ export default class Tooltip extends Signalled(LitElement) {
     super.connectedCallback();
 
     this.target ??= this.previousElementSibling;
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     this.id ||= `${this.target?.id || nanoid(10)}-tooltip`;
     this.text ||= this.target?.ariaLabel ?? "";
 

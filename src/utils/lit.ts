@@ -10,7 +10,6 @@ import { styleMap as _styleMap } from "lit/directives/style-map.js";
 import { getTypeInterval, safeAssign, wait } from "./index.ts";
 
 declare module "csstype" {
-  // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
   interface Properties {
     [variable: `--${string}`]: StyleInfo[string];
   }
@@ -21,6 +20,7 @@ export function styleMap(props: Properties) {
 }
 
 type ClassValue = ClassArray | ClassDictionary | string | number | null | boolean | undefined;
+// oxlint-disable-next-line typescript/no-explicit-any
 type ClassDictionary = Record<string, any>;
 type ClassArray = Array<ClassValue>;
 
