@@ -21,9 +21,6 @@ jobs:
       - uses: voidzero-dev/setup-vp@v1
         with:
           cache: true
-      # we're actually getting the env variables from secrets, so this is just to make the build not fail
-      - name: Make empty env file
-        run: touch .env
       # If you have a different build process, replace this with your own build steps
       - name: Build
         env:

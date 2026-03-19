@@ -100,16 +100,16 @@ export default defineConfig({
       },
       dev: {
         command:
-          "node --env-file .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/bin.js develop",
+          "node --env-file-if-exists .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/bin.js develop",
       },
       build: {
         dependsOn: ["clean", "generate-thumbs"],
         command:
-          "node --env-file .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/bin.js build",
+          "node --env-file-if-exists .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/bin.js build",
       },
       serve: {
         command:
-          "node --env-file .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/bin.js serve",
+          "node --env-file-if-exists .env --import @greenwood/cli/register ./node_modules/@greenwood/cli/src/bin.js serve",
       },
       storybook: {
         command: "storybook dev -p 6006",
