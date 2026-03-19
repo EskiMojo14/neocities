@@ -37,8 +37,7 @@ export class QueryController<
   TData = TQueryFnData,
   TQueryData = TQueryFnData,
   const TQueryKey extends QueryKey = QueryKey,
-> implements ReactiveController
-{
+> implements ReactiveController {
   protected host: LitElement;
   private getOptions: () => QueryObserverOptions<
     TQueryFnData,
