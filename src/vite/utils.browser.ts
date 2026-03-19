@@ -11,10 +11,7 @@ import { worker } from "../mocks/browser.ts";
 import { capitalize, unsafeFromEntries } from "../utils/index.ts";
 
 const styleToggles = unsafeFromEntries(
-  stylePref.options.map((opt) => [
-    opt,
-    page.getByLabelText(`${capitalize(opt)} style`),
-  ]),
+  stylePref.options.map((opt) => [opt, page.getByLabelText(`${capitalize(opt)} style`)]),
 );
 
 export const test = baseTest.extend<{
@@ -23,7 +20,11 @@ export const test = baseTest.extend<{
   setStyle: (style: Style) => Promise<void>;
 }>({
   setStyle: async ({}, use) => {
-    page.render(html`<style-toggle></style-toggle>`);
+    page.render(
+      html`
+        <style-toggle></style-toggle>
+      `,
+    );
 
     await use((style) => styleToggles[style].click());
 

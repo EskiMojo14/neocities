@@ -8,8 +8,7 @@ import "../tags/tags.ts";
 import pkgCard from "./pkg-card.css?type=raw";
 
 const pkgChildIcon = String(
-  (await getContentByRoute("/packages/")).sort(compare((page) => page.route))[0]
-    ?.data.childIcon,
+  (await getContentByRoute("/packages/")).sort(compare((page) => page.route))[0]?.data.childIcon,
 );
 
 @customElement("pkg-card")

@@ -37,13 +37,15 @@ it("should display recent tracks", async ({ worker, setStyle }) => {
     }),
   );
 
-  const screen = page.render(html`<recent-tracks></recent-tracks>`);
+  const screen = page.render(
+    html`
+      <recent-tracks></recent-tracks>
+    `,
+  );
 
   await expect.element(screen.getByText("Recently played")).toBeInTheDocument();
 
-  await expect
-    .element(screen.getByText("When The Time Is Right"))
-    .toBeInTheDocument();
+  await expect.element(screen.getByText("When The Time Is Right")).toBeInTheDocument();
   await expect.element(screen.getByText("Dirty Loops")).toBeInTheDocument();
 
   for (const link of searchLinks) {

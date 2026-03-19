@@ -30,8 +30,9 @@ export default class DailyAvgScrobbles extends StyleWatcher(LitElement) {
   render(): unknown {
     return this.#fetchPlaycount.render({
       initialOrPending: () =>
-        html` (an average of <text-skeleton>00</text-skeleton> scrobbles per
-          day)`,
+        html`
+          (an average of <text-skeleton>00</text-skeleton> scrobbles per day)
+        `,
       success: ({ data }) =>
         html` (an average of
           <span aria-label=${decimalFormat(data, "normal")}>

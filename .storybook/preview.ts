@@ -7,11 +7,7 @@ import { stylePref, themePref } from "../src/constants/prefs.ts";
 import pages from "../src/mocks/graph.json";
 import "../src/styles/global.css";
 
-const ignorePatterns = [
-  /\/src\//,
-  /fonts\.googleapis\.com/,
-  /lastfm\.freetls\.fastly\.net/,
-];
+const ignorePatterns = [/\/src\//, /fonts\.googleapis\.com/, /lastfm\.freetls\.fastly\.net/];
 
 initialize(
   {
@@ -24,18 +20,13 @@ initialize(
   [
     http.get(/localhost:\d+\/___graph.json/, () => HttpResponse.json(pages)),
     // redirect assets folder to root
-    http.get(/localhost:\d+\/assets/, ({ request }) =>
-      fetch(request.url.replace("/assets", "")),
-    ),
+    http.get(/localhost:\d+\/assets/, ({ request }) => fetch(request.url.replace("/assets", ""))),
   ],
 );
 
 const dirSchema = v.fallback(v.picklist(["auto", "ltr", "rtl"]), "auto");
 
-const rtlDecorator: Decorator = (
-  story,
-  { canvasElement, args: { dir, ...args } },
-) => {
+const rtlDecorator: Decorator = (story, { canvasElement, args: { dir, ...args } }) => {
   canvasElement.dir = v.parse(dirSchema, dir);
   return story({ args });
 };
@@ -54,9 +45,7 @@ const preview: Preview = {
   parameters: {
     layout: "centered",
     docs: {
-      theme: window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? themes.dark
-        : themes.light,
+      theme: window.matchMedia("(prefers-color-scheme: dark)").matches ? themes.dark : themes.light,
     },
     controls: {
       matchers: {

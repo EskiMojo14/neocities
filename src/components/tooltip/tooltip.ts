@@ -1,9 +1,4 @@
-import {
-  autoPlacement,
-  computePosition,
-  offset,
-  shift,
-} from "@floating-ui/dom";
+import { autoPlacement, computePosition, offset, shift } from "@floating-ui/dom";
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { nanoid } from "nanoid/non-secure";

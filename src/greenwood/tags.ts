@@ -12,9 +12,7 @@ const tagData = v.object({
 const paths: Record<
   string,
   {
-    create: (
-      tag: string,
-    ) => WithOptional<ExternalSourcePage, "route" | "title" | "label">;
+    create: (tag: string) => WithOptional<ExternalSourcePage, "route" | "title" | "label">;
     itemPlural: string;
   }
 > = {
@@ -55,25 +53,23 @@ export const tagsPlugin = (): SourcePlugin => {
       }
 
       return () => {
-        const pages = Array.from(tagsByPath.entries()).flatMap(
-          ([path, tags]) => {
-            const pathData = paths[path];
-            if (!pathData) return [];
-            return Array.from(tags).map((tag) => {
-              const created = pathData.create(tag);
-              return {
-                route: `/${path}/tags/${slugify(tag)}/`,
-                title: `${pathData.itemPlural} - ${tag}`,
-                label: tag,
-                ...created,
-                data: {
-                  description: `All ${pathData.itemPlural.toLowerCase()} tagged with &quot;${tag}&quot;`,
-                  ...created.data,
-                },
-              };
-            });
-          },
-        );
+        const pages = Array.from(tagsByPath.entries()).flatMap(([path, tags]) => {
+          const pathData = paths[path];
+          if (!pathData) return [];
+          return Array.from(tags).map((tag) => {
+            const created = pathData.create(tag);
+            return {
+              route: `/${path}/tags/${slugify(tag)}/`,
+              title: `${pathData.itemPlural} - ${tag}`,
+              label: tag,
+              ...created,
+              data: {
+                description: `All ${pathData.itemPlural.toLowerCase()} tagged with &quot;${tag}&quot;`,
+                ...created.data,
+              },
+            };
+          });
+        });
         return Promise.resolve(pages);
       };
     },

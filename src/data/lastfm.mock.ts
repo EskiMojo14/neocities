@@ -1,8 +1,4 @@
-import type {
-  DefaultBodyType,
-  HttpResponseResolver,
-  RequestHandlerOptions,
-} from "msw";
+import type { DefaultBodyType, HttpResponseResolver, RequestHandlerOptions } from "msw";
 import { http } from "msw";
 import type * as v from "valibot";
 import { unsafeFromEntries, unsafeKeys } from "../utils/index.ts";
@@ -24,9 +20,7 @@ export const mockEndpoint = <
   },
   resolver: HttpResponseResolver<
     {
-      [K in keyof TParamsEntries]: K extends TMultiParams
-        ? ReadonlyArray<string>
-        : string;
+      [K in keyof TParamsEntries]: K extends TMultiParams ? ReadonlyArray<string> : string;
     },
     never,
     TResponse

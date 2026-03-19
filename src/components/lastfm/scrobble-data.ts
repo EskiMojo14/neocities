@@ -8,19 +8,17 @@ import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat, unsafeEntries } from "../../utils/index.ts";
 import "../skeleton/text-skeleton.ts";
 
-const userDataChips: Record<
-  keyof UserData,
-  { icon: string; placeholder: string; label: string }
-> = {
-  playcount: {
-    icon: "music_history",
-    placeholder: "000,000",
-    label: "scrobbles",
-  },
-  artist_count: { icon: "artist", placeholder: "0,000", label: "artists" },
-  album_count: { icon: "album", placeholder: "00,000", label: "albums" },
-  track_count: { icon: "music_note", placeholder: "00,000", label: "tracks" },
-};
+const userDataChips: Record<keyof UserData, { icon: string; placeholder: string; label: string }> =
+  {
+    playcount: {
+      icon: "music_history",
+      placeholder: "000,000",
+      label: "scrobbles",
+    },
+    artist_count: { icon: "artist", placeholder: "0,000", label: "artists" },
+    album_count: { icon: "album", placeholder: "00,000", label: "albums" },
+    track_count: { icon: "music_note", placeholder: "00,000", label: "tracks" },
+  };
 
 @customElement("scrobble-data")
 export default class ScrobbleData extends StyleWatcher(LitElement) {

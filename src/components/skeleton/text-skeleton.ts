@@ -8,7 +8,9 @@ export default class TextSkeleton extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(textSkeleton)];
 
   render() {
-    return html`<div class="content"><slot></slot></div>`;
+    return html`
+      <div class="content"><slot></slot></div>
+    `;
   }
 }
 

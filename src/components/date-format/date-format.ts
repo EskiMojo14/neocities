@@ -21,9 +21,7 @@ export default class DateFormat extends StyleWatcher(LitElement) {
 
   @cache(({ dateObj, showTime }) => [dateObj, showTime])
   get dateLabel() {
-    return this.showTime
-      ? timeFormat(this.dateObj, "normal")
-      : dateFormat(this.dateObj, "normal");
+    return this.showTime ? timeFormat(this.dateObj, "normal") : dateFormat(this.dateObj, "normal");
   }
 
   @cache(({ dateObj, pageStyle, showTime }) => [dateObj, pageStyle, showTime])

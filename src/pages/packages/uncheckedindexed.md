@@ -16,10 +16,7 @@ Evaluates to `T | undefined` if `noUncheckedIndexedAccess` is enabled, otherwise
 ```ts
 import type { UncheckedIndexedAccess } from "uncheckedindexed";
 
-type SelectById<T> = (
-  record: Record<string, T>,
-  id: string,
-) => UncheckedIndexedAccess<T>;
+type SelectById<T> = (record: Record<string, T>, id: string) => UncheckedIndexedAccess<T>;
 ```
 
 ### `IfUncheckedIndexedAccess<True, False>`

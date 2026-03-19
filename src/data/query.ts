@@ -1,8 +1,4 @@
-import type {
-  QueryKey,
-  QueryOptions,
-  WithRequired,
-} from "@tanstack/query-core";
+import type { QueryKey, QueryOptions, WithRequired } from "@tanstack/query-core";
 import { QueryClient } from "@tanstack/query-core";
 
 export const queryClient = new QueryClient({
@@ -18,11 +14,6 @@ export function queryOptions<
   TError = Error,
   TData = TQueryFnData,
   const TQueryKey extends QueryKey = QueryKey,
->(
-  options: WithRequired<
-    QueryOptions<TQueryFnData, TError, TData, TQueryKey>,
-    "queryKey"
-  >,
-) {
+>(options: WithRequired<QueryOptions<TQueryFnData, TError, TData, TQueryKey>, "queryKey">) {
   return options;
 }

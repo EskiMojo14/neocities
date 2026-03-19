@@ -1,8 +1,4 @@
-import type {
-  QueryKey,
-  QueryOptions,
-  WithRequired,
-} from "@tanstack/query-core";
+import type { QueryKey, QueryOptions, WithRequired } from "@tanstack/query-core";
 import type { Options } from "ky";
 import ky from "ky";
 import * as v from "valibot";
@@ -19,14 +15,8 @@ const api = ky.create({
   },
 });
 
-async function fetchWithSchema<TSchema extends v.GenericSchema>(
-  options: Options,
-  schema: TSchema,
-) {
-  const unparsed = await api(
-    "http://ws.audioscrobbler.com/2.0/",
-    options,
-  ).json();
+async function fetchWithSchema<TSchema extends v.GenericSchema>(options: Options, schema: TSchema) {
+  const unparsed = await api("http://ws.audioscrobbler.com/2.0/", options).json();
   const { success, output, issues } = v.safeParse(schema, unparsed);
   if (!success) {
     console.error(v.summarize(issues));
@@ -38,10 +28,7 @@ async function fetchWithSchema<TSchema extends v.GenericSchema>(
 }
 
 type ParamsSchema = v.ObjectSchema<
-  Record<
-    string,
-    v.GenericSchema<unknown, string | number | boolean | undefined>
-  >,
+  Record<string, v.GenericSchema<unknown, string | number | boolean | undefined>>,
   v.ErrorMessage<v.ObjectIssue> | undefined
 >;
 
@@ -98,13 +85,7 @@ const buildEndpoint = <
   getQueryKey,
   multiParams = [] as Array<TMultiParams>,
   select = (output) => output as Selected,
-}: EndpointOptions<
-  TParamsSchema,
-  TResponseSchema,
-  TQueryKey,
-  Selected,
-  TMultiParams
->): Endpoint<
+}: EndpointOptions<TParamsSchema, TResponseSchema, TQueryKey, Selected, TMultiParams>): Endpoint<
   TResponseSchema,
   TQueryKey,
   Selected,
@@ -137,13 +118,7 @@ const buildEndpoint = <
   );
 };
 
-const imageSizeSchema = v.picklist([
-  "small",
-  "medium",
-  "large",
-  "extralarge",
-  "mega",
-]);
+const imageSizeSchema = v.picklist(["small", "medium", "large", "extralarge", "mega"]);
 type ImageSize = v.InferOutput<typeof imageSizeSchema>;
 
 const itemSchema = v.pipe(

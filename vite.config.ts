@@ -9,10 +9,7 @@ export default defineConfig({
   define: {
     "process.env": Object.fromEntries(
       Object.entries(process.env).filter(
-        ([key]) =>
-          key === "NODE_ENV" ||
-          key.startsWith("LASTFM") ||
-          key.startsWith("VITE"),
+        ([key]) => key === "NODE_ENV" || key.startsWith("LASTFM") || key.startsWith("VITE"),
       ),
     ),
   },

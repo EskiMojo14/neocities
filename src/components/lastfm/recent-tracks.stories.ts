@@ -6,7 +6,10 @@ const meta = {
   title: "Components/LastFM/Recent Tracks",
   tags: ["autodocs"],
   component: "recent-tracks",
-  render: () => html`<recent-tracks></recent-tracks>`,
+  render: () =>
+    html`
+      <recent-tracks></recent-tracks>
+    `,
 } satisfies Meta<HTMLElementTagNameMap["recent-tracks"]>;
 
 export default meta;

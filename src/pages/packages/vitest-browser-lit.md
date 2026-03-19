@@ -38,9 +38,7 @@ import { test } from "vitest";
 import { html } from "lit";
 
 test("counter button increments the count", async () => {
-  const screen = page.render(
-    html`<counter-element count="1"></counter-element>`,
-  );
+  const screen = page.render(html`<counter-element count="1"></counter-element>`);
 });
 
 // cleanup is done automatically

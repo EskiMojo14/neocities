@@ -20,14 +20,7 @@ export function styleMap(props: Properties) {
   return _styleMap(props as never);
 }
 
-type ClassValue =
-  | ClassArray
-  | ClassDictionary
-  | string
-  | number
-  | null
-  | boolean
-  | undefined;
+type ClassValue = ClassArray | ClassDictionary | string | number | null | boolean | undefined;
 type ClassDictionary = Record<string, any>;
 type ClassArray = Array<ClassValue>;
 
@@ -66,9 +59,7 @@ export const asyncReplace = _asyncReplace as <T>(
   mapper?: (value: T, index: number) => unknown,
 ) => ReturnType<typeof _asyncReplace>;
 
-export const ref = _ref as <T>(
-  ref?: RefOrCallback<T>,
-) => ReturnType<typeof _ref>;
+export const ref = _ref as <T>(ref?: RefOrCallback<T>) => ReturnType<typeof _ref>;
 
 export function consolewriter(text: string, cfg?: consolewriter.Config) {
   return asyncReplace(
@@ -98,10 +89,7 @@ consolewriter.defaults = {
   finishingDelay: 300,
 } satisfies Required<consolewriter.Config>;
 
-consolewriter.getDuration = function getDuration(
-  text: string,
-  cfg?: consolewriter.Config,
-) {
+consolewriter.getDuration = function getDuration(text: string, cfg?: consolewriter.Config) {
   const { delay, finishingDelay, ...config } = {
     ...consolewriter.defaults,
     ...cfg,
@@ -116,10 +104,7 @@ export namespace consolewriter {
   }
 }
 
-interface CachePropertyDescriptor<
-  T extends object,
-  R,
-> extends TypedPropertyDescriptor<R> {
+interface CachePropertyDescriptor<T extends object, R> extends TypedPropertyDescriptor<R> {
   get?(this: T): R;
 }
 
@@ -127,9 +112,7 @@ interface CachePropertyDescriptor<
  * Caches the result of a getter based on the values returned by a function.
  * Each value is compared by reference.
  */
-export function cache<T extends object>(
-  getDeps: (target: T) => Array<unknown>,
-) {
+export function cache<T extends object>(getDeps: (target: T) => Array<unknown>) {
   return function decorate<R>(
     _target: T,
     _propertyKey: string,
@@ -149,10 +132,7 @@ export function cache<T extends object>(
 
     descriptor.get = function (this: T) {
       const deps = getDeps(this);
-      if (
-        cached?.deps.length !== deps.length ||
-        cached.deps.some((dep, i) => dep !== deps[i])
-      ) {
+      if (cached?.deps.length !== deps.length || cached.deps.some((dep, i) => dep !== deps[i])) {
         cached = {
           deps,
           result: get.call(this),

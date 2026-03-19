@@ -60,8 +60,7 @@ export default class TopTrack extends StyleWatcher(LitElement) {
               href=${link.getLink(this.name + " " + this.artist)}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Search ${link.label} for ${this.name} by ${this
-                .artist}"
+              aria-label="Search ${link.label} for ${this.name} by ${this.artist}"
             >
               <material-symbol aria-hidden="true">${link.icon}</material-symbol>
             </a>`,

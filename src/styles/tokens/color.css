@@ -21,18 +21,13 @@
   --info: light-dark(var(--blue, blue), var(--cyan, cyan));
 
   --link: light-dark(var(--blue, blue), var(--cyan, cyan));
-  --link-visited: light-dark(
-    var(--blue-secondary, blue),
-    var(--cyan-secondary, cyan)
-  );
+  --link-visited: light-dark(var(--blue-secondary, blue), var(--cyan-secondary, cyan));
   --link-focus: light-dark(var(--purple, purple), var(--green, green));
   --link-current: var(--foreground);
   --link-current-background: var(--selection);
   --link-hover-opacity: 0.7;
   --link-hover: rgba(from var(--link) r g b / var(--link-hover-opacity));
-  --link-visited-hover: rgba(
-    from var(--link-visited) r g b / var(--link-hover-opacity)
-  );
+  --link-visited-hover: rgba(from var(--link-visited) r g b / var(--link-hover-opacity));
 
   --button: light-dark(var(--pink5, pink), var(--pink, pink));
   --button-hover: light-dark(var(--pink7, pink), var(--pink-secondary, pink));
@@ -41,20 +36,14 @@
   --button-selected-background: var(--selection);
   --button-filled: light-dark(var(--white), var(--foreground));
   --button-filled-background: light-dark(var(--pink3, pink), var(--pink, pink));
-  --button-filled-hover-background: light-dark(
-    var(--pink5, pink),
-    var(--pink-secondary, pink)
-  );
+  --button-filled-hover-background: light-dark(var(--pink5, pink), var(--pink-secondary, pink));
   --button-hover-background-opacity: 0.1;
   --button-hover-background: rgba(
     from var(--button) r g b / var(--button-hover-background-opacity)
   );
 
   --sidebar-background: light-dark(var(--white-secondary, white), var(--black));
-  --carousel-background: light-dark(
-    var(--white-secondary, white),
-    var(--black)
-  );
+  --carousel-background: light-dark(var(--white-secondary, white), var(--black));
 
   --code-background: light-dark(var(--white-secondary, white), var(--black));
 

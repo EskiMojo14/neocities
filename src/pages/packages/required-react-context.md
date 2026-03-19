@@ -76,8 +76,9 @@ While the main focus of this library is on contexts that require a Provider in t
 ```tsx
 import { createOptionalContext } from "required-react-context";
 
-const { CountContext, useCount, CountProvider, CountConsumer } =
-  createOptionalContext<number>(0).with({ name: "count" }); // default value provided
+const { CountContext, useCount, CountProvider, CountConsumer } = createOptionalContext<number>(
+  0,
+).with({ name: "count" }); // default value provided
 
 function Child() {
   // This will not throw an error if used outside a CountProvider

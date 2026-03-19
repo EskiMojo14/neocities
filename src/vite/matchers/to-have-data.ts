@@ -1,15 +1,8 @@
 import type { RawMatcherFn } from "@vitest/expect";
 import { assert } from "../../utils/index.ts";
 
-export const toHaveData: RawMatcherFn = function (
-  element,
-  key: string,
-  value?: string,
-) {
-  assert(
-    element instanceof HTMLElement,
-    "Expected element to be an HTMLElement",
-  );
+export const toHaveData: RawMatcherFn = function (element, key: string, value?: string) {
+  assert(element instanceof HTMLElement, "Expected element to be an HTMLElement");
   const hasValue = typeof value !== "undefined";
   return {
     pass: !hasValue ? key in element.dataset : element.dataset[key] === value,
@@ -32,9 +25,7 @@ export const toHaveData: RawMatcherFn = function (
               ]
           : hasValue
             ? [
-                `Expected element with data attribute "${key}": ${this.utils.printExpected(
-                  value,
-                )}`,
+                `Expected element with data attribute "${key}": ${this.utils.printExpected(value)}`,
                 `Received element with data attribute "${key}": ${this.utils.printReceived(
                   element.dataset[key],
                 )}`,

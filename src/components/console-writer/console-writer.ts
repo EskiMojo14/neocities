@@ -2,10 +2,7 @@ import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
-import {
-  consolewriter as cwriter,
-  prefersReducedMotion,
-} from "../../utils/lit.ts";
+import { consolewriter as cwriter, prefersReducedMotion } from "../../utils/lit.ts";
 import consolewriter from "./console-writer.css?type=raw";
 
 @customElement("console-writer")
