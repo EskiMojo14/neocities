@@ -3,7 +3,6 @@ import { customElement, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
-import { QueryController } from "../../controllers/query-controller.ts";
 import {
   fullPeriodLabels,
   getTopArtists,
@@ -14,12 +13,14 @@ import {
 import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { toggleButton } from "../button/toggle.ts";
+import { createQueryController } from "@tanstack/lit-query";
+import { renderQueryResult } from "../../controllers/query-controller.ts";
 import "../spinner/spinner.ts";
 import list from "./list.css?type=raw";
 import "./top-artist.ts";
 
 const getFetchArtists = (el: TopArtists) =>
-  new QueryController(el, () => ({
+  createQueryController(el, () => ({
     ...getTopArtists({ period: el.period, limit: 5 }),
     enabled: typeof window !== "undefined",
   }));
@@ -64,8 +65,8 @@ export default class TopArtists extends StyleWatcher(LitElement) {
         </fieldset>
       </div>
       <ol class="list">
-        ${this.#fetchArtists.render({
-          initialOrPending: () =>
+        ${renderQueryResult(this.#fetchArtists, {
+          pending: () =>
             repeat(
               Array(5),
               () => "skeleton",

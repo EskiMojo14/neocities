@@ -1,12 +1,13 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
-import { QueryController } from "../../controllers/query-controller.ts";
+import { renderQueryResult } from "../../controllers/query-controller.ts";
 import { getUserData, type UserData } from "../../data/lastfm.ts";
 import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat, unsafeEntries } from "../../utils/index.ts";
 import "../skeleton/text-skeleton.ts";
+import { createQueryController } from "@tanstack/lit-query";
 
 const userDataChips: Record<keyof UserData, { icon: string; placeholder: string; label: string }> =
   {
@@ -24,14 +25,14 @@ const userDataChips: Record<keyof UserData, { icon: string; placeholder: string;
 export default class ScrobbleData extends StyleWatcher(LitElement) {
   static styles = [unsafeCSS(base)];
 
-  #fetchData = new QueryController(this, () => ({
+  #fetchData = createQueryController(this, () => ({
     ...getUserData(),
     enabled: typeof window !== "undefined",
   }));
 
   render(): unknown {
-    return this.#fetchData.render({
-      initialOrPending: () =>
+    return renderQueryResult(this.#fetchData, {
+      pending: () =>
         html`<ul class="chip-collection">
           ${repeat(
             unsafeEntries(userDataChips),

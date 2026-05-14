@@ -3,7 +3,7 @@ import * as v from "valibot";
 import env from "../constants/env.ts";
 import type { HasRequiredProps } from "../utils/index.ts";
 import * as vUtils from "../utils/valibot.ts";
-import { queryOptions } from "./query.ts";
+import { queryOptions } from "@tanstack/lit-query";
 import { up } from "up-fetch";
 
 const lastfmFetch = up(fetch, () => ({
@@ -84,7 +84,7 @@ const buildEndpoint = <
     function endpointOptions(params: Record<string, unknown> = {}) {
       const parsed = v.parse(paramsSchema, params);
       return queryOptions({
-        queryKey: ["lastfm", ...getQueryKey(parsed)],
+        queryKey: ["lastfm", ...getQueryKey(parsed)] as const,
         queryFn: ({ signal }) =>
           lastfmFetch("/", {
             params: {
