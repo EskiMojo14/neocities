@@ -1,15 +1,12 @@
 import { nothing } from "lit";
-import type { QueryResultAccessor, QueryObserverResult } from "@tanstack/lit-query";
 
-type QueryResultRenderers<TData, TError> = {
-  [Status in QueryObserverResult["status"]]?: (
-    result: Extract<QueryObserverResult<TData, TError>, { status: Status }>,
-  ) => unknown;
+type QueryResultRenderers<Result extends { status: string }> = {
+  [Status in Result["status"]]?: (result: Extract<Result, { status: Status }>) => unknown;
 };
 
 type RendererResult<
   // oxlint-disable-next-line @typescript-eslint/no-explicit-any
-  Renderer extends QueryResultRenderers<any, any>,
+  Renderer extends QueryResultRenderers<any>,
 > = {
   [Status in keyof Renderer]: Renderer[Status] extends (
     // oxlint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,10 +17,9 @@ type RendererResult<
 }[keyof Renderer];
 
 export function renderQueryResult<
-  TData,
-  TError,
-  TRenderers extends QueryResultRenderers<TData, TError>,
->(accessor: QueryResultAccessor<TData, TError>, renderers: TRenderers): RendererResult<TRenderers> {
-  return (renderers[accessor.current.status]?.(accessor.current as never) ??
+  TResult extends { status: string },
+  TRenderers extends QueryResultRenderers<TResult>,
+>(accessor: { current: TResult }, renderers: TRenderers): RendererResult<TRenderers> {
+  return (renderers[accessor.current.status as keyof TRenderers]?.(accessor.current as never) ??
     nothing) as RendererResult<TRenderers>;
 }
