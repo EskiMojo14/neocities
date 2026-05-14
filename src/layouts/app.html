@@ -13,6 +13,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="../styles/global.css" crossorigin />
+    <script type="module" src="../components/app-query-provider/app-query-provider.ts"></script>
     <script type="module" src="../components/sidebar/sidebar.ts"></script>
     <script type="module" src="../components/header/header.ts"></script>
     <script type="module" src="../components/footer/footer.ts"></script>
@@ -30,18 +31,23 @@
     <meta property="og:image" content="https://eskimojo.neocities.org/assets/icon.png" />
   </head>
   <body>
-    <a class="skip-to-content headline5" href="#root">Skip to content</a>
-    <sidebar-nav current-route="${globalThis.page.route}"></sidebar-nav>
-    <div class="root" id="root">
-      <page-header header="${globalThis.page.title}" subtitle="${globalThis.page.data.description}">
-      </page-header>
-      <main>
-        <output for="page"></output>
-      </main>
-      <hr />
-      <page-footer></page-footer>
-    </div>
-    <toast-queue></toast-queue>
-    <scroll-to-top></scroll-to-top>
+    <app-query-provider>
+      <a class="skip-to-content headline5" href="#root">Skip to content</a>
+      <sidebar-nav current-route="${globalThis.page.route}"></sidebar-nav>
+      <div class="root" id="root">
+        <page-header
+          header="${globalThis.page.title}"
+          subtitle="${globalThis.page.data.description}"
+        >
+        </page-header>
+        <main>
+          <output for="page"></output>
+        </main>
+        <hr />
+        <page-footer></page-footer>
+      </div>
+      <toast-queue></toast-queue>
+      <scroll-to-top></scroll-to-top>
+    </app-query-provider>
   </body>
 </html>
