@@ -17,7 +17,7 @@ jobs:
 
     steps:
       # The checkout step copies your repo into the action runner. Important!
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: voidzero-dev/setup-vp@v1
         with:
           cache: true
