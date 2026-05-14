@@ -14,7 +14,7 @@ import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { toggleButton } from "../button/toggle.ts";
 import { createQueryController } from "@tanstack/lit-query";
-import { renderQueryResult } from "../../controllers/query-controller.ts";
+import { renderQueryResult } from "../../utils/query.ts";
 import "../spinner/spinner.ts";
 import list from "./list.css?type=raw";
 import "./top-artist.ts";

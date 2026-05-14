@@ -1,7 +1,7 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
-import { renderQueryResult } from "../../controllers/query-controller.ts";
+import { renderQueryResult } from "../../utils/query.ts";
 import { getUserData, type UserData } from "../../data/lastfm.ts";
 import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
