@@ -21,6 +21,9 @@ importers:
       '@open-wc/dedupe-mixin':
         specifier: ^2.0.1
         version: 2.0.1
+      '@tanstack/lit-query':
+        specifier: ^0.2.1
+        version: 0.2.1(@tanstack/query-core@5.100.10)(lit@3.3.3)
       '@tanstack/pacer':
         specifier: ^0.21.1
         version: 0.21.1
@@ -744,6 +747,9 @@ packages:
   '@lit-labs/ssr@3.3.1':
     resolution: {integrity: sha512-JlF1PempxvzrGEpRFrF+Ki0MHzR3HA51SK8Zv0cFpW9p0bPW4k0FeCwrElCu371UEpXF7RcaE2wgYaE1az0XKg==}
     engines: {node: '>=13.9.0'}
+
+  '@lit/context@1.1.6':
+    resolution: {integrity: sha512-M26qDE6UkQbZA2mQ3RjJ3Gzd8TxP+/0obMgE5HfkfLhEEyYE3Bui4A5XHiGPjy0MUGAyxB3QgVuw2ciS0kHn6A==}
 
   '@lit/reactive-element@2.1.2':
     resolution: {integrity: sha512-pbCDiVMnne1lYUIaYNN5wrwQXDtHaYtg7YEFPeW+hws6U47WeFvISGUWekPGKWOP1ygrs0ef0o1VJMk1exos5A==}
@@ -1681,6 +1687,12 @@ packages:
     resolution: {integrity: sha512-OZI6QyULw0FI0wjgmeYzCIfbgPsOEzwJtCpa69XrfLMtNXLGnz3d/dIabk7frg0TmHo+Ah49w5I4KC7Tufwsvw==}
     engines: {node: '>=18'}
     hasBin: true
+
+  '@tanstack/lit-query@0.2.1':
+    resolution: {integrity: sha512-/jafPZ4G+OZePSMqkR8Ai/TWqQomwh/ctKwEx+m8fcOPmyFCSBqXJbUPwxtY8efNoEjmd8GIaqAtkhbOQDlaZQ==}
+    peerDependencies:
+      '@tanstack/query-core': ^5.0.0
+      lit: '>=2.8.0 <4'
 
   '@tanstack/pacer@0.21.1':
     resolution: {integrity: sha512-hB01dd4rlsYcTCNP7wK186jgAe6K5qimgM1Y5Jtvz+9PUaILvpmeLLjmQNUNSO1l23lIt+CeQR6mO1mjlPvRtQ==}
@@ -5089,6 +5101,10 @@ snapshots:
       node-fetch: 3.3.2
       parse5: 7.3.0
 
+  '@lit/context@1.1.6':
+    dependencies:
+      '@lit/reactive-element': 2.1.2
+
   '@lit/reactive-element@2.1.2':
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.6.0
@@ -5703,6 +5719,12 @@ snapshots:
       ts-dedent: 2.2.0
 
   '@tanstack/devtools-event-client@0.4.3': {}
+
+  '@tanstack/lit-query@0.2.1(@tanstack/query-core@5.100.10)(lit@3.3.3)':
+    dependencies:
+      '@lit/context': 1.1.6
+      '@tanstack/query-core': 5.100.10
+      lit: 3.3.3
 
   '@tanstack/pacer@0.21.1':
     dependencies:

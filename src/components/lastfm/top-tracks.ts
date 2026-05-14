@@ -3,7 +3,7 @@ import { customElement, state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
-import { QueryController } from "../../controllers/query-controller.ts";
+import { renderQueryResult } from "../../controllers/query-controller.ts";
 import {
   fullPeriodLabels,
   getTopTracks,
@@ -17,9 +17,10 @@ import { toggleButton } from "../button/toggle.ts";
 import "../spinner/spinner.ts";
 import list from "./list.css?type=raw";
 import "./top-track.ts";
+import { createQueryController } from "@tanstack/lit-query";
 
 const getFetchTracks = (el: TopTracks) =>
-  new QueryController(el, () => ({
+  createQueryController(el, () => ({
     ...getTopTracks({
       period: el.period,
       limit: 5,
@@ -67,8 +68,8 @@ export default class TopTracks extends StyleWatcher(LitElement) {
         </fieldset>
       </div>
       <ol class="list">
-        ${this.#fetchTracks.render({
-          initialOrPending: () =>
+        ${renderQueryResult(this.#fetchTracks, {
+          pending: () =>
             repeat(
               Array(5),
               () => "skeleton",

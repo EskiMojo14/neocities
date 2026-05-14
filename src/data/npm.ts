@@ -1,5 +1,5 @@
 import * as v from "valibot";
-import { queryOptions } from "./query.ts";
+import { queryOptions } from "@tanstack/lit-query";
 import { up } from "up-fetch";
 
 const downloadsResponseSchema = v.object({

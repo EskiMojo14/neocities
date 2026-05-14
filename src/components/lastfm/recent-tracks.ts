@@ -3,18 +3,19 @@ import { customElement } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
-import { QueryController } from "../../controllers/query-controller.ts";
+import { renderQueryResult } from "../../controllers/query-controller.ts";
 import { getRecentTracks } from "../../data/lastfm.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import "../spinner/spinner.ts";
 import list from "./list.css?type=raw";
 import "./recent-track.ts";
+import { createQueryController } from "@tanstack/lit-query";
 
 @customElement("recent-tracks")
 export default class RecentTracks extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(list)];
 
-  #fetchTracks = new QueryController(this, () => ({
+  #fetchTracks = createQueryController(this, () => ({
     ...getRecentTracks({ limit: 5 }),
     enabled: typeof window !== "undefined",
   }));
@@ -23,8 +24,8 @@ export default class RecentTracks extends LitElement {
     return html`
       <h4 class="headline5">Recently played</h4>
       <ol class="list">
-        ${this.#fetchTracks.render({
-          initialOrPending: () =>
+        ${renderQueryResult(this.#fetchTracks, {
+          pending: () =>
             repeat(
               Array(5),
               () => "skeleton",

@@ -1,12 +1,13 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
-import { QueryController } from "../../controllers/query-controller.ts";
+import { renderQueryResult } from "../../controllers/query-controller.ts";
 import { getUserData } from "../../data/lastfm.ts";
 import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
 import "../skeleton/text-skeleton.ts";
 import "../spinner/spinner.ts";
+import { createQueryController } from "@tanstack/lit-query";
 
 const startDate = new Date("2017-09-22");
 const oneDay = 1000 * 60 * 60 * 24;
@@ -21,17 +22,15 @@ export default class DailyAvgScrobbles extends StyleWatcher(LitElement) {
     return Math.round(playcount / daysSince);
   }
 
-  #fetchPlaycount = new QueryController(this, () => ({
+  #fetchPlaycount = createQueryController(this, () => ({
     ...getUserData(),
     enabled: typeof window !== "undefined",
     select: (data) => this.calculateDailyAvg(data.playcount),
   }));
 
   render(): unknown {
-    return this.#fetchPlaycount.render({
-      initialOrPending: () => html`
-        (an average of <text-skeleton>00</text-skeleton> scrobbles per day)
-      `,
+    return renderQueryResult(this.#fetchPlaycount, {
+      pending: () => html` (an average of <text-skeleton>00</text-skeleton> scrobbles per day) `,
       success: ({ data }) =>
         html` (an average of
           <span aria-label=${decimalFormat(data, "normal")}>

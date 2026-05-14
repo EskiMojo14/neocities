@@ -5,7 +5,7 @@ import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import type { PackageManager } from "../../constants/prefs.ts";
 import { pkgManagerPref } from "../../constants/prefs.ts";
-import { QueryController } from "../../controllers/query-controller.ts";
+import { renderQueryResult } from "../../controllers/query-controller.ts";
 import { getMonthlyDownloads } from "../../data/npm.ts";
 import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import { ThemeWatcher } from "../../mixins/theme-watcher.ts";
@@ -19,12 +19,13 @@ import "../skeleton/text-skeleton.ts";
 import { toast } from "../toaster/toaster.ts";
 import Tooltip from "../tooltip/tooltip.ts";
 import pkgInfo from "./pkg-info.css?type=raw";
+import { createQueryController } from "@tanstack/lit-query";
 
 @customElement("pkg-info")
 export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
   static styles = [unsafeCSS(base), unsafeCSS(githubLight), unsafeCSS(dracula), unsafeCSS(pkgInfo)];
 
-  #fetchDownloads = new QueryController(this, () => ({
+  #fetchDownloads = createQueryController(this, () => ({
     ...getMonthlyDownloads(this.pkg),
     enabled: typeof window !== "undefined",
   }));
@@ -88,13 +89,13 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
               npmx
             </a>
             ${when(
-              !this.#fetchDownloads.result?.isError,
+              !this.#fetchDownloads.current?.isError,
               () => html`
                 <span class="download-count">
                   <material-symbol aria-hidden="true">download</material-symbol>
                   <span>
-                    ${this.#fetchDownloads.render({
-                      initialOrPending: () => html` <text-skeleton>00</text-skeleton> `,
+                    ${renderQueryResult(this.#fetchDownloads, {
+                      pending: () => html` <text-skeleton>00</text-skeleton> `,
                       success: ({ data }) =>
                         html`<span aria-label=${decimalFormat(data.downloads, "normal")}>
                           ${decimalFormat(data.downloads, this.pageStyle)}</span
