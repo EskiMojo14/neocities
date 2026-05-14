@@ -5,7 +5,7 @@ import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import type { PackageManager } from "../../constants/prefs.ts";
 import { pkgManagerPref } from "../../constants/prefs.ts";
-import { renderQueryResult } from "../../controllers/query-controller.ts";
+import { renderQueryResult } from "../../utils/query.ts";
 import { getMonthlyDownloads } from "../../data/npm.ts";
 import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import { ThemeWatcher } from "../../mixins/theme-watcher.ts";

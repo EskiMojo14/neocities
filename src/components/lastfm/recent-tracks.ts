@@ -3,7 +3,7 @@ import { customElement } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
-import { renderQueryResult } from "../../controllers/query-controller.ts";
+import { renderQueryResult } from "../../utils/query.ts";
 import { getRecentTracks } from "../../data/lastfm.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import "../spinner/spinner.ts";
