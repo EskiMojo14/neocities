@@ -76,9 +76,7 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
             frontmatterIsSet(docs) && docs,
             () => html`
               <a href="${docs}" target="_blank" rel="noopener noreferrer">
-                <material-symbol aria-hidden="true"
-                  >developer_guide</material-symbol
-                >
+                <material-symbol aria-hidden="true">developer_guide</material-symbol>
                 Docs
               </a>
               |
@@ -90,9 +88,7 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <material-symbol aria-hidden="true"
-                >deployed_code</material-symbol
-              >
+              <material-symbol aria-hidden="true">deployed_code</material-symbol>
               NPM
             </a>
             ${when(
@@ -102,14 +98,9 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
                   <material-symbol aria-hidden="true">download</material-symbol>
                   <span>
                     ${this.#fetchDownloads.render({
-                      initialOrPending: () =>
-                        html`
-                          <text-skeleton>00</text-skeleton>
-                        `,
+                      initialOrPending: () => html` <text-skeleton>00</text-skeleton> `,
                       success: ({ data }) =>
-                        html`<span
-                          aria-label=${decimalFormat(data.downloads, "normal")}
-                        >
+                        html`<span aria-label=${decimalFormat(data.downloads, "normal")}>
                           ${decimalFormat(data.downloads, this.pageStyle)}</span
                         >`,
                     })}
@@ -120,11 +111,7 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
             )}</span
           >
           |
-          <a
-            href="https://github.com/${repo}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://github.com/${repo}" target="_blank" rel="noopener noreferrer">
             <material-symbol aria-hidden="true">code</material-symbol>
             GitHub
           </a>
@@ -158,14 +145,10 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
                 <pre
                   class="language-bash"
                   id="install-command"
-                ><code class="language-bash"><span class="token function">${pkgManager}</span> <span class="token function">${
-                  pkgManagerPref.meta[pkgManager].install
-                }</span> ${when(
+                ><code class="language-bash"><span class="token function">${pkgManager}</span> <span class="token function">${pkgManagerPref
+                  .meta[pkgManager].install}</span> ${when(
                   frontmatterIsSet(devDep),
-                  () =>
-                    html`
-                      <span class="token parameter variable">-D</span>
-                    `,
+                  () => html` <span class="token parameter variable">-D</span> `,
                 )}${pkgManagerPref.meta[pkgManager].prefix ?? ""}${pkg}</code></pre>
                 <button
                   class="icon"
@@ -176,9 +159,7 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
                   })}
                   needs-js
                 >
-                  <material-symbol aria-hidden="true"
-                    >content_copy</material-symbol
-                  >
+                  <material-symbol aria-hidden="true">content_copy</material-symbol>
                 </button>
               </div>
             </div>

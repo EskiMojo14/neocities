@@ -38,9 +38,7 @@ export default class ScrobbleData extends StyleWatcher(LitElement) {
             ([key]) => key,
             ([, value]) =>
               html`<li class="chip body2">
-                <material-symbol aria-hidden="true"
-                  >${value.icon}</material-symbol
-                >
+                <material-symbol aria-hidden="true">${value.icon}</material-symbol>
                 <text-skeleton>${value.placeholder}</text-skeleton>
                 ${value.label}
               </li>`,
@@ -53,9 +51,7 @@ export default class ScrobbleData extends StyleWatcher(LitElement) {
             ([key]) => key,
             ([key, value]) =>
               html`<li class="chip body2">
-                <material-symbol aria-hidden="true"
-                  >${value.icon}</material-symbol
-                >
+                <material-symbol aria-hidden="true">${value.icon}</material-symbol>
                 <span aria-label=${decimalFormat(data[key], "normal")}>
                   ${decimalFormat(data[key], this.pageStyle)}
                 </span>

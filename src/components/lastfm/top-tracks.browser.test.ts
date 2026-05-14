@@ -37,11 +37,7 @@ it("should display top tracks", async ({ worker, setStyle }) => {
     }),
   );
 
-  const screen = page.render(
-    html`
-      <top-tracks></top-tracks>
-    `,
-  );
+  const screen = page.render(html` <top-tracks></top-tracks> `);
   await expect.element(screen.getByText("Top tracks")).toBeInTheDocument();
 
   await expect.element(screen.getByText("When The Time Is Right")).toBeInTheDocument();

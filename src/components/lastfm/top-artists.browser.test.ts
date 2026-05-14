@@ -36,11 +36,7 @@ it("should display top artists", async ({ worker, setStyle }) => {
     }),
   );
 
-  const screen = page.render(
-    html`
-      <top-artists></top-artists>
-    `,
-  );
+  const screen = page.render(html` <top-artists></top-artists> `);
   await expect.element(screen.getByText("Top artists")).toBeInTheDocument();
 
   await expect.element(screen.getByText("Dirty Loops")).toBeInTheDocument();

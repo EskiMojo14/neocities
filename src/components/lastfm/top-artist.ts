@@ -27,9 +27,7 @@ export default class TopArtist extends StyleWatcher(LitElement) {
 
   render() {
     return html`
-      <material-symbol aria-label="Rank ${this.rank}"
-        >counter_${this.rank}</material-symbol
-      >
+      <material-symbol aria-label="Rank ${this.rank}">counter_${this.rank}</material-symbol>
       <div class="info">
         <h3 class="headline6">
           <material-symbol aria-hidden="true">artist</material-symbol>

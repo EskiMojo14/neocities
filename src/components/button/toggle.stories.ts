@@ -33,18 +33,17 @@ type Story = StoryObj<ToggleButton & { variant?: "outlined" | "filled" }>;
 export const Default: Story = {
   render: ({ type, onchange, variant }) => html`
     <fieldset @change=${onchange} class="button-group ${variant}">
-      ${toggleButton(
-        html`
-          <material-symbol aria-hidden="true">home</material-symbol> Home
-        `,
-        { type, name: "toggle", value: "1", checked: true },
-      )}
-      ${toggleButton(
-        html`
-          <material-symbol aria-hidden="true">house</material-symbol> House
-        `,
-        { type, name: "toggle", value: "2" },
-      )}
+      ${toggleButton(html` <material-symbol aria-hidden="true">home</material-symbol> Home `, {
+        type,
+        name: "toggle",
+        value: "1",
+        checked: true,
+      })}
+      ${toggleButton(html` <material-symbol aria-hidden="true">house</material-symbol> House `, {
+        type,
+        name: "toggle",
+        value: "2",
+      })}
     </fieldset>
   `,
 };
@@ -52,37 +51,27 @@ export const Default: Story = {
 export const Icon: Story = {
   render: ({ type, onchange, variant }) => html`
     <fieldset @change=${onchange} class="button-group ${variant}">
-      ${toggleButton(
-        html`
-          <material-symbol aria-hidden="true">home</material-symbol>
-        `,
-        {
-          type,
-          name: "toggle",
-          value: "1",
-          className: "icon",
-          checked: true,
-          ariaLabel: "Home",
-          ref(el) {
-            if (el) Tooltip.lazy(el);
-          },
+      ${toggleButton(html` <material-symbol aria-hidden="true">home</material-symbol> `, {
+        type,
+        name: "toggle",
+        value: "1",
+        className: "icon",
+        checked: true,
+        ariaLabel: "Home",
+        ref(el) {
+          if (el) Tooltip.lazy(el);
         },
-      )}
-      ${toggleButton(
-        html`
-          <material-symbol aria-hidden="true">house</material-symbol>
-        `,
-        {
-          type,
-          name: "toggle",
-          value: "2",
-          className: "icon",
-          ariaLabel: "House",
-          ref(el) {
-            if (el) Tooltip.lazy(el);
-          },
+      })}
+      ${toggleButton(html` <material-symbol aria-hidden="true">house</material-symbol> `, {
+        type,
+        name: "toggle",
+        value: "2",
+        className: "icon",
+        ariaLabel: "House",
+        ref(el) {
+          if (el) Tooltip.lazy(el);
         },
-      )}
+      })}
     </fieldset>
   `,
 };

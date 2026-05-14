@@ -14,7 +14,10 @@ export default class Footer extends LitElement {
           <h4>Links</h4>
           <ul>
             <li>
-              <a href="https://github.com/EskiMojo14/neocities" target="_blank" rel="noopener noreferrer"
+              <a
+                href="https://github.com/EskiMojo14/neocities"
+                target="_blank"
+                rel="noopener noreferrer"
                 >GitHub</a
               >
             </li>
@@ -24,7 +27,9 @@ export default class Footer extends LitElement {
           <h4>Made with</h4>
           <ul>
             <li>
-              <a href="https://greenwoodjs.dev/" target="_blank" rel="noopener noreferrer">Greenwood</a>
+              <a href="https://greenwoodjs.dev/" target="_blank" rel="noopener noreferrer"
+                >Greenwood</a
+              >
             </li>
             <li>
               <a href="https://lit.dev/" target="_blank" rel="noopener noreferrer">Lit</a>
@@ -35,7 +40,11 @@ export default class Footer extends LitElement {
               </a>
             </li>
             <li>
-              <a href="https://github.com/github/mona-sans" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/github/mona-sans"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Mona Sans (font)
               </a>
             </li>

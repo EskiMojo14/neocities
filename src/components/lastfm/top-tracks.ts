@@ -74,12 +74,9 @@ export default class TopTracks extends StyleWatcher(LitElement) {
               () => "skeleton",
               (_, index) =>
                 html`<top-track-skeleton></top-track-skeleton>${when(
-                  index < 4,
-                  () =>
-                    html`
-                      <hr class="inset" />
-                    `,
-                )}`,
+                    index < 4,
+                    () => html` <hr class="inset" /> `,
+                  )}`,
             ),
           success: ({ data: tracks }) =>
             repeat(
@@ -94,18 +91,9 @@ export default class TopTracks extends StyleWatcher(LitElement) {
                     rank=${track.rank}
                     playcount=${track.playcount}
                   ></top-track>
-                  ${when(
-                    index < tracks.length - 1,
-                    () =>
-                      html`
-                        <hr class="inset" />
-                      `,
-                  )}`,
+                  ${when(index < tracks.length - 1, () => html` <hr class="inset" /> `)}`,
             ),
-          error: () =>
-            html`
-              <p class="error body2">Failed to load top tracks</p>
-            `,
+          error: () => html` <p class="error body2">Failed to load top tracks</p> `,
         })}
       </ol>
     `;

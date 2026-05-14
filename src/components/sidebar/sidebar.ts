@@ -153,9 +153,7 @@ function renderSidebarItem(item: SidebarItem, currentRoute: string) {
         current: isActiveLink(item.href, currentRoute, "equals"),
       })}
     >
-      <material-symbol aria-hidden="true" title=${item.label}
-        >${item.icon}</material-symbol
-      >
+      <material-symbol aria-hidden="true" title=${item.label}>${item.icon}</material-symbol>
       <span class="subtitle1">${item.label}</span>
     </a>
   </li>`;
@@ -199,9 +197,7 @@ function renderSidebarGroup(group: SidebarGroup, currentRoute: string, level: nu
         current: isActiveLink(group.href, currentRoute, "equals"),
       })}
     >
-      <material-symbol aria-hidden="true" title=${group.label}
-        >${group.icon}</material-symbol
-      >
+      <material-symbol aria-hidden="true" title=${group.label}>${group.icon}</material-symbol>
       <span class="subtitle1">${group.label}</span></a
     >
 

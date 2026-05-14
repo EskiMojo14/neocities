@@ -112,9 +112,7 @@ export default class Toaster extends LitElement {
                   >${typeIcons[toast.type]}</material-symbol
                 >
                 <div class="content" role="alert" aria-atomic="true">
-                  <span class="subtitle2" id="toast-${toast.id}-message"
-                    >${toast.message}</span
-                  >
+                  <span class="subtitle2" id="toast-${toast.id}-message">${toast.message}</span>
                 </div>
                 <button
                   aria-label="Close notification"

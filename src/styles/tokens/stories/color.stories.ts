@@ -75,10 +75,7 @@ const meta = {
                         color,
                         (color) => color,
                         (color) => html`
-                          <div
-                            class="body2 ${styles.color}"
-                            style="background: var(--${color})"
-                          >
+                          <div class="body2 ${styles.color}" style="background: var(--${color})">
                             <span>${color}</span>
                           </div>
                         `,
@@ -86,10 +83,7 @@ const meta = {
                     </div>
                   `
                 : html`
-                    <div
-                      class="body2 ${styles.color}"
-                      style="background: var(--${color})"
-                    >
+                    <div class="body2 ${styles.color}" style="background: var(--${color})">
                       <span>${color}</span>
                     </div>
                   `,
@@ -110,10 +104,7 @@ const meta = {
                         color,
                         (color) => color,
                         (color) => html`
-                          <div
-                            class="body2 ${styles.color}"
-                            style="background: var(--${color})"
-                          >
+                          <div class="body2 ${styles.color}" style="background: var(--${color})">
                             <span>${color}</span>
                           </div>
                         `,
@@ -121,10 +112,7 @@ const meta = {
                     </div>
                   `
                 : html`
-                    <div
-                      class="body2 ${styles.color}"
-                      style="background: var(--${color})"
-                    >
+                    <div class="body2 ${styles.color}" style="background: var(--${color})">
                       <span>${color}</span>
                     </div>
                   `,
@@ -141,10 +129,7 @@ const meta = {
                   Array.from({ length: last + 1 }, (_, i) => i),
                   (i) => i,
                   (i) => html`
-                    <div
-                      class="body2 ${styles.color}"
-                      style="background: var(--${name}${i})"
-                    >
+                    <div class="body2 ${styles.color}" style="background: var(--${name}${i})">
                       <span>${name}${i}</span>
                     </div>
                   `,

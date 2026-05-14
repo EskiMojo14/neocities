@@ -6,9 +6,7 @@ import { it } from "../../vite/utils.browser.ts";
 import "./pkg-info.ts";
 
 it("should only show docs link when set", async () => {
-  const screen = page.render(html`
-    <pkg-info pkg="foo" repo="foo"></pkg-info>
-  `);
+  const screen = page.render(html` <pkg-info pkg="foo" repo="foo"></pkg-info> `);
   const links = {
     docs: screen.getByRole("link", { name: "Docs" }),
     npm: screen.getByRole("link", { name: "NPM" }),
@@ -18,28 +16,20 @@ it("should only show docs link when set", async () => {
   await expect.element(links.npm).toBeInTheDocument();
   await expect.element(links.github).toBeInTheDocument();
 
-  screen.rerender(html`
-    <pkg-info pkg="foo" repo="foo" docs="https://foo.com"></pkg-info>
-  `);
+  screen.rerender(html` <pkg-info pkg="foo" repo="foo" docs="https://foo.com"></pkg-info> `);
   await expect.element(links.docs).toBeInTheDocument();
 });
 
 it("should show install command when include-install is set", async () => {
-  const screen = page.render(html`
-    <pkg-info pkg="foo" repo="foo"></pkg-info>
-  `);
+  const screen = page.render(html` <pkg-info pkg="foo" repo="foo"></pkg-info> `);
   await expect.element(screen.getByText("Install with")).not.toBeInTheDocument();
 
-  screen.rerender(html`
-    <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
-  `);
+  screen.rerender(html` <pkg-info pkg="foo" repo="foo" include-install></pkg-info> `);
   await expect.element(screen.getByText("Install with")).toBeInTheDocument();
 });
 
 it("should show devDep flag when set", async () => {
-  const screen = page.render(html`
-    <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
-  `);
+  const screen = page.render(html` <pkg-info pkg="foo" repo="foo" include-install></pkg-info> `);
   await expect.element(screen.getByText("-D")).not.toBeInTheDocument();
 
   screen.rerender(html`
@@ -51,9 +41,7 @@ it("should show devDep flag when set", async () => {
 it("should allow switching between package managers", async () => {
   localStorage.removeItem(pkgManagerPref.storageKey);
 
-  const screen = page.render(html`
-    <pkg-info pkg="foo" repo="foo" include-install></pkg-info>
-  `);
+  const screen = page.render(html` <pkg-info pkg="foo" repo="foo" include-install></pkg-info> `);
 
   for (const pkgManager of pkgManagerPref.options) {
     const button = screen.getByLabelText(`Install with ${pkgManager}`);

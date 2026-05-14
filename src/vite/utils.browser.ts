@@ -20,11 +20,7 @@ export const test = baseTest.extend<{
   setStyle: (style: Style) => Promise<void>;
 }>({
   setStyle: async ({}, use) => {
-    page.render(
-      html`
-        <style-toggle></style-toggle>
-      `,
-    );
+    page.render(html` <style-toggle></style-toggle> `);
 
     await use((style) => styleToggles[style].click());
 

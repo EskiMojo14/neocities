@@ -30,12 +30,9 @@ export default class RecentTracks extends LitElement {
               () => "skeleton",
               (_, index) =>
                 html`<recent-track-skeleton></recent-track-skeleton>${when(
-                  index < 4,
-                  () =>
-                    html`
-                      <hr class="inset" />
-                    `,
-                )}`,
+                    index < 4,
+                    () => html` <hr class="inset" /> `,
+                  )}`,
             ),
           success: ({ data: tracks }) =>
             repeat(
@@ -51,18 +48,9 @@ export default class RecentTracks extends LitElement {
                     date=${ifDefined(track.date)}
                     .nowPlaying=${track.nowPlaying}
                   ></recent-track>
-                  ${when(
-                    index < tracks.length - 1,
-                    () =>
-                      html`
-                        <hr class="inset" />
-                      `,
-                  )}`,
+                  ${when(index < tracks.length - 1, () => html` <hr class="inset" /> `)}`,
             ),
-          error: () =>
-            html`
-              <p class="error body2">Failed to load recent tracks</p>
-            `,
+          error: () => html` <p class="error body2">Failed to load recent tracks</p> `,
         })}
       </ol>
     `;

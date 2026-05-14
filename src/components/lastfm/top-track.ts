@@ -29,9 +29,7 @@ export default class TopTrack extends StyleWatcher(LitElement) {
 
   render() {
     return html`
-      <material-symbol aria-label="Rank ${this.rank}"
-        >counter_${this.rank}</material-symbol
-      >
+      <material-symbol aria-label="Rank ${this.rank}">counter_${this.rank}</material-symbol>
       <ul class="info">
         <li class="caption">
           <material-symbol aria-label="Artist">artist</material-symbol>

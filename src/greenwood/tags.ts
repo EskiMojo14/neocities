@@ -21,10 +21,7 @@ const paths: Record<
       return {
         imports: ["../components/pkg-list/pkg-list.ts"],
         body: html`
-          <script
-            type="module"
-            src="../components/pkg-list/pkg-list.ts"
-          ></script>
+          <script type="module" src="../components/pkg-list/pkg-list.ts"></script>
           <pkg-list tag="${tag}"></pkg-list>
         `,
       };

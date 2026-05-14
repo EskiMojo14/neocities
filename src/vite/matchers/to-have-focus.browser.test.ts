@@ -4,11 +4,7 @@ import { page } from "vite-plus/test/browser";
 import { it } from "../utils.browser.ts";
 
 it("should pass without shadow root", async () => {
-  const screen = page.render(
-    html`
-      <button>Button</button>
-    `,
-  );
+  const screen = page.render(html` <button>Button</button> `);
   const button = screen.getByRole("button");
   await button.click();
   expect(button.element()).toHaveFocus();
@@ -18,14 +14,9 @@ it("should pass with shadow root", async () => {
   const lightContainer = document.body.appendChild(document.createElement("div"));
   const shadow = lightContainer.attachShadow({ mode: "open" });
   const shadowContainer = shadow.appendChild(document.createElement("div"));
-  const screen = page.render(
-    html`
-      <button>Button</button>
-    `,
-    {
-      container: shadowContainer,
-    },
-  );
+  const screen = page.render(html` <button>Button</button> `, {
+    container: shadowContainer,
+  });
 
   const button = screen.getByRole("button");
   await button.click();
@@ -33,11 +24,7 @@ it("should pass with shadow root", async () => {
 });
 
 it("should fail without shadow root", async () => {
-  const screen = page.render(
-    html`
-      <button>Button</button><input />
-    `,
-  );
+  const screen = page.render(html` <button>Button</button><input /> `);
   const button = screen.getByRole("button");
   await button.click();
   expect(() =>
@@ -50,14 +37,9 @@ it("should fail with shadow root", async () => {
   const lightContainer = document.body.appendChild(document.createElement("div"));
   const shadow = lightContainer.attachShadow({ mode: "open" });
   const shadowContainer = shadow.appendChild(document.createElement("div"));
-  const screen = page.render(
-    html`
-      <button>Button</button><input />
-    `,
-    {
-      container: shadowContainer,
-    },
-  );
+  const screen = page.render(html` <button>Button</button><input /> `, {
+    container: shadowContainer,
+  });
 
   const button = screen.getByRole("button");
   await button.click();

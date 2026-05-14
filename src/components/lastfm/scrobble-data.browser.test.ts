@@ -23,11 +23,7 @@ it("should render placeholder data while loading, then real data", async ({ work
     }),
   );
 
-  const screen = page.render(
-    html`
-      <scrobble-data></scrobble-data>
-    `,
-  );
+  const screen = page.render(html` <scrobble-data></scrobble-data> `);
   await expect.element(screen.getByText("0,000 artists")).toBeInTheDocument();
 
   await expect.element(screen.getByText("10_000 artists")).toBeInTheDocument();

@@ -71,12 +71,9 @@ export default class TopArtists extends StyleWatcher(LitElement) {
               () => "skeleton",
               (_, index) =>
                 html`<top-artist-skeleton></top-artist-skeleton>${when(
-                  index < 4,
-                  () =>
-                    html`
-                      <hr class="inset" />
-                    `,
-                )}`,
+                    index < 4,
+                    () => html` <hr class="inset" /> `,
+                  )}`,
             ),
           success: ({ data: artists }) =>
             repeat(
@@ -90,18 +87,9 @@ export default class TopArtists extends StyleWatcher(LitElement) {
                     rank=${artist.rank}
                     playcount=${artist.playcount}
                   ></top-artist>
-                  ${when(
-                    index < artists.length - 1,
-                    () =>
-                      html`
-                        <hr class="inset" />
-                      `,
-                  )}`,
+                  ${when(index < artists.length - 1, () => html` <hr class="inset" /> `)}`,
             ),
-          error: () =>
-            html`
-              <p class="error body2">Failed to load top artists</p>
-            `,
+          error: () => html` <p class="error body2">Failed to load top artists</p> `,
         })}
       </ol>
     `;
