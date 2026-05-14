@@ -15,10 +15,10 @@ import { createQueryController } from "@tanstack/lit-query";
 export default class RecentTracks extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(list)];
 
-  #fetchTracks = createQueryController(this, () => ({
+  #fetchTracks = createQueryController(this, {
     ...getRecentTracks({ limit: 5 }),
     enabled: typeof window !== "undefined",
-  }));
+  });
 
   render(): unknown {
     return html`
