@@ -27,9 +27,6 @@ importers:
       '@tanstack/pacer':
         specifier: ^0.21.1
         version: 0.21.1
-      '@tanstack/query-core':
-        specifier: ^5.100.10
-        version: 5.100.10
       dracula-prism:
         specifier: ^2.1.16
         version: 2.1.16

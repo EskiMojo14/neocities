@@ -1,4 +1,4 @@
-import type { QueryKey, QueryOptions, WithRequired } from "@tanstack/query-core";
+import type { QueryKey, QueryOptions, WithRequired } from "@tanstack/lit-query";
 import * as v from "valibot";
 import env from "../constants/env.ts";
 import type { HasRequiredProps } from "../utils/index.ts";
