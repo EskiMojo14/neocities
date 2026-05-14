@@ -25,10 +25,10 @@ const userDataChips: Record<keyof UserData, { icon: string; placeholder: string;
 export default class ScrobbleData extends StyleWatcher(LitElement) {
   static styles = [unsafeCSS(base)];
 
-  #fetchData = createQueryController(this, () => ({
+  #fetchData = createQueryController(this, {
     ...getUserData(),
     enabled: typeof window !== "undefined",
-  }));
+  });
 
   render(): unknown {
     return renderQueryResult(this.#fetchData, {

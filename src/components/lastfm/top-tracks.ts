@@ -19,22 +19,12 @@ import list from "./list.css?type=raw";
 import "./top-track.ts";
 import { createQueryController } from "@tanstack/lit-query";
 
-const getFetchTracks = (el: TopTracks) =>
-  createQueryController(el, () => ({
-    ...getTopTracks({
-      period: el.period,
-      limit: 5,
-    }),
-    enabled: typeof window !== "undefined",
-  }));
-
 @customElement("top-tracks")
 export default class TopTracks extends StyleWatcher(LitElement) {
-  #fetchTracks!: ReturnType<typeof getFetchTracks>;
-  constructor() {
-    super();
-    this.#fetchTracks = getFetchTracks(this);
-  }
+  #fetchTracks = createQueryController(this, () => ({
+    ...getTopTracks({ period: this.period, limit: 5 }),
+    enabled: typeof window !== "undefined",
+  }));
 
   static styles = [unsafeCSS(base), unsafeCSS(list)];
 
