@@ -16,17 +16,15 @@ const oneDay = 1000 * 60 * 60 * 24;
 export default class DailyAvgScrobbles extends StyleWatcher(LitElement) {
   static styles = [unsafeCSS(base)];
 
-  calculateDailyAvg(playcount: number) {
-    const msSince = Date.now() - startDate.getTime();
-    const daysSince = msSince / oneDay;
-    return Math.round(playcount / daysSince);
-  }
-
-  #fetchPlaycount = createQueryController(this, () => ({
+  #fetchPlaycount = createQueryController(this, {
     ...getUserData(),
     enabled: typeof window !== "undefined",
-    select: (data) => this.calculateDailyAvg(data.playcount),
-  }));
+    select: (data) => {
+      const msSince = Date.now() - startDate.getTime();
+      const daysSince = msSince / oneDay;
+      return Math.round(data.playcount / daysSince);
+    },
+  });
 
   render(): unknown {
     return renderQueryResult(this.#fetchPlaycount, {
