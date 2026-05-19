@@ -83,13 +83,9 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
             `,
           )}
           <span>
-            <a
-              href="https://www.npmjs.com/package/${pkg}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.npmx.dev/package/${pkg}" target="_blank" rel="noopener noreferrer">
               <material-symbol aria-hidden="true">deployed_code</material-symbol>
-              NPM
+              npmx
             </a>
             ${when(
               !this.#fetchDownloads.result?.isError,
