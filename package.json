@@ -10,7 +10,7 @@
     "@floating-ui/dom": "^1.7.6",
     "@lit/task": "^1.0.3",
     "@open-wc/dedupe-mixin": "^2.0.1",
-    "@tanstack/lit-query": "^0.2.1",
+    "@tanstack/lit-query": "^0.2.3",
     "@tanstack/pacer": "^0.21.1",
     "@tanstack/query-core": "^5.100.10",
     "dracula-prism": "^2.1.16",
