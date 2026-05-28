@@ -11,7 +11,8 @@ import {
   periodLabels,
   periodSchema,
 } from "../../data/lastfm.ts";
-import { StyleWatcher } from "../../mixins/style-watcher.ts";
+import { consume } from "@lit/context";
+import { stylePref, type Style } from "../../constants/prefs.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { toggleButton } from "../button/toggle.ts";
 import "../spinner/spinner.ts";
@@ -20,13 +21,16 @@ import "./top-track.ts";
 import { createQueryController } from "@tanstack/lit-query";
 
 @customElement("top-tracks")
-export default class TopTracks extends StyleWatcher(LitElement) {
+export default class TopTracks extends LitElement {
   #fetchTracks = createQueryController(this, () => ({
     ...getTopTracks({ period: this.period, limit: 5 }),
     enabled: typeof window !== "undefined",
   }));
 
   static styles = [unsafeCSS(base), unsafeCSS(list)];
+
+  @consume({ context: stylePref.context, subscribe: true })
+  pageStyle: Style = stylePref.fallback;
 
   @state()
   period: Period = "overall";

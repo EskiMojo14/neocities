@@ -1,8 +1,9 @@
 import { html, LitElement, unsafeCSS } from "lit";
+import { consume } from "@lit/context";
 import { customElement, property } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { searchLinks } from "../../data/music.ts";
-import { StyleWatcher } from "../../mixins/style-watcher.ts";
+import { stylePref, type Style } from "../../constants/prefs.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
 import "../focus-group/focus-group.ts";
@@ -10,8 +11,11 @@ import "../skeleton/text-skeleton.ts";
 import track from "./artist.css?type=raw";
 
 @customElement("top-artist")
-export default class TopArtist extends StyleWatcher(LitElement) {
+export default class TopArtist extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(track)];
+
+  @consume({ context: stylePref.context, subscribe: true })
+  pageStyle: Style = stylePref.fallback;
 
   @property({ type: String })
   name = "";
