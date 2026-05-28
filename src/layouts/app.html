@@ -13,7 +13,8 @@
       crossorigin
     />
     <link rel="stylesheet" href="../styles/global.css" crossorigin />
-    <script type="module" src="../components/app-query-provider/app-query-provider.ts"></script>
+    <script type="module" src="../components/providers/app-query.ts"></script>
+    <script type="module" src="../components/providers/prefs.ts"></script>
     <script type="module" src="../components/sidebar/sidebar.ts"></script>
     <script type="module" src="../components/header/header.ts"></script>
     <script type="module" src="../components/footer/footer.ts"></script>
@@ -32,22 +33,24 @@
   </head>
   <body>
     <app-query-provider>
-      <a class="skip-to-content headline5" href="#root">Skip to content</a>
-      <sidebar-nav current-route="${globalThis.page.route}"></sidebar-nav>
-      <div class="root" id="root">
-        <page-header
-          header="${globalThis.page.title}"
-          subtitle="${globalThis.page.data.description}"
-        >
-        </page-header>
-        <main>
-          <output for="page"></output>
-        </main>
-        <hr />
-        <page-footer></page-footer>
-      </div>
-      <toast-queue></toast-queue>
-      <scroll-to-top></scroll-to-top>
+      <prefs-provider>
+        <a class="skip-to-content headline5" href="#root">Skip to content</a>
+        <sidebar-nav current-route="${globalThis.page.route}"></sidebar-nav>
+        <div class="root" id="root">
+          <page-header
+            header="${globalThis.page.title}"
+            subtitle="${globalThis.page.data.description}"
+          >
+          </page-header>
+          <main>
+            <output for="page"></output>
+          </main>
+          <hr />
+          <page-footer></page-footer>
+        </div>
+        <toast-queue></toast-queue>
+        <scroll-to-top></scroll-to-top>
+      </prefs-provider>
     </app-query-provider>
   </body>
 </html>

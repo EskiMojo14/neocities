@@ -1,14 +1,12 @@
 import { html, LitElement, unsafeCSS } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { ref } from "lit/directives/ref.js";
 import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
-import type { PackageManager } from "../../constants/prefs.ts";
-import { pkgManagerPref } from "../../constants/prefs.ts";
+import type { PackageManager, Style, Theme } from "../../constants/prefs.ts";
+import { pkgManagerPref, stylePref, themePref } from "../../constants/prefs.ts";
 import { renderQueryResult } from "../../utils/query.ts";
 import { getMonthlyDownloads } from "../../data/npm.ts";
-import { StyleWatcher } from "../../mixins/style-watcher.ts";
-import { ThemeWatcher } from "../../mixins/theme-watcher.ts";
 import dracula from "../../styles/themes/dracula.css?type=raw";
 import githubLight from "../../styles/themes/github-light.css?type=raw";
 import base from "../../styles/utility/baseline.css?type=raw";
@@ -20,9 +18,18 @@ import { toast } from "../toaster/toaster.ts";
 import Tooltip from "../tooltip/tooltip.ts";
 import pkgInfo from "./pkg-info.css?type=raw";
 import { createQueryController } from "@tanstack/lit-query";
+import { consume } from "@lit/context";
+
+class PkgManagerChangeEvent extends Event {
+  newPkgManager: PackageManager;
+  constructor(newPkgManager: PackageManager) {
+    super("pkgmanagerchange", { bubbles: true, composed: true });
+    this.newPkgManager = newPkgManager;
+  }
+}
 
 @customElement("pkg-info")
-export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
+export default class PkgInfo extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(githubLight), unsafeCSS(dracula), unsafeCSS(pkgInfo)];
 
   #fetchDownloads = createQueryController(this, () => ({
@@ -45,15 +52,17 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
   @property({ type: Boolean, attribute: "include-install" })
   includeInstall = false;
 
-  @state()
+  @consume({ context: themePref.context, subscribe: true })
+  theme: Theme = themePref.fallback;
+
+  @consume({ context: stylePref.context, subscribe: true })
+  pageStyle: Style = stylePref.fallback;
+
+  @consume({ context: pkgManagerPref.context, subscribe: true })
   pkgManager: PackageManager = pkgManagerPref.fallback;
 
-  #setPackageManager(newValue: PackageManager) {
-    this.pkgManager = pkgManagerPref.data = pkgManagerPref.storage = newValue;
-  }
-
-  firstUpdated() {
-    this.pkgManager = pkgManagerPref.data;
+  #setPkgManager(newPkgManager: PackageManager) {
+    this.dispatchEvent(new PkgManagerChangeEvent(newPkgManager));
   }
 
   async #onCopy() {
@@ -120,7 +129,7 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
               <fieldset
                 class="button-group button-group--square install-buttons"
                 @change=${(ev: Event) => {
-                  this.#setPackageManager((ev.target as HTMLInputElement).value as PackageManager);
+                  this.#setPkgManager((ev.target as HTMLInputElement).value as PackageManager);
                 }}
                 needs-js
               >
@@ -170,5 +179,11 @@ export default class PkgInfo extends StyleWatcher(ThemeWatcher(LitElement)) {
 declare global {
   interface HTMLElementTagNameMap {
     "pkg-info": PkgInfo;
+  }
+  interface GlobalEventHandlersEventMap {
+    pkgmanagerchange: PkgManagerChangeEvent;
+  }
+  interface Document {
+    onpkgmanagerchange: ((this: Document, ev: PkgManagerChangeEvent) => void) | null;
   }
 }

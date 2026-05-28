@@ -73,6 +73,9 @@ declare global {
   interface GlobalEventHandlersEventMap {
     stylechange: StyleChangeEvent;
   }
+  interface Document {
+    onstylechange: ((this: Document, ev: StyleChangeEvent) => void) | null;
+  }
   interface HTMLElementTagNameMap {
     "style-toggle": StyleToggle;
   }
