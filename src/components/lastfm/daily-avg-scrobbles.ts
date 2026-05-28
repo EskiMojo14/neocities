@@ -1,8 +1,9 @@
 import { html, LitElement, unsafeCSS } from "lit";
+import { consume } from "@lit/context";
 import { customElement } from "lit/decorators.js";
 import { renderQueryResult } from "../../utils/query.ts";
 import { getUserData } from "../../data/lastfm.ts";
-import { StyleWatcher } from "../../mixins/style-watcher.ts";
+import { stylePref, type Style } from "../../constants/prefs.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat } from "../../utils/index.ts";
 import "../skeleton/text-skeleton.ts";
@@ -13,8 +14,11 @@ const startDate = new Date("2017-09-22");
 const oneDay = 1000 * 60 * 60 * 24;
 
 @customElement("daily-avg-scrobbles")
-export default class DailyAvgScrobbles extends StyleWatcher(LitElement) {
+export default class DailyAvgScrobbles extends LitElement {
   static styles = [unsafeCSS(base)];
+
+  @consume({ context: stylePref.context, subscribe: true })
+  pageStyle: Style = stylePref.fallback;
 
   #fetchPlaycount = createQueryController(this, {
     ...getUserData(),

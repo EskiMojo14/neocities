@@ -1,9 +1,10 @@
 import { html, LitElement, unsafeCSS } from "lit";
+import { consume } from "@lit/context";
 import { customElement } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { renderQueryResult } from "../../utils/query.ts";
 import { getUserData, type UserData } from "../../data/lastfm.ts";
-import { StyleWatcher } from "../../mixins/style-watcher.ts";
+import { stylePref, type Style } from "../../constants/prefs.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { decimalFormat, unsafeEntries } from "../../utils/index.ts";
 import "../skeleton/text-skeleton.ts";
@@ -22,8 +23,11 @@ const userDataChips: Record<keyof UserData, { icon: string; placeholder: string;
   };
 
 @customElement("scrobble-data")
-export default class ScrobbleData extends StyleWatcher(LitElement) {
+export default class ScrobbleData extends LitElement {
   static styles = [unsafeCSS(base)];
+
+  @consume({ context: stylePref.context, subscribe: true })
+  pageStyle: Style = stylePref.fallback;
 
   #fetchData = createQueryController(this, {
     ...getUserData(),

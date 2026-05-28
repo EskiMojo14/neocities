@@ -1,7 +1,6 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { when } from "lit/directives/when.js";
-import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { frontmatterIsSet } from "../../utils/index.ts";
 import { consolewriter } from "../../utils/lit.ts";
@@ -12,7 +11,7 @@ import header from "./header.css?type=raw";
 const transitionDuration = 250;
 
 @customElement("page-header")
-export default class PageHeader extends StyleWatcher(LitElement) {
+export default class PageHeader extends LitElement {
   static styles = [unsafeCSS(base), unsafeCSS(header)];
 
   @property({ type: String })

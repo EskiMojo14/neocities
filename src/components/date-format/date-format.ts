@@ -1,13 +1,17 @@
+import { consume } from "@lit/context";
 import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import * as v from "valibot";
-import { StyleWatcher } from "../../mixins/style-watcher.ts";
+import { stylePref, type Style } from "../../constants/prefs.ts";
 import { dateFormat, timeFormat } from "../../utils/index.ts";
 import { cache } from "../../utils/lit.ts";
 import * as vUtils from "../../utils/valibot.ts";
 
 @customElement("date-format")
-export default class DateFormat extends StyleWatcher(LitElement) {
+export default class DateFormat extends LitElement {
+  @consume({ context: stylePref.context, subscribe: true })
+  pageStyle: Style = stylePref.fallback;
+
   @property({ type: String })
   date = "";
 

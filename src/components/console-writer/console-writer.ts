@@ -1,15 +1,13 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { StyleWatcher } from "../../mixins/style-watcher.ts";
 import base from "../../styles/utility/baseline.css?type=raw";
 import { consolewriter as cwriter, prefersReducedMotion } from "../../utils/lit.ts";
 import consolewriter from "./console-writer.css?type=raw";
+import { consume } from "@lit/context";
+import { stylePref, type Style } from "../../constants/prefs.ts";
 
 @customElement("console-writer")
-export default class ConsoleWriter
-  extends StyleWatcher(LitElement)
-  implements Required<cwriter.Config>
-{
+export default class ConsoleWriter extends LitElement implements Required<cwriter.Config> {
   static styles = [unsafeCSS(base), unsafeCSS(consolewriter)];
 
   @property({ type: String })
@@ -25,6 +23,9 @@ export default class ConsoleWriter
   minInterval = cwriter.defaults.minInterval;
   @property({ type: Number })
   maxDuration = cwriter.defaults.maxDuration;
+
+  @consume({ context: stylePref.context, subscribe: true })
+  pageStyle: Style = stylePref.fallback;
 
   render() {
     if (this.pageStyle === "normal" || prefersReducedMotion()) return this.text;
