@@ -1,3 +1,8 @@
+hgroup {
+  display: flex;
+  flex-direction: column;
+}
+
 .headline5 {
   margin-top: 0.5em;
 }

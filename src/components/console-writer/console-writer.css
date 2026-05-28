@@ -1,25 +1,3 @@
-:host {
-  position: relative;
-  display: block;
-}
-
-span {
-  display: block;
-}
-
-.console {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.text {
-  position: sticky;
-  color: transparent;
-  top: 0;
-  left: 0;
-}
-
 [data-style="normal"] {
   .text {
     color: inherit;
@@ -46,7 +24,28 @@ span {
     margin-right: 0.1em;
     margin-left: 0;
   }
-  &.finished {
+  &.done {
     background: none;
+  }
+  &::before {
+    content: attr(data-char);
+    color: inherit;
+  }
+}
+
+.remainder {
+  color: transparent;
+}
+
+@media (prefers-reduced-motion) {
+  .cursor {
+    color: inherit;
+    background: none;
+    border: none;
+    height: auto;
+    margin: 0;
+  }
+  .remainder {
+    color: inherit;
   }
 }

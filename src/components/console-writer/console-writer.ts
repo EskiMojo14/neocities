@@ -1,7 +1,7 @@
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import base from "../../styles/utility/baseline.css?type=raw";
-import { consolewriter as cwriter, prefersReducedMotion } from "../../utils/lit.ts";
+import { consolewriter as cwriter } from "../../utils/lit.ts";
 import consolewriter from "./console-writer.css?type=raw";
 import { consume } from "@lit/context";
 import { stylePref, type Style } from "../../constants/prefs.ts";
@@ -28,8 +28,9 @@ export default class ConsoleWriter extends LitElement implements Required<cwrite
   pageStyle: Style = stylePref.fallback;
 
   render() {
-    if (this.pageStyle === "normal" || prefersReducedMotion()) return this.text;
-    return html`<span aria-hidden="true" class="console" needs-js
+    if (this.pageStyle === "normal") return this.text;
+    return html`<span class="sr-only">${this.text}</span
+      ><span aria-hidden="true" class="console" needs-js
         >${cwriter(this.text, {
           delay: this.delay,
           finishingDelay: this.finishingDelay,
@@ -37,7 +38,7 @@ export default class ConsoleWriter extends LitElement implements Required<cwrite
           minInterval: this.minInterval,
           maxDuration: this.maxDuration,
         })}</span
-      ><span class="text">${this.text}</span>`;
+      >`;
   }
 }
 

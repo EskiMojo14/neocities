@@ -61,6 +61,8 @@ export const asyncReplace = _asyncReplace as <T>(
 
 export const ref = _ref as <T>(ref?: RefOrCallback<T>) => ReturnType<typeof _ref>;
 
+type TypeState = "initial" | "typing" | "done";
+
 export function consolewriter(text: string, cfg?: consolewriter.Config) {
   return asyncReplace(
     (async function* () {
@@ -69,16 +71,26 @@ export function consolewriter(text: string, cfg?: consolewriter.Config) {
         ...cfg,
       };
       const interval = getTypeInterval(text, config);
-      let acc = "";
+      let idx = 0;
+      let state: TypeState = "initial";
+      yield html`<span class="remainder">${text}</span>`;
       await wait(delay);
-      for (const char of text) {
-        acc += char;
-        yield html`${acc}<span class="cursor">x</span>`;
-        await wait(interval);
+      state = "typing";
+      while (state !== "done") {
+        yield html`${text.slice(0, idx)}<span
+            data-char="${text[idx] ?? ""}"
+            class="cursor ${state}"
+          ></span
+          ><span class="remainder">${text.slice(idx + (state === "typing" ? 1 : 0))}</span>`;
+        if (idx < text.length) {
+          await wait(interval);
+          idx++;
+        } else {
+          state = "done";
+        }
       }
-      yield html`${acc}<span class="cursor finished">x</span>`;
       await wait(finishingDelay);
-      yield html`${acc}`;
+      yield html`${text}`;
     })(),
   );
 }
