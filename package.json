@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.6",
+    "@lit/context": "^1.1.6",
     "@lit/task": "^1.0.3",
     "@open-wc/dedupe-mixin": "^2.0.1",
     "@tanstack/lit-query": "^0.2.3",

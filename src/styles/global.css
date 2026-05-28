@@ -184,6 +184,7 @@ body {
   }
 }
 
-app-query-provider {
+app-query-provider,
+prefs-provider {
   display: contents;
 }

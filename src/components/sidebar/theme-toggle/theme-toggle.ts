@@ -102,6 +102,9 @@ declare global {
   interface GlobalEventHandlersEventMap {
     themechange: ThemeChangeEvent;
   }
+  interface Document {
+    onthemechange: ((this: Document, ev: ThemeChangeEvent) => void) | null;
+  }
   interface HTMLElementTagNameMap {
     "theme-toggle": ThemeToggle;
   }
