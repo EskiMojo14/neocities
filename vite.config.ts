@@ -93,7 +93,7 @@ export default defineConfig({
   run: {
     tasks: {
       clean: {
-        command: "rm -rf ./public/",
+        command: "node -e \"require('fs').rmSync('./public/', {recursive: true, force: true})\"",
       },
       "generate-thumbs": {
         command: "node scripts/generate-thumbs.ts",
