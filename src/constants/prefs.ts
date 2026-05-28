@@ -26,19 +26,22 @@ const createPref =
       parser,
       dataKey,
       get data() {
+        if (typeof window === "undefined") return fallback;
         return parser(document.documentElement.dataset[dataKey]);
       },
       set data(value) {
+        if (typeof window === "undefined") return;
         document.documentElement.dataset[dataKey] = value;
       },
       storageKey,
       get storage() {
+        if (typeof window === "undefined") return fallback;
         return parser(localStorage.getItem(storageKey));
       },
       set storage(value) {
+        if (typeof window === "undefined") return;
         localStorage.setItem(storageKey, value);
       },
-      _type: null as unknown as Opt,
     };
   };
 
