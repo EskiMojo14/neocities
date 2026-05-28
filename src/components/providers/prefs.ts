@@ -21,9 +21,6 @@ export class PrefsProvider extends Signalled(LitElement) {
 
   connectedCallback() {
     super.connectedCallback();
-    this.theme = themePref.data;
-    this.pageStyle = stylePref.data;
-    this.packageManager = pkgManagerPref.data;
     radEventListeners(
       document,
       {
