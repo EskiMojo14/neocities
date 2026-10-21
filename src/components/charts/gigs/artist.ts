@@ -119,8 +119,7 @@ export class GigsByArtist extends LitElement {
     return html`
       <h2 class="headline6">Events per artist</h2>
       <p class="caption">
-        Full history · Artists seen only once or only as support are excluded · Sorted by total
-        appearances
+        Artists seen only once or only as support are excluded · Sorted by total appearances
       </p>
       <ul class="legend caption" aria-label="Appearance types">
         <li><span class="swatch main"></span>Main / co-billed</li>
