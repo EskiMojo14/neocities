@@ -54,11 +54,12 @@ const heatmapBackground = (level: number) => {
 const heatmapColors = colorOpacities.map((_, index) => heatmapColor(index));
 
 const lastYear = Math.max(...gigs.events.map(({ date }) => Number(date.slice(0, 4))));
-const firstYear = lastYear - 4;
-const years = Array.from({ length: 5 }, (_, index) => String(firstYear + index));
-const visibleGigs = gigs.events.filter(({ date }) => Number(date.slice(0, 4)) >= firstYear);
+const firstYear = Math.min(...gigs.events.map(({ date }) => Number(date.slice(0, 4))));
+const years = Array.from({ length: lastYear - firstYear + 1 }, (_, index) =>
+  String(firstYear + index),
+);
 
-const gigsByMonth = Map.groupBy(visibleGigs, (event) => event.date.slice(0, 7));
+const gigsByMonth = Map.groupBy(gigs.events, (event) => event.date.slice(0, 7));
 
 type HeatmapRow = {
   year: string;
@@ -129,50 +130,59 @@ const styleHeatmapNode = (node: SceneNode, cornerSize: number, countLabel = fals
   return node;
 };
 
-const definition = defineChart({
-  marks: [
-    cell(heatmapRows, {
-      id: "gigs-by-year-month",
-      x: "month",
-      y: "year",
-      color: "level",
-      key: "period",
-      inset: 4,
-      stroke: "var(--gigs-heatmap-border, var(--divider, #dce3ec))",
-      strokeWidth: 1,
-    }),
-    decorative(
-      text(heatmapRows, {
-        id: "gigs-by-year-month-counts",
+const createDefinition = (pageStyle: Style) =>
+  defineChart({
+    marks: [
+      cell(heatmapRows, {
+        id: "gigs-by-year-month",
         x: "month",
         y: "year",
-        text: (row) => row.events.length,
-        fill: (row) => `contrast-color(${heatmapBackground(Number(row.level))})`,
+        color: "level",
         key: "period",
-        states: [
-          {
-            when: ({ datum, focus }) => datum.period === focus.primary.datum.period,
-            style: { opacity: 0 },
-          },
-        ],
+        inset: 4,
+        stroke: "var(--gigs-heatmap-border, var(--divider, #dce3ec))",
+        strokeWidth: 1,
       }),
-    ),
-  ],
-  scales: {
-    x: {
-      scale: () => scaleBand().domain(months),
-      axis: { label: "Month" },
+      decorative(
+        text(heatmapRows, {
+          id: "gigs-by-year-month-counts",
+          x: "month",
+          y: "year",
+          text: (row) => row.events.length,
+          fill: (row) => `contrast-color(${heatmapBackground(Number(row.level))})`,
+          key: "period",
+          states: [
+            {
+              when: ({ datum, focus }) => datum.period === focus.primary.datum.period,
+              style: { opacity: 0 },
+            },
+          ],
+        }),
+      ),
+    ],
+    scales: {
+      x: {
+        scale: () => scaleBand().domain(months),
+        axis: {
+          label: "Month",
+          ticks: {
+            format: (month: string) =>
+              pageStyle === "code"
+                ? String(months.findIndex((label) => label === month) + 1).padStart(2, "0")
+                : month,
+          },
+        },
+      },
+      y: {
+        scale: () => scaleBand().domain(years),
+        axis: { label: "Year" },
+      },
     },
-    y: {
-      scale: () => scaleBand().domain(years),
-      axis: { label: "Year" },
+    color: {
+      scale: scaleOrdinal<string, string>().domain(colorLevels).range(heatmapColors),
     },
-  },
-  color: {
-    scale: scaleOrdinal<string, string>().domain(colorLevels).range(heatmapColors),
-  },
-  tooltip,
-});
+    tooltip,
+  });
 
 const monthFormatter = new Intl.DateTimeFormat(undefined, {
   month: "long",
@@ -181,10 +191,11 @@ const monthFormatter = new Intl.DateTimeFormat(undefined, {
 });
 
 const createChartOptions = (pageStyle: Style) => ({
-  definition,
+  definition: createDefinition(pageStyle),
   ariaLabel: "Gigs by year and month",
-  ariaDescription: "Each cell shows the number of gigs in that month. Darker blue means more gigs.",
-  height: Math.max(360, 120 + years.length * 64),
+  ariaDescription:
+    "Each cell shows the number of gigs in that month. Darker indicates more gigs. Months run from January (01) to December (12): January, February, March, April, May, June, July, August, September, October, November, December.",
+  height: 40 + years.length * 36,
   renderTooltipBody: ({ points }: ChartTooltipBodyRenderContext<HeatmapRow>) => {
     const row = points[0]?.datum;
     if (!row) return nothing;
@@ -236,8 +247,8 @@ export class GigsYearMonthHeatmap extends LitElement {
   pageStyle: Style = stylePref.fallback;
 
   #renderSvg: ChartSvgRenderer = (scene, options) => {
-    const shape = getComputedStyle(this).getPropertyValue("--shape-medium").trim();
-    const cornerSize = /^\d+(?:\.\d+)?px$/.test(shape) ? Number.parseFloat(shape) : 8;
+    const shape = getComputedStyle(this).getPropertyValue("--shape-small").trim();
+    const cornerSize = /^\d+(?:\.\d+)?px$/.test(shape) ? Number.parseFloat(shape) : 4;
     return renderChartSvg(
       {
         ...scene,
@@ -249,16 +260,16 @@ export class GigsYearMonthHeatmap extends LitElement {
 
   @cache(({ pageStyle }) => [pageStyle])
   get chartOptions() {
-    return { ...createChartOptions(this.pageStyle), renderSvg: this.#renderSvg };
+    return {
+      ...createChartOptions(this.pageStyle),
+      renderSvg: this.#renderSvg,
+    };
   }
 
   render() {
     return html`
       <h2 class="headline6">Gigs by year and month</h2>
-      <p class="caption">
-        Last 5 years · ${visibleGigs.length} of ${gigs.events.length} total events · Darker
-        indicates more events
-      </p>
+      <p class="caption">${gigs.events.length} total events · Darker indicates more events</p>
       <tanstack-chart .options=${this.chartOptions}></tanstack-chart>
     `;
   }
