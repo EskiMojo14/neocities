@@ -13,6 +13,10 @@ description: Where the heart is
     <script type="module" src="../components/lastfm/top-artists.ts"></script>
     <script type="module" src="../components/lastfm/scrobble-data.ts"></script>
     <script type="module" src="../components/lastfm/daily-avg-scrobbles.ts"></script>
+    <script type="module" src="../components/charts/gigs/heatmap/heatmap.ts"></script>
+    <script type="module" src="../components/charts/gigs/artist/artist.ts"></script>
+    <script type="module" src="../components/charts/gigs/venue/venue.ts"></script>
+    <script type="module" src="../components/charts/gigs/city/city.ts"></script>
   </head>
   <body>
     Welcome to my site! I'm Eski, and here you'll find things that matter to me, such as music and
@@ -32,5 +36,13 @@ description: Where the heart is
       <top-artists></top-artists>
       <recent-tracks></recent-tracks>
     </div>
+    <section aria-labelledby="gigs-heading">
+      <h3 id="gigs-heading" class="headline5">Gigs</h3>
+      <p>I also go to a lot of live music events!</p>
+      <gigs-year-month-heatmap></gigs-year-month-heatmap>
+      <gigs-by-artist></gigs-by-artist>
+      <gigs-by-venue></gigs-by-venue>
+      <gigs-by-city></gigs-by-city>
+    </section>
   </body>
 </html>
