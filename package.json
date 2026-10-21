@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "generate:gig-types": "json2ts -i src/components/charts/gigs/gigs.schema.json -o src/components/charts/gigs/gigs.types.ts --ignoreMinAndMaxItems && vp check --fix src/components/charts/gigs/gigs.types.ts",
     "prepare": "vp config"
   },
   "dependencies": {
@@ -41,6 +42,7 @@
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-lit": "^2.3.1",
     "eslint-plugin-storybook": "^10.4.0",
+    "json-schema-to-typescript": "^16.0.0",
     "material-colors": "^1.2.6",
     "mix-n-matchers": "^2.0.1",
     "msw": "^2.14.6",

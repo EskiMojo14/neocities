@@ -5,7 +5,7 @@ import { scaleLinear } from "@tanstack/charts/scales/linear";
 import { scaleOrdinal } from "@tanstack/charts/scales/ordinal";
 import { tooltip } from "@tanstack/charts/tooltip";
 import type { ChartTooltipBodyRenderContext } from "@tanstack/charts/lit";
-import { html, LitElement, unsafeCSS } from "lit";
+import { html, LitElement, nothing, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { consume } from "@lit/context";
 import { stylePref, type Style } from "../../../../constants/prefs.ts";
@@ -13,18 +13,17 @@ import { dateFormat } from "../../../../utils/index.ts";
 import { cache } from "../../../../utils/lit.ts";
 import base from "../../../../styles/utility/baseline.css?type=raw";
 import styles from "./artist.css?type=raw";
-import { countArtistEvents } from "./artist-data.ts";
+import { countArtistEvents, type ArtistRow, type ArtistRole } from "./artist-data.ts";
 import { renderSvg } from "../svg.ts";
 import gigs from "../gigs.json" with { type: "json" };
 import "../../register.ts";
 
 const artists = countArtistEvents(gigs.events);
-const roles = ["Main / co-billed", "Support"] as const;
-const rows = artists.flatMap((artist) => [
-  { ...artist, role: roles[0], count: artist.main },
-  { ...artist, role: roles[1], count: artist.support },
+const roles: Array<ArtistRole> = ["Main / co-billed", "Support"];
+const rows: Array<ArtistRow> = artists.flatMap((artist) => [
+  { ...artist, role: "Main / co-billed", count: artist.main },
+  { ...artist, role: "Support", count: artist.support },
 ]);
-type ArtistRow = (typeof rows)[number];
 
 const definition = defineChart({
   margin: { left: 280 },
@@ -70,7 +69,7 @@ const createChartOptions = (pageStyle: Style) => ({
   renderSvg,
   renderTooltipBody: ({ points }: ChartTooltipBodyRenderContext<ArtistRow>) => {
     const row = points[0]?.datum;
-    if (!row) return html``;
+    if (!row) return nothing;
     return html`
       <div class="artist-tooltip caption">
         <strong>${row.artist}</strong>
@@ -90,7 +89,7 @@ const createChartOptions = (pageStyle: Style) => ({
                     · ${event.venue}, ${event.city}
                   </div>
                   ${event.artists.includes(row.artist)
-                    ? html`<div>Main / co-billed</div>`
+                    ? nothing
                     : html`<div class="artist-tooltip-support">
                         Supporting ${event.artists.join(", ")}
                       </div>`}
