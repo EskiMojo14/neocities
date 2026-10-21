@@ -1,6 +1,6 @@
 import { expect, it } from "vite-plus/test";
 import { groupCityEvents } from "./city-data.ts";
-import gigs from "./gigs.json" with { type: "json" };
+import gigs from "../gigs.json" with { type: "json" };
 import england from "./england.json" with { type: "json" };
 import { geoContains } from "d3-geo";
 
