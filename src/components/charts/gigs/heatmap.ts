@@ -15,6 +15,7 @@ import { cache } from "../../../utils/lit.ts";
 import base from "../../../styles/utility/baseline.css?type=raw";
 import heatmap from "./heatmap.css?type=raw";
 import gigs from "./gigs.json" with { type: "json" };
+import { addTypography } from "./svg.ts";
 import "../register.ts";
 
 const months = [
@@ -73,20 +74,17 @@ const heatmapRows = years.flatMap((year) =>
 );
 type HeatmapRow = (typeof heatmapRows)[number];
 
-const addTypography = (node: SceneNode, cornerSize: number, countLabel = false): SceneNode => {
+const styleHeatmapNode = (node: SceneNode, cornerSize: number, countLabel = false): SceneNode => {
   if (node.kind === "group") {
     const isCountLabel = countLabel || node.key === "gigs-by-year-month-counts";
     return {
       ...node,
-      children: node.children.map((child) => addTypography(child, cornerSize, isCountLabel)),
+      children: node.children.map((child) => styleHeatmapNode(child, cornerSize, isCountLabel)),
     };
   }
 
   if (node.kind === "label") {
-    return {
-      ...node,
-      className: [node.className, countLabel ? "body2" : "caption"].filter(Boolean).join(" "),
-    };
+    return addTypography(node, countLabel ? "body2" : "caption");
   }
 
   if (node.kind === "rect" && countLabel) return node;
@@ -235,7 +233,7 @@ export class GigsYearMonthHeatmap extends LitElement {
     return renderChartSvg(
       {
         ...scene,
-        nodes: scene.nodes.map((node) => addTypography(node, cornerSize)),
+        nodes: scene.nodes.map((node) => styleHeatmapNode(node, cornerSize)),
       },
       options,
     );

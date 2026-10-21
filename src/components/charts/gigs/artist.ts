@@ -3,9 +3,7 @@ import { stack } from "@tanstack/charts/stack";
 import { scaleBand } from "@tanstack/charts/scales/band";
 import { scaleLinear } from "@tanstack/charts/scales/linear";
 import { scaleOrdinal } from "@tanstack/charts/scales/ordinal";
-import { renderChartSvg } from "@tanstack/charts/svg";
 import { tooltip } from "@tanstack/charts/tooltip";
-import type { ChartSvgRenderer, SceneNode } from "@tanstack/charts";
 import type { ChartTooltipBodyRenderContext } from "@tanstack/charts/lit";
 import { html, LitElement, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
@@ -16,6 +14,7 @@ import { cache } from "../../../utils/lit.ts";
 import base from "../../../styles/utility/baseline.css?type=raw";
 import styles from "./artist.css?type=raw";
 import { countArtistEvents } from "./artist-data.ts";
+import { renderSvg } from "./svg.ts";
 import gigs from "./gigs.json" with { type: "json" };
 import "../register.ts";
 
@@ -61,17 +60,6 @@ const definition = defineChart({
   },
   tooltip,
 });
-
-const addTypography = (node: SceneNode): SceneNode => {
-  if (node.kind === "group") return { ...node, children: node.children.map(addTypography) };
-  if (node.kind === "label") {
-    return { ...node, className: [node.className, "caption"].filter(Boolean).join(" ") };
-  }
-  return node;
-};
-
-const renderSvg: ChartSvgRenderer = (scene, options) =>
-  renderChartSvg({ ...scene, nodes: scene.nodes.map(addTypography) }, options);
 
 const createChartOptions = (pageStyle: Style) => ({
   definition,
