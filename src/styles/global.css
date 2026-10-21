@@ -96,22 +96,6 @@ body {
   }
 }
 
-.last-fm {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 50%));
-  gap: 1rem;
-  recent-tracks {
-    grid-column: span 2;
-  }
-
-  @media (max-width: 1200px) {
-    grid-template-columns: minmax(0, 1fr);
-    recent-tracks {
-      grid-column: unset;
-    }
-  }
-}
-
 .not-found-icon {
   --icon-size: 192;
   margin: 8rem auto;

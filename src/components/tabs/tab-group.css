@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+[role="tablist"] {
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--divider);
+}
+
+[role="tab"] {
+  min-height: 2rem;
+}
+
+[role="tab"][aria-selected="true"] {
+  color: var(--button-selected);
+  background: var(--button-selected-background);
+  font-weight: var(--weight-bold);
+  font-variation-settings: "slnt" -11;
+}
+
+[role="tabpanel"] {
+  padding-top: 1rem;
+}
+
+[role="tabpanel"]:focus-visible {
+  outline: 2px solid var(--button);
+  outline-offset: 2px;
+}

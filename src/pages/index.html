@@ -8,15 +8,10 @@ description: Where the heart is
 
 <html>
   <head>
-    <script type="module" src="../components/lastfm/recent-tracks.ts"></script>
-    <script type="module" src="../components/lastfm/top-tracks.ts"></script>
-    <script type="module" src="../components/lastfm/top-artists.ts"></script>
+    <script type="module" src="../components/lastfm/tabs.ts"></script>
     <script type="module" src="../components/lastfm/scrobble-data.ts"></script>
     <script type="module" src="../components/lastfm/daily-avg-scrobbles.ts"></script>
-    <script type="module" src="../components/charts/gigs/heatmap/heatmap.ts"></script>
-    <script type="module" src="../components/charts/gigs/artist/artist.ts"></script>
-    <script type="module" src="../components/charts/gigs/venue/venue.ts"></script>
-    <script type="module" src="../components/charts/gigs/city/city.ts"></script>
+    <script type="module" src="../components/charts/gigs/tabs.ts"></script>
   </head>
   <body>
     Welcome to my site! I'm Eski, and here you'll find things that matter to me, such as music and
@@ -31,18 +26,11 @@ description: Where the heart is
       since <date-format class="body1" date="2017-09-22"></date-format>
       <daily-avg-scrobbles></daily-avg-scrobbles>, and that's just the ones Last.fm knows about.
     </p>
-    <div class="last-fm">
-      <top-tracks></top-tracks>
-      <top-artists></top-artists>
-      <recent-tracks></recent-tracks>
-    </div>
+    <lastfm-tabs></lastfm-tabs>
     <section aria-labelledby="gigs-heading">
       <h3 id="gigs-heading" class="headline5">Gigs</h3>
       <p>I also go to a lot of live music events!</p>
-      <gigs-year-month-heatmap></gigs-year-month-heatmap>
-      <gigs-by-artist></gigs-by-artist>
-      <gigs-by-venue></gigs-by-venue>
-      <gigs-by-city></gigs-by-city>
+      <gigs-tabs></gigs-tabs>
     </section>
   </body>
 </html>
