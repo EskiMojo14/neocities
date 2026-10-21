@@ -64,7 +64,7 @@ const createChartOptions = (pageStyle: Style) => ({
   definition,
   ariaLabel: "Gigs per artist",
   ariaDescription:
-    "All-time appearances, split into main or co-billed and support acts. Artists seen only once or only as support are excluded. Sorted by total appearances.",
+    "All-time appearances, split into main or co-billed and support acts. Sorted by total appearances.",
   height: 80 + artists.length * 32,
   renderSvg,
   renderTooltipBody: ({ points }: ChartTooltipBodyRenderContext<ArtistRow>) => {
@@ -117,9 +117,7 @@ export class GigsByArtist extends LitElement {
   render() {
     return html`
       <h2 class="headline6">Gigs per artist</h2>
-      <p class="caption">
-        Artists seen only once or only as support are excluded · Sorted by total appearances
-      </p>
+      <p class="caption">Sorted by total appearances</p>
       <ul class="legend caption" aria-label="Appearance types">
         <li><span class="swatch main"></span>Main / co-billed</li>
         <li><span class="swatch support"></span>Support</li>

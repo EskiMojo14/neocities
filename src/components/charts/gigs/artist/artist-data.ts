@@ -19,13 +19,19 @@ export function countArtistEvents(events: ReadonlyArray<ArtistEvent>): Array<Art
 
   for (const event of events) {
     for (const artist of new Set(event.support)) {
-      const row = counts.get(artist);
-      if (row && !event.artists.includes(artist)) row.support += 1;
+      if (event.artists.includes(artist)) continue;
+      const row = counts.get(artist) ?? { artist, main: 0, support: 0 };
+      row.support += 1;
+      counts.set(artist, row);
     }
   }
 
   return [...counts.values()]
     .map((row) => ({ ...row, total: row.main + row.support }))
-    .filter((row) => row.total > 1)
-    .sort((a, b) => b.total - a.total || a.artist.localeCompare(b.artist));
+    .sort(
+      (a, b) =>
+        Number(a.main === 0) - Number(b.main === 0) ||
+        b.total - a.total ||
+        a.artist.localeCompare(b.artist),
+    );
 }
