@@ -6,7 +6,7 @@ import { tooltip } from "@tanstack/charts/tooltip";
 import type { ChartSvgRenderer, SceneNode } from "@tanstack/charts";
 import { renderChartSvg } from "@tanstack/charts/svg";
 import type { ChartTooltipBodyRenderContext } from "@tanstack/charts/lit";
-import { html, LitElement, unsafeCSS } from "lit";
+import { html, LitElement, nothing, unsafeCSS } from "lit";
 import { consume } from "@lit/context";
 import { customElement } from "lit/decorators.js";
 import { stylePref, type Style } from "../../../../constants/prefs.ts";
@@ -15,6 +15,7 @@ import { cache } from "../../../../utils/lit.ts";
 import base from "../../../../styles/utility/baseline.css?type=raw";
 import heatmap from "./heatmap.css?type=raw";
 import gigs from "../gigs.json" with { type: "json" };
+import type { GigEvent } from "../gigs.types.ts";
 import { addTypography } from "../svg.ts";
 import "../../register.ts";
 
@@ -59,7 +60,15 @@ const visibleGigs = gigs.events.filter(({ date }) => Number(date.slice(0, 4)) >=
 
 const gigsByMonth = Map.groupBy(visibleGigs, (event) => event.date.slice(0, 7));
 
-const heatmapRows = years.flatMap((year) =>
+type HeatmapRow = {
+  year: string;
+  month: string;
+  events: Array<GigEvent>;
+  period: string;
+  level: string;
+};
+
+const heatmapRows: Array<HeatmapRow> = years.flatMap((year) =>
   months.map((month, index) => {
     const period = `${year}-${String(index + 1).padStart(2, "0")}`;
     const events = gigsByMonth.get(period) ?? [];
@@ -72,7 +81,6 @@ const heatmapRows = years.flatMap((year) =>
     };
   }),
 );
-type HeatmapRow = (typeof heatmapRows)[number];
 
 const styleHeatmapNode = (node: SceneNode, cornerSize: number, countLabel = false): SceneNode => {
   if (node.kind === "group") {
@@ -179,7 +187,7 @@ const createChartOptions = (pageStyle: Style) => ({
   height: Math.max(360, 120 + years.length * 64),
   renderTooltipBody: ({ points }: ChartTooltipBodyRenderContext<HeatmapRow>) => {
     const row = points[0]?.datum;
-    if (!row) return html``;
+    if (!row) return nothing;
 
     return html`
       <div class="gigs-tooltip caption">

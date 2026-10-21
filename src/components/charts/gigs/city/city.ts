@@ -7,21 +7,20 @@ import type { ChartSvgRenderer } from "@tanstack/charts";
 import type { ChartTooltipBodyRenderContext } from "@tanstack/charts/lit";
 import { geoMercator } from "d3-geo";
 import { consume } from "@lit/context";
-import { html, LitElement, unsafeCSS } from "lit";
+import { html, LitElement, nothing, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { stylePref, type Style } from "../../../../constants/prefs.ts";
 import { dateFormat } from "../../../../utils/index.ts";
 import { cache } from "../../../../utils/lit.ts";
 import base from "../../../../styles/utility/baseline.css?type=raw";
 import styles from "./city.css?type=raw";
-import { groupCityEvents } from "./city-data.ts";
+import { groupCityEvents, type CityRow } from "./city-data.ts";
 import { renderSvg } from "../svg.ts";
 import gigs from "../gigs.json" with { type: "json" };
 import england from "./england.json" with { type: "json" };
 import "../../register.ts";
 
-const cities = groupCityEvents(gigs.events);
-type CityRow = (typeof cities)[number];
+const cities: Array<CityRow> = groupCityEvents(gigs.events);
 const outline = {
   type: "MultiPolygon" as const,
   coordinates: england.coordinates,
@@ -112,7 +111,7 @@ const renderEvents =
   (pageStyle: Style) =>
   ({ points }: ChartTooltipBodyRenderContext<CityRow>) => {
     const city = points[0]?.datum.properties;
-    if (!city) return html``;
+    if (!city) return nothing;
     return html`
       <div class="city-tooltip caption">
         <strong>${city.city} · ${city.count} event${city.count !== 1 ? "s" : ""}</strong>

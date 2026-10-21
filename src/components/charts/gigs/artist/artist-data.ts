@@ -1,10 +1,13 @@
-export interface ArtistEvent {
-  artists: ReadonlyArray<string>;
-  support?: ReadonlyArray<string>;
-}
+import type { GigEvent } from "../gigs.types.ts";
 
-export function countArtistEvents(events: ReadonlyArray<ArtistEvent>) {
-  const counts = new Map<string, { artist: string; main: number; support: number }>();
+type ArtistEvent = Pick<GigEvent, "artists" | "support">;
+type ArtistCounts = { artist: string; main: number; support: number };
+export type ArtistSummary = ArtistCounts & { total: number };
+export type ArtistRole = "Main / co-billed" | "Support";
+export type ArtistRow = ArtistSummary & { role: ArtistRole; count: number };
+
+export function countArtistEvents(events: ReadonlyArray<ArtistEvent>): Array<ArtistSummary> {
+  const counts = new Map<string, ArtistCounts>();
 
   for (const event of events) {
     for (const artist of new Set(event.artists)) {

@@ -1,3 +1,16 @@
+import type { GigEvent } from "../gigs.types.ts";
+
+type CityEvent = Pick<GigEvent, "city" | "date">;
+export type CityRow<T extends CityEvent = GigEvent> = {
+  type: "Feature";
+  geometry: { type: "Point"; coordinates: [number, number] };
+  properties: {
+    city: string;
+    count: number;
+    events: Array<T>;
+  };
+};
+
 const coordinates: Readonly<Record<string, [number, number]>> = {
   London: [-0.1276, 51.5072],
   Birmingham: [-1.9025, 52.4862],
@@ -8,9 +21,7 @@ const coordinates: Readonly<Record<string, [number, number]>> = {
   Trowbridge: [-2.2086, 51.3193],
 };
 
-export function groupCityEvents<T extends { city: string; date: string }>(
-  events: ReadonlyArray<T>,
-) {
+export function groupCityEvents<T extends CityEvent>(events: ReadonlyArray<T>): Array<CityRow<T>> {
   return [...Map.groupBy(events, (event) => event.city)]
     .map(([city, events]) => {
       const location = Object.hasOwn(coordinates, city) ? coordinates[city] : undefined;

@@ -5,20 +5,19 @@ import { tooltip } from "@tanstack/charts/tooltip";
 import type { ChartSvgRenderer, SceneNode } from "@tanstack/charts";
 import type { ChartTooltipBodyRenderContext } from "@tanstack/charts/lit";
 import { consume } from "@lit/context";
-import { html, LitElement, unsafeCSS } from "lit";
+import { html, LitElement, nothing, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { stylePref, type Style } from "../../../../constants/prefs.ts";
 import { dateFormat } from "../../../../utils/index.ts";
 import { cache } from "../../../../utils/lit.ts";
 import base from "../../../../styles/utility/baseline.css?type=raw";
 import styles from "./venue.css?type=raw";
-import { groupVenueEvents } from "./venue-data.ts";
+import { groupVenueEvents, type VenueRow } from "./venue-data.ts";
 import { renderSvg } from "../svg.ts";
 import gigs from "../gigs.json" with { type: "json" };
 import "../../register.ts";
 
-const venues = groupVenueEvents(gigs.events);
-type VenueRow = (typeof venues)[number];
+const venues: Array<VenueRow> = groupVenueEvents(gigs.events);
 
 const venuesByLabel = new Map(venues.map((row) => [row.label, row]));
 
@@ -81,7 +80,7 @@ const createChartOptions = (pageStyle: Style) => ({
   renderSvg: renderVenueSvg,
   renderTooltipBody: ({ points }: ChartTooltipBodyRenderContext<VenueRow>) => {
     const row = points[0]?.datum;
-    if (!row) return html``;
+    if (!row) return nothing;
     return html`
       <div class="venue-tooltip caption">
         <strong>${row.label} · ${row.count} event${row.count !== 1 ? "s" : ""}</strong>
