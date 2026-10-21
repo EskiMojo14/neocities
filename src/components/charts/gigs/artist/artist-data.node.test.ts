@@ -1,6 +1,6 @@
 import { expect, it } from "vite-plus/test";
 import { countArtistEvents } from "./artist-data.ts";
-import gigs from "./gigs.json" with { type: "json" };
+import gigs from "../gigs.json" with { type: "json" };
 
 it("counts main and support appearances across the full history, excluding support-only artists", () => {
   expect(

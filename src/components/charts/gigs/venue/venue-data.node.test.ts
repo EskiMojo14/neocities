@@ -1,6 +1,6 @@
 import { expect, it } from "vite-plus/test";
 import { groupVenueEvents } from "./venue-data.ts";
-import gigs from "./gigs.json" with { type: "json" };
+import gigs from "../gigs.json" with { type: "json" };
 
 it("groups by venue and city, retaining chronological events and single visits", () => {
   const early = { venue: "Forum", city: "Bath", date: "2020-01-01" };

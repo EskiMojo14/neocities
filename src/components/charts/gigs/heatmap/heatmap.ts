@@ -9,14 +9,14 @@ import type { ChartTooltipBodyRenderContext } from "@tanstack/charts/lit";
 import { html, LitElement, unsafeCSS } from "lit";
 import { consume } from "@lit/context";
 import { customElement } from "lit/decorators.js";
-import { stylePref, type Style } from "../../../constants/prefs.ts";
-import { dateFormat } from "../../../utils/index.ts";
-import { cache } from "../../../utils/lit.ts";
-import base from "../../../styles/utility/baseline.css?type=raw";
+import { stylePref, type Style } from "../../../../constants/prefs.ts";
+import { dateFormat } from "../../../../utils/index.ts";
+import { cache } from "../../../../utils/lit.ts";
+import base from "../../../../styles/utility/baseline.css?type=raw";
 import heatmap from "./heatmap.css?type=raw";
-import gigs from "./gigs.json" with { type: "json" };
-import { addTypography } from "./svg.ts";
-import "../register.ts";
+import gigs from "../gigs.json" with { type: "json" };
+import { addTypography } from "../svg.ts";
+import "../../register.ts";
 
 const months = [
   "Jan",
