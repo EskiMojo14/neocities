@@ -1,0 +1,62 @@
+:host {
+  display: block;
+  width: min(60rem, 90vw);
+}
+
+.chart {
+  overflow-x: auto;
+}
+
+tanstack-chart {
+  display: block;
+  min-width: 40rem;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.main {
+  background: var(--gigs-artist-main, var(--button, #0550ae));
+}
+
+.support {
+  background: var(--gigs-artist-support, var(--info, #6272a4));
+}
+
+.artist-tooltip {
+  max-width: min(28rem, 80vw);
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--divider);
+  border-radius: var(--shape-small);
+  background: var(--tooltip-background);
+  color: var(--tooltip-foreground);
+}
+
+.artist-tooltip ul {
+  margin: 0.5rem 0;
+  padding-inline-start: 1rem;
+}
+
+.artist-tooltip li + li {
+  margin-block-start: 0.5rem;
+}
+
+.artist-tooltip-support {
+  color: var(--comment);
+}
