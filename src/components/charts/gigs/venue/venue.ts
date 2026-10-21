@@ -74,7 +74,7 @@ const definition = defineChart({
 
 const createChartOptions = (pageStyle: Style) => ({
   definition,
-  ariaLabel: "Events per venue",
+  ariaLabel: "Gigs per venue",
   ariaDescription: "Full gig history grouped by venue and city, sorted by event count.",
   height: 80 + venues.length * 48,
   renderSvg: renderVenueSvg,
@@ -120,7 +120,7 @@ export class GigsByVenue extends LitElement {
 
   render() {
     return html`
-      <h2 class="headline6">Events per venue</h2>
+      <h2 class="headline6">Gigs per venue</h2>
       <p class="caption">Venues visited only once are excluded · Sorted by event count</p>
       <div class="chart">
         <tanstack-chart .options=${this.chartOptions}></tanstack-chart>
