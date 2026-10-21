@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
-import { useArgs } from "storybook/preview-api";
+import { useArgs, useGlobals } from "storybook/preview-api";
 import "../../scripts/page-scroll.ts";
 import "./sidebar.ts";
 import type { ThemeChangeEvent } from "./theme-toggle/theme-toggle.ts";
@@ -10,10 +10,11 @@ const meta = {
   tags: ["autodocs"],
   component: "sidebar-nav",
   render() {
-    const [args, setArgs] = useArgs();
+    const [args] = useArgs();
+    const [, setGlobals] = useGlobals();
     return html`<sidebar-nav
       @themechange=${(e: ThemeChangeEvent) => {
-        setArgs({ theme: e.newTheme });
+        setGlobals({ theme: e.newTheme });
       }}
       current-route=${args.currentRoute}
     ></sidebar-nav>`;

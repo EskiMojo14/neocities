@@ -52,13 +52,6 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
-  argTypes: {
-    theme: {
-      table: {
-        disable: true,
-      },
-    },
-  },
   render: () => html`
     <div class="${styles.container}">
       <div class="${styles.group}" data-theme="dark">

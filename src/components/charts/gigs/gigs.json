@@ -1,37 +1,32 @@
 {
-  "$schema": "./Gigs.schema.json",
+  "$schema": "./gigs.schema.json",
   "events": [
     {
       "artists": ["Eric Whitacre", "Royal Philharmonic Orchestra"],
-      "categories": ["music"],
       "venue": "Royal Albert Hall",
       "date": "2015-08-09",
       "city": "London"
     },
     {
       "artists": ["Pentatonix"],
-      "categories": ["music"],
       "venue": "O2 Academy Birmingham",
       "date": "2016-05-25",
       "city": "Birmingham"
     },
     {
       "artists": ["Orchestra of Samples"],
-      "categories": ["music"],
       "venue": "Wiltshire Music Centre",
       "date": "2017-09-23",
       "city": "Bradford-on-Avon"
     },
     {
       "artists": ["Jacob Collier"],
-      "categories": ["music"],
       "venue": "Royal Albert Hall",
       "date": "2018-07-19",
       "city": "London"
     },
     {
       "artists": ["Vulfpeck"],
-      "categories": ["music"],
       "venue": "O2 Academy Brixton",
       "date": "2018-10-05",
       "city": "London",
@@ -39,7 +34,6 @@
     },
     {
       "artists": ["Cory Wong"],
-      "categories": ["music"],
       "venue": "The Fleece",
       "date": "2019-03-03",
       "city": "Bristol",
@@ -47,7 +41,6 @@
     },
     {
       "artists": ["Animals As Leaders"],
-      "categories": ["music"],
       "venue": "Electric Bristol",
       "date": "2019-08-04",
       "city": "Bristol",
@@ -55,14 +48,12 @@
     },
     {
       "artists": ["Patent Pending"],
-      "categories": ["music"],
       "venue": "The Fleece",
       "date": "2019-08-22",
       "city": "Bristol"
     },
     {
       "artists": ["Snarky Puppy"],
-      "categories": ["music"],
       "venue": "O2 Academy Bristol",
       "date": "2019-11-08",
       "city": "Bristol",
@@ -70,35 +61,30 @@
     },
     {
       "artists": ["Caravan Palace"],
-      "categories": ["music"],
       "venue": "O2 Academy Bristol",
       "date": "2020-01-27",
       "city": "Bristol"
     },
     {
       "artists": ["Ed Axtell"],
-      "categories": ["music"],
       "venue": "Moles",
       "date": "2021-07-31",
       "city": "Bath"
     },
     {
       "artists": ["Joshua Luke Smith"],
-      "categories": ["music"],
       "venue": "Moles",
       "date": "2021-09-25",
       "city": "Bath"
     },
     {
       "artists": ["Public Service Broadcasting"],
-      "categories": ["music"],
       "venue": "O2 Academy Bristol",
       "date": "2021-10-26",
       "city": "Bristol"
     },
     {
       "artists": ["Level 42"],
-      "categories": ["music"],
       "venue": "The Forum",
       "date": "2021-10-29",
       "city": "Bath",
@@ -106,7 +92,6 @@
     },
     {
       "artists": ["Public Service Broadcasting"],
-      "categories": ["music"],
       "venue": "The Forum",
       "date": "2022-05-21",
       "city": "Bath",
@@ -114,14 +99,12 @@
     },
     {
       "artists": ["Ed Axtell"],
-      "categories": ["music"],
       "venue": "Komedia",
       "date": "2022-07-08",
       "city": "Bath"
     },
     {
       "artists": ["TWRP"],
-      "categories": ["music"],
       "venue": "Patterns",
       "date": "2022-10-23",
       "city": "Brighton",
@@ -129,28 +112,24 @@
     },
     {
       "artists": ["Bill Laurance"],
-      "categories": ["music"],
       "venue": "Wiltshire Music Centre",
       "date": "2022-11-12",
       "city": "Bradford-on-Avon"
     },
     {
       "artists": ["Jazz Emu"],
-      "categories": ["comedy", "music"],
       "venue": "Hoxton Underbelly",
       "date": "2022-12-02",
       "city": "London"
     },
     {
       "artists": ["Jazz Emu"],
-      "categories": ["comedy", "music"],
       "venue": "Soho Theatre",
       "date": "2022-12-15",
       "city": "London"
     },
     {
       "artists": ["Couch"],
-      "categories": ["music"],
       "venue": "The Sunflower Lounge",
       "date": "2023-03-31",
       "city": "Birmingham",
@@ -158,14 +137,12 @@
     },
     {
       "artists": ["Delvon Lamarr Organ Trio"],
-      "categories": ["music"],
       "venue": "Thekla",
       "date": "2023-05-12",
       "city": "Bristol"
     },
     {
       "artists": ["Louis Cole"],
-      "categories": ["music"],
       "venue": "Electric Bristol",
       "date": "2023-05-18",
       "city": "Bristol",
@@ -173,7 +150,6 @@
     },
     {
       "artists": ["Jacob Collier"],
-      "categories": ["music"],
       "venue": "Canon's Marsh Amphitheatre",
       "date": "2023-06-22",
       "city": "Bristol",
@@ -181,7 +157,6 @@
     },
     {
       "artists": ["The Hoosiers"],
-      "categories": ["music"],
       "venue": "Thekla",
       "date": "2023-09-28",
       "city": "Bristol",
@@ -189,14 +164,12 @@
     },
     {
       "artists": ["Ellie Dixon"],
-      "categories": ["music"],
       "venue": "The Exchange",
       "date": "2023-09-29",
       "city": "Bristol"
     },
     {
       "artists": ["TWRP"],
-      "categories": ["music"],
       "venue": "EartH (Hackney Arts Centre)",
       "date": "2023-10-03",
       "city": "London",
@@ -204,21 +177,18 @@
     },
     {
       "artists": ["Sammy Rae & The Friends"],
-      "categories": ["music"],
       "venue": "Electric Bristol",
       "date": "2023-11-17",
       "city": "Bristol"
     },
     {
       "artists": ["Dirty Loops"],
-      "categories": ["music"],
       "venue": "O2 Academy Islington",
       "date": "2023-11-27",
       "city": "London"
     },
     {
       "artists": ["Sam Greenfield"],
-      "categories": ["music"],
       "venue": "The Exchange",
       "date": "2024-01-26",
       "city": "Bristol",
@@ -226,7 +196,6 @@
     },
     {
       "artists": ["The Olllam"],
-      "categories": ["music"],
       "venue": "Bristol Beacon",
       "date": "2024-01-29",
       "city": "Bristol",
@@ -234,14 +203,12 @@
     },
     {
       "artists": ["Fizz"],
-      "categories": ["music"],
       "venue": "Electric Bristol",
       "date": "2024-02-27",
       "city": "Bristol"
     },
     {
       "artists": ["Theo Katzman"],
-      "categories": ["music"],
       "venue": "Electric Bristol",
       "date": "2024-03-05",
       "city": "Bristol",
@@ -249,28 +216,24 @@
     },
     {
       "artists": ["Bill Laurance"],
-      "categories": ["music"],
       "venue": "Wiltshire Music Centre",
       "date": "2024-04-26",
       "city": "Bradford-on-Avon"
     },
     {
       "artists": ["Ed Axtell"],
-      "categories": ["music"],
       "venue": "St James Wine Vaults",
       "date": "2024-05-03",
       "city": "Bath"
     },
     {
       "artists": ["Sounds of Cinema"],
-      "categories": ["music"],
       "venue": "The Forum",
       "date": "2024-05-18",
       "city": "Bath"
     },
     {
       "artists": ["High Fade"],
-      "categories": ["music"],
       "venue": "Old Market Assembly",
       "date": "2024-06-21",
       "city": "Bristol",
@@ -278,7 +241,6 @@
     },
     {
       "artists": ["I Don’t Know How But They Found Me"],
-      "categories": ["music"],
       "venue": "Electric Bristol",
       "date": "2024-06-28",
       "city": "Bristol",
@@ -286,21 +248,18 @@
     },
     {
       "artists": ["Lawrence"],
-      "categories": ["music"],
       "venue": "O2 Forum Kentish Town",
       "date": "2024-07-06",
       "city": "London"
     },
     {
       "artists": ["Vincen Garcia"],
-      "categories": ["music"],
       "venue": "O2 Academy Birmingham",
       "date": "2024-08-17",
       "city": "Birmingham"
     },
     {
       "artists": ["Pocket Sun"],
-      "categories": ["music"],
       "venue": "The Jam Jar",
       "date": "2024-09-07",
       "city": "Bristol",
@@ -308,7 +267,6 @@
     },
     {
       "artists": ["Good Kid"],
-      "categories": ["music"],
       "venue": "Electric Bristol",
       "date": "2024-09-20",
       "city": "Bristol",
@@ -316,21 +274,18 @@
     },
     {
       "artists": ["Caravan Palace"],
-      "categories": ["music"],
       "venue": "O2 Academy Bristol",
       "date": "2024-10-18",
       "city": "Bristol"
     },
     {
       "artists": ["Jacob Collier", "Chris Thile", "Britten Sinfonia"],
-      "categories": ["music"],
       "venue": "Bristol Beacon",
       "date": "2025-01-22",
       "city": "Bristol"
     },
     {
       "artists": ["Lake Street Dive"],
-      "categories": ["music"],
       "venue": "Electric Bristol",
       "date": "2025-02-01",
       "city": "Bristol",
@@ -338,7 +293,6 @@
     },
     {
       "artists": ["Sam Greenfield"],
-      "categories": ["music"],
       "venue": "Bristol Beacon",
       "date": "2025-02-04",
       "city": "Bristol",
@@ -346,7 +300,6 @@
     },
     {
       "artists": ["The Olllam"],
-      "categories": ["music"],
       "venue": "Trinity Centre",
       "date": "2025-02-07",
       "city": "Bristol",
@@ -354,7 +307,6 @@
     },
     {
       "artists": ["Cory Wong"],
-      "categories": ["music"],
       "venue": "O2 Academy Bristol",
       "date": "2025-02-14",
       "support": ["Couch"],
@@ -362,7 +314,6 @@
     },
     {
       "artists": ["Sammy Rae & The Friends"],
-      "categories": ["music"],
       "venue": "O2 Academy Bristol",
       "date": "2025-02-18",
       "support": ["Last Dinosaurs"],
@@ -370,7 +321,6 @@
     },
     {
       "artists": ["Lawrence"],
-      "categories": ["music"],
       "venue": "O2 Academy Bristol",
       "date": "2025-02-22",
       "city": "Bristol",
@@ -378,28 +328,24 @@
     },
     {
       "artists": ["Jazz Emu"],
-      "categories": ["comedy", "music"],
       "venue": "Redgrave Theatre",
       "date": "2025-02-25",
       "city": "Bristol"
     },
     {
       "artists": ["Dirty Loops"],
-      "categories": ["music"],
       "venue": "Electric Ballroom",
       "date": "2025-03-14",
       "city": "London"
     },
     {
       "artists": ["The Hoosiers"],
-      "categories": ["music"],
       "venue": "Thekla",
       "date": "2025-03-28",
       "city": "Bristol"
     },
     {
       "artists": ["Fox Stevenson"],
-      "categories": ["music"],
       "venue": "Electric Ballroom",
       "date": "2025-04-05",
       "city": "London",
@@ -407,7 +353,6 @@
     },
     {
       "artists": ["Tom McGuire & The Brassholes"],
-      "categories": ["music"],
       "venue": "Komedia",
       "date": "2025-04-10",
       "support": ["Technicolour Steam Train"],
@@ -415,14 +360,12 @@
     },
     {
       "artists": ["Choir! Choir! Choir!"],
-      "categories": ["music"],
       "venue": "Bristol Beacon",
       "date": "2025-05-12",
       "city": "Bristol"
     },
     {
       "artists": ["Pocket Sun"],
-      "categories": ["music"],
       "venue": "The Exchange",
       "date": "2025-05-15",
       "city": "Bristol",
@@ -430,63 +373,48 @@
     },
     {
       "artists": ["Lorna Rose Treen", "Jazz Emu"],
-      "categories": ["comedy", "music"],
       "venue": "Komedia",
       "date": "2025-06-15",
       "city": "Bath"
     },
     {
       "artists": ["Ellie Dixon"],
-      "categories": ["music"],
       "venue": "Rough Trade Bristol",
       "date": "2025-10-04",
       "city": "Bristol"
     },
     {
-      "artists": ["Aunty Donna"],
-      "categories": ["comedy"],
-      "venue": "Bristol Hippodrome",
-      "date": "2025-10-05",
-      "city": "Bristol"
-    },
-    {
       "artists": ["Redtenbacher’s Funkestra"],
-      "categories": ["music"],
       "venue": "The Civic",
       "date": "2025-10-17",
       "city": "Trowbridge"
     },
     {
       "artists": ["Chris Thile"],
-      "categories": ["music"],
       "venue": "St George’s Bristol",
       "date": "2025-11-16",
       "city": "Bristol"
     },
     {
       "artists": ["High Fade"],
-      "categories": ["music"],
       "venue": "Lost Horizon Arts Centre & Bar",
       "date": "2025-11-22",
       "city": "Bristol"
     },
     {
       "artists": ["Jazz Emu"],
-      "categories": ["comedy", "music"],
       "venue": "Soho Theatre",
       "date": "2025-11-27",
       "city": "London"
     },
     {
       "artists": ["Couch"],
-      "categories": ["music"],
       "venue": "Electric Bristol",
       "date": "2026-03-07",
       "city": "Bristol"
     },
     {
       "artists": ["Phoebe Katis"],
-      "categories": ["music"],
       "venue": "Hootananny Brixton",
       "date": "2026-03-11",
       "support": ["KONL"],
@@ -494,14 +422,12 @@
     },
     {
       "artists": ["Fox Stevenson"],
-      "categories": ["music"],
       "venue": "Electric Brixton",
       "date": "2026-04-18",
       "city": "London"
     },
     {
       "artists": ["Ninja Sex Party"],
-      "categories": ["music"],
       "venue": "O2 Academy Brixton",
       "date": "2026-05-05",
       "support": ["TWRP", "Jazz Emu"],
@@ -509,14 +435,12 @@
     },
     {
       "artists": ["Theo Katzman"],
-      "categories": ["music"],
       "venue": "Trinity Centre",
       "date": "2026-06-11",
       "city": "Bristol"
     },
     {
       "artists": ["Sam Greenfield"],
-      "categories": ["music"],
       "venue": "The Jam Jar",
       "date": "2026-06-15",
       "city": "Bristol",
@@ -524,14 +448,12 @@
     },
     {
       "artists": ["Samara Joy"],
-      "categories": ["music"],
       "venue": "Wiltshire Music Centre",
       "date": "2026-07-06",
       "city": "Bradford-on-Avon"
     },
     {
       "artists": ["Jazz Emu"],
-      "categories": ["comedy", "music"],
       "venue": "Komedia",
       "date": "2026-09-09",
       "city": "Bath",
@@ -539,7 +461,6 @@
     },
     {
       "artists": ["The Dear Hunter"],
-      "categories": ["music"],
       "venue": "Strange Brew",
       "date": "2026-09-23",
       "city": "Bristol",
@@ -547,7 +468,6 @@
     },
     {
       "artists": ["The Olllam"],
-      "categories": ["music"],
       "venue": "Electric Bristol",
       "date": "2026-10-03",
       "city": "Bristol",
@@ -555,18 +475,10 @@
     },
     {
       "artists": ["The Hoosiers"],
-      "categories": ["music"],
       "venue": "O2 Academy Bristol",
       "date": "2026-10-07",
       "city": "Bristol",
       "support": ["Hunny Buzz"]
-    },
-    {
-      "artists": ["Gianmarco Soresi"],
-      "categories": ["comedy"],
-      "venue": "Bristol Beacon",
-      "date": "2026-10-10",
-      "city": "Bristol"
     }
   ]
 }

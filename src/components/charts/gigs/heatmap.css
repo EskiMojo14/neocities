@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.gigs-tooltip {
+  max-width: min(24rem, 80vw);
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--divider);
+  border-radius: var(--shape-small);
+  background: var(--tooltip-background);
+  color: var(--tooltip-foreground);
+}
+
+.gigs-tooltip ul {
+  margin: 0.5rem 0;
+  padding-inline-start: 1rem;
+}
+
+.gigs-tooltip-support {
+  color: var(--comment);
+}
+
+.gigs-tooltip li + li {
+  margin-block-start: 0.5rem;
+}
