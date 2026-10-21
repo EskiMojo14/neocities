@@ -19,6 +19,11 @@
   font-variation-settings: "slnt" -11;
 }
 
+[role="tab"]:focus-visible {
+  color: var(--button-focus);
+  background: var(--focus-background);
+}
+
 [role="tabpanel"] {
   padding-top: 1rem;
 }
