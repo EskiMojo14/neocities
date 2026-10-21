@@ -48,6 +48,11 @@ export default class Footer extends LitElement {
                 Mona Sans (font)
               </a>
             </li>
+            <li>
+              <a href="https://paper.design/mono" target="_blank" rel="noopener noreferrer">
+                Paper Mono (font)
+              </a>
+            </li>
           </ul>
         </section>
       </footer>

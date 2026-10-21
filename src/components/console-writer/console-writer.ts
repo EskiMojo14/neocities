@@ -28,7 +28,7 @@ export default class ConsoleWriter extends LitElement implements Required<cwrite
   pageStyle: Style = stylePref.fallback;
 
   render() {
-    if (this.pageStyle === "normal") return this.text;
+    if (this.pageStyle !== "code") return this.text;
     return html`<span class="sr-only">${this.text}</span
       ><span aria-hidden="true" class="console" needs-js
         >${cwriter(this.text, {

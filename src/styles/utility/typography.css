@@ -31,6 +31,54 @@
   --caption-transform: none;
 }
 
+[data-style="paper"] {
+  --font-family-body: "Paper Mono", monospace;
+  --font-family-heading: "Paper Mono", monospace;
+  --font-family-code: "Paper Mono", monospace;
+  --font-family-button: "Paper Mono", monospace;
+  --font-family-comment: "Paper Mono", monospace;
+  --font-family-doc-comment: "Paper Mono", monospace;
+
+  --headline1-transform: none;
+  --headline2-transform: none;
+  --headline3-transform: none;
+  --headline4-transform: none;
+  --headline5-transform: none;
+  --headline6-transform: none;
+  --body1-transform: none;
+  --body2-transform: none;
+  --subtitle1-transform: none;
+  --subtitle2-transform: none;
+  --button-transform: none;
+  --overline-transform: uppercase;
+  --caption-transform: none;
+
+  body {
+    font-feature-settings:
+      "ss02" 1,
+      "ss03" 1,
+      "cv01" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-feature-settings: "ss02" 1;
+  }
+
+  code,
+  pre,
+  code[class*="language-"],
+  pre[class*="language-"] {
+    font-feature-settings:
+      "ss01" 1,
+      "zero" 1;
+  }
+}
+
 .headline1 {
   font-family: var(--headline1-family);
   font-size: var(--headline1-size);

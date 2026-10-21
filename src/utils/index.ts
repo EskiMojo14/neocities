@@ -150,7 +150,7 @@ export const dateFormatter = new Intl.DateTimeFormat(undefined, {
 });
 
 export const dateFormat = (date: Date, style: Style) =>
-  style === "normal" ? dateFormatter.format(date) : date.toISOString().slice(0, 10);
+  style !== "code" ? dateFormatter.format(date) : date.toISOString().slice(0, 10);
 
 const dateOnlyFormatter = new Intl.DateTimeFormat(undefined, {
   dateStyle: "medium",
@@ -158,10 +158,10 @@ const dateOnlyFormatter = new Intl.DateTimeFormat(undefined, {
 });
 
 export const dateOnlyFormat = (date: string, style: Style) =>
-  style === "normal" ? dateOnlyFormatter.format(new Date(date)) : date;
+  style !== "code" ? dateOnlyFormatter.format(new Date(date)) : date;
 
 export const dateRangeFormat = (start: Date, end: Date, style: Style) => {
-  if (style === "normal") {
+  if (style !== "code") {
     return dateFormatter.formatRange(start, end);
   }
   return `${start.toISOString().slice(0, 10)} – ${end.toISOString().slice(0, 10)}`;
@@ -174,7 +174,7 @@ export const timeFormatter = new Intl.DateTimeFormat(undefined, {
 });
 
 export const timeFormat = (date: Date, style: Style) =>
-  style === "normal"
+  style !== "code"
     ? timeFormatter.format(date)
     : // remove ms
       date.toISOString().slice(0, 19) + "Z";

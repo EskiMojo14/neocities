@@ -49,15 +49,12 @@ export default class TopTracks extends LitElement {
             periodSchema.options,
             (period) => period,
             (period) =>
-              toggleButton(
-                (this.pageStyle === "normal" ? fullPeriodLabels : periodLabels)[period],
-                {
-                  name: "top-tracks-period",
-                  value: period,
-                  checked: period === this.period,
-                  ariaLabel: fullPeriodLabels[period],
-                },
-              ),
+              toggleButton((this.pageStyle !== "code" ? fullPeriodLabels : periodLabels)[period], {
+                name: "top-tracks-period",
+                value: period,
+                checked: period === this.period,
+                ariaLabel: fullPeriodLabels[period],
+              }),
           )}
         </fieldset>
       </div>

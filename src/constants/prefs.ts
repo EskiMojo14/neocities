@@ -85,6 +85,7 @@ export const stylePref = createPref<{ icon: string }>()(
   Symbol("style"),
   {
     code: { icon: "code" },
+    paper: { icon: "description" },
     normal: { icon: "match_case" },
   },
   "code",
