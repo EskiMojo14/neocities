@@ -45,6 +45,12 @@ const definition = defineChart({
       axis: { label: "Events" },
       grid: true,
     },
+    xTop: {
+      channel: "x",
+      side: "top",
+      scale: () => scaleLinear().domain([0, Math.max(...artists.map((row) => row.total))]),
+      axis: { label: "Events" },
+    },
     y: {
       scale: () => scaleBand().domain(artists.map((row) => row.artist)),
     },
