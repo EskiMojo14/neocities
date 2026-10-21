@@ -247,7 +247,10 @@ export class GigsYearMonthHeatmap extends LitElement {
   render() {
     return html`
       <h2 class="headline6">Gigs by year and month</h2>
-      <p class="caption">${visibleGigs.length} events · Darker indicates more events</p>
+      <p class="caption">
+        Last 5 years · ${visibleGigs.length} of ${gigs.events.length} total events · Darker
+        indicates more events
+      </p>
       <tanstack-chart .options=${this.chartOptions}></tanstack-chart>
     `;
   }

@@ -122,7 +122,7 @@ export class GigsByVenue extends LitElement {
   render() {
     return html`
       <h2 class="headline6">Events per venue</h2>
-      <p class="caption">Full history · Sorted by event count</p>
+      <p class="caption">Sorted by event count</p>
       <div class="chart">
         <tanstack-chart .options=${this.chartOptions}></tanstack-chart>
       </div>
