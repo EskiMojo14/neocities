@@ -152,6 +152,14 @@ export const dateFormatter = new Intl.DateTimeFormat(undefined, {
 export const dateFormat = (date: Date, style: Style) =>
   style === "normal" ? dateFormatter.format(date) : date.toISOString().slice(0, 10);
 
+const dateOnlyFormatter = new Intl.DateTimeFormat(undefined, {
+  dateStyle: "medium",
+  timeZone: "UTC",
+});
+
+export const dateOnlyFormat = (date: string, style: Style) =>
+  style === "normal" ? dateOnlyFormatter.format(new Date(date)) : date;
+
 export const dateRangeFormat = (start: Date, end: Date, style: Style) => {
   if (style === "normal") {
     return dateFormatter.formatRange(start, end);
