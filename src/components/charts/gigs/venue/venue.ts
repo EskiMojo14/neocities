@@ -8,7 +8,7 @@ import { consume } from "@lit/context";
 import { html, LitElement, nothing, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { stylePref, type Style } from "../../../../constants/prefs.ts";
-import { dateFormat } from "../../../../utils/index.ts";
+import { dateOnlyFormat } from "../../../../utils/index.ts";
 import { cache } from "../../../../utils/lit.ts";
 import base from "../../../../styles/utility/baseline.css?type=raw";
 import styles from "./venue.css?type=raw";
@@ -95,7 +95,7 @@ const createChartOptions = (pageStyle: Style) => ({
                     </div>`
                   : null}
                 <div>
-                  <time datetime=${event.date}>${dateFormat(new Date(event.date), pageStyle)}</time>
+                  <time datetime=${event.date}>${dateOnlyFormat(event.date, pageStyle)}</time>
                 </div>
               </li>
             `,
