@@ -17,7 +17,7 @@ import { renderSvg } from "../svg.ts";
 import gigs from "../gigs.json" with { type: "json" };
 import "../../register.ts";
 
-const venues: Array<VenueRow> = groupVenueEvents(gigs.events);
+const venues: Array<VenueRow> = groupVenueEvents(gigs.events).filter((venue) => venue.count > 1);
 
 const venuesByLabel = new Map(venues.map((row) => [row.label, row]));
 
@@ -121,7 +121,7 @@ export class GigsByVenue extends LitElement {
   render() {
     return html`
       <h2 class="headline6">Events per venue</h2>
-      <p class="caption">Sorted by event count</p>
+      <p class="caption">Venues visited only once are excluded · Sorted by event count</p>
       <div class="chart">
         <tanstack-chart .options=${this.chartOptions}></tanstack-chart>
       </div>
