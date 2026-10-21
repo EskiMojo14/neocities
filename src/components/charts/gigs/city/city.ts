@@ -150,17 +150,17 @@ export class GigsByCity extends LitElement {
     return {
       ...mainMap,
       height: 640,
-      ariaLabel: "Gigs per city on an England map",
+      ariaLabel: "Gigs by city on an England map",
       renderTooltipBody,
     };
   }
 
   render() {
     return html`
-      <h2 class="headline6">Gigs per city</h2>
+      <h2 class="headline6">Gigs by city</h2>
       <p class="caption">Circle area represents event count</p>
       <tanstack-chart .options=${this.chartOptions}></tanstack-chart>
-      <ul class="sr-only" aria-label="Gigs per city">
+      <ul class="sr-only" aria-label="Gigs by city">
         ${cities.map(({ properties: city }) => html`<li>${city.city}: ${city.count}</li>`)}
       </ul>
     `;

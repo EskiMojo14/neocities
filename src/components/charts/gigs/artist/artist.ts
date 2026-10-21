@@ -62,7 +62,7 @@ const definition = defineChart({
 
 const createChartOptions = (pageStyle: Style) => ({
   definition,
-  ariaLabel: "Gigs per artist",
+  ariaLabel: "Gigs by artist",
   ariaDescription:
     "All-time appearances, split into main or co-billed and support acts. Sorted by total appearances.",
   height: 80 + artists.length * 32,
@@ -116,7 +116,7 @@ export class GigsByArtist extends LitElement {
 
   render() {
     return html`
-      <h2 class="headline6">Gigs per artist</h2>
+      <h2 class="headline6">Gigs by artist</h2>
       <p class="caption">Sorted by total appearances</p>
       <ul class="legend caption" aria-label="Appearance types">
         <li><span class="swatch main"></span>Main / co-billed</li>
