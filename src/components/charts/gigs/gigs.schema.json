@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Gig history",
-  "description": "Attended events. Categories describe main/co-billed artists, not support acts.",
+  "description": "Attended music events",
   "type": "object",
   "additionalProperties": false,
   "required": ["events"],
@@ -33,20 +33,11 @@
     "event": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["artists", "categories", "venue", "date", "city"],
+      "required": ["artists", "venue", "date", "city"],
       "properties": {
         "artists": {
           "$ref": "#/$defs/artists",
           "description": "Main/co-billed artists, excluding support acts."
-        },
-        "categories": {
-          "description": "Category (or categories) of the show.",
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {
-            "enum": ["comedy", "music"]
-          }
         },
         "venue": {
           "$ref": "#/$defs/nonBlankString",

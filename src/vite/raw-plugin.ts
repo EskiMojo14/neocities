@@ -35,10 +35,12 @@ export function transformRawImports(): Plugin {
           `${id.slice(0, id.indexOf(hint))}.type${hint}`,
         );
       }
+      return null;
     },
-    load: async (id) => {
+    async load(id) {
       if (id.endsWith(hint)) {
         const filename = id.slice(0, id.indexOf(`.type${hint}`));
+        this.addWatchFile(filename);
         const contents = await fs.readFile(filename, "utf-8");
 
         const url = new URL(filename, compilation.context.projectDirectory);
@@ -52,6 +54,7 @@ export function transformRawImports(): Plugin {
 
         return body;
       }
+      return null;
     },
   };
 }
